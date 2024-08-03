@@ -1,0 +1,245 @@
+{
+  "series": [
+    {
+      "seriesName": "Border-Gavaskar Trophy",
+      "seriesId": 1,
+      "numMatches": 5,
+      "homeTeam": "Australia",
+      "awayTeam": "India",
+      "matches": [
+        {
+          "matchNum": 1,
+          "venue": "Perth Stadium, Perth",
+          "startDate": "2024-11-21",
+          "startTime": "18:20:00"
+        },
+        {
+          "matchNum": 2,
+          "venue": "Adelaide Oval, Adelaide",
+          "startDate": "2024-12-05",
+          "startTime": "20:00:00"
+        },
+        {
+          "matchNum": 3,
+          "venue": "The Gabba, Brisbane",
+          "startDate": "2024-12-13",
+          "startTime": "16:20:00"
+        },
+        {
+          "matchNum": 4,
+          "venue": "Melbourne Cricket Ground, Melbourne",
+          "startDate": "2024-12-25",
+          "startTime": "15:30:00"
+        },
+        {
+          "matchNum": 5,
+          "venue": "Sydney Cricket Ground, Sydney",
+          "startDate": "2025-01-02",
+          "startTime": "15:30:00"
+        }
+      ]
+    },
+    {
+      "seriesName": "AUSvPAK",
+      "seriesId": 2,
+      "numMatches": 3,
+      "homeTeam": "Australia",
+      "awayTeam": "Pakistan",
+      "matches": [
+        {
+          "matchNum": 1,
+          "venue": "Adelaide Oval, Adelaide",
+          "startDate": "2024-11-21",
+          "startTime": "18:20:00"
+        },
+        {
+          "matchNum": 2,
+          "venue": "Melbourne Cricket Ground, Melbourne",
+          "startDate": "2024-11-29",
+          "startTime": "20:00:00"
+        },
+        {
+          "matchNum": 3,
+          "venue": "Sydney Cricket Ground, Sydney",
+          "startDate": "2024-12-07",
+          "startTime": "16:20:00"
+        }
+      ]
+    },
+    {
+      "seriesName": "AUSvWI",
+      "seriesId": 3,
+      "numMatches": 2,
+      "homeTeam": "Australia",
+      "awayTeam": "West Indies"
+    },
+    {
+      "seriesName": "BANvNZ",
+      "seriesId": 4,
+      "numMatches": 2,
+      "homeTeam": "Bangladesh",
+      "awayTeam": "New Zealand"
+    },
+    {
+      "seriesName": "BANvSA",
+      "seriesId": 5,
+      "numMatches": 2,
+      "homeTeam": "Bangladesh",
+      "awayTeam": "South Africa"
+    },
+    {
+      "seriesName": "BANvSL",
+      "seriesId": 6,
+      "numMatches": 2,
+      "homeTeam": "Bangladesh",
+      "awayTeam": "Sri Lanka"
+    },
+    {
+      "seriesName": "ENGvAUS",
+      "seriesId": 7,
+      "numMatches": 5,
+      "homeTeam": "England",
+      "awayTeam": "Australia"
+    },
+    {
+      "seriesName": "ENGvSL",
+      "seriesId": 8,
+      "numMatches": 3,
+      "homeTeam": "England",
+      "awayTeam": "Sri Lanka"
+    },
+    {
+      "seriesName": "ENGvWI",
+      "seriesId": 9,
+      "numMatches": 3,
+      "homeTeam": "England",
+      "awayTeam": "West Indies"
+    },
+    {
+      "seriesName": "INDvBAN",
+      "seriesId": 10,
+      "numMatches": 2,
+      "homeTeam": "India",
+      "awayTeam": "Bangladesh"
+    },
+    {
+      "seriesName": "INDvENG",
+      "seriesId": 11,
+      "numMatches": 5,
+      "homeTeam": "India",
+      "awayTeam": "England"
+    },
+    {
+      "seriesName": "INDvNZ",
+      "seriesId": 12,
+      "numMatches": 3,
+      "homeTeam": "India",
+      "awayTeam": "New Zealand"
+    },
+    {
+      "seriesName": "NZvAUS",
+      "seriesId": 13,
+      "numMatches": 2,
+      "homeTeam": "New Zealand",
+      "awayTeam": "Australia"
+    },
+    {
+      "seriesName": "NZvENG",
+      "seriesId": 14,
+      "numMatches": 3,
+      "homeTeam": "New Zealand",
+      "awayTeam": "England"
+    },
+    {
+      "seriesName": "NZvSA",
+      "seriesId": 15,
+      "numMatches": 2,
+      "homeTeam": "New Zealand",
+      "awayTeam": "South Africa"
+    },
+    {
+      "seriesName": "PAKvBAN",
+      "seriesId": 16,
+      "numMatches": 2,
+      "homeTeam": "Pakistan",
+      "awayTeam": "Bangladesh"
+    },
+    {
+      "seriesName": "PAKvENG",
+      "seriesId": 17,
+      "numMatches": 3,
+      "homeTeam": "Pakistan",
+      "awayTeam": "England"
+    },
+    {
+      "seriesName": "PAKvWI",
+      "seriesId": 18,
+      "numMatches": 2,
+      "homeTeam": "Pakistan",
+      "awayTeam": "West Indies"
+    },
+    {
+      "seriesName": "SAvIND",
+      "seriesId": 19,
+      "numMatches": 2,
+      "homeTeam": "South Africa",
+      "awayTeam": "India"
+    },
+    {
+      "seriesName": "SAvPAK",
+      "seriesId": 20,
+      "numMatches": 2,
+      "homeTeam": "South Africa",
+      "awayTeam": "Pakistan"
+    },
+    {
+      "seriesName": "SAvSL",
+      "seriesId": 21,
+      "numMatches": 2,
+      "homeTeam": "South Africa",
+      "awayTeam": "Sri Lanka"
+    },
+    {
+      "seriesName": "SLvAUS",
+      "seriesId": 22,
+      "numMatches": 2,
+      "homeTeam": "Sri Lanka",
+      "awayTeam": "Australia"
+    },
+    {
+      "seriesName": "SLvNZ",
+      "seriesId": 23,
+      "numMatches": 2,
+      "homeTeam": "Sri Lanka",
+      "awayTeam": "New Zealand"
+    },
+    {
+      "seriesName": "SLvPAK",
+      "seriesId": 24,
+      "numMatches": 2,
+      "homeTeam": "Sri Lanka",
+      "awayTeam": "Pakistan"
+    },
+    {
+      "seriesName": "WIvBAN",
+      "seriesId": 25,
+      "numMatches": 2,
+      "homeTeam": "West Indies",
+      "awayTeam": "Bangladesh"
+    },
+    {
+      "seriesName": "WIvIND",
+      "seriesId": 26,
+      "numMatches": 2,
+      "homeTeam": "West Indies",
+      "awayTeam": "India"
+    },
+    {
+      "seriesName": "WIvSA",
+      "seriesId": 27,
+      "numMatches": 2,
+      "homeTeam": "West Indies",
+      "awayTeam": "South Africa"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
-function WTCMatchCard({homeGradient, awayGradient, homeTeamName, homeTeamFlag, awayTeamName, awayTeamFlag}) {
+function WTCMatchCard({homeGradient, awayGradient, homeTeamName, homeTeamFlag, awayTeamName, awayTeamFlag,
+                      seriesName, testNum, venue, dateRange, time}) {
     const neutralGradient = 'linear-gradient(135deg, black, black, silver)';
     const [selected, setSelected] = useState(null);
     const handleClick = (team) => {
@@ -24,9 +25,9 @@ function WTCMatchCard({homeGradient, awayGradient, homeTeamName, homeTeamFlag, a
                     <div className='neutral' onClick={() => handleClick('neutral')}
                          style={{background: selected === 'neutral' ? neutralGradient : 'transparent',
                                 color: selected === 'neutral' ? 'white': 'black'}}>
-                        <div className="date">21-26 November 2024</div>
+                        <div className="date">{dateRange}</div>
                         <div className="vs">VS</div>
-                        <div className="time">10:00 AM your time</div>
+                        <div className="time">{time + " your time"}</div>
                     </div>
                     <div className='awayTeam' onClick={() => handleClick('away')}
                          style={{background: selected === 'away' ? awayGradient : 'transparent',
@@ -40,8 +41,7 @@ function WTCMatchCard({homeGradient, awayGradient, homeTeamName, homeTeamFlag, a
                     </div>
                 </div>
                 <div className="infoBody">
-                    Series Name · Test Num · Location
-                    {/*{seriesName + "·" + testNum + "·" + venue}*/}
+                    {seriesName + " · " + testNum + " · " + venue}
                 </div>
             </div>
         </div>

@@ -29,6 +29,11 @@ function MatchCardPanel({series}) {
                     homeTeamFlag={seriesItem.homeFlag}
                     awayTeamName={seriesItem.awayTeam}
                     awayTeamFlag={seriesItem.awayFlag}
+                    seriesName={seriesItem.seriesName}
+                    testNum={match.matchNumber}
+                    venue={match.location}
+                    dateRange={match.dateRange}
+                    time={match.startTime}
                 />
             </div>
         ))

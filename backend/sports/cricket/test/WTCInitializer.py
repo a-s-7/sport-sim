@@ -36,4 +36,9 @@ class WTCInitializer:
             homeTeam = wtc.get_Team(series["homeTeam"])
             awayTeam = wtc.get_Team(series["awayTeam"])
             wtcSeries = WTCSeries(series["seriesName"], series["seriesId"], series["numMatches"], homeTeam, awayTeam)
+
+            for index, match in enumerate(series["matches"]):
+                wtcSeries.addMatchDetails(index, match["venue"], match["startDate"], match["endDate"], match["startTime"])
+
+
             wtc.add_series(wtcSeries)

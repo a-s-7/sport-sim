@@ -83,7 +83,7 @@ class T20League():
                 if role == "Home":
                     opponentTeam = match.awayTeam
             
-                print("{:<5}{:<20}{:<10}{:<30}{:<45}{:<15}".format(index, match.matchNumber, role, opponentTeam.name, match.location, match.date))
+                print("{:<5}{:<20}{:<10}{:<30}{:<45}{:<15}".format(index, match.matchNumber, role, opponentTeam.name, match.venue, match.date))
 
             print("")
             
@@ -91,7 +91,7 @@ class T20League():
         print(f"{self.name} Schedule:")
 
         for match in self.matchList:
-            print("{:<15} {:<30} {:<30} {:<45} {:<15}".format(match.matchNumber, match.homeTeam.name, match.awayTeam.name, match.location, match.date))
+            print("{:<15} {:<30} {:<30} {:<45} {:<15}".format(match.matchNumber, match.homeTeam.name, match.awayTeam.name, match.venue, match.date))
         
     def print_points_table(self):
         print("Points Table for: " + self.name)

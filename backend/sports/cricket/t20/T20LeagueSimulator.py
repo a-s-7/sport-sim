@@ -59,7 +59,7 @@ class T20LeagueSimulator:
                             print("{:<15} {:<30} {:<30} {:<45} {:<15}".format("Match Number", "Home Team", "Away Team",
                                                                               "Location", "Date"))
                             print("{:<15} {:<30} {:<30} {:<45} {:<15}".format(match.matchNumber, match.homeTeam.name,
-                                                                              match.awayTeam.name, match.location,
+                                                                              match.awayTeam.name, match.venue,
                                                                               match.date))
 
                             print("")

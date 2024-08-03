@@ -7,12 +7,11 @@ class WTCSeries:
         self.id = id
         self.seriesName = name
         self.numMatches = numMatches
-
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
+        self.matches = []
 
         self.addSeriesToTeams()
-        self.matches = []
         self.populateMatches()
 
     def getJSON(self):
@@ -31,6 +30,10 @@ class WTCSeries:
 
         return seriesJSON
 
+    def addMatchDetails(self, num: int, venue: str, sdate: str, edate: str, time: str):
+        self.matches[num - 1].set_match_info(venue, sdate, edate, time)
+
+
     def addSeriesToTeams(self):
         self.homeTeam.addSeries(self)
         self.awayTeam.addSeries(self)
@@ -38,6 +41,9 @@ class WTCSeries:
     def populateMatches(self):
         for i in range(1, self.numMatches+1):
             self.addMatch(WTCMatch(i, self.homeTeam, self.awayTeam))
+
+
+
 
     def addMatch(self, match: WTCMatch):
         if(len(self.matches) >= self.numMatches):

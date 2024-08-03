@@ -13,7 +13,6 @@ class WTC:
         self.teamDict = {}
         self.series = []
 
-
     def get_match_data_json(self):
         data = []
         for series in self.series:
@@ -103,4 +102,5 @@ class WTC:
         for t in sorted_teams:
             index = sorted_teams.index(t) + 1
             print("{:<10} {:<15} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7.2f}".format(index, t.name, t.played, t.won, t.lost, t.draw, t.deduction, float(t.get_points()), float(t.get_points_percentage())))
+
 

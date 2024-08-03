@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from backend.sports.cricket.MatchResult import MatchResult
 from backend.sports.cricket.test.WTCTeam import WTCTeam
 
@@ -6,10 +8,13 @@ class WTCMatch:
     def __init__(self, matchNumber: int, homeTeam: WTCTeam, awayTeam: WTCTeam):
         # Match Details
         self.matchNumber = matchNumber
-        self.location = None
-        self.startDate = None
-        self.startTime = None
         self.type = None
+
+        # Match Geographical + Temporal Details
+        self.venue = None
+        self.startDate = None
+        self.endDate = None
+        self.startTime = None
 
         # Match Teams
         self.homeTeam = homeTeam
@@ -20,39 +25,76 @@ class WTCMatch:
         self.homeTeamSecondInningsScore = None
         self.awayTeamFirstInningsScore = None
         self.awayTeamSecondInningsScore = None
-
         self.matchResult = None
 
         self.addMatchToTeams()
 
-    def set_start_time(self, start_time: str):
-        self.startTime = start_time
+    def check_dates_added(self):
+        if(self.startDate == None and self.endDate == None):
+            return False
+        else:
+            return True
+
+
+    def getJSON(self):
+        location = self.venue if self.venue is not None else "TBA"
+        dateRange = self.get_english_date() if self.check_dates_added() else "TBA"
+        startTime = self.get_12_hour_time() if self.startTime is not None else "TBA"
+
+        return {
+            "matchNumber": self.get_ordinal_number(),
+            "location": location,
+            "dateRange": dateRange,
+            "startTime": startTime,
+        }
+
+    def get_ordinal_number(self):
+        suffixes = ["1st", "2nd", "3rd", "4th", "5th"]
+
+        return suffixes[self.matchNumber - 1] + " Test"
+
+    def get_english_date(self):
+        start_month = self.startDate.strftime("%B")
+        end_month = self.endDate.strftime("%B")
+
+        start_day = self.startDate.strftime("%d")
+        end_day = self.endDate.strftime("%d")
+
+        year = self.startDate.strftime("%Y") ## ASSUMING TEST MATCHES ARE PLAYED IN THE SAME YEAR
+
+        if(start_month == end_month):
+            return start_month + " " + start_day + "-" + end_day + ", " + year
+        else:
+            return start_month + " " + start_day + "-" + end_month + " " + end_day + ", " + year
+
+    def get_12_hour_time(self):
+        return self.startTime.strftime("%I:%M %p")
+
+    ################################################### GETTERS
+
+    def getMatchNumber(self):
+        return self.matchNumber
+
+    def get_match_venue(self):
+        return self.venue
+
+    def get_start_date(self):
+        return self.startDate
+
+    def get_end_date(self):
+        return self.endDate
 
     def get_start_time(self):
         return self.startTime
 
-    def getJSON(self):
-        return {
-            "matchNumber": self.matchNumber,
-            "location": self.location,
-            "startDate": self.startDate,
-        }
+    def get_match_type(self):
+        return self.type
 
-    def addMatchToTeams(self):
-        self.homeTeam.addMatch(self, "Home")
-        self.awayTeam.addMatch(self, "Away")
+    def get_home_team(self):
+        return self.homeTeam
 
-    def setMatchLocation(self, location: str):
-        self.location = location
-
-    def setMatchDate(self, date: str):
-        self.date = date
-
-    def setMatchType(self, matchType: str):
-        self.type = matchType
-
-    def getMatchNumber(self):
-        return self.matchNumber
+    def get_away_team(self):
+        return self.awayTeam
 
     def getHomeTeamFirstInningsScore(self):
         return self.homeTeamFirstInningsScore
@@ -68,6 +110,39 @@ class WTCMatch:
 
     def getMatchResult(self):
         return self.matchResult
+
+    ################################################### SETTERS
+
+    def set_match_info(self, venue: str, startDate: str, endDate: str, start_time: str):
+        self.set_match_venue(venue)
+        self.set_start_date(startDate)
+        self.set_end_date(endDate)
+        self.set_start_time(start_time)
+
+    def set_match_venue(self, location: str):
+        self.venue = location
+
+    def set_start_date(self, s_date: str):
+        self.startDate = datetime.strptime(s_date, "%Y-%m-%d")
+
+    def set_end_date(self, e_date: str):
+        self.endDate = datetime.strptime(e_date, "%Y-%m-%d")
+
+    def set_start_time(self, start_time: str):
+        self.startTime = datetime.strptime(start_time, "%H:%M:%S")
+
+    def setMatchType(self, matchType: str):
+        self.type = matchType
+
+    ## TODO: Add remaining setters
+
+
+    ################################################### OTHER METHODS
+
+    def addMatchToTeams(self):
+        self.homeTeam.addMatch(self, "Home")
+        self.awayTeam.addMatch(self, "Away")
+
 
     def applyMatchResult(self, matchResult: MatchResult):
         self.checkMatchResult()

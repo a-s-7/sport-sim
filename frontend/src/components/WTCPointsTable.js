@@ -1,20 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
-function WTCPointsTable({data}){
+function WTCPointsTable() {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:5000/WTC/points_table")
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("Response was not ok");
+                }
+                return res.json();
+            })
+            .then(data => {
+                setData(data);
+            })
+            .catch(error => console.error("Error fetching data:", error));
+    }, []);
+
     return (
         <table className="WTCTable">
             <thead>
-                <tr>
-                    <th>POS</th>
-                    <th>TEAM</th>
-                    <th>PLAYED</th>
-                    <th>WON</th>
-                    <th>LOST</th>
-                    <th>DRAW</th>
-                    <th>DED</th>
-                    <th>POINTS</th>
-                    <th>PCT</th>
-                </tr>
+            <tr>
+                <th>POS</th>
+                <th>TEAM</th>
+                <th>PLAYED</th>
+                <th>WON</th>
+                <th>LOST</th>
+                <th>DRAW</th>
+                <th>DED</th>
+                <th>POINTS</th>
+                <th>PCT</th>
+            </tr>
             </thead>
             <tbody>
             {data.map((team, index) => (
@@ -22,7 +38,7 @@ function WTCPointsTable({data}){
                     <td>{index + 1}</td>
                     <td>
                         <div className="teamNameInfo">
-                            <img src={team.flagUrl} alt={team.name + "Flag"}/>
+                            <img src={team.flag} alt={team.name + "Flag"}/>
                             {team.name}
                         </div>
                     </td>
@@ -30,9 +46,9 @@ function WTCPointsTable({data}){
                     <td>{team.won}</td>
                     <td>{team.lost}</td>
                     <td>{team.draw}</td>
-                    <td>{team.ded}</td>
+                    <td>{team.deduction}</td>
                     <td>{team.points}</td>
-                    <td>{team.pct.toFixed(2)}</td>
+                    <td>{team.pointsPercentage}</td>
                 </tr>
             ))}
             </tbody>

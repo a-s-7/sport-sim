@@ -40,20 +40,52 @@
       ]
     },
     {
-      "seriesName": "AUSvPAK",
+      "seriesName": "Benaud–Qadir Trophy",
       "seriesId": 2,
       "numMatches": 3,
       "homeTeam": "Australia",
       "awayTeam": "Pakistan",
-      "matches": []
+      "matches": [
+        {
+          "venue": "Perth Stadium, Perth",
+          "startDate": "2023-12-13",
+          "endDate": "2023-12-18",
+          "startTime": "18:20:00"
+        },
+        {
+          "venue": "Melbourne Cricket Ground, Melbourne",
+          "startDate": "2023-12-25",
+          "endDate": "2023-12-29",
+          "startTime": "15:30:00"
+        },
+        {
+          "venue": "Sydney Cricket Ground, Sydney",
+          "startDate": "2024-01-02",
+          "endDate": "2024-01-06",
+          "startTime": "15:30:00"
+        }
+      ]
     },
     {
-      "seriesName": "AUSvWI",
+      "seriesName": "Frank Worrell Trophy",
       "seriesId": 3,
       "numMatches": 2,
       "homeTeam": "Australia",
       "awayTeam": "West Indies",
-      "matches": []
+      "matches": [
+        {
+          "venue": "Adelaide Oval, Adelaide",
+          "startDate": "2024-01-16",
+          "endDate": "2023-01-20",
+          "startTime": "16:30:00"
+        },
+        {
+          "venue": "Melbourne Cricket Ground, Melbourne",
+          "startDate": "2024-01-24",
+          "endDate": "2024-01-29",
+          "startTime": "18:30:00"
+        }
+      ]
     },
     {
       "seriesName": "BANvNZ",

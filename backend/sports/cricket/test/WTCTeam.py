@@ -13,6 +13,19 @@ class WTCTeam(CricketTeam):
         self.flag = ""
         self.gradient = ""
 
+    def get_points_table_json(self):
+        return {
+            "name": self.name,
+            "played": self.played,
+            "won": self.won,
+            "lost": self.lost,
+            "draw": self.draw,
+            "deduction": self.deduction,
+            "points": self.get_points(),
+            "pointsPercentage": self.get_points_percentage(),
+            "flag": self.flag
+        }
+
     def setFlag(self, link: str):
         self.flag = link
 
@@ -70,6 +83,6 @@ class WTCTeam(CricketTeam):
         b = self.get_potential_points()
 
         if (b == 0):
-            return 1.111
+            return 0
         else:
             return float((a / b) * 100)

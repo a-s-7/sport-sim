@@ -13,6 +13,17 @@ class WTC:
         self.teamDict = {}
         self.series = []
 
+    def get_points_table_json(self):
+        teams = []
+
+        for team in self.teamDict.values():
+            teams.append(team.get_points_table_json())
+
+        sorted_teams = sorted(teams, key=lambda t: t["pointsPercentage"],
+                              reverse=True)
+
+        return sorted_teams
+
     def get_match_data_json(self):
         data = []
         for series in self.series:

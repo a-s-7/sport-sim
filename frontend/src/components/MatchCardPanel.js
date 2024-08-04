@@ -5,7 +5,7 @@ function MatchCardPanel({series}) {
     const [data, setData] = useState([])
 
     useEffect(() => {
-    fetch("http://127.0.0.1:5000/WTC_matches")
+    fetch("http://127.0.0.1:5000/WTC/matches")
         .then(res => {
             if (!res.ok) {
                 throw new Error("Response was not ok");

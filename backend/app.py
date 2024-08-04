@@ -17,7 +17,7 @@ def initialize_global_object():
     # Initialize the WTC object
     wtc = WTCInitializer.initializeWTC("ICC World Test Championship", 2023, 2025, teamsPath, seriesPath)
 
-@app.route('/WTC_matches', methods=['GET'])
+@app.route('/WTC/matches', methods=['GET'])
 def get_data():
     if(wtc == None):
         return jsonify({"error": "WTC object not initialized"}), 500
@@ -25,6 +25,15 @@ def get_data():
     assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
 
     return wtc.get_match_data_json()
+
+@app.route('/WTC/points_table', methods=['GET'])
+def get_points_table():
+    if(wtc == None):
+        return jsonify({"error": "WTC object not initialized"}), 500
+
+    assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
+
+    return wtc.get_points_table_json()
 
 if __name__ == '__main__':
     initialize_global_object()

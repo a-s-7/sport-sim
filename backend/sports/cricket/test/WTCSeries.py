@@ -32,13 +32,17 @@ class WTCSeries:
         return seriesJSON
 
     def update_match(self, match_id: int, result: str):
-        resultObj = MatchResult.HOME_WIN
+        resultObj = None
 
-        if str(result) == "Away-win":
+        if str(result) == "Home-win":
+            resultObj = MatchResult.HOME_WIN
+        elif str(result) == "Away-win":
             resultObj = MatchResult.AWAY_WIN
         elif str(result) == "Draw":
             resultObj = MatchResult.DRAW
-
+        elif str(result) == "None":
+            self.matches[int(match_id) - 1].undoMatchResult()
+            return
 
         self.matches[int(match_id)-1].applyMatchResult(resultObj)
 

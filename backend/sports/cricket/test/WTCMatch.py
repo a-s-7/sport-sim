@@ -30,11 +30,10 @@ class WTCMatch:
         self.addMatchToTeams()
 
     def check_dates_added(self):
-        if(self.startDate == None and self.endDate == None):
+        if (self.startDate == None and self.endDate == None):
             return False
         else:
             return True
-
 
     def getJSON(self):
         location = self.venue if self.venue is not None else "TBA"
@@ -61,9 +60,9 @@ class WTCMatch:
         start_day = self.startDate.strftime("%d")
         end_day = self.endDate.strftime("%d")
 
-        year = self.startDate.strftime("%Y") ## ASSUMING TEST MATCHES ARE PLAYED IN THE SAME YEAR
+        year = self.startDate.strftime("%Y")  ## ASSUMING TEST MATCHES ARE PLAYED IN THE SAME YEAR
 
-        if(start_month == end_month):
+        if (start_month == end_month):
             return start_month + " " + start_day + "-" + end_day + ", " + year
         else:
             return start_month + " " + start_day + "-" + end_month + " " + end_day + ", " + year
@@ -137,40 +136,38 @@ class WTCMatch:
 
     ## TODO: Add remaining setters
 
-
     ################################################### OTHER METHODS
 
     def addMatchToTeams(self):
         self.homeTeam.addMatch(self, "Home")
         self.awayTeam.addMatch(self, "Away")
 
-
     def applyMatchResult(self, matchResult: MatchResult):
         self.checkMatchResult(matchResult)
+        self.undoMatchResult()
 
-        if self.matchResult == None:
-            self.matchResult = matchResult
+        self.matchResult = matchResult
 
-            self.homeTeam.increment_played()
-            self.awayTeam.increment_played()
+        self.homeTeam.increment_played()
+        self.awayTeam.increment_played()
 
-            if matchResult == matchResult.HOME_WIN:
-                self.homeTeam.increment_won()
-                self.awayTeam.increment_loss()
-            elif matchResult == matchResult.AWAY_WIN:
-                self.homeTeam.increment_loss()
-                self.awayTeam.increment_won()
-            elif matchResult == matchResult.DRAW:
-                self.homeTeam.increment_draw()
-                self.awayTeam.increment_draw()
-            else:
-                self.homeTeam.increment_tie()
-                self.awayTeam.increment_tie()
+        if matchResult == matchResult.HOME_WIN:
+            self.homeTeam.increment_won()
+            self.awayTeam.increment_loss()
+        elif matchResult == matchResult.AWAY_WIN:
+            self.homeTeam.increment_loss()
+            self.awayTeam.increment_won()
+        elif matchResult == matchResult.DRAW:
+            self.homeTeam.increment_draw()
+            self.awayTeam.increment_draw()
         else:
-            self.undoMatchResult()
-            self.applyMatchResult(matchResult)
+            self.homeTeam.increment_tie()
+            self.awayTeam.increment_tie()
 
     def undoMatchResult(self):
+        if self.matchResult == None:
+            return
+
         self.homeTeam.decrement_played()
         self.awayTeam.decrement_played()
 
@@ -189,7 +186,8 @@ class WTCMatch:
 
         self.matchResult = None
 
-    def checkMatchResult(self, matchResult: MatchResult):
+
+    def checkMatchResult(self, matchResult):
         possibleResults = [MatchResult.HOME_WIN, MatchResult.AWAY_WIN, MatchResult.DRAW, MatchResult.TIE]
 
         if matchResult not in possibleResults:

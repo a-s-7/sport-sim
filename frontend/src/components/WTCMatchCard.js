@@ -7,11 +7,11 @@ function WTCMatchCard({
     const neutralGradient = 'linear-gradient(135deg, black, black, silver)';
     const [selected, setSelected] = useState(matchResult)
 
-    const handleClick = async (team) => {
-        setSelected(team);
+    const handleClick = async (result) => {
+        setSelected(result);
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/WTC/match/${seriesId}/${testNum.charAt(0)}/${team}`,
+            const response = await fetch(`http://127.0.0.1:5000/WTC/match/${seriesId}/${testNum.charAt(0)}/${result}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -68,7 +68,7 @@ function WTCMatchCard({
                         </div>
                     </div>
                 </div>
-                <div className="infoBody">
+                <div className="infoBody" onClick={() => handleClick('None')}>
                     {seriesName + " · " + testNum + " · " + venue}
                 </div>
             </div>

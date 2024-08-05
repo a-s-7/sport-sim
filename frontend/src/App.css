@@ -64,6 +64,10 @@ html, body, #root {
   color: black;
 }
 
+.WTCTable tbody td:nth-child(9) {
+  font-weight: bolder;
+}
+
 .teamNameInfo {
   display: flex;
   flex-direction: row;

@@ -13,13 +13,21 @@ class WTC:
         self.teamDict = {}
         self.series = []
 
+    def update_match(self, series_id: int, match_id: int, result: str):
+        for s in self.series:
+            if int(s.id) == int(series_id):
+                s.update_match(match_id, result)
+                return
+
+        raise ValueError("Series not found")
+
     def get_points_table_json(self):
         teams = []
 
         for team in self.teamDict.values():
             teams.append(team.get_points_table_json())
 
-        sorted_teams = sorted(teams, key=lambda t: t["pointsPercentage"],
+        sorted_teams = sorted(teams, key=lambda t: (t["pointsPercentage"], t["played"]),
                               reverse=True)
 
         return sorted_teams

@@ -1,3 +1,4 @@
+from backend.sports.cricket.MatchResult import MatchResult
 from backend.sports.cricket.test.WTCMatch import WTCMatch
 from backend.sports.cricket.test.WTCTeam import WTCTeam
 
@@ -29,6 +30,17 @@ class WTCSeries:
         }
 
         return seriesJSON
+
+    def update_match(self, match_id: int, result: str):
+        resultObj = MatchResult.HOME_WIN
+
+        if str(result) == "away":
+            resultObj = MatchResult.AWAY_WIN
+        elif str(result) == "neutral":
+            resultObj = MatchResult.DRAW
+
+
+        self.matches[int(match_id)-1].applyMatchResult(resultObj)
 
     def addMatchDetails(self, num: int, venue: str, sdate: str, edate: str, time: str):
         self.matches[num - 1].set_match_info(venue, sdate, edate, time)

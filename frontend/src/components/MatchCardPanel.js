@@ -34,6 +34,7 @@ function MatchCardPanel({series}) {
                     venue={match.location}
                     dateRange={match.dateRange}
                     time={match.startTime}
+                    seriesId={seriesItem.id}
                 />
             </div>
         ))

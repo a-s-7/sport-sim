@@ -145,7 +145,7 @@ class WTCMatch:
 
 
     def applyMatchResult(self, matchResult: MatchResult):
-        self.checkMatchResult()
+        self.checkMatchResult(matchResult)
 
         if self.matchResult == None:
             self.matchResult = matchResult

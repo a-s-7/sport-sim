@@ -8,6 +8,7 @@ function App() {
     return (
     <div className="App">
         <NavBar></NavBar>
+
         <div className="matchArea">
             <div className="matchCardContainer">
                 <MatchCardPanel/>

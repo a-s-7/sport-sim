@@ -8,6 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 wtc = None
+started = False
 
 def initialize_global_object():
     global wtc

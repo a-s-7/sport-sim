@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-function WTCPointsTable() {
+function WTCPointsTable({refreshKey}) {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -48,7 +48,7 @@ function WTCPointsTable() {
                     <td>{team.draw}</td>
                     <td>{team.deduction}</td>
                     <td>{team.points}</td>
-                    <td>{team.pointsPercentage}</td>
+                    <td>{(team.pointsPercentage).toFixed(2)}</td>
                 </tr>
             ))}
             </tbody>

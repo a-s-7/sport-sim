@@ -2,8 +2,8 @@ from enum import Enum
 
 
 class MatchResult(Enum):
-    HOME_WIN = "Win"
-    AWAY_WIN = "Loss"
-    NO_RESULT = "No Result"
+    HOME_WIN = "Home-win"
+    AWAY_WIN = "Away-win"
+    NO_RESULT = "No-result"
     DRAW = "Draw"
     TIE = "Tie"

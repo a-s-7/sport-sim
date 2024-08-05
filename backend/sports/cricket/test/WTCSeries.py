@@ -34,9 +34,9 @@ class WTCSeries:
     def update_match(self, match_id: int, result: str):
         resultObj = MatchResult.HOME_WIN
 
-        if str(result) == "away":
+        if str(result) == "Away-win":
             resultObj = MatchResult.AWAY_WIN
-        elif str(result) == "neutral":
+        elif str(result) == "Draw":
             resultObj = MatchResult.DRAW
 
 

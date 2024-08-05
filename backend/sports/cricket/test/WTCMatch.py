@@ -46,6 +46,7 @@ class WTCMatch:
             "location": location,
             "dateRange": dateRange,
             "startTime": startTime,
+            "result": self.matchResult.value if self.matchResult is not None else "None",
         }
 
     def get_ordinal_number(self):

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import WTCMatchCard from "./WTCMatchCard";
 
-function MatchCardPanel({series}) {
+function MatchCardPanel({onMatchUpdate}) {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -35,6 +35,8 @@ function MatchCardPanel({series}) {
                     dateRange={match.dateRange}
                     time={match.startTime}
                     seriesId={seriesItem.id}
+                    matchResult={match.result}
+                    onMatchUpdate={onMatchUpdate}
                 />
             </div>
         ))

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-function WTCPointsTable({refreshKey}) {
+function WTCPointsTable() {
     const [data, setData] = useState([])
 
     useEffect(() => {

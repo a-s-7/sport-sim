@@ -20,7 +20,7 @@ function App() {
                 <MatchCardPanel onMatchUpdate={refreshPointsTable}/>
             </div>
             <div className="tableContainer">
-                <WTCPointsTable/>
+                <WTCPointsTable key={pointsTableKey}/>
             </div>
         </div>
     </div>

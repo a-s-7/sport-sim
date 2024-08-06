@@ -3,12 +3,15 @@ import React, {useState} from "react";
 function WTCMatchCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamFlag, awayTeamName, awayTeamFlag,
                           seriesName, testNum, venue, dateRange, time, seriesId, onMatchUpdate, matchResult,
-                            homeDeduction, awayDeduction
+                          homeDeduction, awayDeduction
                       }) {
     const neutralGradient = 'linear-gradient(135deg, black, black, silver)';
 
     const [selected, setSelected] = useState(matchResult)
     const [hoveredSection, setHoveredSection] = useState(null);
+
+    const [homeDed, setHomeDed] = useState(homeDeduction);
+    const [awayDed, setAwayDed] = useState(awayDeduction);
 
 
     const getStyle = (section, num) => {
@@ -51,31 +54,39 @@ function WTCMatchCard({
         }
     }
 
-    const updateDeduction = async (event, teamName) => {
-        let val = event.target.value;
+    const updateDeduction = async (num, teamName) => {
+        let val = num
 
         if (val === "") {
-           val = 0;
+            val = 0;
         }
 
-         try {
-                const response = await fetch(`http://127.0.0.1:5000/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
-                    {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-                if (response.ok) {
-                    const result = await response.json();
-                    onMatchUpdate();
-                } else {
-                    alert("Error: Response not ok")
-                }
-            } catch (error) {
-                alert(error)
+            if (response.ok) {
+                const result = await response.json();
+                onMatchUpdate();
+            } else {
+                alert("Error: Response not ok")
             }
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+    const resetMatch = async (result) => {
+        handleClick(result);
+        setHomeDed(0);
+        setAwayDed(0);
+        updateDeduction(0, 'home-team');
+        updateDeduction(0, 'away-team');
     }
 
     return (
@@ -120,20 +131,28 @@ function WTCMatchCard({
                     <div className="homeDed">
                         <input type="number"
                                placeholder="Point Deduction"
-                               defaultValue={homeDeduction === 0 ? "" : homeDeduction}
+                               value={homeDed === 0 ? "" : homeDed}
                                min="0"
-                               onChange={(event) => updateDeduction(event, 'home-team')}/>
+                               onChange={(event) => {
+                                   setHomeDed(event.target.value)
+                                   updateDeduction(event.target.value, 'home-team')
+                               }
+                               }/>
                     </div>
                     <div className="matchInfo"
-                         onClick={() => handleClick('None')}>
+                         onClick={() => resetMatch('None')}>
                         {seriesName + " · " + testNum + " · " + venue}
                     </div>
                     <div className="awayDed">
                         <input type="number"
                                placeholder="Point Deduction"
-                               defaultValue={awayDeduction === 0 ? "" : awayDeduction}
+                               value={awayDed === 0 ? "" : awayDed}
                                min="0"
-                               onChange={(event) => updateDeduction(event, 'away-team')}/>
+                               onChange={(event) => {
+                                   setAwayDed(event.target.value)
+                                   updateDeduction(event.target.value, 'away-team')
+                               }
+                               }/>
                     </div>
                 </div>
             </div>

@@ -25,9 +25,39 @@ class WTCMatch:
         self.homeTeamSecondInningsScore = None
         self.awayTeamFirstInningsScore = None
         self.awayTeamSecondInningsScore = None
+
+        # Match Result
         self.matchResult = None
+        self.homeTeamDeduction = 0
+        self.awayTeamDeduction = 0
 
         self.addMatchToTeams()
+
+    def updateDeduction(self, team: WTCTeam, deduction: int):
+        if team == self.homeTeam:
+            self.update_home_team_deduction(deduction)
+        else:
+            self.update_away_team_deduction(deduction)
+
+    def update_home_team_deduction(self, newDeduction: int):
+        self.homeTeam.decrease_deduction(self.homeTeamDeduction)
+
+        self.homeTeamDeduction = newDeduction
+
+        self.homeTeam.increase_deduction(self.homeTeamDeduction)
+
+    def update_away_team_deduction(self, deduction: int):
+        self.awayTeam.decrease_deduction(self.awayTeamDeduction)
+
+        self.awayTeamDeduction = deduction
+
+        self.awayTeam.increase_deduction(self.awayTeamDeduction)
+
+    def get_home_team_deduction(self):
+        return self.homeTeamDeduction
+
+    def get_away_team_deduction(self):
+        return self.awayTeamDeduction
 
     def check_dates_added(self):
         if (self.startDate == None and self.endDate == None):

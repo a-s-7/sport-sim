@@ -46,6 +46,17 @@ class WTCSeries:
 
         self.matches[int(match_id)-1].applyMatchResult(resultObj)
 
+    def update_deduction(self, match_id: int, team: str, deduction: int):
+        teamObj = None
+
+        if str(team) == "away-team":
+            teamObj = self.awayTeam
+        elif str(team) == "home-team":
+            teamObj = self.homeTeam
+
+        self.matches[int(match_id)-1].updateDeduction(teamObj, deduction)
+
+
     def addMatchDetails(self, num: int, venue: str, sdate: str, edate: str, time: str):
         self.matches[num - 1].set_match_info(venue, sdate, edate, time)
 
@@ -57,9 +68,6 @@ class WTCSeries:
     def populateMatches(self):
         for i in range(1, self.numMatches+1):
             self.addMatch(WTCMatch(i, self.homeTeam, self.awayTeam))
-
-
-
 
     def addMatch(self, match: WTCMatch):
         if(len(self.matches) >= self.numMatches):

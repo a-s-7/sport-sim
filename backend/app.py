@@ -53,6 +53,22 @@ def update_wtc_match(series_id, match_num, result):
 
     return jsonify({"message": "Match updated successfully"})
 
+
+@app.route('/WTC/deduction/<series_id>/<match_num>/<team>/<deduction>', methods=['PATCH'])
+def update_deduction(series_id, match_num, team, deduction):
+    if(wtc == None):
+        return jsonify({"error": "WTC object not initialized"}), 500
+
+    assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
+
+    try:
+        wtc.update_deduction(series_id, match_num, team, deduction)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": "Deduction updated successfully"})
+
+
 if __name__ == '__main__':
     initialize_global_object()
     app.run(debug=True)

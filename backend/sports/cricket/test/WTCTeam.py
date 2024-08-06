@@ -60,14 +60,14 @@ class WTCTeam(CricketTeam):
         else:
             raise ValueError("Cannot decrement TIE below 0")
 
-    def add_deduction(self, deduction: int):
-        self.deduction += deduction
+    def increase_deduction(self, deduction: int):
+        self.deduction += int(deduction)
 
-    def remove_deduction(self, deduction: int):
-        if self.deduction - deduction < 0:
+    def decrease_deduction(self, deduction: int):
+        if self.deduction - int(deduction) < 0:
             raise ValueError("Cannot remove DEDUCTION below 0")
 
-        self.deduction -= deduction
+        self.deduction -= int(deduction)
 
     def get_non_deducted_points(self):
         return (self.won * 12) + (self.tie * 6) + (self.draw * 4)

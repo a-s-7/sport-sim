@@ -143,7 +143,7 @@ html, body, #root {
 }
 
 .matchInfo:hover {
-  background-color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .awayDed, .homeDed {
@@ -152,15 +152,22 @@ html, body, #root {
   height: 90%;
 }
 
-.awayDed input, .homeDed input {
+.homeDed input, .awayDed input {
   font-family: "Nunito Sans", sans-serif;
   border-radius: 10px;
   border: 1px solid whitesmoke;
   text-align: center;
+  color: black;
+  font-weight: bold;
 }
 
+.homeDed input::placeholder {
+  color: lightgrey;
+}
 
-
+.awayDed input::placeholder {
+    color: lightgrey;
+}
 
 .homeTeam, .awayTeam {
   display: flex;
@@ -204,17 +211,16 @@ html, body, #root {
 }
 
 .neutral {
+  display: flex;
+  flex-direction: column;
   border-left: 1px solid whitesmoke;
   border-right: 1px solid whitesmoke;
   width: 22%;
 }
 
-.neutral:hover, .homeTeam:hover, .awayTeam:hover {
-}
-
 .date {
   width: 100%;
-  height: calc(100%/3);
+  height: 30%;
   display: flex;
   font-weight: bolder;
   align-items: center;
@@ -224,10 +230,9 @@ html, body, #root {
 
 .vs {
   width: 100%;
-  height: calc(100%/3);
+  height: 40%;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   font-size: 1.25vw;
   font-weight: bold;
@@ -235,7 +240,7 @@ html, body, #root {
 
 .time {
   width: 100%;
-  height: calc(100%/3);
+  height: 30%;
   display: flex;
   align-items: center;
   justify-content: center;

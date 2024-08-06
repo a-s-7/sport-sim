@@ -9,6 +9,7 @@ function WTCMatchCard({
     const [selected, setSelected] = useState(matchResult)
     const [hoveredSection, setHoveredSection] = useState(null);
 
+
     const getStyle = (section, num) => {
         let background = 'transparent';
         let color = 'black';
@@ -46,6 +47,31 @@ function WTCMatchCard({
             }
         } catch (error) {
             alert(error)
+        }
+    }
+
+    const updateDeduction = async (event, teamName) => {
+        const val = event.target.value;
+
+        if (val !== "") {
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${event.target.value}`,
+                    {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    onMatchUpdate();
+                } else {
+                    alert("Error: Response not ok")
+                }
+            } catch (error) {
+                alert(error)
+            }
         }
     }
 
@@ -89,14 +115,20 @@ function WTCMatchCard({
                 </div>
                 <div className="infoBody">
                     <div className="homeDed">
-                        <input type="number" min="0"/>
+                        <input type="number"
+                               placeholder="Point Deduction"
+                               min="0"
+                               onChange={(event) => updateDeduction(event, 'home-team')}/>
                     </div>
                     <div className="matchInfo"
                          onClick={() => handleClick('None')}>
                         {seriesName + " · " + testNum + " · " + venue}
                     </div>
                     <div className="awayDed">
-                        <input type="number" min="0"/>
+                        <input type="number"
+                               placeholder="Point Deduction"
+                               min="0"
+                               onChange={(event) => updateDeduction(event, 'away-team')}/>
                     </div>
                 </div>
             </div>

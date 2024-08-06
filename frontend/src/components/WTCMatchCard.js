@@ -82,11 +82,11 @@ function WTCMatchCard({
     }
 
     const resetMatch = async (result) => {
-        handleClick(result);
         setHomeDed(0);
         setAwayDed(0);
         updateDeduction(0, 'home-team');
         updateDeduction(0, 'away-team');
+        handleClick(result);
     }
 
     return (

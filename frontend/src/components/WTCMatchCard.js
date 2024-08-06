@@ -51,11 +51,14 @@ function WTCMatchCard({
     }
 
     const updateDeduction = async (event, teamName) => {
-        const val = event.target.value;
+        let val = event.target.value;
 
-        if (val !== "") {
-            try {
-                const response = await fetch(`http://127.0.0.1:5000/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${event.target.value}`,
+        if (val === "") {
+           val = 0;
+        }
+
+         try {
+                const response = await fetch(`http://127.0.0.1:5000/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
                     {
                         method: 'PATCH',
                         headers: {
@@ -72,7 +75,6 @@ function WTCMatchCard({
             } catch (error) {
                 alert(error)
             }
-        }
     }
 
     return (

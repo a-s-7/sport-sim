@@ -69,6 +69,15 @@ def update_deduction(series_id, match_num, team, deduction):
     return jsonify({"message": "Deduction updated successfully"})
 
 
+# @app.route('/WTC/deduction/<series_id>/<match_num>', methods=['GET'])
+# def get_deduction(series_id, match_num):
+#     if(wtc == None):
+#         return jsonify({"error": "WTC object not initialized"}), 500
+#
+#     assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
+#
+#     return wtc.get_deduction(series_id, match_num)
+
 if __name__ == '__main__':
     initialize_global_object()
     app.run(debug=True)

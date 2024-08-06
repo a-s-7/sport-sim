@@ -2,7 +2,8 @@ import React, {useState} from "react";
 
 function WTCMatchCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamFlag, awayTeamName, awayTeamFlag,
-                          seriesName, testNum, venue, dateRange, time, seriesId, onMatchUpdate, matchResult
+                          seriesName, testNum, venue, dateRange, time, seriesId, onMatchUpdate, matchResult,
+                            homeDeduction, awayDeduction
                       }) {
     const neutralGradient = 'linear-gradient(135deg, black, black, silver)';
 
@@ -119,7 +120,7 @@ function WTCMatchCard({
                     <div className="homeDed">
                         <input type="number"
                                placeholder="Point Deduction"
-                               defaultValue={}
+                               defaultValue={homeDeduction === 0 ? "" : homeDeduction}
                                min="0"
                                onChange={(event) => updateDeduction(event, 'home-team')}/>
                     </div>
@@ -130,7 +131,7 @@ function WTCMatchCard({
                     <div className="awayDed">
                         <input type="number"
                                placeholder="Point Deduction"
-                               defaultValue={}
+                               defaultValue={awayDeduction === 0 ? "" : awayDeduction}
                                min="0"
                                onChange={(event) => updateDeduction(event, 'away-team')}/>
                     </div>

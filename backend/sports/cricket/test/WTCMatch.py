@@ -44,8 +44,8 @@ class WTCMatch:
             "dateRange": dateRange,
             "startTime": startTime,
             "result": self.matchResult.value if self.matchResult is not None else "None",
-            "homeDed": self.get_home_team_deduction(),
-            "awayDed": self.get_away_team_deduction()
+            "homeDed": int(self.get_home_team_deduction()),
+            "awayDed": int(self.get_away_team_deduction())
         }
 
     def updateDeduction(self, team: WTCTeam, deduction: int):
@@ -53,6 +53,12 @@ class WTCMatch:
             self.update_home_team_deduction(deduction)
         else:
             self.update_away_team_deduction(deduction)
+
+    def get_deduction(self):
+        return {
+            "homeDeduction": self.homeTeamDeduction,
+            "awayDeduction": self.awayTeamDeduction
+        }
 
     def update_home_team_deduction(self, newDeduction: int):
         self.homeTeam.decrease_deduction(self.homeTeamDeduction)

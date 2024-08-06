@@ -29,6 +29,13 @@ class WTC:
 
         raise ValueError("Series not found")
 
+    def get_deduction(self, series_id: int, match_id: int):
+        for s in self.series:
+            if int(s.id) == int(series_id):
+                return s.get_deduction(match_id)
+
+        raise ValueError("Series not found")
+
     def get_points_table_json(self):
         teams = []
 

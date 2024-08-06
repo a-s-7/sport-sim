@@ -37,6 +37,8 @@ function MatchCardPanel({onMatchUpdate}) {
                     seriesId={seriesItem.id}
                     matchResult={match.result}
                     onMatchUpdate={onMatchUpdate}
+                    homeDeduction={match.homeDed}
+                    awayDeduction={match.awayDed}
                 />
             </div>
         ))

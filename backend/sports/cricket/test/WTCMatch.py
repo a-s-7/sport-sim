@@ -33,6 +33,21 @@ class WTCMatch:
 
         self.addMatchToTeams()
 
+    def getJSON(self):
+        location = self.venue if self.venue is not None else "TBA"
+        dateRange = self.get_english_date() if self.check_dates_added() else "TBA"
+        startTime = self.get_12_hour_time() if self.startTime is not None else "TBA"
+
+        return {
+            "matchNumber": self.get_ordinal_number(),
+            "location": location,
+            "dateRange": dateRange,
+            "startTime": startTime,
+            "result": self.matchResult.value if self.matchResult is not None else "None",
+            "homeDed": self.get_home_team_deduction(),
+            "awayDed": self.get_away_team_deduction()
+        }
+
     def updateDeduction(self, team: WTCTeam, deduction: int):
         if team == self.homeTeam:
             self.update_home_team_deduction(deduction)
@@ -65,18 +80,6 @@ class WTCMatch:
         else:
             return True
 
-    def getJSON(self):
-        location = self.venue if self.venue is not None else "TBA"
-        dateRange = self.get_english_date() if self.check_dates_added() else "TBA"
-        startTime = self.get_12_hour_time() if self.startTime is not None else "TBA"
-
-        return {
-            "matchNumber": self.get_ordinal_number(),
-            "location": location,
-            "dateRange": dateRange,
-            "startTime": startTime,
-            "result": self.matchResult.value if self.matchResult is not None else "None",
-        }
 
     def get_ordinal_number(self):
         suffixes = ["1st", "2nd", "3rd", "4th", "5th"]

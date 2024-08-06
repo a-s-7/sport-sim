@@ -119,6 +119,7 @@ function WTCMatchCard({
                     <div className="homeDed">
                         <input type="number"
                                placeholder="Point Deduction"
+                               defaultValue={}
                                min="0"
                                onChange={(event) => updateDeduction(event, 'home-team')}/>
                     </div>
@@ -129,6 +130,7 @@ function WTCMatchCard({
                     <div className="awayDed">
                         <input type="number"
                                placeholder="Point Deduction"
+                               defaultValue={}
                                min="0"
                                onChange={(event) => updateDeduction(event, 'away-team')}/>
                     </div>

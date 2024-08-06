@@ -1,0 +1,322 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableContainer {
+  width: 45%;
+  background-color: whitesmoke;
+  padding: 10px;
+  overflow: auto;
+}
+
+.WTCTable {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid lightgrey;
+}
+
+.WTCTable thead {
+  font-family: "Reem Kufi Fun", sans-serif;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+.WTCTable thead th {
+  padding: 10px;
+}
+
+.WTCTable thead th:nth-child(2) {
+  padding: 0px;
+  text-align: left;
+}
+
+.WTCTable tbody {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.WTCTable tbody td:nth-child(2) {
+  font-family: "Reem Kufi Fun", sans-serif;
+  text-transform: uppercase;
+  color: black;
+  font-size: 14px;
+}
+
+.WTCTable tbody td:nth-child(1) {
+  font-family: "Reem Kufi Fun", sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.WTCTable tbody td:nth-child(9) {
+  font-weight: bolder;
+}
+
+.teamNameInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.WTCTable tbody tr:hover {
+  background-color: RGB(228, 228, 228);
+}
+
+.WTCTable tbody tr:nth-child(1), tbody tr:nth-child(2) {
+  background-color: RGB(228, 228, 228);
+}
+
+.WTCTable tbody tr:nth-child(1):hover, tbody tr:nth-child(2):hover {
+  background-color: white;
+}
+
+.WTCTable tbody img {
+  width: 40px;
+  margin-right: 10px;
+  border: 0.75px solid #dadada;
+}
+
+.WTCTable td {
+ text-align: center;
+  border-bottom: 0.5px solid lightgray;
+}
+
+.matchCardBody {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  border: 1px solid whitesmoke;
+  overflow: hidden;
+  display: flex;
+  width: auto;
+}
+
+.body {
+  height: 170px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.mainBody {
+  display: flex;
+  flex-direction: row;
+  height: 135px;
+}
+
+
+
+.infoBody {
+  border-top: 1px solid whitesmoke;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  font-size: 0.9vw;
+}
+
+.matchInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.matchInfo:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.awayDed, .homeDed {
+  padding: 2px;
+  display: flex;
+  height: 90%;
+}
+
+.homeDed input, .awayDed input {
+  font-family: "Nunito Sans", sans-serif;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.homeDed input::placeholder {
+  color: lightgrey;
+}
+
+.awayDed input::placeholder {
+    color: lightgrey;
+}
+
+.homeTeam, .awayTeam {
+  display: flex;
+  flex-direction: row;
+  width: 39%;
+  font-family: "Reem Kufi Fun", sans-serif;
+  text-transform: uppercase;
+  background-color: red;
+}
+
+
+.homeName, .awayName {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  font-size: 2vh;
+  font-weight: bolder;
+}
+
+.homeName {
+    justify-content: flex-end;
+    margin-right: 2px;
+}
+
+.awayName {
+    justify-content: flex-start;
+}
+
+.homeFlag, .awayFlag {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.homeFlag img, .awayFlag img {
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  width: 100%;
+}
+
+.neutral {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid whitesmoke;
+  border-right: 1px solid whitesmoke;
+  width: 22%;
+}
+
+.date {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9vw;
+}
+
+.vs {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25vw;
+  font-weight: bold;
+}
+
+.time {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75vw;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 8%;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  overflow: hidden;
+  background-color: white;
+}
+
+.logoArea {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 3vw;
+  color: black;
+  padding-left: 10px;
+  font-family: "Reem Kufi Fun", sans-serif;
+}
+
+.appModeArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 60%;
+}
+
+.appModeArea button {
+  font-family: "Nunito Sans", sans-serif;
+  border: 1px solid transparent;
+  width: 20%;
+  margin: 15px;
+  border-radius: 10px;
+  font-size: 1vw;
+  color: black;
+  background-color: white;
+}
+
+.appModeArea button:hover {
+  background-color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: white
+}
+
+.userArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  font-size: 1vw;
+  color: white
+}
+
+.matchArea {
+  width: 100%;
+  height: 92%;
+  display: flex;
+  flex-direction: row;
+}
+
+.matchCardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  height: 100%;
+  background-color: whitesmoke;
+  gap: 10px;
+  padding: 10px;
+  overflow: auto;
+}

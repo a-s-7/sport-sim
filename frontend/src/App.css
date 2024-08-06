@@ -90,7 +90,6 @@ html, body, #root {
   width: 40px;
   margin-right: 10px;
   border: 0.75px solid #dadada;
-  /*margin-left: 30px;*/
 }
 
 .WTCTable td {
@@ -101,7 +100,7 @@ html, body, #root {
 .matchCardBody {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  border: 1px solid lightgrey;
+  border: 1px solid whitesmoke;
   overflow: hidden;
   display: flex;
   width: auto;
@@ -122,15 +121,46 @@ html, body, #root {
   height: 135px;
 }
 
+
+
 .infoBody {
-  height: 35px;
   border-top: 1px solid whitesmoke;
+  height: 35px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: white;
   font-size: 0.9vw;
 }
+
+.matchInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.matchInfo:hover {
+  background-color: whitesmoke;
+}
+
+.awayDed, .homeDed {
+  padding: 2px;
+  display: flex;
+  height: 90%;
+}
+
+.awayDed input, .homeDed input {
+  font-family: "Nunito Sans", sans-serif;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  text-align: center;
+}
+
+
+
 
 .homeTeam, .awayTeam {
   display: flex;
@@ -138,7 +168,9 @@ html, body, #root {
   width: 39%;
   font-family: "Reem Kufi Fun", sans-serif;
   text-transform: uppercase;
+  background-color: red;
 }
+
 
 .homeName, .awayName {
   display: flex;
@@ -175,6 +207,9 @@ html, body, #root {
   border-left: 1px solid whitesmoke;
   border-right: 1px solid whitesmoke;
   width: 22%;
+}
+
+.neutral:hover, .homeTeam:hover, .awayTeam:hover {
 }
 
 .date {

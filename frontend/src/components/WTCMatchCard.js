@@ -5,7 +5,26 @@ function WTCMatchCard({
                           seriesName, testNum, venue, dateRange, time, seriesId, onMatchUpdate, matchResult
                       }) {
     const neutralGradient = 'linear-gradient(135deg, black, black, silver)';
+
     const [selected, setSelected] = useState(matchResult)
+    const [hoveredSection, setHoveredSection] = useState(null);
+
+    const getStyle = (section, num) => {
+        let background = 'transparent';
+        let color = 'black';
+
+        const gradients = [homeGradient, neutralGradient, awayGradient];
+
+        background = selected === section ? gradients[num] : 'transparent';
+        color = selected === section ? 'white' : 'black';
+
+        const isHovered = hoveredSection === section;
+
+        return {
+            background: isHovered ? 'rgba(0, 0, 0, 0.1)' : background,
+            color: isHovered ? 'black' : color
+        };
+    }
 
     const handleClick = async (result) => {
         setSelected(result);
@@ -34,11 +53,11 @@ function WTCMatchCard({
         <div className="matchCardBody">
             <div className="body">
                 <div className="mainBody">
-                    <div className='homeTeam' onClick={() => handleClick('Home-win')}
-                         style={{
-                             background: selected === 'Home-win' ? homeGradient : 'transparent',
-                             color: selected === 'Home-win' ? 'white' : 'black'
-                         }}>
+                    <div className='homeTeam'
+                         onClick={() => handleClick('Home-win')}
+                         onMouseEnter={() => setHoveredSection("Home-win")}
+                         onMouseLeave={() => setHoveredSection(null)}
+                         style={getStyle("Home-win", 0)}>
                         <div className="homeName">
                             {homeTeamName}
                         </div>
@@ -46,20 +65,20 @@ function WTCMatchCard({
                             <img src={homeTeamFlag}></img>
                         </div>
                     </div>
-                    <div className='neutral' onClick={() => handleClick('Draw')}
-                         style={{
-                             background: selected === 'Draw' ? neutralGradient : 'transparent',
-                             color: selected === 'Draw' ? 'white' : 'black'
-                         }}>
+                    <div className='neutral'
+                         onClick={() => handleClick('Draw')}
+                         onMouseEnter={() => setHoveredSection("Draw")}
+                         onMouseLeave={() => setHoveredSection(null)}
+                         style={getStyle("Draw", 1)}>
                         <div className="date">{dateRange}</div>
                         <div className="vs">VS</div>
                         <div className="time">{time + " your time"}</div>
                     </div>
-                    <div className='awayTeam' onClick={() => handleClick('Away-win')}
-                         style={{
-                             background: selected === 'Away-win' ? awayGradient : 'transparent',
-                             color: selected === 'Away-win' ? 'white' : 'black'
-                         }}>
+                    <div className='awayTeam'
+                         onClick={() => handleClick('Away-win')}
+                         onMouseEnter={() => setHoveredSection("Away-win")}
+                         onMouseLeave={() => setHoveredSection(null)}
+                         style={getStyle("Away-win", 2)}>
                         <div className="awayFlag">
                             <img src={awayTeamFlag}></img>
                         </div>
@@ -68,8 +87,17 @@ function WTCMatchCard({
                         </div>
                     </div>
                 </div>
-                <div className="infoBody" onClick={() => handleClick('None')}>
-                    {seriesName + " · " + testNum + " · " + venue}
+                <div className="infoBody">
+                    <div className="homeDed">
+                        <input type="number" min="0"/>
+                    </div>
+                    <div className="matchInfo"
+                         onClick={() => handleClick('None')}>
+                        {seriesName + " · " + testNum + " · " + venue}
+                    </div>
+                    <div className="awayDed">
+                        <input type="number" min="0"/>
+                    </div>
                 </div>
             </div>
         </div>

@@ -72,7 +72,6 @@ function WTCMatchCard({
 
             if (response.ok) {
                 const result = await response.json();
-                onMatchUpdate();
             } else {
                 alert("Error: Response not ok")
             }
@@ -82,11 +81,16 @@ function WTCMatchCard({
     }
 
     const resetMatch = async (result) => {
+        // Set local state variable to 0 (for input field)
         setHomeDed(0);
         setAwayDed(0);
-        updateDeduction(0, 'home-team');
-        updateDeduction(0, 'away-team');
-        handleClick(result);
+
+        // Ensure that the backend is updated with the deduction values
+        await updateDeduction(0, 'home-team');
+        await updateDeduction(0, 'away-team');
+
+        // Change the result of the match to 'None', trigger points table refresh only after deductions are updated
+        await handleClick(result);
     }
 
     return (

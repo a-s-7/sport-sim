@@ -5,10 +5,11 @@ from backend.sports.cricket.test.WTCTeam import WTCTeam
 
 
 class WTCMatch:
-    def __init__(self, matchNumber: int, homeTeam: WTCTeam, awayTeam: WTCTeam):
+    def __init__(self, matchNumber: int, homeTeam: WTCTeam, awayTeam: WTCTeam, seriesID: int):
         # Match Details
         self.matchNumber = matchNumber
         self.type = None
+        self.seriesID = seriesID
 
         # Match Geographical + Temporal Details
         self.venue = None
@@ -39,6 +40,7 @@ class WTCMatch:
         startTime = self.get_12_hour_time() if self.startTime is not None else "TBA"
 
         return {
+            "seriesID": str(self.seriesID),
             "homeTeam": self.homeTeam.name,
             "awayTeam": self.awayTeam.name,
             "matchNumber": self.get_ordinal_number(),

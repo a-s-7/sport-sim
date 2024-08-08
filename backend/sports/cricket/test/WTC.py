@@ -66,13 +66,17 @@ class WTC:
         for team in self.teamDict.values():
             teamData.update({team.name: team.get_basic_json()})
 
+        seriesData = {}
+        for series in self.series:
+            seriesData.update({series.id: series.seriesName})
+
         matchData = []
         ## Get match data
         for match in self.matchList:
             matchData.append(match.getJSON())
 
 
-        return [teamData, matchData]
+        return [teamData, seriesData, matchData]
 
     def addTeam(self, team: WTCTeam):
         if not isinstance(team, WTCTeam):

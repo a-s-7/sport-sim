@@ -14,21 +14,21 @@ class WTCSeries:
 
         self.addSeriesToTeams()
 
-    def getJSON(self):
-        seriesJSON = {
-            "id": self.id,
-            "seriesName": self.seriesName,
-            "homeTeam": self.homeTeam.name,
-            "homeGradient": self.homeTeam.get_gradient(),
-            "homeFlag": self.homeTeam.get_flag(),
-            "awayTeam": self.awayTeam.name,
-            "awayGradient": self.awayTeam.get_gradient(),
-            "awayFlag": self.awayTeam.get_flag(),
-            "numMatches": self.numMatches,
-            "matches": [m.getJSON() for m in self.matches]
-        }
-
-        return seriesJSON
+    # def getJSON(self):
+    #     seriesJSON = {
+    #         "id": self.id,
+    #         "seriesName": self.seriesName,
+    #         "homeTeam": self.homeTeam.name,
+    #         "homeGradient": self.homeTeam.get_gradient(),
+    #         "homeFlag": self.homeTeam.get_flag(),
+    #         "awayTeam": self.awayTeam.name,
+    #         "awayGradient": self.awayTeam.get_gradient(),
+    #         "awayFlag": self.awayTeam.get_flag(),
+    #         "numMatches": self.numMatches,
+    #         "matches": [m.getJSON() for m in self.matches]
+    #     }
+    #
+    #     return seriesJSON
 
     def update_match(self, match_id: int, result: str):
         resultObj = None
@@ -69,7 +69,7 @@ class WTCSeries:
 
     def populateMatches(self):
         for i in range(1, self.numMatches+1):
-            match = WTCMatch(i, self.homeTeam, self.awayTeam)
+            match = WTCMatch(i, self.homeTeam, self.awayTeam, self.id)
             self.addMatch(match)
 
     def addMatch(self, match: WTCMatch):

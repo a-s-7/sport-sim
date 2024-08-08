@@ -13,7 +13,6 @@ class WTCSeries:
         self.matches = []
 
         self.addSeriesToTeams()
-        self.populateMatches()
 
     def getJSON(self):
         seriesJSON = {
@@ -70,7 +69,8 @@ class WTCSeries:
 
     def populateMatches(self):
         for i in range(1, self.numMatches+1):
-            self.addMatch(WTCMatch(i, self.homeTeam, self.awayTeam))
+            match = WTCMatch(i, self.homeTeam, self.awayTeam)
+            self.addMatch(match)
 
     def addMatch(self, match: WTCMatch):
         if(len(self.matches) >= self.numMatches):

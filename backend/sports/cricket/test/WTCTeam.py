@@ -26,6 +26,12 @@ class WTCTeam(CricketTeam):
             "flag": self.flag
         }
 
+    def get_basic_json(self):
+        return {
+            "flag": self.flag,
+            "gradient": self.gradient
+        }
+
     def setFlag(self, link: str):
         self.flag = link
 

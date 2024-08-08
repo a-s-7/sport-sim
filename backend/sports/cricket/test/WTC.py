@@ -12,6 +12,18 @@ class WTC:
 
         self.teamDict = {}
         self.series = []
+        self.matchList = []
+
+    def sort_match_list(self):
+        self.matchList = sorted(self.matchList, key=lambda m: m.startDate)
+
+    def add_matches_to_list(self):
+        for series in self.series:
+            for match in series.matches:
+                self.add_match(match)
+
+    def add_match(self, match):
+        self.matchList.append(match)
 
     def update_match(self, series_id: int, match_id: int, result: str):
         for s in self.series:
@@ -48,11 +60,19 @@ class WTC:
         return sorted_teams
 
     def get_match_data_json(self):
-        data = []
-        for series in self.series:
-            data.append(series.getJSON());
+        teamData = {}
 
-        return data
+        ## Get team data
+        for team in self.teamDict.values():
+            teamData.update({team.name: team.get_basic_json()})
+
+        matchData = []
+        ## Get match data
+        for match in self.matchList:
+            matchData.append(match.getJSON())
+
+
+        return [teamData, matchData]
 
     def addTeam(self, team: WTCTeam):
         if not isinstance(team, WTCTeam):
@@ -136,5 +156,4 @@ class WTC:
         for t in sorted_teams:
             index = sorted_teams.index(t) + 1
             print("{:<10} {:<15} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7.2f}".format(index, t.name, t.played, t.won, t.lost, t.draw, t.deduction, float(t.get_points()), float(t.get_points_percentage())))
-
 

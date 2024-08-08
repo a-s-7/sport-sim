@@ -39,6 +39,8 @@ class WTCMatch:
         startTime = self.get_12_hour_time() if self.startTime is not None else "TBA"
 
         return {
+            "homeTeam": self.homeTeam.name,
+            "awayTeam": self.awayTeam.name,
             "matchNumber": self.get_ordinal_number(),
             "location": location,
             "dateRange": dateRange,
@@ -93,8 +95,8 @@ class WTCMatch:
         return suffixes[self.matchNumber - 1] + " Test"
 
     def get_english_date(self):
-        start_month = self.startDate.strftime("%B")
-        end_month = self.endDate.strftime("%B")
+        start_month = self.startDate.strftime("%b")
+        end_month = self.endDate.strftime("%b")
 
         start_day = self.startDate.strftime("%d")
         end_day = self.endDate.strftime("%d")

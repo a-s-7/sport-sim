@@ -6,6 +6,7 @@ from backend.sports.cricket.test.WTCTeam import WTCTeam
 
 
 class WTCInitializer:
+    wtc = None
 
     @staticmethod
     def initializeWTC(name: str, start: int, end: int, teamPath: str, seriesPath):
@@ -36,9 +37,14 @@ class WTCInitializer:
             homeTeam = wtc.get_Team(series["homeTeam"])
             awayTeam = wtc.get_Team(series["awayTeam"])
             wtcSeries = WTCSeries(series["seriesName"], series["seriesId"], series["numMatches"], homeTeam, awayTeam)
+            wtcSeries.populateMatches()
 
             for index, match in enumerate(series["matches"]):
                 wtcSeries.addMatchDetails(index + 1, match["venue"], match["startDate"], match["endDate"], match["startTime"])
 
-
             wtc.add_series(wtcSeries)
+
+        wtc.add_matches_to_list()
+        wtc.sort_match_list()
+
+

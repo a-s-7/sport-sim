@@ -20,8 +20,8 @@ function WTCMatchCard({
 
         const gradients = [homeGradient, neutralGradient, awayGradient];
 
-        background = selected === section ? gradients[num] : 'transparent';
-        color = selected === section ? 'white' : 'black';
+        background = (selected === section && section !== "None") ? gradients[num] : 'transparent';
+        color = (selected === section && section !== "None") ? 'white' : 'black';
 
         const isHovered = hoveredSection === section;
 
@@ -141,7 +141,14 @@ function WTCMatchCard({
                                }/>
                     </div>
                     <div className="matchInfo"
-                         onClick={() => resetMatch('None')}>
+                         onClick={() => resetMatch('None')}
+                         onMouseEnter={() => setHoveredSection("None")}
+                         onMouseLeave={() => setHoveredSection(null)}
+                         style={{
+                             background: hoveredSection === "None" ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
+                             color: 'black'
+                         }}
+                    >
                         {seriesName + " · " + testNum + " · " + venue}
                     </div>
                     <div className="awayDed">

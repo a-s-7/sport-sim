@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import WTCMatchCard from "./WTCMatchCard";
+import WTCMatchResultCard from "./WTCMatchResultCard";
 
 function MatchCardPanel({onMatchUpdate}) {
     const [data, setData] = useState([])
@@ -28,7 +29,8 @@ function MatchCardPanel({onMatchUpdate}) {
     return (
         matchData.map(match => (
             <div key={match.matchSeriesID + "-" + match.matchNumber.charAt(0)}>
-                <WTCMatchCard
+                {match.status === "incomplete" ? (
+                     <WTCMatchCard
                     homeGradient={teamData[match.homeTeam].gradient}
                     awayGradient={teamData[match.awayTeam].gradient}
                     homeTeamName={match.homeTeam}
@@ -46,6 +48,23 @@ function MatchCardPanel({onMatchUpdate}) {
                     homeDeduction={match.homeDed}
                     awayDeduction={match.awayDed}
                 />
+                ) : (
+                    <WTCMatchResultCard
+                     homeGradient={teamData[match.homeTeam].gradient}
+                    awayGradient={teamData[match.awayTeam].gradient}
+                    homeTeamName={match.homeTeam}
+                    homeTeamFlag={teamData[match.homeTeam].flag}
+                    awayTeamName={match.awayTeam}
+                    awayTeamFlag={teamData[match.awayTeam].flag}
+                    seriesName={seriesData[match.seriesID]}
+                    testNum={match.matchNumber}
+                    venue={match.location}
+                    dateRange={match.dateRange}
+                    time={match.startTime}
+                    matchResult={match.result}
+                    homeDeduction={match.homeDed}
+                    awayDeduction={match.awayDed}/>
+                ) }
             </div>
         ))
     );

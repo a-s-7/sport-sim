@@ -48,6 +48,7 @@ class WTCMatch:
             "location": location,
             "dateRange": dateRange,
             "startTime": startTime,
+            "status": self.matchStatus,
             "result": self.matchResult.value if self.matchResult is not None else "None",
             "homeDed": int(self.get_home_team_deduction()),
             "awayDed": int(self.get_away_team_deduction())

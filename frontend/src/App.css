@@ -181,10 +181,6 @@ html, body, #root {
     flex-grow: 1;
 }
 
-.matchInfo:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
 .awayDed, .homeDed {
     padding: 2px;
     display: flex;

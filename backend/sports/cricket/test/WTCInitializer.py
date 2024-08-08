@@ -40,7 +40,8 @@ class WTCInitializer:
             wtcSeries.populateMatches()
 
             for index, match in enumerate(series["matches"]):
-                wtcSeries.addMatchDetails(index + 1, match["venue"], match["startDate"], match["endDate"], match["startTime"])
+                wtcSeries.addMatchDetails(index + 1, match["venue"], match["startDate"], match["endDate"],
+                                          match["startTime"], match["status"], match["result"])
 
             wtc.add_series(wtcSeries)
 

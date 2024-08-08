@@ -59,8 +59,8 @@ class WTCSeries:
         return self.matches[int(match_id)-1].get_deduction()
 
 
-    def addMatchDetails(self, num: int, venue: str, sdate: str, edate: str, time: str):
-        self.matches[num - 1].set_match_info(venue, sdate, edate, time)
+    def addMatchDetails(self, num: int, venue: str, sdate: str, edate: str, time: str, stat: str, result: str):
+        self.matches[num - 1].set_match_info(venue, sdate, edate, time, stat, result)
 
 
     def addSeriesToTeams(self):

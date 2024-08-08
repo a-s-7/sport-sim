@@ -7,3 +7,4 @@ class MatchResult(Enum):
     NO_RESULT = "No-result"
     DRAW = "Draw"
     TIE = "Tie"
+    NONE = "None"

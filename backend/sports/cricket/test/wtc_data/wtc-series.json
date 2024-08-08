@@ -11,31 +11,41 @@
           "venue": "Perth Stadium, Perth",
           "startDate": "2024-11-21",
           "endDate": "2024-11-26",
-          "startTime": "18:20:00"
+          "startTime": "18:20:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Adelaide Oval, Adelaide",
           "startDate": "2024-12-05",
           "endDate": "2024-12-10",
-          "startTime": "20:00:00"
+          "startTime": "20:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "The Gabba, Brisbane",
           "startDate": "2024-12-13",
           "endDate": "2024-12-17",
-          "startTime": "16:20:00"
+          "startTime": "16:20:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Melbourne Cricket Ground, Melbourne",
           "startDate": "2024-12-25",
           "endDate": "2024-12-29",
-          "startTime": "15:30:00"
+          "startTime": "15:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Sydney Cricket Ground, Sydney",
           "startDate": "2025-01-02",
           "endDate": "2025-01-06",
-          "startTime": "15:30:00"
+          "startTime": "15:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -50,19 +60,25 @@
           "venue": "Perth Stadium, Perth",
           "startDate": "2023-12-13",
           "endDate": "2023-12-18",
-          "startTime": "18:20:00"
+          "startTime": "18:20:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Melbourne Cricket Ground, Melbourne",
           "startDate": "2023-12-25",
           "endDate": "2023-12-29",
-          "startTime": "15:30:00"
+          "startTime": "15:30:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Sydney Cricket Ground, Sydney",
           "startDate": "2024-01-02",
           "endDate": "2024-01-06",
-          "startTime": "15:30:00"
+          "startTime": "15:30:00",
+          "status": "complete",
+          "result": "Home-win"
         }
       ]
     },
@@ -77,13 +93,17 @@
           "venue": "Adelaide Oval, Adelaide",
           "startDate": "2024-01-16",
           "endDate": "2024-01-20",
-          "startTime": "16:30:00"
+          "startTime": "16:30:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Brisbane Cricket Ground, Brisbane",
           "startDate": "2024-01-24",
           "endDate": "2024-01-29",
-          "startTime": "18:30:00"
+          "startTime": "18:30:00",
+          "status": "complete",
+          "result": "Away-win"
         }
       ]
     },
@@ -98,13 +118,17 @@
           "venue": "Sylhet Stadium, Sylhet",
           "startDate": "2023-11-27",
           "endDate": "2023-12-01",
-          "startTime": "19:30:00"
+          "startTime": "19:30:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Shere Bangla National Stadium, Mirpur",
           "startDate": "2023-12-05",
           "endDate": "2023-12-10",
-          "startTime": "19:30:00"
+          "startTime": "19:30:00",
+          "status": "complete",
+          "result": "Home-win"
         }
       ]
     },
@@ -119,13 +143,17 @@
           "venue": "Sylhet Stadium, Sylhet",
           "startDate": "2024-10-20",
           "endDate": "2024-10-25",
-          "startTime": "19:30:00"
+          "startTime": "19:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Shere Bangla National Stadium, Mirpur",
           "startDate": "2024-10-31",
           "endDate": "2024-11-04",
-          "startTime": "19:30:00"
+          "startTime": "19:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -140,13 +168,17 @@
           "venue": "Sylhet Stadium, Sylhet",
           "startDate": "2024-03-21",
           "endDate": "2024-03-26",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "Zahur Ahmed Chowdhury Stadium, Chattogram",
           "startDate": "2024-03-29",
           "endDate": "2024-04-02",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "complete",
+          "result": "Away-win"
         }
       ]
     },
@@ -156,35 +188,46 @@
       "numMatches": 5,
       "homeTeam": "England",
       "awayTeam": "Australia",
-      "matches": [{
+      "matches": [
+        {
           "venue": "Edgbaston, Birmingham",
           "startDate": "2023-06-16",
           "endDate": "2023-06-20",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "Lords, London",
           "startDate": "2023-06-28",
           "endDate": "2023-07-02",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "Headingley, Leeds",
           "startDate": "2023-07-06",
           "endDate": "2023-07-10",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Old Trafford, Manchester",
           "startDate": "2023-07-19",
           "endDate": "2023-07-23",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Draw"
         },
         {
           "venue": "The Oval, London",
           "startDate": "2023-07-27",
           "endDate": "2023-07-31",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Home-win"
         }
       ]
     },
@@ -195,23 +238,29 @@
       "homeTeam": "England",
       "awayTeam": "Sri Lanka",
       "matches": [
-         {
+        {
           "venue": "Old Trafford, Manchester",
           "startDate": "2024-08-21",
           "endDate": "2024-08-25",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Lords, London",
           "startDate": "2024-08-29",
           "endDate": "2024-09-02",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "The Oval, London",
           "startDate": "2024-09-06",
           "endDate": "2024-09-10",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -226,19 +275,25 @@
           "venue": "Lords, London",
           "startDate": "2024-07-10",
           "endDate": "2024-07-14",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Trent Bridge, Nottingham",
           "startDate": "2024-07-18",
           "endDate": "2024-07-22",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Edgbaston, Birmingham",
           "startDate": "2024-07-26",
           "endDate": "2024-07-30",
-          "startTime": "03:00:00"
+          "startTime": "03:00:00",
+          "status": "complete",
+          "result": "Home-win"
         }
       ]
     },
@@ -249,17 +304,21 @@
       "homeTeam": "India",
       "awayTeam": "Bangladesh",
       "matches": [
-         {
+        {
           "venue": "MA Chidambaram Stadium, Chepauk, Chennai",
           "startDate": "2024-09-18",
           "endDate": "2024-09-23",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Green Park, Kanpur",
           "startDate": "2024-09-26",
           "endDate": "2024-10-01",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -274,31 +333,41 @@
           "venue": "Rajiv Gandhi Stadium, Hyderabad",
           "startDate": "2024-01-24",
           "endDate": "2024-01-29",
-          "startTime": "20:00:00"
+          "startTime": "20:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "ACA-VDCA Stadium, Visakhapatnam",
           "startDate": "2024-02-01",
           "endDate": "2024-02-05",
-          "startTime": "20:00:00"
+          "startTime": "20:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Khandheri Stadium, Rajkot",
           "startDate": "2024-02-14",
           "endDate": "2024-02-19",
-          "startTime": "20:00:00"
+          "startTime": "20:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "JSCA International Stadium Complex, Ranchi",
           "startDate": "2024-02-22",
           "endDate": "2024-02-27",
-          "startTime": "20:00:00"
+          "startTime": "20:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "HPCA Stadium, Dharamsala",
           "startDate": "2024-03-06",
           "endDate": "2024-03-11",
-          "startTime": "20:00:00"
+          "startTime": "20:00:00",
+          "status": "complete",
+          "result": "Home-win"
         }
       ]
     },
@@ -309,23 +378,29 @@
       "homeTeam": "India",
       "awayTeam": "New Zealand",
       "matches": [
-         {
+        {
           "venue": "M Chinnaswamy Stadium, Bengaluru",
           "startDate": "2024-10-15",
           "endDate": "2024-10-20",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Maharashtra Cricket Association Stadium, Pune",
           "startDate": "2024-10-23",
           "endDate": "2024-10-28",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Wankhede Stadium, Mumbai",
           "startDate": "2024-10-31",
           "endDate": "2024-11-05",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -340,13 +415,17 @@
           "venue": "Basin Reserve, Wellington",
           "startDate": "2024-02-28",
           "endDate": "2024-03-04",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "Hagley Oval, Christchurch",
           "startDate": "2024-03-07",
           "endDate": "2024-03-11",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "complete",
+          "result": "Away-win"
         }
       ]
     },
@@ -357,23 +436,29 @@
       "homeTeam": "New Zealand",
       "awayTeam": "England",
       "matches": [
-         {
+        {
           "venue": "Hagley Oval, Christchurch",
           "startDate": "2024-11-27",
           "endDate": "2024-12-01",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Basin Reserve, Wellingtonh",
           "startDate": "2024-12-05",
           "endDate": "2024-12-09",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Seddon Park, Hamilton",
           "startDate": "2024-12-13",
           "endDate": "2024-12-17",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -388,13 +473,17 @@
           "venue": "Bay Oval, Mount Maunganui",
           "startDate": "2024-02-03",
           "endDate": "2024-02-07",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Seddon Park, Hamilton",
           "startDate": "2024-02-12",
           "endDate": "2024-02-16",
-          "startTime": "14:00:00"
+          "startTime": "14:00:00",
+          "status": "complete",
+          "result": "Home-win"
         }
       ]
     },
@@ -409,13 +498,17 @@
           "venue": "Rawalpindi Cricket Stadium, Rawalpindi",
           "startDate": "2024-08-20",
           "endDate": "2024-08-25",
-          "startTime": "22:30:00"
+          "startTime": "22:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "National Stadium, Karachi",
           "startDate": "2024-08-29",
           "endDate": "2024-09-03",
-          "startTime": "22:30:00"
+          "startTime": "22:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -426,23 +519,29 @@
       "homeTeam": "Pakistan",
       "awayTeam": "England",
       "matches": [
-         {
+        {
           "venue": "Multan Cricket Stadium, Multan",
           "startDate": "2024-10-06",
           "endDate": "2024-10-11",
-          "startTime": "22:30:00"
+          "startTime": "22:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "National Stadium, Karachi",
           "startDate": "2024-10-14",
           "endDate": "2024-10-19",
-          "startTime": "22:30:00"
+          "startTime": "22:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Rawalpindi Cricket Stadium, Rawalpindi",
           "startDate": "2024-10-23",
           "endDate": "2024-10-28",
-          "startTime": "22:30:00"
+          "startTime": "22:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -457,13 +556,17 @@
           "venue": "National Stadium, Karachi",
           "startDate": "2025-01-15",
           "endDate": "2025-01-20",
-          "startTime": "21:30:00"
+          "startTime": "21:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Multan Cricket Stadium, Multan",
           "startDate": "2025-01-23",
           "endDate": "2025-01-28",
-          "startTime": "21:30:00"
+          "startTime": "21:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -478,13 +581,17 @@
           "venue": "SuperSport Park, Centurion",
           "startDate": "2023-12-26",
           "endDate": "2023-12-30",
-          "startTime": "00:00:00"
+          "startTime": "00:00:00",
+          "status": "complete",
+          "result": "Home-win"
         },
         {
           "venue": "Newlands, Cape Town",
           "startDate": "2024-01-03",
           "endDate": "2024-01-07",
-          "startTime": "00:00:00"
+          "startTime": "00:00:00",
+          "status": "complete",
+          "result": "Away-win"
         }
       ]
     },
@@ -495,17 +602,21 @@
       "homeTeam": "South Africa",
       "awayTeam": "Pakistan",
       "matches": [
-         {
+        {
           "venue": "SuperSport Park, Centurion",
           "startDate": "2024-12-26",
           "endDate": "2024-12-30",
-          "startTime": "00:00:00"
+          "startTime": "00:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
-         {
+        {
           "venue": "Newlands, Cape Town",
           "startDate": "2025-01-03",
           "endDate": "2025-01-07",
-          "startTime": "00:30:00"
+          "startTime": "00:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -520,13 +631,17 @@
           "venue": "Kingsmead, Durban",
           "startDate": "2024-11-26",
           "endDate": "2024-12-01",
-          "startTime": "23:30:00"
+          "startTime": "23:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "St George's Park, Gqeberha",
           "startDate": "2024-12-05",
           "endDate": "2024-12-09",
-          "startTime": "00:30:00"
+          "startTime": "00:30:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -541,13 +656,17 @@
           "venue": "Galle International Stadium, Galle",
           "startDate": "2025-01-31",
           "endDate": "2025-02-04",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Sinhalese Sports Club Ground, Colombo",
           "startDate": "2025-02-08",
           "endDate": "2025-02-13",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -562,13 +681,17 @@
           "venue": "Galle International Stadium, Galle",
           "startDate": "2024-12-25",
           "endDate": "2024-12-30",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Sinhalese Sports Club Ground, Colombo",
           "startDate": "2025-01-03",
           "endDate": "2025-01-08",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -583,13 +706,17 @@
           "venue": "Galle International Stadium, Galle",
           "startDate": "2023-07-15",
           "endDate": "2023-07-20",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "Sinhalese Sports Club Ground, Colombo",
           "startDate": "2023-07-23",
           "endDate": "2023-07-28",
-          "startTime": "21:00:00"
+          "startTime": "21:00:00",
+          "status": "complete",
+          "result": "Away-win"
         }
       ]
     },
@@ -600,17 +727,21 @@
       "homeTeam": "West Indies",
       "awayTeam": "Bangladesh",
       "matches": [
-         {
+        {
           "venue": "Sir Vivian Richards Stadium, Antigua",
           "startDate": "2024-11-22",
           "endDate": "2024-11-26",
-          "startTime": "07:00:00"
+          "startTime": "07:00:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Sabina Park, Kingston, Jamaica",
           "startDate": "2024-11-30",
           "endDate": "2024-12-04",
-          "startTime": "07:00:00"
+          "startTime": "07:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     },
@@ -625,13 +756,17 @@
           "venue": "Sir Vivian Richards Stadium, Antigua",
           "startDate": "2023-07-12",
           "endDate": "2023-07-16",
-          "startTime": "07:00:00"
+          "startTime": "07:00:00",
+          "status": "complete",
+          "result": "Away-win"
         },
         {
           "venue": "Queen's Park Oval, Port of Spain",
           "startDate": "2023-07-20",
           "endDate": "2023-07-24",
-          "startTime": "07:00:00"
+          "startTime": "07:00:00",
+          "status": "complete",
+          "result": "Draw"
         }
       ]
     },
@@ -646,13 +781,17 @@
           "venue": "Queen's Park Oval, Port of Spain",
           "startDate": "2024-08-07",
           "endDate": "2024-08-11",
-          "startTime": "06:30:00"
+          "startTime": "06:30:00",
+          "status": "incomplete",
+          "result": "None"
         },
         {
           "venue": "Providence Stadium, Guyana",
           "startDate": "2024-08-15",
           "endDate": "2024-08-19",
-          "startTime": "07:00:00"
+          "startTime": "07:00:00",
+          "status": "incomplete",
+          "result": "None"
         }
       ]
     }

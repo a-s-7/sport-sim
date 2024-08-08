@@ -31,6 +31,7 @@ class WTCMatch:
         self.matchResult = None
         self.homeTeamDeduction = 0
         self.awayTeamDeduction = 0
+        self.matchStatus = None
 
         self.addMatchToTeams()
 
@@ -156,11 +157,28 @@ class WTCMatch:
 
     ################################################### SETTERS
 
-    def set_match_info(self, venue: str, startDate: str, endDate: str, start_time: str):
+    def set_match_info(self, venue: str, startDate: str, endDate: str, start_time: str, status: str, result: str):
+        self.set_match_status(status)
+        self.set_match_result(result)
         self.set_match_venue(venue)
         self.set_start_date(startDate)
         self.set_end_date(endDate)
         self.set_start_time(start_time)
+
+    def set_match_status(self, status: str):
+        self.matchStatus = status
+
+    def set_match_result(self, result: str):
+        if result == "Home-win":
+            self.applyMatchResult(MatchResult.HOME_WIN)
+        elif result == "Away-win":
+            self.applyMatchResult(MatchResult.AWAY_WIN)
+        elif result == "Draw":
+            self.applyMatchResult(MatchResult.DRAW)
+        elif result == "None":
+            self.matchResult = MatchResult.NONE
+        else:
+            raise ValueError()
 
     def set_match_venue(self, location: str):
         self.venue = location
@@ -176,8 +194,6 @@ class WTCMatch:
 
     def setMatchType(self, matchType: str):
         self.type = matchType
-
-    ## TODO: Add remaining setters
 
     ################################################### OTHER METHODS
 

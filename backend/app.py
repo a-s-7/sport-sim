@@ -48,7 +48,7 @@ def update_wtc_match(series_id, match_num, result):
     try:
         wtc.update_match(series_id, match_num, result)
     except ValueError as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify(str(e)), 400
 
     return jsonify({"message": "Match updated successfully"})
 

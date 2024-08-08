@@ -27,7 +27,7 @@ function MatchCardPanel({onMatchUpdate}) {
 
     return (
         matchData.map(match => (
-            <div key={match.matchSeriesID + "-" + match.matchNumber[0]}>
+            <div key={match.matchSeriesID + "-" + match.matchNumber.charAt(0)}>
                 <WTCMatchCard
                     homeGradient={teamData[match.homeTeam].gradient}
                     awayGradient={teamData[match.awayTeam].gradient}

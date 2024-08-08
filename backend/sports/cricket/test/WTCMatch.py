@@ -28,7 +28,7 @@ class WTCMatch:
         self.awayTeamSecondInningsScore = None
 
         # Match Result
-        self.matchResult = None
+        self.matchResult = MatchResult.NONE
         self.homeTeamDeduction = 0
         self.awayTeamDeduction = 0
         self.matchStatus = None
@@ -157,7 +157,10 @@ class WTCMatch:
 
     ################################################### SETTERS
 
-    def set_match_info(self, venue: str, startDate: str, endDate: str, start_time: str, status: str, result: str):
+    def set_match_info(self, venue: str, startDate: str, endDate: str, start_time: str, status: str,
+                       result: str, homeDed: int, awayDed: int):
+        self.updateDeduction(self.homeTeam, homeDed)
+        self.updateDeduction(self.awayTeam, awayDed)
         self.set_match_status(status)
         self.set_match_result(result)
         self.set_match_venue(venue)
@@ -224,7 +227,7 @@ class WTCMatch:
             self.awayTeam.increment_tie()
 
     def undoMatchResult(self):
-        if self.matchResult == None:
+        if self.matchResult == MatchResult.NONE:
             return
 
         self.homeTeam.decrement_played()
@@ -243,7 +246,7 @@ class WTCMatch:
             self.homeTeam.decrement_tie()
             self.awayTeam.decrement_tie()
 
-        self.matchResult = None
+        self.matchResult = MatchResult.NONE
 
 
     def checkMatchResult(self, matchResult):

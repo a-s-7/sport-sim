@@ -35,6 +35,11 @@ class WTCMatch:
 
         self.addMatchToTeams()
 
+    def check_if_team_present(self, teamNames: []):
+        if self.homeTeam.name in teamNames or self.awayTeam.name in teamNames:
+            return True
+        return False
+
     def getJSON(self):
         location = self.venue if self.venue is not None else "TBA"
         dateRange = self.get_english_date() if self.check_dates_added() else "TBA"

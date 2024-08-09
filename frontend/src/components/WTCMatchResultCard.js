@@ -13,7 +13,7 @@ function WTCMatchResultCard({
         let color = 'black';
         const gradients = [homeGradient, neutralGradient, awayGradient];
 
-        background = matchResult === section ? gradients[num] : 'transparent';
+        background = matchResult === section ? gradients[num] : 'whitesmoke';
         color = matchResult === section ? 'white' : 'black';
 
         return {

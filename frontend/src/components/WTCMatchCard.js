@@ -26,7 +26,7 @@ function WTCMatchCard({
         const isHovered = hoveredSection === section;
 
         return {
-            background: isHovered ? 'rgba(0, 0, 0, 0.1)' : background,
+            background: isHovered ? 'whitesmoke' : background,
             color: isHovered ? 'black' : color
         };
     }

@@ -4,7 +4,6 @@ from backend.sports.cricket.test.WTC import WTC
 from backend.sports.cricket.test.WTCSeries import WTCSeries
 from backend.sports.cricket.test.WTCTeam import WTCTeam
 
-
 class WTCInitializer:
     wtc = None
 
@@ -48,5 +47,3 @@ class WTCInitializer:
 
         wtc.add_matches_to_list()
         wtc.sort_match_list()
-
-

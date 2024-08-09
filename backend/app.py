@@ -19,13 +19,24 @@ def initialize_global_object():
 
 
 @app.route('/WTC/matches', methods=['GET'])
-def get_data():
+def get_match_data():
     if(wtc == None):
         return jsonify({"error": "WTC object not initialized"}), 500
 
     assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
 
-    return wtc.get_match_data_json()
+    return wtc.get_match_data_json("All")
+
+
+@app.route('/WTC/matches/<team_names>', methods=['GET'])
+def get_team_match_data(team_names):
+    if(wtc == None):
+        return jsonify({"error": "WTC object not initialized"}), 500
+
+    assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
+
+    return wtc.get_match_data_json(team_names)
+
 
 
 @app.route('/WTC/points_table', methods=['GET'])

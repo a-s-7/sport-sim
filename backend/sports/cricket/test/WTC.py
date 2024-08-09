@@ -1,5 +1,6 @@
 import json
 
+from backend.sports.cricket.test.WTCMatch import WTCMatch
 from backend.sports.cricket.test.WTCSeries import WTCSeries
 from backend.sports.cricket.test.WTCTeam import WTCTeam
 
@@ -59,24 +60,51 @@ class WTC:
 
         return sorted_teams
 
-    def get_match_data_json(self):
+    def extract_teams(self, team_names: str):
+        team_names = team_names.split("-")
+
+        # for team_name in team_names:
+        #     if team_name not in self.teamDict.keys():
+        #         raise ValueError(f"Team {team_name} does not exist in the championship")
+
+        return team_names
+
+    def get_match_data_json(self, team_names: str):
+        ### TEAM DATA
+
         teamData = {}
 
-        ## Get team data
         for team in self.teamDict.values():
             teamData.update({team.name: team.get_basic_json()})
 
+        ### SERIES DATA
+
         seriesData = {}
+
         for series in self.series:
             seriesData.update({series.id: series.seriesName})
 
+        ### MATCH DATA
+
+        teams = self.extract_teams(team_names)
+
         matchData = []
-        ## Get match data
+
         for match in self.matchList:
-            matchData.append(match.getJSON())
+            if len(teams) == 1 and teams[0] == "All":
+                matchData.append(match.getJSON())
+            else:
+                assert isinstance(match, WTCMatch), "Match should be an instance of WTCMatch"
+
+                if match.check_if_team_present(teams):
+                    matchData.append(match.getJSON())
 
 
         return [teamData, seriesData, matchData]
+
+
+
+
 
     def addTeam(self, team: WTCTeam):
         if not isinstance(team, WTCTeam):

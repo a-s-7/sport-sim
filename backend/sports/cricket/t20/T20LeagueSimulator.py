@@ -2,7 +2,6 @@ from T20LeagueInitializer import T20LeagueInitializer
 from backend.sports.cricket.MatchResult import MatchResult
 import random
 
-
 class T20LeagueSimulator:
     def __init__(self, name: str, teamPath: str, schedulePath: str):
         self.league = T20LeagueInitializer.initializeLeague(name, teamPath, schedulePath)

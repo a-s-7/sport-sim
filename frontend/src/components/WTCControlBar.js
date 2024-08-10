@@ -3,7 +3,7 @@ import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle, faUnlock} from "@fortawesome/free-solid-svg-icons";
 
-function WTCControlBar({matchCount, teams, sst}) {
+function WTCControlBar({rMeth, matchCount, teams, sst}) {
 
     const options = [
         {value: 'india', label: 'India'},
@@ -20,6 +20,39 @@ function WTCControlBar({matchCount, teams, sst}) {
     const handleChange = (selectedOptions) => {
         sst(selectedOptions);
     };
+
+    const resetIncompleteMatches = async () => {
+          try {
+            const response = await fetch(`http://127.0.0.1:5000/WTC/clear`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+            if (response.ok) {
+                const result = await response.json();
+                rMeth();
+            } else {
+                alert("Error: Response not ok")
+            }
+        } catch (error) {
+            alert(error)
+        }
+    };
+
+    const randomlySimIncompleteMatches = () => {
+        alert("RANDOMLY SIMULATE INCOMPLETE MATCHES");
+    };
+
+    const unlockCompleteMatches = () => {
+        alert("UNLOCK COMPLETE MATCHES");
+    };
+
+
+
+
 
     return (
         <div className="wtcHeader">
@@ -55,13 +88,13 @@ function WTCControlBar({matchCount, teams, sst}) {
                 </div>
             </div>
             <div className="buttonContainer">
-                <button>
-                    <FontAwesomeIcon icon={faShuffle}/>
-                </button>
-                <button>
+                <button onClick={resetIncompleteMatches}>
                     <FontAwesomeIcon icon={faArrowRotateLeft} size="lg"/>
                 </button>
-                <button>
+                <button onClick={randomlySimIncompleteMatches}>
+                    <FontAwesomeIcon icon={faShuffle} size="lg"/>
+                </button>
+                <button onClick={unlockCompleteMatches}>
                     <FontAwesomeIcon icon={faUnlock} size="lg"/>
                 </button>
             </div>

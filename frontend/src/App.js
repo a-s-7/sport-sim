@@ -9,9 +9,14 @@ function App() {
     const [pointsTableKey, setPointsTableKey] = useState(0);
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [data, setData] = useState([]);
+    const [refreshKey, setRefreshKey] = useState(0);
 
     const refreshPointsTable = () => {
         setPointsTableKey(pointsTableKey + 1);
+    }
+
+    const refreshMatchArea = () => {
+        setRefreshKey(refreshKey + 1);
     }
 
     const fetchData = async () => {
@@ -36,13 +41,20 @@ function App() {
 
     useEffect(() => {
         fetchData();
-    }, [selectedTeams]);
+    }, [selectedTeams, refreshKey]);
+
 
     return (
         <div className="App">
             <NavBar></NavBar>
-            <WTCControlBar matchCount={Array.isArray(data[2]) ? data[2].length : 0} teams={selectedTeams} sst={setSelectedTeams}></WTCControlBar>
-            <WTCMatchArea pTableKey={pointsTableKey} rPointsTable={refreshPointsTable} data={data}></WTCMatchArea>
+            <WTCControlBar rMeth={refreshMatchArea}
+                           matchCount={Array.isArray(data[2]) ? data[2].length : 0}
+                           teams={selectedTeams}
+                           sst={setSelectedTeams}></WTCControlBar>
+            <WTCMatchArea key={refreshKey}
+                            pTableKey={pointsTableKey}
+                          rPointsTable={refreshPointsTable}
+                          data={data}></WTCMatchArea>
         </div>
     );
 }

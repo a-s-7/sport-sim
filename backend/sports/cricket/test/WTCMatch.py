@@ -2,6 +2,7 @@ from datetime import datetime
 
 from backend.sports.cricket.MatchResult import MatchResult
 from backend.sports.cricket.test.WTCTeam import WTCTeam
+import random
 
 
 class WTCMatch:
@@ -39,6 +40,18 @@ class WTCMatch:
         if self.homeTeam.name in teamNames or self.awayTeam.name in teamNames:
             return True
         return False
+
+    def simulate_match(self):
+        ## Use equal probability distribution to apply match result
+        result = random.randint(0, 2)
+
+        if result == 0:
+            self.applyMatchResult(MatchResult.HOME_WIN)
+        elif result == 1:
+            self.applyMatchResult(MatchResult.AWAY_WIN)
+        else:
+            self.applyMatchResult(MatchResult.DRAW)
+
 
     def getJSON(self):
         location = self.venue if self.venue is not None else "TBA"

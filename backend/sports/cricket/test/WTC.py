@@ -63,11 +63,28 @@ class WTC:
     def extract_teams(self, team_names: str):
         team_names = team_names.split("-")
 
-        # for team_name in team_names:
-        #     if team_name not in self.teamDict.keys():
-        #         raise ValueError(f"Team {team_name} does not exist in the championship")
-
         return team_names
+
+
+    def simulate_matches(self, team_names: str):
+        teams = self.extract_teams(team_names)
+
+        if len(teams) == 1 and teams[0] == "All":
+            for match in self.matchList:
+                if match.matchStatus == "incomplete":
+                    match.simulate_match()
+        else:
+            for match in self.matchList:
+                if match.check_if_team_present(teams) and match.matchStatus == "incomplete":
+                    match.simulate_match()
+
+        return
+
+    def clear_incomplete_matches(self):
+        for match in self.matchList:
+            if match.matchStatus == "incomplete":
+                match.undoMatchResult()
+
 
     def get_match_data_json(self, team_names: str):
         ### TEAM DATA

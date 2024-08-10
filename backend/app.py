@@ -18,16 +18,6 @@ def initialize_global_object():
     wtc = WTCInitializer.initializeWTC("ICC World Test Championship", 2023, 2025, teamsPath, seriesPath)
 
 
-@app.route('/WTC/matches', methods=['GET'])
-def get_match_data():
-    if(wtc == None):
-        return jsonify({"error": "WTC object not initialized"}), 500
-
-    assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
-
-    return wtc.get_match_data_json("All")
-
-
 @app.route('/WTC/matches/<team_names>', methods=['GET'])
 def get_team_match_data(team_names):
     if(wtc == None):
@@ -78,16 +68,38 @@ def update_deduction(series_id, match_num, team, deduction):
 
     return jsonify({"message": "Deduction updated successfully"})
 
+@app.route('/WTC/sim/<team_names>', methods=['PATCH'])
+def sim_matches(team_names):
+    if(wtc == None):
+        return jsonify({"error": "WTC object not initialized"}), 500
 
-# @app.route('/WTC/deduction/<series_id>/<match_num>', methods=['GET'])
-# def get_deduction(series_id, match_num):
-#     if(wtc == None):
-#         return jsonify({"error": "WTC object not initialized"}), 500
-#
-#     assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
-#
-#     return wtc.get_deduction(series_id, match_num)
+    assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
+
+    try:
+        wtc.simulate_matches(team_names)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": "Matches simulated successfully"})
+
+
+@app.route('/WTC/clear', methods=['PATCH'])
+def clear_wtc():
+    if(wtc == None):
+        return jsonify({"error": "WTC object not initialized"}), 500
+
+    assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
+
+    try:
+        wtc.clear_incomplete_matches();
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": "WTC object cleared successfully"})
+
+
 
 if __name__ == '__main__':
     initialize_global_object()
     app.run(debug=True)
+

@@ -1,22 +1,30 @@
 import './App.css';
 import NavBar from "./components/NavBar";
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import WTCControlBar from "./components/WTCControlBar";
-import WTCMatchArea from "./components/WTCMatchArea";
+import MatchCardPanel from "./components/MatchCardPanel";
+import WTCPointsTable from "./components/WTCPointsTable";
 
 
 function App() {
-    const [pointsTableKey, setPointsTableKey] = useState(0);
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [data, setData] = useState([]);
-    const [refreshKey, setRefreshKey] = useState(0);
+
+    const [matchAreaKey, setMatchAreaKey] = useState(0);
+    const [pointsTableKey, setPointsTableKey] = useState(0);
 
     const refreshPointsTable = () => {
         setPointsTableKey(pointsTableKey + 1);
     }
 
     const refreshMatchArea = () => {
-        setRefreshKey(refreshKey + 1);
+        setMatchAreaKey(matchAreaKey + 1);
+    }
+
+    const handleRefresh = () => {
+        fetchData();
+        refreshMatchArea();
+        refreshPointsTable();
     }
 
     const fetchData = async () => {
@@ -41,20 +49,26 @@ function App() {
 
     useEffect(() => {
         fetchData();
-    }, [selectedTeams, refreshKey]);
+    }, [selectedTeams]);
 
 
     return (
         <div className="App">
             <NavBar></NavBar>
-            <WTCControlBar rMeth={refreshMatchArea}
+            <WTCControlBar refFunc={handleRefresh}
                            matchCount={Array.isArray(data[2]) ? data[2].length : 0}
                            teams={selectedTeams}
-                           sst={setSelectedTeams}></WTCControlBar>
-            <WTCMatchArea key={refreshKey}
-                            pTableKey={pointsTableKey}
-                          rPointsTable={refreshPointsTable}
-                          data={data}></WTCMatchArea>
+                           sst={setSelectedTeams}>
+            </WTCControlBar>
+
+            <div className="matchArea">
+                <div className="matchCardContainer">
+                    <MatchCardPanel key={matchAreaKey} onMatchUpdate={refreshPointsTable} matches={data}/>
+                </div>
+                <div className="tableContainer">
+                    <WTCPointsTable key={pointsTableKey}/>
+                </div>
+            </div>
         </div>
     );
 }

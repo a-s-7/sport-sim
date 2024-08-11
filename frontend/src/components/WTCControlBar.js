@@ -3,7 +3,7 @@ import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle, faUnlock} from "@fortawesome/free-solid-svg-icons";
 
-function WTCControlBar({rMeth, matchCount, teams, sst}) {
+function WTCControlBar({refFunc, matchCount, teams, sst}) {
 
     const options = [
         {value: 'india', label: 'India'},
@@ -33,7 +33,7 @@ function WTCControlBar({rMeth, matchCount, teams, sst}) {
 
             if (response.ok) {
                 const result = await response.json();
-                rMeth();
+                refFunc();
             } else {
                 alert("Error: Response not ok")
             }

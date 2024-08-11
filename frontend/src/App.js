@@ -21,8 +21,8 @@ function App() {
         setMatchAreaKey(matchAreaKey + 1);
     }
 
-    const handleRefresh = () => {
-        fetchData();
+    const handleRefresh = async () => {
+        await fetchData();
         refreshMatchArea();
         refreshPointsTable();
     }
@@ -63,7 +63,9 @@ function App() {
 
             <div className="matchArea">
                 <div className="matchCardContainer">
-                    <MatchCardPanel key={matchAreaKey} onMatchUpdate={refreshPointsTable} matches={data}/>
+                    <MatchCardPanel key={matchAreaKey}
+                                    onMatchUpdate={refreshPointsTable}
+                                    matches={data}/>
                 </div>
                 <div className="tableContainer">
                     <WTCPointsTable key={pointsTableKey}/>

@@ -22,7 +22,7 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
     };
 
     const resetIncompleteMatches = async () => {
-          try {
+        try {
             const response = await fetch(`http://127.0.0.1:5000/WTC/clear`,
                 {
                     method: 'PATCH',
@@ -42,16 +42,37 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
         }
     };
 
-    const randomlySimIncompleteMatches = () => {
-        alert("RANDOMLY SIMULATE INCOMPLETE MATCHES");
+
+    const randomlySimIncompleteMatches = async () => {
+        let teamNames = "All";
+
+        if(teams.length > 0) {
+            teamNames = teams.map(team => team.label).join("-");
+        }
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/WTC/sim/${teamNames}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+            if (response.ok) {
+                const result = await response.json();
+                refFunc();
+            } else {
+                alert("Error: Response not ok")
+            }
+        } catch (error) {
+            alert(error)
+        }
     };
 
     const unlockCompleteMatches = () => {
         alert("UNLOCK COMPLETE MATCHES");
     };
-
-
-
 
 
     return (

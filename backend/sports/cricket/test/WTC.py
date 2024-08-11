@@ -65,7 +65,6 @@ class WTC:
 
         return team_names
 
-
     def simulate_matches(self, team_names: str):
         teams = self.extract_teams(team_names)
 
@@ -80,11 +79,17 @@ class WTC:
 
         return
 
-    def clear_incomplete_matches(self):
-        for match in self.matchList:
-            if match.matchStatus == "incomplete":
-                match.undoMatchResult()
+    def clear_incomplete_matches(self, team_names: str):
+        teams = self.extract_teams(team_names)
 
+        if len(teams) == 1 and teams[0] == "All":
+            for match in self.matchList:
+                if match.matchStatus == "incomplete":
+                    match.undoMatchResult()
+        else:
+            for match in self.matchList:
+                if match.check_if_team_present(teams) and match.matchStatus == "incomplete":
+                    match.undoMatchResult()
 
     def get_match_data_json(self, team_names: str):
         ### TEAM DATA
@@ -116,12 +121,7 @@ class WTC:
                 if match.check_if_team_present(teams):
                     matchData.append(match.getJSON())
 
-
         return [teamData, seriesData, matchData]
-
-
-
-
 
     def addTeam(self, team: WTCTeam):
         if not isinstance(team, WTCTeam):
@@ -141,7 +141,6 @@ class WTC:
 
     def get_Team(self, teamName: str):
         return self.teamDict[teamName]
-
 
     def add_series(self, series: WTCSeries):
         if not isinstance(series, WTCSeries):
@@ -168,7 +167,8 @@ class WTC:
         print("Series:")
         print("{:<5} {:<10} {:<20} {:<20} {:<15}".format("", "Name", "Home Team", "Away Team", "Match Count"))
         for index, series in enumerate(self.series, start=1):
-            print("{:<5} {:<10} {:<20} {:<20} {:<15}".format(index, series.seriesName, series.homeTeam.name, series.awayTeam.name, series.numMatches))
+            print("{:<5} {:<10} {:<20} {:<20} {:<15}".format(index, series.seriesName, series.homeTeam.name,
+                                                             series.awayTeam.name, series.numMatches))
 
     def printTeamsSeriesCounts(self):
         print("Teams Series Counts:")
@@ -177,32 +177,36 @@ class WTC:
             print("{:<5} {:<20} {:<15}".format(index, team.name, len(team.seriesList)))
 
     def printTeamsMatchCounts(self):
-            print("Teams Match Counts:")
-            print("{:<5} {:<20} {:<15}".format("", "Team", "Match Count"))
-            for index, team in enumerate(self.teamDict.values(), start=1):
-                print("{:<5} {:<20} {:<15}".format(index, team.name, team.numMatches))
+        print("Teams Match Counts:")
+        print("{:<5} {:<20} {:<15}".format("", "Team", "Match Count"))
+        for index, team in enumerate(self.teamDict.values(), start=1):
+            print("{:<5} {:<20} {:<15}".format(index, team.name, team.numMatches))
 
     def printTeamSeriesInformation(self):
         print("")
         for team in self.teamDict.values():
-               print(f"Team: {team.name}")
-               print('-' * 35)
-               print("{:<5} {:<20} {:<10}".format("", "Opponent", "Matches"))
-               for index, series in enumerate(team.seriesList, start=1):
-                   opponent = series.homeTeam
-                   if opponent == team:
-                         opponent = series.awayTeam
-                   print("{:<5} {:<20} {:<10}".format(index, opponent.name, series.numMatches))
-               print("")
+            print(f"Team: {team.name}")
+            print('-' * 35)
+            print("{:<5} {:<20} {:<10}".format("", "Opponent", "Matches"))
+            for index, series in enumerate(team.seriesList, start=1):
+                opponent = series.homeTeam
+                if opponent == team:
+                    opponent = series.awayTeam
+                print("{:<5} {:<20} {:<10}".format(index, opponent.name, series.numMatches))
+            print("")
 
     def print_points_table(self):
         print("Points Table for: " + self.name)
-        print("{:<10} {:<15} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7} {:<10}".format("Position", "Team", "Played", "Won", "Lost", "Draw", "Ded", "Points", "Points %"))
+        print("{:<10} {:<15} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7} {:<10}".format("Position", "Team", "Played", "Won",
+                                                                                "Lost", "Draw", "Ded", "Points",
+                                                                                "Points %"))
 
         sorted_teams = sorted(self.teamDict.values(), key=lambda t: t.get_points_percentage(),
                               reverse=True)
 
         for t in sorted_teams:
             index = sorted_teams.index(t) + 1
-            print("{:<10} {:<15} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7.2f}".format(index, t.name, t.played, t.won, t.lost, t.draw, t.deduction, float(t.get_points()), float(t.get_points_percentage())))
-
+            print("{:<10} {:<15} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7} {:<7.2f}".format(index, t.name, t.played, t.won,
+                                                                                      t.lost, t.draw, t.deduction,
+                                                                                      float(t.get_points()),
+                                                                                      float(t.get_points_percentage())))

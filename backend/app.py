@@ -83,15 +83,15 @@ def sim_matches(team_names):
     return jsonify({"message": "Matches simulated successfully"})
 
 
-@app.route('/WTC/clear', methods=['PATCH'])
-def clear_wtc():
+@app.route('/WTC/clear/<team_names>', methods=['PATCH'])
+def clear_wtc(team_names):
     if(wtc == None):
         return jsonify({"error": "WTC object not initialized"}), 500
 
     assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
 
     try:
-        wtc.clear_incomplete_matches();
+        wtc.clear_incomplete_matches(team_names);
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 

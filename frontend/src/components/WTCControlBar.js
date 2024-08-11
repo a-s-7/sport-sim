@@ -23,8 +23,14 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
     };
 
     const resetIncompleteMatches = async () => {
+        let teamNames = "All";
+
+         if(teams.length > 0) {
+            teamNames = teams.map(team => team.label).join("-");
+        }
+
         try {
-            const response = await fetch(`http://127.0.0.1:5000/WTC/clear`,
+            const response = await fetch(`http://127.0.0.1:5000/WTC/clear/${teamNames}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -47,7 +53,7 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
     const randomlySimIncompleteMatches = async () => {
         let teamNames = "All";
 
-        if(teams.length > 0) {
+        if (teams.length > 0) {
             teamNames = teams.map(team => team.label).join("-");
         }
 

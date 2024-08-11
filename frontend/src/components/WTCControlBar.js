@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowRotateLeft, faShuffle, faUnlock, faLock} from "@fortawesome/free-solid-svg-icons";
+import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
 function WTCControlBar({refFunc, matchCount, teams, sst}) {
     const [lockStatus, setLockStatus] = useState(true);
@@ -77,11 +77,6 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
         }
     };
 
-    const unlockCompleteMatches = () => {
-        setLockStatus(!lockStatus);
-        // alert("UNLOCK COMPLETE MATCHES");
-    };
-
 
     return (
         <div className="wtcHeader">
@@ -122,9 +117,6 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
                 </button>
                 <button onClick={randomlySimIncompleteMatches}>
                     <FontAwesomeIcon icon={faShuffle} size="lg"/>
-                </button>
-                <button onClick={unlockCompleteMatches}>
-                    <FontAwesomeIcon icon={lockStatus ? faLock: faUnlock} size="lg"/>
                 </button>
             </div>
         </div>

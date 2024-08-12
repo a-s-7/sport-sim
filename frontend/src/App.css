@@ -15,6 +15,13 @@ html, body, #root {
     flex-direction: column;
 }
 
+.HomePage {
+    display: flex;
+    flex-direction: column;
+    height: 92%;
+    background-color: grey;
+}
+
 .WTC {
     display: flex;
     flex-direction: column;
@@ -120,7 +127,6 @@ html, body, #root {
     color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-
 
 
 .matchCardContainer {
@@ -369,41 +375,47 @@ html, body, #root {
 }
 
 
-
-.logoArea {
+.logoArea a {
     width: 20%;
     height: 100%;
-    display: flex;
     align-items: center;
     font-size: 3vw;
     color: black;
     padding-left: 10px;
     font-family: "Reem Kufi Fun", sans-serif;
+    text-decoration: none;
 }
 
 .appModeArea {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
     width: 60%;
+    /*background-color: red;*/
 }
 
-.appModeArea button {
+.appModeArea a {
     font-family: "Nunito Sans", sans-serif;
+    text-align: center;
     border: 1px solid transparent;
     width: 20%;
-    margin: 15px;
+    margin: 10px;
+    padding: 10px;
     border-radius: 10px;
+    text-decoration: none;
     font-size: 1vw;
     color: black;
     background-color: white;
+    display: inline-block;
 }
 
-.appModeArea button:hover {
+.appModeArea a:hover {
     background-color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     color: white
 }
+
 
 .userArea {
     display: flex;

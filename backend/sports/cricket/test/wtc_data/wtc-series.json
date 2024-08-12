@@ -916,8 +916,8 @@
           "startDate": "2024-08-07",
           "endDate": "2024-08-11",
           "startTime": "06:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Draw",
           "homeDed": 0,
           "awayDed": 0
         },

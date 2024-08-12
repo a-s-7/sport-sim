@@ -36,6 +36,11 @@ class WTCMatch:
 
         self.addMatchToTeams()
 
+    def clear_match(self):
+        self.undoMatchResult()
+        self.update_home_team_deduction(0)
+        self.update_away_team_deduction(0)
+
     def check_if_team_present(self, teamNames: []):
         if self.homeTeam.name in teamNames or self.awayTeam.name in teamNames:
             return True

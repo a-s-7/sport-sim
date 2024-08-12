@@ -85,11 +85,11 @@ class WTC:
         if len(teams) == 1 and teams[0] == "All":
             for match in self.matchList:
                 if match.matchStatus == "incomplete":
-                    match.undoMatchResult()
+                    match.clear_match()
         else:
             for match in self.matchList:
                 if match.check_if_team_present(teams) and match.matchStatus == "incomplete":
-                    match.undoMatchResult()
+                    match.clear_match()
 
     def get_match_data_json(self, team_names: str):
         ### TEAM DATA

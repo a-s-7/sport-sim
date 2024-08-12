@@ -9,6 +9,7 @@ function NavBar() {
             </div>
             <div className="appModeArea">
                 <NavLink to="/wtc">ICC WTC</NavLink>
+                <NavLink to="/ipl">IPL</NavLink>
             </div>
             <div className="userArea">
                 USER

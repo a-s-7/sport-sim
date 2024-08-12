@@ -1,11 +1,10 @@
 import React from "react";
+import IPLControlBar from "../components/IPLControlBar";
 
-function Home() {
+function IPL() {
     return (
-        <div className="HomePage">
-            <div className="homeWelcomeMessage">
-                WELCOME TO SPORT SIM
-            </div>
+        <div className="IPLPage">
+            <IPLControlBar></IPLControlBar>
             {/*<p>*/}
             {/*    SPORT SIM is a sports simulation application that allows users to simulate matches between teams in a*/}
             {/*    variety of sports.*/}
@@ -20,4 +19,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default IPL;

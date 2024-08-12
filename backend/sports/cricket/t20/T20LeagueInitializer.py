@@ -25,6 +25,7 @@ class T20LeagueInitializer:
 
             for row in csv_reader:
                 team = T20Team(row['team_name'], row['acronym'])
+                team.set_logo(row['logo'])
                 league.add_team(team)
 
     @staticmethod

@@ -19,7 +19,27 @@ html, body, #root {
     display: flex;
     flex-direction: column;
     height: 92%;
-    background-color: grey;
+    /*background-color: black;*/
+    background: linear-gradient(135deg, blue 10%, black 50%, darkblue 50%, white 100%);
+}
+
+.IPLPage {
+    background-color: whitesmoke;
+    height: 92%;
+}
+
+
+
+
+.homeWelcomeMessage {
+    display: flex;
+    height: 100%;
+    /*background-color: black;*/
+    font-size: 10vh;
+    color: white;
+    font-family: "Reem Kufi Fun", sans-serif;
+    justify-content: center;
+    align-items: center;
 }
 
 .WTC {
@@ -41,10 +61,14 @@ html, body, #root {
     background-color: white;
 }
 
-.wtcHeader {
+.wtcHeader, .iplHeader {
     display: flex;
     height: 8%;
     background-color: black;
+}
+
+.iplHeader {
+    background-color: darkblue;
 }
 
 .matchArea {
@@ -62,22 +86,37 @@ html, body, #root {
     width: 15%;
     padding-top: 0px;
     padding-bottom: 5px;
-    /*background-color: red;*/
 }
 
 .wtcLogoContainer img {
-    /*background-color: blue;*/
     width: 95%;
     height: 95%;
 }
 
+.iplLogoContainer {
+    background-color: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+}
 
-.filterContainer {
+.iplLogoContainer img {
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
+}
+
+
+
+
+
+
+.filterContainer, .iplFilterContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
-    /*background-color: purple;*/
 }
 
 .filterBar {
@@ -86,18 +125,16 @@ html, body, #root {
     text-transform: uppercase;
     font-size: 1.5vh;
     width: 100%;
-    /*background-color: red;*/
     max-height: 100%;
     align-items: center;
     justify-content: center;
 }
 
 
-.modeContainer {
+.wtcMatchCountContainer, .iplMatchCountContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*background-color: blue;*/
     width: 10%;
     font-family: "Reem Kufi Fun", sans-serif;
     text-transform: uppercase;
@@ -105,26 +142,40 @@ html, body, #root {
 }
 
 
-.buttonContainer {
+.buttonContainer, .iplButtonContainer {
     width: 25%;
     display: flex;
     justify-content: center;
 }
 
-.buttonContainer button {
+.buttonContainer button, .iplButtonContainer button {
     flex: 1;
     font-family: "Nunito Sans", sans-serif;
     font-size: 1vw;
-    color: white;
-    background-color: black;
     border: 1px solid transparent;
     border-radius: 10px;
     margin: 15px;
 }
 
+.buttonContainer button {
+    background-color: black;
+    color: white;
+}
+
+.iplButtonContainer button {
+    background-color: darkblue;
+    color: white;
+}
+
 .buttonContainer button:hover {
     background-color: white;
     color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.iplButtonContainer button:hover {
+    background-color: white;
+    color: darkblue;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -156,6 +207,7 @@ html, body, #root {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border: 1px solid lightgrey;
+    overflow: hidden;
 }
 
 .WTCTable thead {
@@ -396,9 +448,8 @@ html, body, #root {
 }
 
 .appModeArea a {
-    font-family: "Nunito Sans", sans-serif;
+    font-family: "Reem Kufi Fun", sans-serif;
     text-align: center;
-    border: 1px solid transparent;
     width: 20%;
     margin: 10px;
     padding: 10px;
@@ -406,8 +457,9 @@ html, body, #root {
     text-decoration: none;
     font-size: 1vw;
     color: black;
+    border: 1px solid black;
     background-color: white;
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 .appModeArea a:hover {

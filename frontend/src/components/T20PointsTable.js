@@ -18,7 +18,7 @@ function T20PointsTable() {
     }, []);
 
     return (
-        <table className="WTCTable">
+        <table className="T20Table">
             <thead>
             <tr>
                 <th>POS</th>

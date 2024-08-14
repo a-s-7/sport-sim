@@ -8,6 +8,23 @@ function IPLPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [data, setData] = useState([]);
 
+    const [matchAreaKey, setMatchAreaKey] = useState(0);
+    const [pointsTableKey, setPointsTableKey] = useState(0);
+
+    const refreshPointsTable = () => {
+        setPointsTableKey(pointsTableKey + 1);
+    }
+
+    const refreshMatchArea = () => {
+        setMatchAreaKey(matchAreaKey + 1);
+    }
+
+    const handleRefresh = async () => {
+        await fetchData();
+        refreshMatchArea();
+        refreshPointsTable();
+    }
+
     const fetchData = async () => {
         let url = `http://127.0.0.1:5000/IPL/matches/All`;
 
@@ -22,7 +39,6 @@ function IPLPage() {
                 throw new Error("Response was not ok");
             }
             const result = await response.json();
-            console.log(result);
             setData(result);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -38,12 +54,15 @@ function IPLPage() {
             <IPLControlBar teams={selectedTeams}
                            sst={setSelectedTeams}></IPLControlBar>
 
+
             <div className="matchArea">
                 <div className="matchCardContainer">
-                    <T20MatchCardPanel matches={data}></T20MatchCardPanel>
+                    <T20MatchCardPanel key={matchAreaKey}
+                                       onMatchUpdate={refreshPointsTable}
+                                       matches={data}/>
                 </div>
                 <div className="tableContainer">
-                    <T20PointsTable></T20PointsTable>
+                    <T20PointsTable key={pointsTableKey}/>
                 </div>
             </div>
         </div>

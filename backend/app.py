@@ -103,7 +103,7 @@ def clear_wtc(team_names):
     assert isinstance(wtc, WTC), "wtc should be an instance of WTC"
 
     try:
-        wtc.clear_incomplete_matches(team_names);
+        wtc.clear_incomplete_matches(team_names)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
@@ -127,9 +127,39 @@ def get_ipl_points_table():
     if(ipl == None):
         return jsonify({"error": "IPL object not initialized"}), 500
 
-    assert isinstance(ipl, T20League), "wtc should be an instance of WTC"
+    assert isinstance(ipl, T20League), "ipl should be an instance of T20League"
 
     return ipl.get_points_table_json()
+
+
+@app.route('/IPL/match/<match_num>/<result>', methods=['PATCH'])
+def update_ipl_match(match_num, result):
+    if(ipl == None):
+        return jsonify({"error": "IPL object not initialized"}), 500
+
+    assert isinstance(ipl, T20League), "ipl should be an instance of T20League"
+
+    try:
+        ipl.update_match(match_num, result)
+    except ValueError as e:
+        return jsonify(str(e)), 400
+
+    return jsonify({"message": "IPL match updated successfully"})
+
+
+@app.route('/IPL/clear/<team_names>', methods=['PATCH'])
+def clear_ipl_results(team_names):
+    if (ipl == None):
+        return jsonify({"error": "IPL object not initialized"}), 500
+
+    assert isinstance(ipl, T20League), "ipl should be an instance of T20League"
+
+    try:
+        ipl.clear_incomplete_matches(team_names)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": "IPL matches cleared successfully"})
 
 
 if __name__ == '__main__':

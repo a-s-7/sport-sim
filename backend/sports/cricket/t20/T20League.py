@@ -1,3 +1,4 @@
+from backend.sports.cricket.MatchResult import MatchResult
 from backend.sports.cricket.t20.T20Team import T20Team
 from backend.sports.cricket.t20.T20Match import T20Match
 
@@ -17,6 +18,21 @@ class T20League():
                               reverse=True)
 
         return sorted_teams
+
+    def update_match(self, match_num: int, result: str):
+        resultObj = None
+
+        if str(result) == "Home-win":
+            resultObj = MatchResult.HOME_WIN
+        elif str(result) == "Away-win":
+            resultObj = MatchResult.AWAY_WIN
+        elif str(result) == "No-result":
+            resultObj = MatchResult.NO_RESULT
+        elif str(result) == "None":
+            self.matchList[int(match_num) - 1].undoMatchResult()
+            return
+
+        self.matchList[int(match_num) - 1].applyMatchResult(resultObj)
 
 
     def get_match_data_json(self, team_acronyms: str):

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import IPLControlBar from "../components/IPLControlBar";
 import T20MatchCardPanel from "../components/T20MatchCardPanel";
 import IPLMatchCard from "../components/IPLMatchCard";
+import T20PointsTable from "../components/T20PointsTable";
 
 function IPLPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
@@ -28,20 +29,21 @@ function IPLPage() {
         }
     };
 
-     useEffect(() => {
+    useEffect(() => {
         fetchData();
     }, [selectedTeams]);
 
     return (
         <div className="IPLPage">
             <IPLControlBar teams={selectedTeams}
-                            sst={setSelectedTeams}></IPLControlBar>
+                           sst={setSelectedTeams}></IPLControlBar>
 
             <div className="matchArea">
                 <div className="matchCardContainer">
                     <T20MatchCardPanel matches={data}></T20MatchCardPanel>
                 </div>
                 <div className="tableContainer">
+                    <T20PointsTable></T20PointsTable>
                 </div>
             </div>
         </div>

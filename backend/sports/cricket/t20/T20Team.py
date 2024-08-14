@@ -21,6 +21,21 @@ class T20Team(CricketTeam):
             "gradient": self.gradient
         }
 
+    def get_points_table_json(self):
+        return {
+            "acronym": self.acronym,
+            "played": self.played,
+            "won": self.won,
+            "lost": self.lost,
+            "noResult": self.noResult,
+            "nrr": self.nrr,
+            "points": self.get_point_total(),
+            "logo": self.logo
+        }
+
+    def get_point_total(self):
+        return (self.won * 2 + self.noResult * 1)
+
     def set_logo(self, logoData: str):
         self.logo = logoData
 

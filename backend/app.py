@@ -122,6 +122,14 @@ def get_ipl_match_data(team_names):
 
     return ipl.get_match_data_json(team_names)
 
+@app.route('/IPL/points_table', methods=['GET'])
+def get_ipl_points_table():
+    if(ipl == None):
+        return jsonify({"error": "IPL object not initialized"}), 500
+
+    assert isinstance(ipl, T20League), "wtc should be an instance of WTC"
+
+    return ipl.get_points_table_json()
 
 
 if __name__ == '__main__':

@@ -7,6 +7,18 @@ class T20League():
         self.teamDict = {}
         self.matchList = []
 
+    def get_points_table_json(self):
+        teams = []
+
+        for team in self.teamDict.values():
+            teams.append(team.get_points_table_json())
+
+        sorted_teams = sorted(teams, key=lambda t: (t["points"], t["nrr"], t["played"]),
+                              reverse=True)
+
+        return sorted_teams
+
+
     def get_match_data_json(self, team_acronyms: str):
         ### TEAM DATA
         team_data = {}

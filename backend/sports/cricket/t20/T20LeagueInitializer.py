@@ -1,8 +1,7 @@
-from T20Match import T20Match
-from T20Team import T20Team
-from T20League import T20League
-
-import csv
+import json
+from backend.sports.cricket.t20.T20Match import T20Match
+from backend.sports.cricket.t20.T20Team import T20Team
+from backend.sports.cricket.t20.T20League import T20League
 
 class T20LeagueInitializer:
 
@@ -19,30 +18,38 @@ class T20LeagueInitializer:
         T20LeagueInitializer.populateMatches(league, schedulePath)
 
     @staticmethod
-    def populateTeams(league: T20League, path: str):
-        with open(path, mode='r') as file:
-            csv_reader = csv.DictReader(file)
+    def populateTeams(league: T20League, teamPath: str):
+        with open(teamPath, 'r') as file:
+            data = json.load(file)
 
-            for row in csv_reader:
-                team = T20Team(row['team_name'], row['acronym'])
-                team.set_logo(row['logo'])
-                league.add_team(team)
+        for team in data["teams"]:
+            t20Team = T20Team(team["team_name"], team["acronym"])
+
+            t20Team.set_gradient(team["gradient"])
+            t20Team.set_logo(team["logo"])
+
+            league.add_team(t20Team)
+
 
     @staticmethod
-    def populateMatches(league: T20League, path: str):
-        with open(path, mode='r') as file:
-            csv_reader = csv.DictReader(file)
+    def populateMatches(league: T20League, matchPath: str):
+        with open(matchPath, mode='r') as file:
+            data = json.load(file)
 
-            for row in csv_reader:
-                mNum = row['match_number']
+            for m in data:
+                mNum = m["MatchNumber"]
 
-                hTeam = league.get_Team(row['home_team'])
-                aTeam = league.get_Team(row['away_team'])
+                hTeam = league.get_Team(m["HomeTeam"])
+                aTeam = league.get_Team(m["AwayTeam"])
 
                 match = T20Match(mNum, hTeam, aTeam)
 
-                match.setMatchLocation(row['location'])
-                match.setMatchDate(row['date'])
-                match.setMatchType(row['type'])
+                match.setMatchVenue(m["Location"])
+                match.setMatchDateTime(m["DateUtc"])
+                match.set_match_status(m["status"])
+                match.set_match_result(m["result"])
+
 
                 league.add_match(match)
+
+

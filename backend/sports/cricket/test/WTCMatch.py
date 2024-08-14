@@ -136,7 +136,7 @@ class WTCMatch:
             return start_month + " " + start_day + "-" + end_month + " " + end_day + ", " + year
 
     def get_12_hour_time(self):
-        return self.startTime.strftime("%I:%M %p")
+        return self.startTime.strftime("%-I:%M %p")
 
     ################################################### GETTERS
 

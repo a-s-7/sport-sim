@@ -5,6 +5,7 @@ class T20Team(CricketTeam):
     def __init__(self, name, acronym):
         super().__init__(name, acronym)
         self.logo = None
+        self.gradient = None
         self.noResult = 0
 
         self.runsScored = 0
@@ -14,8 +15,17 @@ class T20Team(CricketTeam):
 
         self.nrr = 0.0
 
+    def get_basic_json(self):
+        return {
+            "logo": self.logo,
+            "gradient": self.gradient
+        }
+
     def set_logo(self, logoData: str):
         self.logo = logoData
+
+    def set_gradient(self, gradientData: str):
+        self.gradient = gradientData
 
     def addMatchNRRDetails(self, selfScore: CricketInningsScore, opponentScore: CricketInningsScore):
         self.runsScored += selfScore.getRuns()

@@ -83,7 +83,7 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
 
             <div className="wtcLogoContainer">
                 <img
-                    src={"https://images.icc-cricket.com/image/private/t_q-best/v1707487856/prd/assets/tournaments/worldtestchampionship/2023-25/Logo_Light_dvrowv.svg"}></img>
+                    src={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}></img>
             </div>
             <div className="wtcMatchCountContainer">
                 <div className="modeButton">

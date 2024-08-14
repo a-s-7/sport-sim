@@ -1,11 +1,36 @@
-from T20Team import T20Team
-from T20Match import T20Match
+from backend.sports.cricket.t20.T20Team import T20Team
+from backend.sports.cricket.t20.T20Match import T20Match
 
 class T20League():
     def __init__(self, name):
         self.name = name
         self.teamDict = {}
         self.matchList = []
+
+    def get_match_data_json(self, team_acronyms: str):
+        ### TEAM DATA
+        team_data = {}
+
+        for team in self.teamDict.values():
+            team_data.update({team.acronym: team.get_basic_json()})
+
+        ## MATCH DATA
+
+        team_acs = team_acronyms.split("-")
+
+        match_data = []
+
+        for match in self.matchList:
+            if len(team_acs) == 1 and team_acs[0] == "All":
+                match_data.append(match.getJSON())
+            else:
+                assert isinstance(match, T20Match), "Match should be an instance of T20Match"
+
+                if match.check_if_team_present(team_acs):
+                    match_data.append(match.getJSON())
+
+        return [self.name, team_data, match_data]
+
 
     def clearAllMatchResults(self):
         for match in self.matchList:

@@ -3,7 +3,7 @@ import WTCControlBar from "../components/WTCControlBar";
 import MatchCardPanel from "../components/MatchCardPanel";
 import WTCPointsTable from "../components/WTCPointsTable";
 
-function WorldTestChampionship() {
+function WTCPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [data, setData] = useState([]);
 
@@ -71,4 +71,4 @@ function WorldTestChampionship() {
     );
 }
 
-export default WorldTestChampionship;
+export default WTCPage;

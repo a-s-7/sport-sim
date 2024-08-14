@@ -103,10 +103,3 @@ class T20LeagueSimulator:
                 match.applyMatchResult(MatchResult.AWAY_WIN)
             else:
                 match.applyMatchResult(MatchResult.NO_RESULT)
-
-
-sP = "/Users/ayushsaldhi/Desktop/Projects/sports-simulator/sports/cricket/t20/league_data/ipl/ipl-2024-sc.csv"
-
-tP = "/Users/ayushsaldhi/Desktop/Projects/sports-simulator/sports/cricket/t20/league_data/ipl/ipl-2024-t.csv"
-
-sim = T20LeagueSimulator("IPL 2024", tP, sP)

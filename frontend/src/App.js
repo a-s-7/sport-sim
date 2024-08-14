@@ -1,9 +1,9 @@
 import './App.css';
 import NavBar from "./components/NavBar";
-import WorldTestChampionship from "./pages/WorldTestChampionship";
+import WTCPage from "./pages/WTCPage";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
-import IPL from "./pages/IPL";
+import IPLPage from "./pages/IPLPage";
 
 function App() {
     return (
@@ -11,8 +11,8 @@ function App() {
             <NavBar></NavBar>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/wtc" element={<WorldTestChampionship/>}/>
-                <Route path="/ipl" element={<IPL/>}/>
+                <Route path="/wtc" element={<WTCPage/>}/>
+                <Route path="/ipl" element={<IPLPage/>}/>
             </Routes>
         </div>
     );

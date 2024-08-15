@@ -105,30 +105,18 @@ class T20Match():
         else:
             self.applyMatchResult(MatchResult.NO_RESULT)
 
-    def applyMatchResult(self, matchResult: MatchResult):
-        if matchResult != MatchResult.HOME_WIN and matchResult != MatchResult.AWAY_WIN and matchResult != MatchResult.NO_RESULT:
+
+    def checkMatchResult(self, matchResult: MatchResult):
+        possibleResults = [MatchResult.HOME_WIN, MatchResult.AWAY_WIN, MatchResult.NO_RESULT]
+
+        if matchResult not in possibleResults:
             raise ValueError("Invalid match result")
 
-        if self.matchResult == None:
-            self.matchResult = matchResult
-            
-            self.homeTeam.increment_played()
-            self.awayTeam.increment_played()
 
-            if matchResult == matchResult.HOME_WIN:
-                self.homeTeam.increment_won()
-                self.awayTeam.increment_loss()
-            elif matchResult == matchResult.AWAY_WIN:
-                self.homeTeam.increment_loss()
-                self.awayTeam.increment_won()
-            else:
-                self.homeTeam.increment_noResult()
-                self.awayTeam.increment_noResult()
-        else:
-            self.undoMatchResult()
-            self.applyMatchResult(matchResult)
-             
     def undoMatchResult(self):
+        if self.matchResult == MatchResult.NONE:
+            return
+
         self.homeTeam.decrement_played()
         self.awayTeam.decrement_played()
 
@@ -142,4 +130,23 @@ class T20Match():
             self.homeTeam.decrement_noResult()
             self.awayTeam.decrement_noResult()
 
-        self.matchResult = None
+        self.matchResult = MatchResult.NONE
+
+    def applyMatchResult(self, matchResult: MatchResult):
+        self.checkMatchResult(matchResult)
+        self.undoMatchResult()
+
+        self.matchResult = matchResult
+
+        self.homeTeam.increment_played()
+        self.awayTeam.increment_played()
+
+        if matchResult == matchResult.HOME_WIN:
+            self.homeTeam.increment_won()
+            self.awayTeam.increment_loss()
+        elif matchResult == matchResult.AWAY_WIN:
+            self.homeTeam.increment_loss()
+            self.awayTeam.increment_won()
+        else:
+            self.homeTeam.increment_noResult()
+            self.awayTeam.increment_noResult()

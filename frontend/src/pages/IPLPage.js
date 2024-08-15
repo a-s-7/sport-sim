@@ -51,8 +51,11 @@ function IPLPage() {
 
     return (
         <div className="IPLPage">
-            <IPLControlBar teams={selectedTeams}
-                           sst={setSelectedTeams}></IPLControlBar>
+            <IPLControlBar
+                refreshFunction={handleRefresh}
+                matchCount={Array.isArray(data[2]) ? data[2].length : 0}
+                teams={selectedTeams}
+                sst={setSelectedTeams}></IPLControlBar>
 
 
             <div className="matchArea">

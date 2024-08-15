@@ -3,33 +3,79 @@ import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
-function IPLControlBar({teams, sst}) {
+function IPLControlBar({refreshFunction, matchCount, teams, sst}) {
     const [lockStatus, setLockStatus] = useState(true);
 
-  const iplTeams = [
-    { value: 'CSK', label: 'Chennai Super Kings' },
-    { value: 'MI', label: 'Mumbai Indians' },
-    { value: 'DC', label: 'Delhi Capitals' },
-    { value: 'GT', label: 'Gujarat Titans' },
-    { value: 'KKR', label: 'Kolkata Knight Riders' },
-    { value: 'LSG', label: 'Lucknow Super Giants' },
-    { value: 'PBKS', label: 'Punjab Kings' },
-    { value: 'RR', label: 'Rajasthan Royals' },
-    { value: 'RCB', label: 'Royal Challengers Bengaluru' },
-    { value: 'SRH', label: 'Sunrisers Hyderabad' },
-];
+    const iplTeams = [
+        {value: 'CSK', label: 'Chennai Super Kings'},
+        {value: 'MI', label: 'Mumbai Indians'},
+        {value: 'DC', label: 'Delhi Capitals'},
+        {value: 'GT', label: 'Gujarat Titans'},
+        {value: 'KKR', label: 'Kolkata Knight Riders'},
+        {value: 'LSG', label: 'Lucknow Super Giants'},
+        {value: 'PBKS', label: 'Punjab Kings'},
+        {value: 'RR', label: 'Rajasthan Royals'},
+        {value: 'RCB', label: 'Royal Challengers Bengaluru'},
+        {value: 'SRH', label: 'Sunrisers Hyderabad'},
+    ];
 
-   const handleChange = (selectedOptions) => {
+    const handleChange = (selectedOptions) => {
         sst(selectedOptions);
     };
 
     const resetIncompleteMatches = async () => {
-       alert("Resetting incomplete matches");
+        let teamNames = "All";
+
+        if (teams.length > 0) {
+            teamNames = teams.map(team => team.value).join("-");
+        }
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/IPL/clear/${teamNames}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+            if (response.ok) {
+                const result = await response.json();
+                refreshFunction();
+            } else {
+                alert("Error: Response not ok")
+            }
+        } catch (error) {
+            alert(error)
+        }
     };
 
 
     const randomlySimIncompleteMatches = async () => {
-        alert("Randomly simulating incomplete matches");
+         let teamNames = "All";
+
+        if (teams.length > 0) {
+            teamNames = teams.map(team => team.value).join("-");
+        }
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/IPL/sim/${teamNames}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+            if (response.ok) {
+                const result = await response.json();
+                refreshFunction();
+            } else {
+                alert("Error: Response not ok")
+            }
+        } catch (error) {
+            alert(error)
+        }
     };
 
 
@@ -41,7 +87,7 @@ function IPLControlBar({teams, sst}) {
                     src="https://www.iplt20.com/assets/images/ipl-logo-new-old.png"></img>
             </div>
             <div className="iplMatchCountContainer">
-                    {69 + " MATCHES"}
+                {matchCount + " MATCHES"}
             </div>
             <div className="iplFilterContainer">
                 <div className="filterBar">

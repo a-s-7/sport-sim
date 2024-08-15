@@ -161,6 +161,19 @@ def clear_ipl_results(team_names):
 
     return jsonify({"message": "IPL matches cleared successfully"})
 
+@app.route('/IPL/sim/<team_names>', methods=['PATCH'])
+def sim_ipl_matches(team_names):
+    if (ipl == None):
+        return jsonify({"error": "IPL object not initialized"}), 500
+
+    assert isinstance(ipl, T20League), "ipl should be an instance of T20League"
+
+    try:
+        ipl.simulate_matches(team_names)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": "IPL matches simulated successfully"})
 
 if __name__ == '__main__':
     initialize_global_objects()

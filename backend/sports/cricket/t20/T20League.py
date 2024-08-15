@@ -34,6 +34,30 @@ class T20League():
 
         self.matchList[int(match_num) - 1].applyMatchResult(resultObj)
 
+    def clear_incomplete_matches(self, team_acronyms: str):
+        team_acs = team_acronyms.split("-")
+
+        if len(team_acs) == 1 and team_acs[0] == "All":
+            for match in self.matchList:
+                if match.status == "incomplete":
+                    match.clear_match()
+        else:
+            for match in self.matchList:
+                if match.check_if_team_present(team_acs) and match.status == "incomplete":
+                    match.clear_match()
+
+    def simulate_matches(self, team_acronyms: str):
+        team_acs = team_acronyms.split("-")
+
+        if len(team_acs) == 1 and team_acs[0] == "All":
+            for match in self.matchList:
+                if match.status == "incomplete":
+                    match.simulate_match()
+        else:
+            for match in self.matchList:
+                if match.check_if_team_present(team_acs) and match.status == "incomplete":
+                    match.simulate_match()
+
 
     def get_match_data_json(self, team_acronyms: str):
         ### TEAM DATA

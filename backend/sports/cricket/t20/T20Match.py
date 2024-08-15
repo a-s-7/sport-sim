@@ -1,3 +1,4 @@
+import random
 from datetime import datetime, timedelta
 
 from backend.sports.cricket.t20.T20Team import T20Team
@@ -25,6 +26,16 @@ class T20Match():
         self.matchResult = None
         
         self.addMatchToTeams()
+
+    def simulate_match(self):
+        rand_decimal = random.uniform(0, 1)
+
+        if 0 <= rand_decimal <= 0.475:
+            self.applyMatchResult(MatchResult.HOME_WIN)
+        elif 0.475 < rand_decimal <= 0.95:
+            self.applyMatchResult(MatchResult.AWAY_WIN)
+        else:
+            self.applyMatchResult(MatchResult.NO_RESULT)
 
     def set_match_status(self, status: str):
         self.status = status
@@ -63,6 +74,9 @@ class T20Match():
         if self.homeTeam.acronym in teamNames or self.awayTeam.acronym in teamNames:
             return True
         return False
+
+    def clear_match(self):
+        self.undoMatchResult()
 
     def addMatchToTeams(self):
         self.homeTeam.addMatch(self, "Home")

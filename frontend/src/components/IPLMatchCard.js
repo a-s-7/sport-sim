@@ -11,6 +11,15 @@ function IPLMatchCard({
     const [hoveredSection, setHoveredSection] = useState(null);
 
 
+    const [awayRuns, setAwayRuns] = useState('');
+    const [awayWickets, setAwayWickets] = useState('');
+    const [awayOvers, setAwayOvers] = useState('');
+
+    const [homeRuns, setHomeRuns] = useState('');
+    const [homeWickets, setHomeWickets] = useState('');
+    const [homeOvers, setHomeOvers] = useState('');
+
+
     const getStyle = (section, num) => {
         let background = 'transparent';
         let color = 'black';
@@ -55,6 +64,59 @@ function IPLMatchCard({
         handleClick(result);
     }
 
+    const handleOverChange = (val, area) => {
+        let value = parseFloat(val);
+
+        if (value > 20) {
+            value = 20;
+        }
+
+        value = parseFloat(value.toFixed(2));
+
+        const [intPart, decPart] = value.toString().split('.').map(Number);
+
+
+        if (decPart > 5) {
+            value = intPart + 1.0;
+        }
+
+        if (area === 'home') {
+            setHomeOvers(value);
+        } else {
+            setAwayOvers(value);
+        }
+    }
+
+    const handleRunChange = (val, area) => {
+        let value = parseFloat(val);
+
+        const [intPart, decPart] = value.toString().split('.').map(Number);
+
+        if (decPart) {
+            value = intPart + 1.0;
+        }
+
+        if (area === 'home') {
+            setHomeRuns(value);
+        } else {
+            setAwayRuns(value);
+        }
+    }
+
+    const handleWicketChange = (val, area) => {
+        let value = parseFloat(val);
+
+        if (value > 10) {
+            value = 10;
+        }
+
+        if (area === 'home') {
+            setHomeWickets(value);
+        } else {
+            setAwayWickets(value);
+        }
+    }
+
     return (
         <div className="matchCardBody">
             <div className="body">
@@ -64,12 +126,56 @@ function IPLMatchCard({
                          onMouseEnter={() => setHoveredSection("Home-win")}
                          onMouseLeave={() => setHoveredSection(null)}
                          style={getStyle("Home-win", 0)}>
-                        <div className="homeName">
+
+                        <div className="homeScore">
+                            <div className="homeRunsWickets">
+                                <input className="runsInput"
+                                       type={"number"}
+                                       min="0"
+                                       step="1"
+                                       onChange={(event) =>
+                                           handleRunChange(event.target.value, 'home')}
+                                       value={homeRuns}
+                                       onClick={(e) => e.stopPropagation()}
+                                       style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
+
+                                <h2>/</h2>
+                                <input className="wicketInput"
+                                       type={"number"}
+                                       min="0"
+                                       max="10"
+                                       step="1"
+                                       onChange={(event) =>
+                                           handleWicketChange(event.target.value, 'home')}
+                                       value={homeWickets}
+                                       onClick={(e) => e.stopPropagation()}
+                                       style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
+
+                            </div>
+                            <div className="homeOvers">
+                                <input className="oversInput"
+                                       type={"number"}
+                                       min="0.0"
+                                       max="20.0"
+                                       step="0.1"
+                                       onChange={(event) =>
+                                           handleOverChange(event.target.value, 'home')}
+                                       value={homeOvers}
+                                       onClick={(e) => e.stopPropagation()}
+                                       style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
+
+                            </div>
+                        </div>
+
+
+                        <div className="t20homeName">
                             {homeTeamName}
                         </div>
+
                         <div className="homeLogo">
                             <img src={homeTeamLogo}></img>
                         </div>
+
                     </div>
                     <div className='neutral'
                          onClick={() => handleClick('No-result')}
@@ -85,12 +191,53 @@ function IPLMatchCard({
                          onMouseEnter={() => setHoveredSection('Away-win')}
                          onMouseLeave={() => setHoveredSection(null)}
                          style={getStyle('Away-win', 2)}>
+
                         <div className="awayLogo">
                             <img src={awayTeamLogo}></img>
                         </div>
-                        <div className="awayName">
+
+                        <div className="t20AwayName">
                             {awayTeamName}
                         </div>
+
+                        <div className="awayScore">
+                            <div className="awayRunsWickets">
+                                <input className="runsInput"
+                                       type={"number"}
+                                       min="0"
+                                       step="1"
+                                       onChange={(event) =>
+                                           handleRunChange(event.target.value, 'away')}
+                                       value={awayRuns}
+                                       onClick={(e) => e.stopPropagation()}
+                                       style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
+                                <h2>/</h2>
+                                <input className="wicketInput"
+                                       type={"number"}
+                                       min="0"
+                                       max="10"
+                                       step="1"
+                                       onChange={(event) =>
+                                           handleWicketChange(event.target.value, 'away')}
+                                       value={awayWickets}
+                                       onClick={(e) => e.stopPropagation()}
+                                       style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
+                            </div>
+                            <div className="awayOvers">
+                                <input className="oversInput"
+                                       type={"number"}
+                                       min="0.0"
+                                       max="20.0"
+                                       step="0.1"
+                                       onChange={(event) =>
+                                           handleOverChange(event.target.value, 'away')}
+                                       value={awayOvers}
+                                       onClick={(e) => e.stopPropagation()}
+                                       style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div className="infoBody">

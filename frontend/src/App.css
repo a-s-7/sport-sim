@@ -29,8 +29,6 @@ html, body, #root {
 }
 
 
-
-
 .homeWelcomeMessage {
     display: flex;
     height: 100%;
@@ -108,11 +106,7 @@ html, body, #root {
 }
 
 
-
-
-
-
-.filterContainer, .iplFilterContainer{
+.filterContainer, .iplFilterContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,7 +192,7 @@ html, body, #root {
     padding: 10px;
 }
 
-.WTCTable , .T20Table {
+.WTCTable, .T20Table {
     background-color: white;
     width: 100%;
     height: 100%;
@@ -210,7 +204,7 @@ html, body, #root {
     overflow: hidden;
 }
 
-.WTCTable thead , .T20Table thead {
+.WTCTable thead, .T20Table thead {
     font-family: "Reem Kufi Fun", sans-serif;
     color: white;
     text-align: center;
@@ -273,7 +267,7 @@ html, body, #root {
 .T20Table tbody tr:nth-child(1):hover,
 .T20Table tbody tr:nth-child(2):hover,
 .T20Table tbody tr:nth-child(3):hover,
-.T20Table tbody tr:nth-child(4):hover{
+.T20Table tbody tr:nth-child(4):hover {
     background-color: white;
 }
 
@@ -297,7 +291,6 @@ html, body, #root {
 .T20Table tbody tr:nth-of-type(4) {
     border: 1px solid black;
 }
-
 
 
 .teamNameInfo {
@@ -388,16 +381,132 @@ html, body, #root {
 
 .homeName, .awayName {
     display: flex;
+    flex-direction: row;
     align-items: center;
     width: 55%;
     font-size: 2vh;
     font-weight: bolder;
+    /*background-color: blue;*/
+}
+
+
+.t20homeName {
+    display: flex;
+    align-items: center;
+    font-size: 2vh;
+    width: 20%;
+    /*background-color: orange;*/
+    justify-content: flex-end;
+}
+
+.t20AwayName {
+    display: flex;
+    align-items: center;
+    font-size: 2vh;
+    width: 20%;
+    /*background-color: purple;*/
+    justify-content: flex-start;
+}
+
+
+.homeScore, .awayScore {
+    font-family: "Reem Kufi Fun", sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2vh;
+    align-items: flex-end;
+    width: 40%;
+    /*background-color: rebeccapurple;*/
+}
+
+
+.awayScore {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.homeScore {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.homeOvers, .homeRunsWickets {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.awayOvers, .awayRunsWickets {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.awayRunsWickets, .homeRunsWickets {
+    align-items: center;
+    font-family: "Reem Kufi Fun", sans-serif;
+    /*color: white;*/
+    border-radius: 5px;
+    text-align: left;
+    height: 20%;
+    margin-bottom: 5px;
+}
+
+.runsInput {
+    /*color: white;*/
+    font-family: "Reem Kufi Fun", sans-serif;
+    border-radius: 5px;
+    border: 0.5px solid white;
+    /*border: none;*/
+    background: transparent;
+    width: 35%;
+    height: 100%;
+    font-size: 2.5vh;
+    /*margin-right: 3px;*/
+    text-align: center;
+
+}
+
+.wicketInput {
+    /*color: white;*/
+    font-family: "Reem Kufi Fun", sans-serif;
+    border-radius: 5px;
+    border: 0.5px solid white;
+    /*border: none;*/
+    background: transparent;
+    font-size: 2.5vh;
+    width: 20%;
+    height: 100%;
+    margin-left: 2px;
+    text-align: center;
+}
+
+.oversInput {
+    /*color: white;*/
+    border: 0.5px solid white;
+    font-size: 1.75vh;
+    /*border: none;*/
+    border-radius: 5px;
+    background: transparent;
+    font-family: "Reem Kufi Fun", sans-serif;
+    text-align: center;
+    width: 90%
+}
+
+
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
 .homeName {
     justify-content: flex-end;
-    margin-right: 2px;
 }
 
 .awayName {
@@ -411,6 +520,12 @@ html, body, #root {
     align-items: center;
     padding: 30px;
 }
+
+.homeLogo, .awayLogo {
+    /*background-color: red;*/
+    width: 40%;
+}
+
 
 .homeFlag img, .awayFlag img {
     background-color: white;

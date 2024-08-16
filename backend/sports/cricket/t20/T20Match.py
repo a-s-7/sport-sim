@@ -1,6 +1,7 @@
 import random
 from datetime import datetime, timedelta
 
+from backend.sports.cricket.CricketFormat import CricketFormat
 from backend.sports.cricket.t20.T20Team import T20Team
 from backend.sports.cricket.CricketInningsScore import CricketInningsScore
 from backend.sports.cricket.MatchResult import MatchResult
@@ -26,6 +27,21 @@ class T20Match():
         self.matchResult = None
         
         self.addMatchToTeams()
+
+    def set_team_score(self, team: str, runs: int, overs: str):
+        over = 0
+        balls = 0
+
+        if '.' not in overs:
+            over = overs
+            balls = 0
+        else:
+            over, balls = overs.split(".")
+
+        if(team == "Home"):
+            self.homeTeamScore = CricketInningsScore(runs, int(over), int(balls), CricketFormat.T20)
+        else:
+            self.awayTeamScore = CricketInningsScore(runs, int(over), int(balls), CricketFormat.T20)
 
     def simulate_match(self):
         rand_decimal = random.uniform(0, 1)

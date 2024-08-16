@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 
 function IPLMatchCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
@@ -18,6 +18,11 @@ function IPLMatchCard({
     const [homeRuns, setHomeRuns] = useState('');
     const [homeWickets, setHomeWickets] = useState('');
     const [homeOvers, setHomeOvers] = useState('');
+
+    const homeRunsRef = useRef(null);
+    const awayRunsRef = useRef(null);
+    const homeOversRef = useRef(null);
+    const awayOversRef = useRef(null);
 
 
     const getStyle = (section, num) => {
@@ -64,7 +69,9 @@ function IPLMatchCard({
         handleClick(result);
     }
 
-    const handleOverChange = (val, area) => {
+    const handleOverChange = async (val, area) => {
+        // alert("OVERS:" + val)
+
         let value = parseFloat(val);
 
         if (value > 20) {
@@ -87,7 +94,8 @@ function IPLMatchCard({
         }
     }
 
-    const handleRunChange = (val, area) => {
+
+    const handleRunChange = async (val, area) => {
         let value = parseFloat(val);
 
         const [intPart, decPart] = value.toString().split('.').map(Number);
@@ -103,7 +111,7 @@ function IPLMatchCard({
         }
     }
 
-    const handleWicketChange = (val, area) => {
+    const handleWicketChange = async (val, area) => {
         let value = parseFloat(val);
 
         if (value > 10) {
@@ -116,6 +124,37 @@ function IPLMatchCard({
             setAwayWickets(value);
         }
     }
+
+    const handleNRRChange = async () => {
+        const homeRunsValue = parseFloat(homeRunsRef.current.value);
+        const awayRunsValue = parseFloat(awayRunsRef.current.value);
+        const homeOversValue = parseFloat(homeOversRef.current.value);
+        const awayOversValue = parseFloat(awayOversRef.current.value);
+
+        // alert("NRR: " + homeRunsValue + " " + awayRunsValue + " " + homeOversValue + " " + awayOversValue)
+
+        if (!isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/IPL/nrr/${matchNum}/${homeRunsValue}/${homeOversValue}/${awayRunsValue}/${awayOversValue}`,
+                    {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    onMatchUpdate();
+                } else {
+                    alert("Error: Response not ok")
+                }
+            } catch (error) {
+                alert(error)
+            }
+        }
+    }
+
 
     return (
         <div className="matchCardBody">
@@ -133,8 +172,11 @@ function IPLMatchCard({
                                        type={"number"}
                                        min="0"
                                        step="1"
-                                       onChange={(event) =>
-                                           handleRunChange(event.target.value, 'home')}
+                                       ref={homeRunsRef}
+                                       onChange={async (event) => {
+                                           await handleRunChange(event.target.value, 'home')
+                                           handleNRRChange()
+                                       }}
                                        value={homeRuns}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
@@ -158,8 +200,11 @@ function IPLMatchCard({
                                        min="0.0"
                                        max="20.0"
                                        step="0.1"
-                                       onChange={(event) =>
-                                           handleOverChange(event.target.value, 'home')}
+                                       ref={homeOversRef}
+                                       onChange={async (event) => {
+                                           await handleOverChange(event.target.value, 'home')
+                                           handleNRRChange()
+                                       }}
                                        value={homeOvers}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
@@ -206,8 +251,11 @@ function IPLMatchCard({
                                        type={"number"}
                                        min="0"
                                        step="1"
-                                       onChange={(event) =>
-                                           handleRunChange(event.target.value, 'away')}
+                                       ref={awayRunsRef}
+                                       onChange={async (event) => {
+                                           await handleRunChange(event.target.value, 'away')
+                                           handleNRRChange()
+                                       }}
                                        value={awayRuns}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
@@ -229,8 +277,11 @@ function IPLMatchCard({
                                        min="0.0"
                                        max="20.0"
                                        step="0.1"
-                                       onChange={(event) =>
-                                           handleOverChange(event.target.value, 'away')}
+                                       ref={awayOversRef}
+                                       onChange={async (event) => {
+                                           await handleOverChange(event.target.value, 'away');
+                                           handleNRRChange();
+                                       }}
                                        value={awayOvers}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>

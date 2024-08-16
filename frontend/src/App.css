@@ -343,6 +343,7 @@ html, body, #root {
     flex-grow: 1;
 }
 
+
 .awayDed, .homeDed {
     padding: 2px;
     display: flex;
@@ -418,9 +419,7 @@ html, body, #root {
     font-size: 2vh;
     align-items: flex-end;
     width: 40%;
-    /*background-color: rebeccapurple;*/
 }
-
 
 .awayScore {
     display: flex;
@@ -458,7 +457,7 @@ html, body, #root {
     /*color: white;*/
     font-family: "Reem Kufi Fun", sans-serif;
     border-radius: 5px;
-    border: 0.5px solid white;
+    border: 0.5px solid lightgrey;
     /*border: none;*/
     background: transparent;
     width: 35%;
@@ -473,7 +472,7 @@ html, body, #root {
     /*color: white;*/
     font-family: "Reem Kufi Fun", sans-serif;
     border-radius: 5px;
-    border: 0.5px solid white;
+    border: 0.5px solid lightgrey;
     /*border: none;*/
     background: transparent;
     font-size: 2.5vh;
@@ -485,7 +484,7 @@ html, body, #root {
 
 .oversInput {
     /*color: white;*/
-    border: 0.5px solid white;
+    border: 0.5px solid lightgrey;
     font-size: 1.75vh;
     /*border: none;*/
     border-radius: 5px;
@@ -571,6 +570,8 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 1.2vw;
     font-weight: bold;
 }
+
+
 
 .time {
     width: 100%;

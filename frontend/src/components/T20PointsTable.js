@@ -45,7 +45,7 @@ function T20PointsTable() {
                     <td>{team.won}</td>
                     <td>{team.lost}</td>
                     <td>{team.noResult}</td>
-                    <td>{team.nrr}</td>
+                    <td>{team.nrr.toFixed(3)}</td>
                     <td>{team.points}</td>
                 </tr>
             ))}

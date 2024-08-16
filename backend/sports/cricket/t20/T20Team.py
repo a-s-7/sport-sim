@@ -26,6 +26,10 @@ class T20Team(CricketTeam):
             "acronym": self.acronym,
             "played": self.played,
             "won": self.won,
+            "runsScored": self.runsScored,
+            "ballsFaced": self.ballsFaced,
+            "oppositionRunsScored": self.oppositionRunsScored,
+            "oppositionBallsFaced": self.oppositionBallsFaced,
             "lost": self.lost,
             "noResult": self.noResult,
             "nrr": self.nrr,
@@ -49,6 +53,12 @@ class T20Team(CricketTeam):
         self.oppositionBallsFaced += opponentScore.getTotalBalls()
 
         self.calculateNRR()
+
+    def undoMatchNRRDetails(self, selfScore: CricketInningsScore, opponentScore: CricketInningsScore):
+        self.runsScored -= selfScore.getRuns()
+        self.ballsFaced -= selfScore.getTotalBalls()
+        self.oppositionRunsScored -= opponentScore.getRuns()
+        self.oppositionBallsFaced -= opponentScore.getTotalBalls()
 
     def calculateNRR(self):  
         nrrFor = self.runsScored/(self.ballsFaced/6)

@@ -175,6 +175,21 @@ def sim_ipl_matches(team_names):
 
     return jsonify({"message": "IPL matches simulated successfully"})
 
+@app.route('/IPL/nrr/<match_num>/<home_team_runs>/<home_team_overs>/<away_team_runs>/<away_team_overs>', methods=['PATCH'])
+def nrr_ipl_match(match_num, home_team_runs, home_team_overs, away_team_runs, away_team_overs):
+    if (ipl == None):
+        return jsonify({"error": "IPL object not initialized"}), 500
+
+    assert isinstance(ipl, T20League), "ipl should be an instance of T20League"
+
+    try:
+        ipl.update_match_nrr(int(match_num), int(home_team_runs), home_team_overs, int(away_team_runs), away_team_overs)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": "IPL matches simulated successfully"})
+
+
 if __name__ == '__main__':
     initialize_global_objects()
     app.run(debug=True)

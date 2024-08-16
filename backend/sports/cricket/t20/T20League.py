@@ -14,10 +14,30 @@ class T20League():
         for team in self.teamDict.values():
             teams.append(team.get_points_table_json())
 
-        sorted_teams = sorted(teams, key=lambda t: (t["points"], t["nrr"], t["played"]),
+        sorted_teams = sorted(teams, key=lambda t: (t["points"], t["nrr"] if t["played"] > 0 else float("-inf")),
                               reverse=True)
 
         return sorted_teams
+
+    def update_match_nrr(self, match_num: int, home_team_runs: int, home_team_overs: str,
+                                               away_team_runs: int, away_team_overs: str):
+
+        # Find match
+        match = self.matchList[int(match_num) - 1]
+
+        if(match.homeTeamScore != None and match.awayTeamScore != None):
+            ## Undo NRR addition for both teams
+            match.homeTeam.undoMatchNRRDetails(match.homeTeamScore, match.awayTeamScore)
+            match.awayTeam.undoMatchNRRDetails(match.awayTeamScore, match.homeTeamScore)
+
+        # Update match team scores
+        match.set_team_score("Home", home_team_runs, home_team_overs)
+        match.set_team_score("Away", away_team_runs, away_team_overs)
+
+        ## Update NRR for both teams
+        match.homeTeam.addMatchNRRDetails(match.homeTeamScore, match.awayTeamScore)
+        match.awayTeam.addMatchNRRDetails(match.awayTeamScore, match.homeTeamScore)
+
 
     def update_match(self, match_num: int, result: str):
         resultObj = None

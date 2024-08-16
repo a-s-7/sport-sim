@@ -12,8 +12,15 @@ class T20Team(CricketTeam):
         self.ballsFaced = 0.0
         self.oppositionRunsScored = 0
         self.oppositionBallsFaced = 0.0
-
         self.nrr = 0.0
+
+
+    def reset_nrr(self):
+        self.nrr = 0.0
+        self.runsScored = 0
+        self.ballsFaced = 0.0
+        self.oppositionRunsScored = 0
+        self.oppositionBallsFaced = 0.0
 
     def get_basic_json(self):
         return {

@@ -93,6 +93,8 @@ class T20Match():
 
     def clear_match(self):
         self.undoMatchResult()
+        self.homeTeamScore = None
+        self.awayTeamScore = None
 
     def addMatchToTeams(self):
         self.homeTeam.addMatch(self, "Home")

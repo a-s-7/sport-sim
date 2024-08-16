@@ -66,6 +66,9 @@ class T20League():
                 if match.check_if_team_present(team_acs) and match.status == "incomplete":
                     match.clear_match()
 
+        for team in self.teamDict.values():
+            team.reset_nrr()
+
     def simulate_matches(self, team_acronyms: str):
         team_acs = team_acronyms.split("-")
 

@@ -31,7 +31,7 @@ function T20PointsTable() {
                 <th>FOR</th>
                 <th>AGAINST</th>
                 <th>POINTS</th>
-                <th>POINTS</th>
+                <th>LAST FIVE</th>
             </tr>
             </thead>
             <tbody>
@@ -52,7 +52,9 @@ function T20PointsTable() {
                     <td>{team.runsScored + "/" + (team.ballsFaced / 6).toFixed(1)}</td>
                     <td>{team.oppositionRunsScored + "/" + (team.oppositionBallsFaced / 6).toFixed(1)}</td>
                     <td>{team.points}</td>
-                    <td>{team.points}</td>
+                    <td>{team.previous5.map((value) => (
+                        value === true ? 'W' : value === false ? 'L' : 'N'
+                    )).join('')}</td>
                 </tr>
             ))}
             </tbody>

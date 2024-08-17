@@ -223,6 +223,7 @@ html, body, #root {
 
 .T20Table thead {
     background-color: darkblue;
+    white-space: nowrap;
 }
 
 .WTCTable thead {
@@ -351,6 +352,8 @@ html, body, #root {
     background-color: white;
     font-size: 0.9vw;
 }
+
+
 
 .matchInfo {
     display: flex;

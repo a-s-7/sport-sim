@@ -49,7 +49,7 @@ class T20League():
         elif str(result) == "No-result":
             resultObj = MatchResult.NO_RESULT
         elif str(result) == "None":
-            self.matchList[int(match_num) - 1].undoMatchResult()
+            self.matchList[int(match_num) - 1].clear_match()
             return
 
         self.matchList[int(match_num) - 1].applyMatchResult(resultObj)

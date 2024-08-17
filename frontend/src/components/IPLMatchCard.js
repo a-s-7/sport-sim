@@ -65,9 +65,6 @@ function IPLMatchCard({
         }
     }
 
-    const resetMatch = async (result) => {
-        handleClick(result);
-    }
 
     const handleOverChange = async (val, area) => {
         // alert("OVERS:" + val)
@@ -153,6 +150,18 @@ function IPLMatchCard({
                 alert(error)
             }
         }
+    }
+
+    const resetMatch = async (result) => {
+        setHomeRuns('');
+        setHomeWickets('');
+        setHomeOvers('');
+
+        setAwayRuns('');
+        setAwayWickets('');
+        setAwayOvers('');
+
+        await handleClick(result);
     }
 
 

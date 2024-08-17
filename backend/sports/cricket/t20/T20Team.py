@@ -67,7 +67,13 @@ class T20Team(CricketTeam):
         self.oppositionRunsScored -= opponentScore.getRuns()
         self.oppositionBallsFaced -= opponentScore.getTotalBalls()
 
-    def calculateNRR(self):  
+        self.calculateNRR()
+
+    def calculateNRR(self):
+        if(self.ballsFaced == 0 or self.oppositionBallsFaced == 0):
+            self.nrr = 0.0
+            return
+
         nrrFor = self.runsScored/(self.ballsFaced/6)
         nrrAgainst = self.oppositionRunsScored/((self.oppositionBallsFaced/6))
         

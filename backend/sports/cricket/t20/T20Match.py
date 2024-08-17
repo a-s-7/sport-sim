@@ -28,6 +28,16 @@ class T20Match():
         
         self.addMatchToTeams()
 
+    def clear_match(self):
+        self.undoMatchResult()
+
+        if(self.homeTeamScore != None and self.awayTeamScore != None):
+            self.homeTeam.undoMatchNRRDetails(self.homeTeamScore, self.awayTeamScore)
+            self.awayTeam.undoMatchNRRDetails(self.awayTeamScore, self.homeTeamScore)
+
+            self.homeTeamScore = None
+            self.awayTeamScore = None
+
     def set_team_score(self, team: str, runs: int, overs: str):
         over = 0
         balls = 0
@@ -90,11 +100,6 @@ class T20Match():
         if self.homeTeam.acronym in teamNames or self.awayTeam.acronym in teamNames:
             return True
         return False
-
-    def clear_match(self):
-        self.undoMatchResult()
-        self.homeTeamScore = None
-        self.awayTeamScore = None
 
     def addMatchToTeams(self):
         self.homeTeam.addMatch(self, "Home")

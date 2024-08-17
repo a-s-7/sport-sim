@@ -65,7 +65,9 @@ function IPLPage() {
                                        matches={data}/>
                 </div>
                 <div className="tableContainer">
-                    <T20PointsTable key={pointsTableKey}/>
+                    <div className="tableWrapper">
+                        <T20PointsTable key={pointsTableKey}/>
+                    </div>
                 </div>
             </div>
         </div>

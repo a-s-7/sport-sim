@@ -28,6 +28,9 @@ function T20PointsTable() {
                 <th>LOST</th>
                 <th>NR</th>
                 <th>NRR</th>
+                <th>FOR</th>
+                <th>AGAINST</th>
+                <th>POINTS</th>
                 <th>POINTS</th>
             </tr>
             </thead>
@@ -46,6 +49,9 @@ function T20PointsTable() {
                     <td>{team.lost}</td>
                     <td>{team.noResult}</td>
                     <td>{team.nrr.toFixed(3)}</td>
+                    <td>{team.runsScored + "/" + (team.ballsFaced / 6).toFixed(1)}</td>
+                    <td>{team.oppositionRunsScored + "/" + (team.oppositionBallsFaced / 6).toFixed(1)}</td>
+                    <td>{team.points}</td>
                     <td>{team.points}</td>
                 </tr>
             ))}

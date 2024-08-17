@@ -28,6 +28,16 @@ class T20Match():
         
         self.addMatchToTeams()
 
+    def check_team_winner(self, team: str):
+        if self.matchResult == MatchResult.HOME_WIN:
+            if team == "Home":
+                return True
+        elif self.matchResult == MatchResult.AWAY_WIN:
+            if team == "Away":
+                return True
+
+        return False
+
     def clear_match(self):
         self.undoMatchResult()
 

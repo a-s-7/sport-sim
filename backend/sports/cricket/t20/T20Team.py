@@ -28,6 +28,25 @@ class T20Team(CricketTeam):
             "gradient": self.gradient
         }
 
+    def get_previous_5_matches(self):
+        results = []
+
+        for i in range(self.played, self.played - 5, -1):
+            if i <= 0:
+                break
+
+            # {'match': match, 'role': role}
+            m = self.matchList[i - 1]
+            match =  m["match"]
+            status = match.check_team_winner(m['role'])
+            results.append(status)
+
+        if len(results) < 5:
+            for i in range(5 - len(results)):
+                results.append(None)
+
+        return results
+
     def get_points_table_json(self):
         return {
             "acronym": self.acronym,
@@ -41,7 +60,8 @@ class T20Team(CricketTeam):
             "noResult": self.noResult,
             "nrr": self.nrr,
             "points": self.get_point_total(),
-            "logo": self.logo
+            "logo": self.logo,
+            "previous5": self.get_previous_5_matches()
         }
 
     def get_point_total(self):

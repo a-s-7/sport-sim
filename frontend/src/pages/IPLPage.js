@@ -1,31 +1,32 @@
 import React, {useEffect, useState} from "react";
 import IPLControlBar from "../components/IPLControlBar";
 import T20MatchCardPanel from "../components/T20MatchCardPanel";
-import IPLMatchCard from "../components/IPLMatchCard";
 import T20PointsTable from "../components/T20PointsTable";
 
 function IPLPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
-    const [data, setData] = useState([]);
+    const [matchesData, setMatchesData] = useState([]);
+
+    const [oldPointsTableData, setOldPointsTableData] = useState([]);
+    const [pointsTableData, setPointsTableData] = useState([]);
 
     const [matchAreaKey, setMatchAreaKey] = useState(0);
-    const [pointsTableKey, setPointsTableKey] = useState(0);
 
-    const refreshPointsTable = () => {
-        setPointsTableKey(pointsTableKey + 1);
+    const refreshPointsTable = async () => {
+        await fetchPointsTableData();
     }
 
-    const refreshMatchArea = () => {
+    const refreshMatchArea = async () => {
+        await fetchMatchData();
         setMatchAreaKey(matchAreaKey + 1);
     }
 
     const handleRefresh = async () => {
-        await fetchData();
-        refreshMatchArea();
-        refreshPointsTable();
+        await refreshMatchArea();
+        await refreshPointsTable();
     }
 
-    const fetchData = async () => {
+    const fetchMatchData = async () => {
         let url = `http://127.0.0.1:5000/IPL/matches/All`;
 
         if (selectedTeams.length > 0) {
@@ -39,21 +40,43 @@ function IPLPage() {
                 throw new Error("Response was not ok");
             }
             const result = await response.json();
-            setData(result);
+            setMatchesData(result);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
+    const fetchPointsTableData = async () => {
+        let url = `http://127.0.0.1:5000/IPL/points_table`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Response was not ok");
+            }
+            const result = await response.json();
+            setOldPointsTableData(pointsTableData);
+            setPointsTableData(result);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    // useEffect(() => {
+    //    console.log("Old Points Table Data: ", oldPointsTableData);
+    //    console.log("New Points Table Data: ", pointsTableData);
+    // }, [pointsTableData]);  // This effect runs when pointsTableData changes
+
     useEffect(() => {
-        fetchData();
+        fetchMatchData();
+        fetchPointsTableData()
     }, [selectedTeams]);
 
     return (
         <div className="IPLPage">
             <IPLControlBar
                 refreshFunction={handleRefresh}
-                matchCount={Array.isArray(data[2]) ? data[2].length : 0}
+                matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                 teams={selectedTeams}
                 sst={setSelectedTeams}></IPLControlBar>
 
@@ -62,11 +85,11 @@ function IPLPage() {
                 <div className="matchCardContainer">
                     <T20MatchCardPanel key={matchAreaKey}
                                        onMatchUpdate={refreshPointsTable}
-                                       matches={data}/>
+                                       matches={matchesData}/>
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
-                        <T20PointsTable key={pointsTableKey}/>
+                        <T20PointsTable pointsTableData={pointsTableData}/>
                     </div>
                 </div>
             </div>

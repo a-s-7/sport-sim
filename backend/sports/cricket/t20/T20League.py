@@ -8,6 +8,7 @@ class T20League():
         self.teamDict = {}
         self.matchList = []
 
+
     def get_points_table_json(self):
         teams = []
 
@@ -209,5 +210,4 @@ class T20League():
             print("{:<15} {:<10} {:<7} {:<7} {:<7} {:<12} {:<10.3f} {:<7.0f}".format(index, t.acronym, t.played, t.won,
                                                                                      t.lost, t.noResult, t.nrr,
                                                                                      (t.won * 2 + t.noResult * 1)))
-
 

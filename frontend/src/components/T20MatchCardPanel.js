@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import IPLMatchCard from "./IPLMatchCard";
 
 function T20MatchCardPanel({onMatchUpdate, matches}) {
+
     const [league = "", teamData = {}, matchData = []] = matches;
 
     return (

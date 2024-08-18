@@ -309,7 +309,7 @@ html, body, #root {
     align-items: center;
     justify-content: center;
     font-family: "Reem Kufi Fun", sans-serif;
-    padding: 5px;
+    padding: 10px;
 }
 
 .teamNameInfo {
@@ -356,11 +356,13 @@ html, body, #root {
     width: 100%;
     height: 100%;
     align-items: center;
+    justify-content: center;
+    gap: 0px;
 }
 
 .lastFiveImage {
-    width: 40%;
-    height: 40%;
+    width: 35%;
+    height: 35%;
 }
 
 .infoBody {

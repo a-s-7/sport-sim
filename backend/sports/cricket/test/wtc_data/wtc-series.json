@@ -926,8 +926,8 @@
           "startDate": "2024-08-15",
           "endDate": "2024-08-19",
           "startTime": "07:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         }

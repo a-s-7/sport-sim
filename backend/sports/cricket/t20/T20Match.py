@@ -31,12 +31,17 @@ class T20Match():
     def check_team_winner(self, team: str):
         if self.matchResult == MatchResult.HOME_WIN:
             if team == "Home":
-                return True
+                return "Win"
+            else:
+                return "Loss"
         elif self.matchResult == MatchResult.AWAY_WIN:
             if team == "Away":
-                return True
+                return "Win"
+            else:
+                return "Loss"
+        else:
+            return "No Result"
 
-        return False
 
     def clear_match(self):
         self.undoMatchResult()

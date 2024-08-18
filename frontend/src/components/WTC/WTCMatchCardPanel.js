@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import WTCMatchCard from "./WTCMatchCard";
 import WTCMatchResultCard from "./WTCMatchResultCard";
 
-function MatchCardPanel({onMatchUpdate, matches}) {
+function WTCMatchCardPanel({onMatchUpdate, matches}) {
     const [teamData = {}, seriesData = {}, matchData = []] = matches;
 
     return (
@@ -49,4 +49,4 @@ function MatchCardPanel({onMatchUpdate, matches}) {
     );
 }
 
-export default MatchCardPanel;
+export default WTCMatchCardPanel;

@@ -1,11 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
-function IPLControlBar({refreshFunction, matchCount, teams, sst}) {
-    const [lockStatus, setLockStatus] = useState(true);
-
+function T20LeagueControlBar({refreshFunction, matchCount, teams, sst}) {
     const iplTeams = [
         {value: 'CSK', label: 'Chennai Super Kings'},
         {value: 'MI', label: 'Mumbai Indians'},
@@ -122,4 +120,4 @@ function IPLControlBar({refreshFunction, matchCount, teams, sst}) {
     );
 }
 
-export default IPLControlBar;
+export default T20LeagueControlBar;

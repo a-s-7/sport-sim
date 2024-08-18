@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 
-function IPLMatchCard({
+function T20LeagueMatchCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
                           leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate
                       }) {
@@ -319,4 +319,4 @@ function IPLMatchCard({
         ;
 }
 
-export default IPLMatchCard;
+export default T20LeagueMatchCard;

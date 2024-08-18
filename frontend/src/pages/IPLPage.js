@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
-import IPLControlBar from "../components/IPLControlBar";
-import T20MatchCardPanel from "../components/T20MatchCardPanel";
-import T20PointsTable from "../components/T20PointsTable";
+import T20LeagueControlBar from "../components/T20League/T20LeagueControlBar";
+import T20LeagueMatchCardPanel from "../components/T20League/T20LeagueMatchCardPanel";
+import T20LeaguePointsTable from "../components/T20League/T20LeaguePointsTable";
 
 function IPLPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [matchesData, setMatchesData] = useState([]);
 
-    const [oldPointsTableData, setOldPointsTableData] = useState([]);
     const [pointsTableData, setPointsTableData] = useState([]);
 
     const [matchAreaKey, setMatchAreaKey] = useState(0);
@@ -97,21 +96,21 @@ function IPLPage() {
 
     return (
         <div className="IPLPage">
-            <IPLControlBar
+            <T20LeagueControlBar
                 refreshFunction={handleRefresh}
                 matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                 teams={selectedTeams}
-                sst={setSelectedTeams}></IPLControlBar>
+                sst={setSelectedTeams}></T20LeagueControlBar>
 
             <div className="matchArea">
                 <div className="matchCardContainer">
-                    <T20MatchCardPanel key={matchAreaKey}
-                                       onMatchUpdate={refreshPointsTable}
-                                       matches={matchesData}/>
+                    <T20LeagueMatchCardPanel key={matchAreaKey}
+                                             onMatchUpdate={refreshPointsTable}
+                                             matches={matchesData}/>
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
-                        <T20PointsTable pointsTableData={pointsTableData}/>
+                        <T20LeaguePointsTable pointsTableData={pointsTableData}/>
                     </div>
                 </div>
             </div>

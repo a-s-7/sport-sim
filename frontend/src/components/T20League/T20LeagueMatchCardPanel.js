@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
-import IPLMatchCard from "./IPLMatchCard";
+import T20LeagueMatchCard from "./T20LeagueMatchCard";
 
-function T20MatchCardPanel({onMatchUpdate, matches}) {
+function T20LeagueMatchCardPanel({onMatchUpdate, matches}) {
 
     const [league = "", teamData = {}, matchData = []] = matches;
 
     return (
         matchData.map(match => (
             <div key={`${match.matchNumber}`}>
-                    <IPLMatchCard
+                    <T20LeagueMatchCard
                         homeGradient={teamData[match.homeTeam].gradient}
                         awayGradient={teamData[match.awayTeam].gradient}
                         homeTeamName={match.homeTeam}
@@ -29,4 +29,4 @@ function T20MatchCardPanel({onMatchUpdate, matches}) {
     );
 }
 
-export default T20MatchCardPanel;
+export default T20LeagueMatchCardPanel;

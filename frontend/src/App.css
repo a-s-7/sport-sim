@@ -209,7 +209,7 @@ html, body, #root {
     overflow-x: auto;
     border-radius: 10px;
     border: 1px solid lightgrey;
-    background-color: red;
+    /*background-color: transparent;*/
     height: 100%;
 }
 
@@ -233,7 +233,7 @@ html, body, #root {
     padding: 10px;
 }
 
-.WTCTable thead th:nth-child(2), .T20Table thead th:nth-child(3) {
+.WTCTable thead th:nth-child(3), .T20Table thead th:nth-child(3) {
     text-align: left;
 }
 
@@ -241,11 +241,12 @@ html, body, #root {
     font-family: "Nunito Sans", sans-serif;
 }
 
-.WTCTable tbody td:nth-child(2), .T20Table tbody td:nth-child(3) {
+.WTCTable tbody td:nth-child(3), .T20Table tbody td:nth-child(3) {
     font-family: "Reem Kufi Fun", sans-serif;
     text-transform: uppercase;
     color: black;
     font-size: 14px;
+    white-space: nowrap;
 }
 
 .WTCTable tbody td:nth-child(1), .T20Table tbody td:nth-child(1) {
@@ -254,7 +255,7 @@ html, body, #root {
     color: black;
 }
 
-.WTCTable tbody td:nth-child(9), .T20Table tbody td:nth-child(9) {
+.WTCTable tbody td:nth-child(10), .T20Table tbody td:nth-child(9) {
     font-weight: bolder;
 }
 
@@ -304,6 +305,8 @@ html, body, #root {
 
 
 .diffArea {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -357,12 +360,11 @@ html, body, #root {
     height: 100%;
     align-items: center;
     justify-content: center;
-    gap: 0px;
 }
 
 .lastFiveImage {
-    width: 35%;
-    height: 35%;
+    width: 40%;
+    height: 40%;
 }
 
 .infoBody {
@@ -375,7 +377,6 @@ html, body, #root {
     background-color: white;
     font-size: 0.9vw;
 }
-
 
 
 .matchInfo {
@@ -538,8 +539,6 @@ html, body, #root {
 }
 
 
-
-
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -613,7 +612,6 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 1.2vw;
     font-weight: bold;
 }
-
 
 
 .time {

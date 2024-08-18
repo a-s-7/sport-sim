@@ -1,30 +1,31 @@
 import React, {useState, useEffect} from "react";
-import WTCControlBar from "../components/WTCControlBar";
-import MatchCardPanel from "../components/MatchCardPanel";
-import WTCPointsTable from "../components/WTCPointsTable";
+import WTCControlBar from "../components/WTC/WTCControlBar";
+import WTCMatchCardPanel from "../components/WTC/WTCMatchCardPanel";
+import WTCPointsTable from "../components/WTC/WTCPointsTable";
 
 function WTCPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
-    const [data, setData] = useState([]);
+
+    const [matchesData, setMatchesData] = useState([]);
+    const [pointsTableData, setPointsTableData] = useState([]);
 
     const [matchAreaKey, setMatchAreaKey] = useState(0);
-    const [pointsTableKey, setPointsTableKey] = useState(0);
 
-    const refreshPointsTable = () => {
-        setPointsTableKey(pointsTableKey + 1);
+    const refreshPointsTable = async () => {
+        await fetchPointsTableData();
     }
 
-    const refreshMatchArea = () => {
+    const refreshMatchArea = async () => {
+        await fetchMatchData();
         setMatchAreaKey(matchAreaKey + 1);
     }
 
     const handleRefresh = async () => {
-        await fetchData();
-        refreshMatchArea();
-        refreshPointsTable();
+        await refreshMatchArea();
+        await refreshPointsTable();
     }
 
-    const fetchData = async () => {
+    const fetchMatchData = async () => {
         let url = `http://127.0.0.1:5000/WTC/matches/All`;
 
         if (selectedTeams.length > 0) {
@@ -38,33 +39,80 @@ function WTCPage() {
                 throw new Error("Response was not ok");
             }
             const result = await response.json();
-            setData(result);
+            setMatchesData(result);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
+    const fetchPointsTableData = async () => {
+        let url = `http://127.0.0.1:5000/WTC/points_table`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Response was not ok");
+            }
+            const result = await response.json();
+
+            if (pointsTableData.length > 0) {
+                const diffs = calculatePointsTableChanges(result);
+                result.map(team => {
+                    team["diff"] = diffs.get(team.name);
+                });
+                console.log("IF:", result);
+            } else {
+                result.map(team => {
+                    team["diff"] = 0;
+                });
+                console.log("ELSE:", result);
+            }
+
+            setPointsTableData(result);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    const calculatePointsTableChanges = (newData) => {
+        const diffMap = new Map();
+
+        pointsTableData.map((team, index) => {
+            diffMap.set(team.name, index)
+        })
+
+        newData.map((team, index) => {
+            console.log(index);
+            diffMap.set(team.name, diffMap.get(team.name) - index)
+        })
+
+        return diffMap;
+    }
+
     useEffect(() => {
-        fetchData();
+        fetchMatchData();
+        fetchPointsTableData()
     }, [selectedTeams]);
 
 
     return (
         <div className="WTC">
             <WTCControlBar refFunc={handleRefresh}
-                           matchCount={Array.isArray(data[2]) ? data[2].length : 0}
+                           matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                            teams={selectedTeams}
                            sst={setSelectedTeams}>
             </WTCControlBar>
 
             <div className="matchArea">
                 <div className="matchCardContainer">
-                    <MatchCardPanel key={matchAreaKey}
-                                    onMatchUpdate={refreshPointsTable}
-                                    matches={data}/>
+                    <WTCMatchCardPanel key={matchAreaKey}
+                                       onMatchUpdate={refreshPointsTable}
+                                       matches={matchesData}/>
                 </div>
                 <div className="tableContainer">
-                    <WTCPointsTable key={pointsTableKey}/>
+                    <div className="tableWrapper">
+                        <WTCPointsTable pointsTableData={pointsTableData}/>
+                    </div>
                 </div>
             </div>
         </div>

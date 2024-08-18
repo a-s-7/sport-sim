@@ -55,17 +55,40 @@ function IPLPage() {
                 throw new Error("Response was not ok");
             }
             const result = await response.json();
-            setOldPointsTableData(pointsTableData);
+
+            if (pointsTableData.length > 0) {
+                const diffs = calculatePointsTableChanges(result);
+                result.map(team => {
+                    team["diff"] = diffs.get(team.acronym);
+                });
+
+                // console.log("IF:", result);
+            } else {
+                result.map(team => {
+                    team["diff"] = 0;
+                });
+                // console.log("ELSE: ", result);
+            }
+
             setPointsTableData(result);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
-    // useEffect(() => {
-    //    console.log("Old Points Table Data: ", oldPointsTableData);
-    //    console.log("New Points Table Data: ", pointsTableData);
-    // }, [pointsTableData]);  // This effect runs when pointsTableData changes
+    const calculatePointsTableChanges = (newData) => {
+        const diffMap = new Map();
+
+        pointsTableData.map((team, index) => {
+            diffMap.set(team.acronym, index)
+        })
+
+        newData.map((team, index) => {
+            diffMap.set(team.acronym, diffMap.get(team.acronym) - index)
+        })
+
+        return diffMap;
+    }
 
     useEffect(() => {
         fetchMatchData();
@@ -79,7 +102,6 @@ function IPLPage() {
                 matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                 teams={selectedTeams}
                 sst={setSelectedTeams}></IPLControlBar>
-
 
             <div className="matchArea">
                 <div className="matchCardContainer">

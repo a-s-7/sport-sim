@@ -1,4 +1,6 @@
 import React from 'react';
+import {faCaretUp, faCaretDown, faMinus} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function T20PointsTable({pointsTableData}) {
     const check = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyMiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExIDNDMTUuNDE4MyAzIDE5IDYuNTgxNzIgMTkgMTFDMTkgMTUuNDE4MyAxNS40MTgzIDE5IDExIDE5QzYuNTgxNzIgMTkgMyAxNS40MTgzIDMgMTFDMyA2LjU4MTcyIDYuNTgxNzIgMyAxMSAzWiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNOS4yIDEyLjI4TDcuMTIgMTAuMkw2IDExLjMyTDkuMiAxNC41MkwxNS42IDguMTJMMTQuNDggN0w5LjIgMTIuMjhaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K";
@@ -9,13 +11,31 @@ function T20PointsTable({pointsTableData}) {
     const bigCheck = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyMiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExIDBDNC45MjQ4NyAwIDAgNC45MjQ4NyAwIDExQzAgMTcuMDc1MSA0LjkyNDg3IDIyIDExIDIyQzE3LjA3NTEgMjIgMjIgMTcuMDc1MSAyMiAxMUMyMiA0LjkyNDg3IDE3LjA3NTEgMCAxMSAwWiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNMTEgMkM2LjAyOTQ0IDIgMiA2LjAyOTQ0IDIgMTFDMiAxNS45NzA2IDYuMDI5NDQgMjAgMTEgMjBDMTUuOTcwNiAyMCAyMCAxNS45NzA2IDIwIDExQzIwIDYuMDI5NDQgMTUuOTcwNiAyIDExIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTEgM0MxNS40MTgzIDMgMTkgNi41ODE3MiAxOSAxMUMxOSAxNS40MTgzIDE1LjQxODMgMTkgMTEgMTlDNi41ODE3MiAxOSAzIDE1LjQxODMgMyAxMUMzIDYuNTgxNzIgNi41ODE3MiAzIDExIDNaIiBmaWxsPSIjMzRBODUzIi8+CjxwYXRoIGQ9Ik05LjIgMTIuMjhMNy4xMiAxMC4yTDYgMTEuMzJMOS4yIDE0LjUyTDE1LjYgOC4xMkwxNC40OCA3TDkuMiAxMi4yOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=";
     const bigCross = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyMiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTExIDNDMTUuNDE4MyAzIDE5IDYuNTgxNzIgMTkgMTFDMTkgMTUuNDE4MyAxNS40MTgzIDE5IDExIDE5QzYuNTgxNzIgMTkgMyAxNS40MTgzIDMgMTFDMyA2LjU4MTcyIDYuNTgxNzIgMyAxMSAzWiIgZmlsbD0iI0VBNDMzNSIvPgo8cGF0aCBkPSJNOS4yIDEyLjI4TDcuMTIgMTAuMkw2IDExLjMyTDkuMiAxNC41MkwxNS42IDguMTJMMTQuNDggN0w5LjIgMTIuMjhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTEgMEM0LjkyNDg3IDAgMCA0LjkyNDg3IDAgMTFDMCAxNy4wNzUxIDQuOTI0ODcgMjIgMTEgMjJDMTcuMDc1MSAyMiAyMiAxNy4wNzUxIDIyIDExQzIyIDQuOTI0ODcgMTcuMDc1MSAwIDExIDBaIiBmaWxsPSIjRUE0MzM1Ii8+CjxwYXRoIGQ9Ik0xMSAyQzYuMDI5NDQgMiAyIDYuMDI5NDQgMiAxMUMyIDE1Ljk3MDYgNi4wMjk0NCAyMCAxMSAyMEMxNS45NzA2IDIwIDIwIDE1Ljk3MDYgMjAgMTFDMjAgNi4wMjk0NCAxNS45NzA2IDIgMTEgMloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEgMTlDMTUuNDE4MyAxOSAxOSAxNS40MTgzIDE5IDExQzE5IDYuNTgxNzIgMTUuNDE4MyAzIDExIDNDNi41ODE3MiAzIDMgNi41ODE3MiAzIDExQzMgMTUuNDE4MyA2LjU4MTcyIDE5IDExIDE5WiIgZmlsbD0iI0VBNDMzNSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjI2MjcgMTQuMzk0MUwxMSAxMi4xMzE0TDguNzM3MjYgMTQuMzk0MUw3LjYwNTg5IDEzLjI2MjdMOS44Njg2MyAxMUw3LjYwNTg5IDguNzM3MjVMOC43MzcyNiA3LjYwNTg4TDExIDkuODY4NjJMMTMuMjYyNyA3LjYwNTg4TDE0LjM5NDEgOC43MzcyNUwxMi4xMzE0IDExTDE0LjM5NDEgMTMuMjYyN0wxMy4yNjI3IDE0LjM5NDFaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K";
 
+    const getDiffDisplay = (diff) => {
+        if (diff > 0) {
+            return <div className="diffArea">
+                <FontAwesomeIcon icon={faCaretUp} size="lg" color="green" style={{ marginRight: '5px'}} />
+                 {diff}
+            </div>
+        } else if (diff < 0) {
+            return <div className="diffArea">
+                <FontAwesomeIcon icon={faCaretDown} size="lg" color="red" style={{ marginRight: '5px'}}/>
+                {diff * -1}
+            </div>
+        } else {
+            return <div className="diffArea">
+                <FontAwesomeIcon icon={faMinus} size="lg" color="black"/>
+            </div>
+        }
+    }
+
     return (
         <table className="T20Table">
             <thead>
             <tr>
                 <th>POS</th>
+                <th></th>
                 <th>TEAM</th>
-                <th>A</th>
                 <th>PLAYED</th>
                 <th>WON</th>
                 <th>LOST</th>
@@ -32,12 +52,14 @@ function T20PointsTable({pointsTableData}) {
                 <tr key={team.acronym}>
                     <td>{index + 1}</td>
                     <td>
+                        {getDiffDisplay(team.diff)}
+                    </td>
+                    <td>
                         <div className="teamNameInfo">
                             <img src={team.logo} alt={team.acronym + "Flag"}/>
                             {team.acronym}
                         </div>
                     </td>
-                    <td>{"X"}</td>
                     <td>{team.played}</td>
                     <td>{team.won}</td>
                     <td>{team.lost}</td>
@@ -46,7 +68,6 @@ function T20PointsTable({pointsTableData}) {
                     <td>{team.points}</td>
                     <td>{team.runsScored + "/" + (team.ballsFaced / 6).toFixed(1)}</td>
                     <td>{team.oppositionRunsScored + "/" + (team.oppositionBallsFaced / 6).toFixed(1)}</td>
-
                     <td>
                         <div className="lastFive">
                             {team.previous5.map((value, index) => (

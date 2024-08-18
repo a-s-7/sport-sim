@@ -233,7 +233,7 @@ html, body, #root {
     padding: 10px;
 }
 
-.WTCTable thead th:nth-child(2), .T20Table thead th:nth-child(2) {
+.WTCTable thead th:nth-child(2), .T20Table thead th:nth-child(3) {
     text-align: left;
 }
 
@@ -241,7 +241,7 @@ html, body, #root {
     font-family: "Nunito Sans", sans-serif;
 }
 
-.WTCTable tbody td:nth-child(2), .T20Table tbody td:nth-child(2) {
+.WTCTable tbody td:nth-child(2), .T20Table tbody td:nth-child(3) {
     font-family: "Reem Kufi Fun", sans-serif;
     text-transform: uppercase;
     color: black;
@@ -303,6 +303,15 @@ html, body, #root {
 }
 
 
+.diffArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: "Reem Kufi Fun", sans-serif;
+    padding: 5px;
+}
+
 .teamNameInfo {
     display: flex;
     flex-direction: row;
@@ -337,8 +346,8 @@ html, body, #root {
 .T20Table td:nth-child(8),
 .T20Table td:nth-child(9),
 .T20Table td:nth-child(9) {
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .lastFive {

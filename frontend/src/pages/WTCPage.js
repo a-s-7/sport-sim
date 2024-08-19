@@ -57,12 +57,12 @@ function WTCPage() {
 
             if (pointsTableData.length > 0) {
                 const diffs = calculatePointsTableChanges(result);
-                result.map(team => {
+                result.forEach(team => {
                     team["diff"] = diffs.get(team.name);
                 });
                 console.log("IF:", result);
             } else {
-                result.map(team => {
+                result.forEach(team => {
                     team["diff"] = 0;
                 });
                 console.log("ELSE:", result);
@@ -77,11 +77,11 @@ function WTCPage() {
     const calculatePointsTableChanges = (newData) => {
         const diffMap = new Map();
 
-        pointsTableData.map((team, index) => {
+        pointsTableData.forEach((team, index) => {
             diffMap.set(team.name, index)
         })
 
-        newData.map((team, index) => {
+        newData.forEach((team, index) => {
             console.log(index);
             diffMap.set(team.name, diffMap.get(team.name) - index)
         })

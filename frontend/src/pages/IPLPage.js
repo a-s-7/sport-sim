@@ -57,13 +57,13 @@ function IPLPage() {
 
             if (pointsTableData.length > 0) {
                 const diffs = calculatePointsTableChanges(result);
-                result.map(team => {
+                result.forEach(team => {
                     team["diff"] = diffs.get(team.acronym);
                 });
 
                 // console.log("IF:", result);
             } else {
-                result.map(team => {
+                result.forEach(team => {
                     team["diff"] = 0;
                 });
                 // console.log("ELSE: ", result);
@@ -78,11 +78,11 @@ function IPLPage() {
     const calculatePointsTableChanges = (newData) => {
         const diffMap = new Map();
 
-        pointsTableData.map((team, index) => {
+        pointsTableData.forEach((team, index) => {
             diffMap.set(team.acronym, index)
         })
 
-        newData.map((team, index) => {
+        newData.forEach((team, index) => {
             diffMap.set(team.acronym, diffMap.get(team.acronym) - index)
         })
 

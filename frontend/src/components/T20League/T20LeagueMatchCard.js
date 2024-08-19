@@ -1,10 +1,10 @@
 import React, {useRef, useState} from "react";
 
 function T20LeagueMatchCard({
-                          homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
-                          leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate,
+                                homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
+                                leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate,
                                 homeTeamRuns, homeTeamOvers, awayTeamRuns, awayTeamOvers
-                      }) {
+                            }) {
 
     const neutralGradient = 'linear-gradient(135deg, #1B2A7D, #1B2A7D, orange)';
 
@@ -56,7 +56,6 @@ function T20LeagueMatchCard({
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 onMatchUpdate();
             } else {
                 alert("Error: Response not ok")
@@ -142,7 +141,6 @@ function T20LeagueMatchCard({
                     });
 
                 if (response.ok) {
-                    const result = await response.json();
                     onMatchUpdate();
                 } else {
                     alert("Error: Response not ok")
@@ -228,7 +226,7 @@ function T20LeagueMatchCard({
                         </div>
 
                         <div className="homeLogo">
-                            <img src={homeTeamLogo}></img>
+                            <img src={homeTeamLogo} alt={`${homeTeamName} Logo`}></img>
                         </div>
 
                     </div>
@@ -248,7 +246,7 @@ function T20LeagueMatchCard({
                          style={getStyle('Away-win', 2)}>
 
                         <div className="awayLogo">
-                            <img src={awayTeamLogo}></img>
+                            <img src={awayTeamLogo} alt={`${awayTeamName} Logo`}></img>
                         </div>
 
                         <div className="t20AwayName">
@@ -295,7 +293,6 @@ function T20LeagueMatchCard({
                                        value={awayOvers}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
-
                             </div>
                         </div>
 
@@ -310,7 +307,7 @@ function T20LeagueMatchCard({
                              background: hoveredSection === "None" ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
                              color: 'black'
                          }}>
-                        {leagueName + " · " + "Match " + matchNum + " · " + venue}
+                        {`${leagueName} · Match ${matchNum} · ${venue}`}
                     </div>
 
                 </div>

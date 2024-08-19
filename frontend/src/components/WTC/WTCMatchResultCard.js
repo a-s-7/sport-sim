@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 function WTCMatchResultCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamFlag, awayTeamName, awayTeamFlag,
@@ -33,7 +33,7 @@ function WTCMatchResultCard({
                             {homeTeamName}
                         </div>
                         <div className="homeFlag">
-                            <img src={homeTeamFlag}></img>
+                            <img src={homeTeamFlag} alt={`Flag of ${homeTeamName}`}></img>
                         </div>
                     </div>
                     <div className='neutral'
@@ -45,7 +45,7 @@ function WTCMatchResultCard({
                     <div className='awayTeam'
                          style={getStyle("Away-win", 2)}>
                         <div className="awayFlag">
-                            <img src={awayTeamFlag}></img>
+                            <img src={awayTeamFlag} alt={`Flag of ${awayTeamName}`}></img>
                         </div>
                         <div className="awayName">
                             {awayTeamName}

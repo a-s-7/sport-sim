@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import T20LeagueMatchCard from "./T20LeagueMatchCard";
 
 function T20LeagueMatchCardPanel({onMatchUpdate, matches}) {

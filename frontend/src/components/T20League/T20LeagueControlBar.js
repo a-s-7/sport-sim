@@ -38,7 +38,6 @@ function T20LeagueControlBar({refreshFunction, matchCount, teams, sst}) {
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 refreshFunction();
             } else {
                 alert("Error: Response not ok")
@@ -66,7 +65,6 @@ function T20LeagueControlBar({refreshFunction, matchCount, teams, sst}) {
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 refreshFunction();
             } else {
                 alert("Error: Response not ok")
@@ -82,7 +80,7 @@ function T20LeagueControlBar({refreshFunction, matchCount, teams, sst}) {
 
             <div className="iplLogoContainer">
                 <img
-                    src="https://www.iplt20.com/assets/images/ipl-logo-new-old.png"></img>
+                    src="https://www.iplt20.com/assets/images/ipl-logo-new-old.png" alt={"IPL Logo"}></img>
             </div>
             <div className="iplMatchCountContainer">
                 {matchCount + " MATCHES"}

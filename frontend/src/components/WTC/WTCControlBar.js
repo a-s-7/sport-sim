@@ -1,11 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
 function WTCControlBar({refFunc, matchCount, teams, sst}) {
-    const [lockStatus, setLockStatus] = useState(true);
-
     const options = [
         {value: 'india', label: 'India'},
         {value: 'australia', label: 'Australia'},
@@ -39,7 +37,6 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 refFunc();
             } else {
                 alert("Error: Response not ok")
@@ -67,7 +64,6 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 refFunc();
             } else {
                 alert("Error: Response not ok")
@@ -83,7 +79,8 @@ function WTCControlBar({refFunc, matchCount, teams, sst}) {
 
             <div className="wtcLogoContainer">
                 <img
-                    src={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}></img>
+                    src={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}
+                    alt={"ICC World Test Championship Logo"}></img>
             </div>
             <div className="wtcMatchCountContainer">
                 <div className="modeButton">

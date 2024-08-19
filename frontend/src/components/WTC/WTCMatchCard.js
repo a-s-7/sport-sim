@@ -44,7 +44,6 @@ function WTCMatchCard({
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 onMatchUpdate();
             } else {
                 alert("Error: Response not ok")
@@ -71,7 +70,6 @@ function WTCMatchCard({
                 });
 
             if (response.ok) {
-                const result = await response.json();
                 onMatchUpdate();
             } else {
                 alert("Error: Response not ok")
@@ -103,7 +101,7 @@ function WTCMatchCard({
                             {homeTeamName}
                         </div>
                         <div className="homeFlag">
-                            <img src={homeTeamFlag}></img>
+                            <img src={homeTeamFlag} alt={`Flag of ${homeTeamName}`}></img>
                         </div>
                     </div>
                     <div className='neutral'
@@ -121,7 +119,7 @@ function WTCMatchCard({
                          onMouseLeave={() => setHoveredSection(null)}
                          style={getStyle("Away-win", 2)}>
                         <div className="awayFlag">
-                            <img src={awayTeamFlag}></img>
+                            <img src={awayTeamFlag} alt={`Flag of ${awayTeamName}`}></img>
                         </div>
                         <div className="awayName">
                             {awayTeamName}

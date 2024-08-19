@@ -5,13 +5,14 @@ class CricketInningsScore:
     T20_OVER_LIMIT = 20
     ODI_OVER_LIMIT = 50
 
-    def __init__(self, runs: int, overs: int, balls: int, format: CricketFormat):
-        self.check_score(runs, overs, balls, format)
-
+    def __init__(self, runs: int, wickets: int, overs: int, balls: int, format: CricketFormat):
         self.runs = runs
+        self.wickets = wickets
         self.overs = overs
         self.balls = balls
         self.totalBalls = (self.overs * 6) + self.balls
+
+        self.format = format
 
     def check_score(self, runs: int, overs: int, balls: int, format: CricketFormat):
         # Check if parameters are of correct type
@@ -58,3 +59,6 @@ class CricketInningsScore:
 
     def get_english_overs(self):
         return f"{self.overs}.{self.balls}"
+
+    def get_wickets(self):
+        return self.wickets

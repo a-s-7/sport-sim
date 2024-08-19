@@ -12,5 +12,4 @@ def create_app(config_class=Config):
     app.register_blueprint(wtc_bp)
     app.register_blueprint(t20_league_bp)
 
-
     return app

@@ -8,11 +8,11 @@
     "result": "Home-win",
     "status": "complete",
     "homeTeamRuns": 200,
-    "homeTeamWickets": 0,
-    "homeTeamOvers": 19.5,
+    "homeTeamWickets": 7,
+    "homeTeamOvers": "20",
     "awayTeamRuns": 190,
-    "awayTeamWickets": 0,
-    "awayTeamOvers": 20
+    "awayTeamWickets": 9,
+    "awayTeamOvers": "20"
   },
   {
     "MatchNumber": 2,

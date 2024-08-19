@@ -3,7 +3,7 @@ import React, {useRef, useState} from "react";
 function T20LeagueMatchCard({
                                 homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
                                 leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate,
-                                homeTeamRuns, homeTeamOvers, awayTeamRuns, awayTeamOvers
+                                homeTeamRuns, homeTeamOvers, awayTeamRuns, awayTeamOvers, awayTeamWickets, homeTeamWickets
                             }) {
 
     const neutralGradient = 'linear-gradient(135deg, #1B2A7D, #1B2A7D, orange)';
@@ -13,17 +13,19 @@ function T20LeagueMatchCard({
 
 
     const [awayRuns, setAwayRuns] = useState(awayTeamRuns);
-    const [awayWickets, setAwayWickets] = useState('');
+    const [awayWickets, setAwayWickets] = useState(awayTeamWickets);
     const [awayOvers, setAwayOvers] = useState(awayTeamOvers);
 
     const [homeRuns, setHomeRuns] = useState(homeTeamRuns);
-    const [homeWickets, setHomeWickets] = useState('');
+    const [homeWickets, setHomeWickets] = useState(homeTeamWickets);
     const [homeOvers, setHomeOvers] = useState(homeTeamOvers);
 
     const homeRunsRef = useRef(homeTeamRuns);
     const awayRunsRef = useRef(awayTeamRuns);
     const homeOversRef = useRef(homeTeamOvers);
     const awayOversRef = useRef(awayTeamOvers);
+    const homeWicketsRef = useRef(homeTeamWickets);
+    const awayWicketsRef = useRef(homeWicketsRef);
 
 
     const getStyle = (section, num) => {
@@ -127,12 +129,15 @@ function T20LeagueMatchCard({
         const awayRunsValue = parseFloat(awayRunsRef.current.value);
         const homeOversValue = parseFloat(homeOversRef.current.value);
         const awayOversValue = parseFloat(awayOversRef.current.value);
+        const homeWicketsValue = parseFloat(homeWicketsRef.current.value);
+        const awayWicketsValue = parseFloat(awayWicketsRef.current.value);
 
-        // alert("NRR: " + homeRunsValue + " " + awayRunsValue + " " + homeOversValue + " " + awayOversValue)
-
-        if (!isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
+        if (!isNaN(homeWicketsValue) && !isNaN(awayWicketsValue) && !isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/IPL/nrr/${matchNum}/${homeRunsValue}/${homeOversValue}/${awayRunsValue}/${awayOversValue}`,
+                const baseUrl = 'http://127.0.0.1:5000/IPL/nrr/';
+                const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
+
+                const response = await fetch(url,
                     {
                         method: 'PATCH',
                         headers: {
@@ -195,6 +200,7 @@ function T20LeagueMatchCard({
                                        min="0"
                                        max="10"
                                        step="1"
+                                       ref={homeWicketsRef}
                                        onChange={(event) =>
                                            handleWicketChange(event.target.value, 'home')}
                                        value={homeWickets}
@@ -273,6 +279,7 @@ function T20LeagueMatchCard({
                                        min="0"
                                        max="10"
                                        step="1"
+                                       ref={awayWicketsRef}
                                        onChange={(event) =>
                                            handleWicketChange(event.target.value, 'away')}
                                        value={awayWickets}

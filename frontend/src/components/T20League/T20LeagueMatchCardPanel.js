@@ -25,8 +25,10 @@ function T20LeagueMatchCardPanel({onMatchUpdate, matches}) {
                         onMatchUpdate={onMatchUpdate}
 
                         homeTeamRuns={match.homeTeamRuns}
+                        homeTeamWickets={match.homeTeamWickets}
                         homeTeamOvers={match.homeTeamOvers}
                         awayTeamRuns={match.awayTeamRuns}
+                        awayTeamWickets={match.awayTeamWickets}
                         awayTeamOvers={match.awayTeamOvers}
                     />
             </div>

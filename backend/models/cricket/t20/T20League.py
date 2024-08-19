@@ -19,8 +19,9 @@ class T20League():
 
         return sorted_teams
 
-    def update_match_nrr(self, match_num: int, home_team_runs: int, home_team_overs: str,
-                                               away_team_runs: int, away_team_overs: str):
+    def update_match_nrr(self, match_num: int,
+                         home_runs: int, home_wickets: int, home_overs: str,
+                         away_runs: int, away_wickets: int, away_overs: str):
 
         # Find match
         match = self.matchList[int(match_num) - 1]
@@ -31,8 +32,8 @@ class T20League():
             match.awayTeam.undoMatchNRRDetails(match.awayTeamScore, match.homeTeamScore)
 
         # Update match team scores
-        match.set_team_score("Home", home_team_runs, home_team_overs)
-        match.set_team_score("Away", away_team_runs, away_team_overs)
+        match.set_team_score("Home", home_runs, home_wickets, home_overs)
+        match.set_team_score("Away", away_runs, away_wickets, away_overs)
 
         ## Update NRR for both teams
         match.homeTeam.addMatchNRRDetails(match.homeTeamScore, match.awayTeamScore)

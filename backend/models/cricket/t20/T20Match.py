@@ -60,7 +60,7 @@ class T20Match():
             self.homeTeamScore = None
             self.awayTeamScore = None
 
-    def set_team_score(self, team: str, runs: int, overs: str):
+    def set_team_score(self, team: str, runs: int, wickets: int, overs: str):
         over = 0
         balls = 0
 
@@ -71,9 +71,9 @@ class T20Match():
             over, balls = overs.split(".")
 
         if(team == "Home"):
-            self.homeTeamScore = CricketInningsScore(runs, int(over), int(balls), CricketFormat.T20)
+            self.homeTeamScore = CricketInningsScore(runs, wickets, int(over), int(balls), CricketFormat.T20)
         else:
-            self.awayTeamScore = CricketInningsScore(runs, int(over), int(balls), CricketFormat.T20)
+            self.awayTeamScore = CricketInningsScore(runs, wickets, int(over), int(balls), CricketFormat.T20)
 
     def simulate_match(self):
         rand_decimal = random.uniform(0, 1)
@@ -111,8 +111,10 @@ class T20Match():
             "status": self.status,
             "result": self.matchResult.value,
             "homeTeamRuns": self.homeTeamScore.getRuns() if self.homeTeamScore != None else "",
+            "homeTeamWickets": self.homeTeamScore.get_wickets() if self.homeTeamScore != None else "",
             "homeTeamOvers": self.homeTeamScore.get_english_overs() if self.homeTeamScore != None else "",
             "awayTeamRuns": self.awayTeamScore.getRuns() if self.awayTeamScore != None else "",
+            "awayTeamWickets": self.awayTeamScore.get_wickets() if self.awayTeamScore != None else "",
             "awayTeamOvers": self.awayTeamScore.get_english_overs() if self.awayTeamScore != None else "",
         }
 

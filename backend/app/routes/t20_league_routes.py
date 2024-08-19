@@ -45,10 +45,10 @@ def sim_ipl_matches(team_names):
 
     return jsonify({"message": "IPL matches simulated successfully"})
 
-@t20_league_bp.route('/IPL/nrr/<match_num>/<home_team_runs>/<home_team_overs>/<away_team_runs>/<away_team_overs>', methods=['PATCH'])
-def nrr_ipl_match(match_num, home_team_runs, home_team_overs, away_team_runs, away_team_overs):
+@t20_league_bp.route('/IPL/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
+def nrr_ipl_match(match_num, home_runs, home_wickets, home_overs, away_runs, away_wickets, away_overs):
     try:
-        ipl.update_match_nrr(int(match_num), int(home_team_runs), home_team_overs, int(away_team_runs), away_team_overs)
+        ipl.update_match_nrr(int(match_num), int(home_runs), int(home_wickets), home_overs, int(away_runs), int(away_wickets), away_overs)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 

@@ -8,10 +8,14 @@ class WTCTeam(CricketTeam):
         self.draw = 0
         self.tie = 0
         self.deduction = 0
-        self.seriesList = []
         self.numMatches = 0
         self.flag = ""
         self.gradient = ""
+
+        self.seriesList = []
+
+    def sort_match_list(self):
+        self.matchList = sorted(self.matchList, key=lambda m: m['match'].startDate)
 
     def get_points_table_json(self):
         return {
@@ -23,8 +27,28 @@ class WTCTeam(CricketTeam):
             "deduction": self.deduction,
             "points": self.get_points(),
             "pointsPercentage": self.get_points_percentage(),
-            "flag": self.flag
+            "flag": self.flag,
+            "previous5": self.get_previous_5_matches(),
         }
+
+    def get_previous_5_matches(self):
+        results = []
+
+        for i in range(self.played, self.played - 5, -1):
+            if i <= 0:
+                break
+
+            # {'match': match, 'role': role}
+            m = self.matchList[i - 1]
+            match = m["match"]
+            status = match.check_team_winner(m['role'])
+            results.append(status)
+
+        if len(results) < 5:
+            for i in range(5 - len(results)):
+                results.append(None)
+
+        return results
 
     def get_basic_json(self):
         return {

@@ -15,8 +15,12 @@ class WTC:
         self.series = []
         self.matchList = []
 
-    def sort_match_list(self):
+    def sort_wtc_match_list(self):
         self.matchList = sorted(self.matchList, key=lambda m: m.startDate)
+
+    def sort_teams_match_lists(self):
+        for team in self.teamDict.values():
+            team.sort_match_list()
 
     def add_matches_to_list(self):
         for series in self.series:

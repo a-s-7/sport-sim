@@ -36,6 +36,20 @@ class WTCMatch:
 
         self.addMatchToTeams()
 
+    def check_team_winner(self, team: str):
+        if self.matchResult == MatchResult.HOME_WIN:
+            if team == "Home":
+                return "Win"
+            else:
+                return "Loss"
+        elif self.matchResult == MatchResult.AWAY_WIN:
+            if team == "Away":
+                return "Win"
+            else:
+                return "Loss"
+        else:
+            return "Draw"
+
     def clear_match(self):
         self.undoMatchResult()
         self.update_home_team_deduction(0)

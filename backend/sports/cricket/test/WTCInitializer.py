@@ -46,4 +46,5 @@ class WTCInitializer:
             wtc.add_series(wtcSeries)
 
         wtc.add_matches_to_list()
-        wtc.sort_match_list()
+        wtc.sort_wtc_match_list()
+        wtc.sort_teams_match_lists()

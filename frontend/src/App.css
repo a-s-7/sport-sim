@@ -28,6 +28,10 @@ html, body, #root {
     height: 92%;
 }
 
+.element::-webkit-scrollbar {
+    display: none;
+}
+
 
 .homeWelcomeMessage {
     display: flex;
@@ -173,7 +177,6 @@ html, body, #root {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-
 .matchCardContainer {
     display: flex;
     flex-direction: column;
@@ -209,7 +212,6 @@ html, body, #root {
     overflow-x: auto;
     border-radius: 10px;
     border: 1px solid lightgrey;
-    /*background-color: transparent;*/
     height: 100%;
 }
 
@@ -227,6 +229,7 @@ html, body, #root {
 
 .WTCTable thead {
     background-color: black;
+    white-space: nowrap;
 }
 
 .WTCTable thead th, .T20Table thead th {
@@ -235,10 +238,6 @@ html, body, #root {
 
 .WTCTable thead th:nth-child(3), .T20Table thead th:nth-child(3) {
     text-align: left;
-}
-
-.WTCTable tbody, .T20Table tbody {
-    font-family: "Nunito Sans", sans-serif;
 }
 
 .WTCTable tbody td:nth-child(3), .T20Table tbody td:nth-child(3) {
@@ -259,6 +258,11 @@ html, body, #root {
     font-weight: bolder;
 }
 
+.WTCTable tbody td:nth-child(10) {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
 .WTCTable tbody tr:hover, .T20Table tbody tr:hover {
     background-color: RGB(228, 228, 228);
 }
@@ -272,7 +276,6 @@ html, body, #root {
     background-color: whitesmoke;
 }
 
-
 .WTCTable tbody tr:nth-child(1):hover,
 .WTCTable tbody tr:nth-child(2):hover,
 .T20Table tbody tr:nth-child(1):hover,
@@ -282,17 +285,20 @@ html, body, #root {
     background-color: white;
 }
 
-.WTCTable tbody img {
+.WTCTable tbody td:nth-child(3) img {
     width: 40px;
     margin-right: 10px;
     border: 0.75px solid #dadada;
 }
 
-.T20Table tbody img {
+.T20Table tbody img, .WTCTable tbody img {
     width: 45px;
     margin-right: 10px;
 }
 
+.WTCTable tbody, .T20Table tbody {
+    font-family: "Nunito Sans", sans-serif;
+}
 
 .WTCTable td, .T20Table td {
     text-align: center;

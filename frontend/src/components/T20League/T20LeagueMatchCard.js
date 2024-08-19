@@ -2,7 +2,8 @@ import React, {useRef, useState} from "react";
 
 function T20LeagueMatchCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
-                          leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate
+                          leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate,
+                                homeTeamRuns, homeTeamOvers, awayTeamRuns, awayTeamOvers
                       }) {
 
     const neutralGradient = 'linear-gradient(135deg, #1B2A7D, #1B2A7D, orange)';
@@ -11,18 +12,18 @@ function T20LeagueMatchCard({
     const [hoveredSection, setHoveredSection] = useState(null);
 
 
-    const [awayRuns, setAwayRuns] = useState('');
+    const [awayRuns, setAwayRuns] = useState(awayTeamRuns);
     const [awayWickets, setAwayWickets] = useState('');
-    const [awayOvers, setAwayOvers] = useState('');
+    const [awayOvers, setAwayOvers] = useState(awayTeamOvers);
 
-    const [homeRuns, setHomeRuns] = useState('');
+    const [homeRuns, setHomeRuns] = useState(homeTeamRuns);
     const [homeWickets, setHomeWickets] = useState('');
-    const [homeOvers, setHomeOvers] = useState('');
+    const [homeOvers, setHomeOvers] = useState(homeTeamOvers);
 
-    const homeRunsRef = useRef(null);
-    const awayRunsRef = useRef(null);
-    const homeOversRef = useRef(null);
-    const awayOversRef = useRef(null);
+    const homeRunsRef = useRef(homeTeamRuns);
+    const awayRunsRef = useRef(awayTeamRuns);
+    const homeOversRef = useRef(homeTeamOvers);
+    const awayOversRef = useRef(awayTeamOvers);
 
 
     const getStyle = (section, num) => {

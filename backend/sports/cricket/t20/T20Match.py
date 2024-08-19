@@ -21,12 +21,19 @@ class T20Match():
         self.type = None
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
-        
+
+        self.tossWinner = None
+        self.battingFirst = None
+
         self.homeTeamScore = None
         self.awayTeamScore = None
-        self.matchResult = None
-        
+        self.matchResult = MatchResult.NONE
+
         self.addMatchToTeams()
+
+    def set_team_nrrs(self):
+        self.homeTeam.addMatchNRRDetails(self.homeTeamScore, self.awayTeamScore)
+        self.awayTeam.addMatchNRRDetails(self.awayTeamScore, self.homeTeamScore)
 
     def check_team_winner(self, team: str):
         if self.matchResult == MatchResult.HOME_WIN:
@@ -87,7 +94,7 @@ class T20Match():
         elif result == "Away-win":
             self.applyMatchResult(MatchResult.AWAY_WIN)
         elif result == "No-result":
-            self.applyMatchResult(MatchResult.DRAW)
+            self.applyMatchResult(MatchResult.NO_RESULT)
         elif result == "None":
             self.matchResult = MatchResult.NONE
         else:
@@ -102,7 +109,11 @@ class T20Match():
             "date": self.get_english_date(),
             "startTime": self.get_start_time(),
             "status": self.status,
-            "result": self.matchResult.value
+            "result": self.matchResult.value,
+            "homeTeamRuns": self.homeTeamScore.getRuns() if self.homeTeamScore != None else "",
+            "homeTeamOvers": self.homeTeamScore.get_english_overs() if self.homeTeamScore != None else "",
+            "awayTeamRuns": self.awayTeamScore.getRuns() if self.awayTeamScore != None else "",
+            "awayTeamOvers": self.awayTeamScore.get_english_overs() if self.awayTeamScore != None else "",
         }
 
     def get_english_date(self):
@@ -119,43 +130,30 @@ class T20Match():
     def addMatchToTeams(self):
         self.homeTeam.addMatch(self, "Home")
         self.awayTeam.addMatch(self, "Away")
-        
+
     def setMatchVenue(self, venue: str):
         self.venue = venue
-        
+
     def setMatchDateTime(self, date: str):
         self.date = datetime.strptime(date, "%Y-%m-%d %H:%M:%S%z")
-        
+
     def setMatchType(self, matchType: str):
         self.type = matchType
-        
+
     def getMatchNumber(self):
         return self.matchNumber
-    
+
     def getHomeTeamScore(self):
         return self.homeTeamScore
 
     def getAwayTeamScore(self):
         return self.awayTeamScore
-    
+
     def getMatchResult(self):
         return self.matchResult
-    
-        
-    def simulateMatch(self, homeTeamScore: CricketInningsScore, awayTeamScore: CricketInningsScore, resultComplete: bool):
-        if(resultComplete):
-            self.homeTeamScore = homeTeamScore
-            self.awayTeamScore = awayTeamScore
-            
-            self.homeTeam.addMatchNRRDetails(homeTeamScore, awayTeamScore)      
-            self.awayTeam.addMatchNRRDetails(awayTeamScore, homeTeamScore)  
-            
-            if(homeTeamScore.getRuns() > awayTeamScore.getRuns()):
-                self.applyMatchResult(MatchResult.HOME_WIN)
-            else:
-                self.applyMatchResult(MatchResult.AWAY_WIN)
-        else:
-            self.applyMatchResult(MatchResult.NO_RESULT)
+
+
+
 
 
     def checkMatchResult(self, matchResult: MatchResult):

@@ -49,6 +49,10 @@ class T20LeagueInitializer:
                 match.set_match_status(m["status"])
                 match.set_match_result(m["result"])
 
+                if m["status"] == "complete":
+                    match.set_team_score("Home", m["homeTeamRuns"], str(m["homeTeamOvers"]))
+                    match.set_team_score("Away", m["awayTeamRuns"], str(m["awayTeamOvers"]))
+                    match.set_team_nrrs()
 
                 league.add_match(match)
 

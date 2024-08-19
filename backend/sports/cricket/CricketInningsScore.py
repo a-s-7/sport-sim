@@ -55,3 +55,6 @@ class CricketInningsScore:
     
     def getTotalBalls(self):
         return self.totalBalls
+
+    def get_english_overs(self):
+        return f"{self.overs}.{self.balls}"

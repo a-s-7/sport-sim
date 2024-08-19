@@ -5,8 +5,14 @@
     "Location": "MA Chidambaram Stadium, Chennai",
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Royal Challengers Bengaluru",
-    "result": "None",
-    "status": "incomplete"
+    "result": "Home-win",
+    "status": "complete",
+    "homeTeamRuns": 200,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 19.5,
+    "awayTeamRuns": 190,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 20
   },
   {
     "MatchNumber": 2,
@@ -15,7 +21,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 3,
@@ -24,7 +36,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 4,
@@ -33,7 +51,13 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 5,
@@ -42,7 +66,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 6,
@@ -51,7 +81,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 7,
@@ -60,7 +96,13 @@
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 8,
@@ -69,7 +111,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 9,
@@ -78,7 +126,13 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 10,
@@ -87,7 +141,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 11,
@@ -96,7 +156,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 12,
@@ -105,7 +171,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 13,
@@ -114,7 +186,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 14,
@@ -123,7 +201,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 15,
@@ -132,7 +216,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 16,
@@ -141,7 +231,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 17,
@@ -150,7 +246,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 18,
@@ -159,7 +261,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 19,
@@ -168,7 +276,13 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Royal Challengers Bengaluru",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 20,
@@ -177,7 +291,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 21,
@@ -186,7 +306,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 22,
@@ -195,7 +321,13 @@
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 23,
@@ -204,7 +336,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 24,
@@ -213,7 +351,13 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 25,
@@ -222,7 +366,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Royal Challengers Bengaluru",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 26,
@@ -231,7 +381,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 27,
@@ -240,7 +396,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 28,
@@ -249,7 +411,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 29,
@@ -258,7 +426,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 30,
@@ -267,7 +441,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 32,
@@ -276,7 +456,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 31,
@@ -285,7 +471,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 33,
@@ -294,7 +486,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 34,
@@ -303,7 +501,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 35,
@@ -312,7 +516,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 36,
@@ -321,7 +531,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Royal Challengers Bengaluru",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 37,
@@ -330,7 +546,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 38,
@@ -339,7 +561,13 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 39,
@@ -348,7 +576,13 @@
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 40,
@@ -357,7 +591,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 41,
@@ -366,7 +606,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Royal Challengers Bengaluru",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 42,
@@ -375,7 +621,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 43,
@@ -384,7 +636,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 44,
@@ -393,7 +651,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 45,
@@ -402,7 +666,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Royal Challengers Bengaluru",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 46,
@@ -411,7 +681,13 @@
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 47,
@@ -420,7 +696,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 48,
@@ -429,7 +711,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 49,
@@ -438,7 +726,13 @@
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 50,
@@ -447,7 +741,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 51,
@@ -456,7 +756,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 52,
@@ -465,7 +771,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 53,
@@ -474,7 +786,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 54,
@@ -483,7 +801,13 @@
     "HomeTeam": "Lucknow Super Giants",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 55,
@@ -492,7 +816,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Sunrisers Hyderabad",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 56,
@@ -501,7 +831,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 57,
@@ -510,7 +846,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 58,
@@ -519,7 +861,13 @@
     "HomeTeam": "Punjab Kings",
     "AwayTeam": "Royal Challengers Bengaluru",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 59,
@@ -528,7 +876,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 60,
@@ -537,7 +891,13 @@
     "HomeTeam": "Kolkata Knight Riders",
     "AwayTeam": "Mumbai Indians",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 61,
@@ -546,7 +906,13 @@
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Rajasthan Royals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 62,
@@ -555,7 +921,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Delhi Capitals",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 63,
@@ -564,7 +936,13 @@
     "HomeTeam": "Gujarat Titans",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 64,
@@ -573,7 +951,13 @@
     "HomeTeam": "Delhi Capitals",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 65,
@@ -582,7 +966,13 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 66,
@@ -591,7 +981,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Gujarat Titans",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 67,
@@ -600,7 +996,13 @@
     "HomeTeam": "Mumbai Indians",
     "AwayTeam": "Lucknow Super Giants",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 68,
@@ -609,7 +1011,13 @@
     "HomeTeam": "Royal Challengers Bengaluru",
     "AwayTeam": "Chennai Super Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 69,
@@ -618,7 +1026,13 @@
     "HomeTeam": "Sunrisers Hyderabad",
     "AwayTeam": "Punjab Kings",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 70,
@@ -627,6 +1041,12 @@
     "HomeTeam": "Rajasthan Royals",
     "AwayTeam": "Kolkata Knight Riders",
     "result": "None",
-    "status": "incomplete"
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": 0,
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   }
 ]

@@ -1,8 +1,8 @@
 import json
 
-from backend.sports.cricket.test.WTCMatch import WTCMatch
-from backend.sports.cricket.test.WTCSeries import WTCSeries
-from backend.sports.cricket.test.WTCTeam import WTCTeam
+from backend.models.cricket.test.WTCMatch import WTCMatch
+from backend.models.cricket.test.WTCSeries import WTCSeries
+from backend.models.cricket.test.WTCTeam import WTCTeam
 
 
 class WTC:

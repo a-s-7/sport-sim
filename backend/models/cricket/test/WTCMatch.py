@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from backend.sports.cricket.MatchResult import MatchResult
-from backend.sports.cricket.test.WTCTeam import WTCTeam
+from backend.models.cricket.MatchResult import MatchResult
+from backend.models.cricket.test.WTCTeam import WTCTeam
 import random
 
 

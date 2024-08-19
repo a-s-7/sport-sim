@@ -1,5 +1,5 @@
-from backend.sports.cricket.CricketTeam import CricketTeam
-from backend.sports.cricket.CricketInningsScore import CricketInningsScore
+from backend.models.cricket.CricketTeam import CricketTeam
+from backend.models.cricket.CricketInningsScore import CricketInningsScore
 
 class T20Team(CricketTeam):
     def __init__(self, name, acronym):

@@ -1,4 +1,4 @@
-from backend.sports.cricket.CricketFormat import CricketFormat
+from backend.models.cricket.CricketFormat import CricketFormat
 
 
 class CricketInningsScore:

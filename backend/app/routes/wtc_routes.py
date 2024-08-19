@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify
 
-from backend.sports.cricket.test.WTCInitializer import WTCInitializer
+from backend.models.cricket.test.WTCInitializer import WTCInitializer
 
 wtc_bp = Blueprint('wtc', __name__)
 
-wtcTP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/sports/cricket/test/wtc_data/wtc-teams.json"
-wtcSP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/sports/cricket/test/wtc_data/wtc-series.json"
+wtcTP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/wtc_data/wtc-teams.json"
+wtcSP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/wtc_data/wtc-series.json"
 wtc = WTCInitializer.initializeWTC("ICC World Test Championship", 2023, 2025, wtcTP, wtcSP)
 
 @wtc_bp.route('/WTC/matches/<team_names>', methods=['GET'])

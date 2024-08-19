@@ -7,8 +7,8 @@ function Home() {
                 WELCOME TO SPORT SIM
             </div>
             {/*<p>*/}
-            {/*    SPORT SIM is a sports simulation application that allows users to simulate matches between teams in a*/}
-            {/*    variety of sports.*/}
+            {/*    SPORT SIM is a models simulation application that allows users to simulate matches between teams in a*/}
+            {/*    variety of models.*/}
             {/*</p>*/}
             {/*<p>*/}
             {/*    SPORT SIM currently supports cricket.*/}

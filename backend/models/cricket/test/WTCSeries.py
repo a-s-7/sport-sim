@@ -1,6 +1,6 @@
-from backend.sports.cricket.MatchResult import MatchResult
-from backend.sports.cricket.test.WTCMatch import WTCMatch
-from backend.sports.cricket.test.WTCTeam import WTCTeam
+from backend.models.cricket.MatchResult import MatchResult
+from backend.models.cricket.test.WTCMatch import WTCMatch
+from backend.models.cricket.test.WTCTeam import WTCTeam
 
 
 class WTCSeries:

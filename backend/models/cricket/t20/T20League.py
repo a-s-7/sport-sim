@@ -19,6 +19,14 @@ class T20League():
 
         return sorted_teams
 
+    def get_teams_json(self):
+        teams = []
+
+        for team in self.teamDict.values():
+            teams.append({"value": team.acronym, "label": team.name})
+
+        return teams
+
     def update_match_nrr(self, match_num: int,
                          home_runs: int, home_wickets: int, home_overs: str,
                          away_runs: int, away_wickets: int, away_overs: str):

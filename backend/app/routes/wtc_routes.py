@@ -16,6 +16,10 @@ def get_team_match_data(team_names):
 def get_points_table():
     return wtc.get_points_table_json()
 
+@wtc_bp.route('/WTC/teams', methods=['GET'])
+def get_ipl_teams():
+    return wtc.get_teams_json()
+
 @wtc_bp.route('/WTC/match/<series_id>/<match_num>/<result>', methods=['PATCH'])
 def update_wtc_match(series_id, match_num, result):
     try:

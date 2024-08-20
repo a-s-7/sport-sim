@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import T20LeagueControlBar from "../components/T20League/T20LeagueControlBar";
 import T20LeagueMatchCardPanel from "../components/T20League/T20LeagueMatchCardPanel";
 import T20LeaguePointsTable from "../components/T20League/T20LeaguePointsTable";
+import ControlBar from "../components/ControlBar";
 
 function IPLPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
-    const [matchesData, setMatchesData] = useState([]);
 
+    const [matchesData, setMatchesData] = useState([]);
     const [pointsTableData, setPointsTableData] = useState([]);
 
     const [matchAreaKey, setMatchAreaKey] = useState(0);
@@ -96,11 +96,16 @@ function IPLPage() {
 
     return (
         <div className="IPLPage">
-            <T20LeagueControlBar
+            <ControlBar
                 refreshFunction={handleRefresh}
                 matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                 teams={selectedTeams}
-                sst={setSelectedTeams}></T20LeagueControlBar>
+                sst={setSelectedTeams}
+                urlTag={"IPL"}
+                logoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}
+                name={"IPL"}
+                color={"linear-gradient(135deg, darkblue, darkblue, orange)"}
+            />
 
             <div className="matchArea">
                 <div className="matchCardContainer">

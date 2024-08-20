@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import WTCControlBar from "../components/WTC/WTCControlBar";
 import WTCMatchCardPanel from "../components/WTC/WTCMatchCardPanel";
 import WTCPointsTable from "../components/WTC/WTCPointsTable";
+import ControlBar from "../components/ControlBar";
 
 function WTCPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
@@ -29,7 +29,8 @@ function WTCPage() {
         let url = `http://127.0.0.1:5000/WTC/matches/All`;
 
         if (selectedTeams.length > 0) {
-            let teamNames = selectedTeams.map(team => team.label).join("-");
+            console.log(selectedTeams);
+            let teamNames = selectedTeams.map(team => team.value).join("-");
             url = `http://127.0.0.1:5000/WTC/matches/${teamNames}`;
         }
 
@@ -97,11 +98,15 @@ function WTCPage() {
 
     return (
         <div className="WTC">
-            <WTCControlBar refFunc={handleRefresh}
-                           matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
-                           teams={selectedTeams}
-                           sst={setSelectedTeams}>
-            </WTCControlBar>
+            <ControlBar refreshFunction={handleRefresh}
+                        matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
+                        teams={selectedTeams}
+                        sst={setSelectedTeams}
+                        urlTag={"WTC"}
+                        logoSrc={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}
+                        name={"ICC World Test Championship"}
+                        color={"black"}
+            />
 
             <div className="matchArea">
                 <div className="matchCardContainer">

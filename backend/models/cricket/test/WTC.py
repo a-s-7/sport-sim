@@ -15,6 +15,14 @@ class WTC:
         self.series = []
         self.matchList = []
 
+    def get_teams_json(self):
+        teams = []
+
+        for team in self.teamDict.values():
+            teams.append({"value": team.acronym, "label": team.name})
+
+        return teams
+
     def sort_wtc_match_list(self):
         self.matchList = sorted(self.matchList, key=lambda m: m.startDate)
 
@@ -64,13 +72,8 @@ class WTC:
 
         return sorted_teams
 
-    def extract_teams(self, team_names: str):
-        team_names = team_names.split("-")
-
-        return team_names
-
-    def simulate_matches(self, team_names: str):
-        teams = self.extract_teams(team_names)
+    def simulate_matches(self, team_acs: str):
+        teams = team_acs.split("-")
 
         if len(teams) == 1 and teams[0] == "All":
             for match in self.matchList:
@@ -83,8 +86,8 @@ class WTC:
 
         return
 
-    def clear_incomplete_matches(self, team_names: str):
-        teams = self.extract_teams(team_names)
+    def clear_incomplete_matches(self, team_acs: str):
+        teams = team_acs.split("-")
 
         if len(teams) == 1 and teams[0] == "All":
             for match in self.matchList:
@@ -95,7 +98,7 @@ class WTC:
                 if match.check_if_team_present(teams) and match.matchStatus == "incomplete":
                     match.clear_match()
 
-    def get_match_data_json(self, team_names: str):
+    def get_match_data_json(self, team_acs: str):
         ### TEAM DATA
 
         teamData = {}
@@ -112,7 +115,7 @@ class WTC:
 
         ### MATCH DATA
 
-        teams = self.extract_teams(team_names)
+        teams = team_acs.split("-")
 
         matchData = []
 

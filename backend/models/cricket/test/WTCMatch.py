@@ -55,8 +55,8 @@ class WTCMatch:
         self.update_home_team_deduction(0)
         self.update_away_team_deduction(0)
 
-    def check_if_team_present(self, teamNames: []):
-        if self.homeTeam.name in teamNames or self.awayTeam.name in teamNames:
+    def check_if_team_present(self, teamAcs: []):
+        if self.homeTeam.acronym in teamAcs or self.awayTeam.acronym in teamAcs:
             return True
         return False
 

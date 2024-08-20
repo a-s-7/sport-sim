@@ -17,6 +17,10 @@ def get_ipl_match_data(team_names):
 def get_ipl_points_table():
     return ipl.get_points_table_json()
 
+@t20_league_bp.route('/IPL/teams', methods=['GET'])
+def get_ipl_teams():
+    return ipl.get_teams_json()
+
 @t20_league_bp.route('/IPL/match/<match_num>/<result>', methods=['PATCH'])
 def update_ipl_match(match_num, result):
     try:

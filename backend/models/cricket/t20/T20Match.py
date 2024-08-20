@@ -31,6 +31,26 @@ class T20Match():
 
         self.addMatchToTeams()
 
+    def getJSON(self):
+        return {
+            "homeTeam": self.homeTeam.acronym,
+            "awayTeam": self.awayTeam.acronym,
+            "matchNumber": self.matchNumber,
+            "location": self.venue,
+            "date": self.get_english_date(),
+            "startTime": self.get_start_time(),
+            "status": self.status,
+            "result": self.matchResult.value,
+            "homeTeamRuns": self.homeTeamScore.getRuns() if self.homeTeamScore != None else "",
+            "homeTeamWickets": self.homeTeamScore.get_wickets() if self.homeTeamScore != None else "",
+            "homeTeamOvers": self.homeTeamScore.get_english_overs() if self.homeTeamScore != None else "",
+            "awayTeamRuns": self.awayTeamScore.getRuns() if self.awayTeamScore != None else "",
+            "awayTeamWickets": self.awayTeamScore.get_wickets() if self.awayTeamScore != None else "",
+            "awayTeamOvers": self.awayTeamScore.get_english_overs() if self.awayTeamScore != None else "",
+            "tossWinner": self.tossWinner,
+            "battingFirst": self.battingFirst,
+        }
+
     def set_team_nrrs(self):
         self.homeTeam.addMatchNRRDetails(self.homeTeamScore, self.awayTeamScore)
         self.awayTeam.addMatchNRRDetails(self.awayTeamScore, self.homeTeamScore)
@@ -99,24 +119,6 @@ class T20Match():
             self.matchResult = MatchResult.NONE
         else:
             raise ValueError()
-
-    def getJSON(self):
-        return {
-            "homeTeam": self.homeTeam.acronym,
-            "awayTeam": self.awayTeam.acronym,
-            "matchNumber": self.matchNumber,
-            "location": self.venue,
-            "date": self.get_english_date(),
-            "startTime": self.get_start_time(),
-            "status": self.status,
-            "result": self.matchResult.value,
-            "homeTeamRuns": self.homeTeamScore.getRuns() if self.homeTeamScore != None else "",
-            "homeTeamWickets": self.homeTeamScore.get_wickets() if self.homeTeamScore != None else "",
-            "homeTeamOvers": self.homeTeamScore.get_english_overs() if self.homeTeamScore != None else "",
-            "awayTeamRuns": self.awayTeamScore.getRuns() if self.awayTeamScore != None else "",
-            "awayTeamWickets": self.awayTeamScore.get_wickets() if self.awayTeamScore != None else "",
-            "awayTeamOvers": self.awayTeamScore.get_english_overs() if self.awayTeamScore != None else "",
-        }
 
     def get_english_date(self):
         return self.date.strftime("%b %-d") + ", " + self.date.strftime("%Y")

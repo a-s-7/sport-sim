@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 
 function T20LeagueMatchCard({
                                 homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
-                                leagueName, matchNum, venue, date, time, matchResult, status, onMatchUpdate,
+                                leagueName, matchNum, venue, date, time, matchResult, onMatchUpdate,
                                 homeTeamRuns, homeTeamOvers, awayTeamRuns, awayTeamOvers, awayTeamWickets, homeTeamWickets
                             }) {
 

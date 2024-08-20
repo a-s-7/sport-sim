@@ -66,8 +66,8 @@ function T20LeaguePointsTable({pointsTableData}) {
                     <td>{team.noResult}</td>
                     <td>{team.nrr.toFixed(3)}</td>
                     <td>{team.points}</td>
-                    <td>{team.runsScored + "/" + (team.ballsFaced / 6).toFixed(1)}</td>
-                    <td>{team.oppositionRunsScored + "/" + (team.oppositionBallsFaced / 6).toFixed(1)}</td>
+                    <td>{team.runsScored + "/" + (Math.floor(team.ballsFaced / 6) + "." + (team.ballsFaced % 6))}</td>
+                    <td>{team.oppositionRunsScored + "/" + (Math.floor(team.oppositionBallsFaced / 6) + "." + (team.oppositionBallsFaced % 6))}</td>
                     <td>
                         <div className="lastFive">
                             {team.previous5.map((value, index) => (

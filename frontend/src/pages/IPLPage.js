@@ -5,6 +5,8 @@ import ControlBar from "../components/ControlBar";
 
 function IPLPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
+    const [selectedStadiums, setSelectedStadiums] = useState([]);
+
 
     const [matchesData, setMatchesData] = useState([]);
     const [pointsTableData, setPointsTableData] = useState([]);
@@ -26,12 +28,18 @@ function IPLPage() {
     }
 
     const fetchMatchData = async () => {
-        let url = `http://127.0.0.1:5000/IPL/matches/All`;
+        let teamVal = "All";
+        let stadiumVal = "All";
 
-        if (selectedTeams.length > 0) {
-            let teamNames = selectedTeams.map(team => team.value).join("-");
-            url = `http://127.0.0.1:5000/IPL/matches/${teamNames}`;
+        if(selectedTeams.length > 0) {
+            teamVal = selectedTeams.map(team => team.value).join("-");
         }
+
+        if(selectedStadiums.length > 0) {
+            stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
+        }
+
+        let url = `http://127.0.0.1:5000/IPL/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -92,7 +100,7 @@ function IPLPage() {
     useEffect(() => {
         fetchMatchData();
         fetchPointsTableData()
-    }, [selectedTeams]);
+    }, [selectedTeams, selectedStadiums]);
 
     return (
         <div className="IPLPage">
@@ -100,7 +108,9 @@ function IPLPage() {
                 refreshFunction={handleRefresh}
                 matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                 teams={selectedTeams}
+                stadiums={selectedStadiums}
                 sst={setSelectedTeams}
+                setStadiums={setSelectedStadiums}
                 urlTag={"IPL"}
                 logoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}
                 name={"IPL"}

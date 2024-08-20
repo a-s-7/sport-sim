@@ -131,6 +131,13 @@ class T20Match():
             return True
         return False
 
+    def check_if_stadium_present(self, stadiumNames: []):
+        stadium = self.venue.split(",")[0]
+
+        if stadium in stadiumNames or stadium in stadiumNames:
+            return True
+        return False
+
     def addMatchToTeams(self):
         self.homeTeam.addMatch(self, "Home")
         self.awayTeam.addMatch(self, "Away")

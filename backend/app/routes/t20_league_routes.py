@@ -9,9 +9,9 @@ iplSP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/leag
 
 ipl = T20LeagueInitializer.initializeLeague("IPL 2024", iplTP, iplSP)
 
-@t20_league_bp.route('/IPL/matches/<team_names>', methods=['GET'])
-def get_ipl_match_data(team_names):
-    return ipl.get_match_data_json(team_names)
+@t20_league_bp.route('/IPL/matches/<team_names>/<stadium_names>', methods=['GET'])
+def get_ipl_match_data(team_names, stadium_names):
+    return ipl.get_match_data_json(team_names, stadium_names)
 
 @t20_league_bp.route('/IPL/points_table', methods=['GET'])
 def get_ipl_points_table():
@@ -20,6 +20,10 @@ def get_ipl_points_table():
 @t20_league_bp.route('/IPL/teams', methods=['GET'])
 def get_ipl_teams():
     return ipl.get_teams_json()
+
+@t20_league_bp.route('/IPL/venues', methods=['GET'])
+def get_ipl_venues():
+    return ipl.get_venues_json()
 
 @t20_league_bp.route('/IPL/match/<match_num>/<result>', methods=['PATCH'])
 def update_ipl_match(match_num, result):

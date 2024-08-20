@@ -8,6 +8,21 @@ class T20League():
         self.teamDict = {}
         self.matchList = []
 
+    def get_venues_json(self):
+        venues = []
+
+        for match in self.matchList:
+            stadium = match.venue.split(",")[0]
+
+            if(stadium not in venues):
+                venues.append(stadium)
+
+        for venue in venues:
+            venue = venue.strip()
+            venues[venues.index(venue)] = {"value": venue, "label": venue}
+
+        return venues
+
     def get_points_table_json(self):
         teams = []
 
@@ -26,6 +41,7 @@ class T20League():
             teams.append({"value": team.acronym, "label": team.name})
 
         return teams
+
 
     def update_match_nrr(self, match_num: int,
                          home_runs: int, home_wickets: int, home_overs: str,
@@ -88,7 +104,7 @@ class T20League():
                     match.simulate_match()
 
 
-    def get_match_data_json(self, team_acronyms: str):
+    def get_match_data_json(self, team_acronyms: str, stadium_names: str):
         ### TEAM DATA
         team_data = {}
 
@@ -98,16 +114,30 @@ class T20League():
         ## MATCH DATA
 
         team_acs = team_acronyms.split("-")
+        stadiums = stadium_names.split(",")
+        team_all = len(team_acs) == 1 and team_acs[0] == "All"
+        stadium_all = len(stadiums) == 1 and stadiums[0] == "All"
 
         match_data = []
 
         for match in self.matchList:
-            if len(team_acs) == 1 and team_acs[0] == "All":
+            if team_all and stadium_all:
                 match_data.append(match.getJSON())
-            else:
+            elif team_all and not stadium_all:
+                assert isinstance(match, T20Match), "Match should be an instance of T20Match"
+
+                if match.check_if_stadium_present(stadiums):
+                    match_data.append(match.getJSON())
+
+            elif not team_all and stadium_all:
                 assert isinstance(match, T20Match), "Match should be an instance of T20Match"
 
                 if match.check_if_team_present(team_acs):
+                    match_data.append(match.getJSON())
+            else:
+                assert isinstance(match, T20Match), "Match should be an instance of T20Match"
+
+                if match.check_if_team_present(team_acs) and match.check_if_stadium_present(stadiums):
                     match_data.append(match.getJSON())
 
         return [self.name, team_data, match_data]

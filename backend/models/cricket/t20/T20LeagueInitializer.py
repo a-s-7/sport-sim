@@ -55,5 +55,3 @@ class T20LeagueInitializer:
                     match.set_team_nrrs()
 
                 league.add_match(match)
-
-

@@ -60,16 +60,18 @@ html, body, #root {
     background-color: white;
 }
 
-.controlBarHeader {
-    display: flex;
-    height: 8%;
-}
-
 .matchArea {
     width: 100%;
     height: 92%;
     display: flex;
     flex-direction: row;
+}
+
+
+
+.controlBarHeader {
+    display: flex;
+    height: 8%;
 }
 
 .controlBarLogoContainer {
@@ -92,15 +94,16 @@ html, body, #root {
     width: 50%;
 }
 
-.teamFilterBar {
+.teamFilterBar, .stadiumFilterBar {
     padding: 5px;
     font-family: "Reem Kufi Fun", sans-serif;
     text-transform: uppercase;
     font-size: 1.5vh;
-    width: 100%;
+    width: 50%;
     max-height: 100%;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .controlBarMatchCountContainer {

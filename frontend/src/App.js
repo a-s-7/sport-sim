@@ -12,8 +12,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/wtc" element={<WTCPage/>}/>
-                <Route path="/ipl" element={<T20LeaguePage leagueUrlTag={"BBL"}
-                                                           leagueName={"BBL"}
+                <Route path="/ipl" element={<T20LeaguePage leagueUrlTag={"IPL"}
+                                                           leagueName={"IPL"}
                                                            leagueColor={"linear-gradient(135deg, darkblue, darkblue, orange)"}
                                                            leagueLogoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}/>}
                 />

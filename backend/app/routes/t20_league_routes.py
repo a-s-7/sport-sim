@@ -7,58 +7,82 @@ t20_league_bp = Blueprint('t20_league', __name__)
 iplTP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/league_data/ipl/ipl-2024-t.json"
 iplSP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/league_data/ipl/ipl-2024-s.json"
 
+bblTP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/league_data/bbl/bbl-2024-t.json"
+bblSP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/league_data/bbl/bbl-2024-s.json"
+
 ipl = T20LeagueInitializer.initializeLeague("IPL 2024", iplTP, iplSP)
+bbl = T20LeagueInitializer.initializeLeague("BBL 2024", bblTP, bblSP)
 
-@t20_league_bp.route('/IPL/matches/<team_names>/<stadium_names>', methods=['GET'])
-def get_ipl_match_data(team_names, stadium_names):
-    return ipl.get_match_data_json(team_names, stadium_names)
+leagues = [ipl, bbl]
+index_dict = {"IPL": 0, "BBL": 1}
 
-@t20_league_bp.route('/IPL/points_table', methods=['GET'])
-def get_ipl_points_table():
-    return ipl.get_points_table_json()
 
-@t20_league_bp.route('/IPL/teams', methods=['GET'])
-def get_ipl_teams():
-    return ipl.get_teams_json()
+@t20_league_bp.route('/<league_name>/matches/<team_names>/<stadium_names>', methods=['GET'])
+def get_league_match_data(league_name, team_names, stadium_names):
+    league = leagues[index_dict[league_name]]
 
-@t20_league_bp.route('/IPL/venues', methods=['GET'])
-def get_ipl_venues():
-    return ipl.get_venues_json()
+    return league.get_match_data_json(team_names, stadium_names)
 
-@t20_league_bp.route('/IPL/match/<match_num>/<result>', methods=['PATCH'])
-def update_ipl_match(match_num, result):
+@t20_league_bp.route('/<league_name>/points_table', methods=['GET'])
+def get_league_points_table(league_name):
+    league = leagues[index_dict[league_name]]
+
+    return league.get_points_table_json()
+
+@t20_league_bp.route('/<league_name>/teams', methods=['GET'])
+def get_league_teams(league_name):
+    league = leagues[index_dict[league_name]]
+
+    return league.get_teams_json()
+
+@t20_league_bp.route('/<league_name>/venues', methods=['GET'])
+def get_league_venues(league_name):
+    league = leagues[index_dict[league_name]]
+
+    return league.get_venues_json()
+
+@t20_league_bp.route('/<league_name>/match/<match_num>/<result>', methods=['PATCH'])
+def update_league_match(league_name, match_num, result):
+    league = leagues[index_dict[league_name]]
+
     try:
-        ipl.update_match(match_num, result)
+        league.update_match(match_num, result)
     except ValueError as e:
         return jsonify(str(e)), 400
 
-    return jsonify({"message": "IPL match updated successfully"})
+    return jsonify({"message": f"{league_name} match updated successfully"})
 
 
-@t20_league_bp.route('/IPL/clear/<team_names>', methods=['PATCH'])
-def clear_ipl_results(team_names):
+@t20_league_bp.route('/<league_name>/clear/<team_names>', methods=['PATCH'])
+def clear_league_results(league_name, team_names):
+    league = leagues[index_dict[league_name]]
+
     try:
-        ipl.clear_incomplete_matches(team_names)
+        league.clear_incomplete_matches(team_names)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
-    return jsonify({"message": "IPL matches cleared successfully"})
+    return jsonify({"message": f"{league_name} matches cleared successfully"})
 
-@t20_league_bp.route('/IPL/sim/<team_names>', methods=['PATCH'])
-def sim_ipl_matches(team_names):
+@t20_league_bp.route('/<league_name>/sim/<team_names>', methods=['PATCH'])
+def sim_league_matches(league_name, team_names):
+    league = leagues[index_dict[league_name]]
+
     try:
-        ipl.simulate_matches(team_names)
+        league.simulate_matches(team_names)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
-    return jsonify({"message": "IPL matches simulated successfully"})
+    return jsonify({"message": f"{league_name} matches simulated successfully"})
 
-@t20_league_bp.route('/IPL/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
-def nrr_ipl_match(match_num, home_runs, home_wickets, home_overs, away_runs, away_wickets, away_overs):
+@t20_league_bp.route('/<league_name>/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
+def nrr_league_match(league_name, match_num, home_runs, home_wickets, home_overs, away_runs, away_wickets, away_overs):
+    league = leagues[index_dict[league_name]]
+
     try:
-        ipl.update_match_nrr(int(match_num), int(home_runs), int(home_wickets), home_overs, int(away_runs), int(away_wickets), away_overs)
+        league.update_match_nrr(int(match_num), int(home_runs), int(home_wickets), home_overs, int(away_runs), int(away_wickets), away_overs)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
-    return jsonify({"message": "IPL matches simulated successfully"})
+    return jsonify({"message": f"{league_name} matches simulated successfully"})
 

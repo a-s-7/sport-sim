@@ -1,0 +1,53 @@
+{
+
+  "teams": [
+    {
+      "team_name": "Adelaide Strikers",
+      "acronym": "STR",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/104@2x.png",
+      "gradient": "linear-gradient(135deg, #FFC300, #FFC300, #003C71)"
+    },
+    {
+      "team_name": "Brisbane Heat",
+      "acronym": "HEA",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/103@2x.png",
+      "gradient": "linear-gradient(135deg, #0033A0, #0033A0, #ffd700)"
+    },
+    {
+      "team_name": "Hobart Hurricanes",
+      "acronym": "HUR",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/110@2x.png",
+      "gradient": "linear-gradient(135deg, #D50000, #D50000, black)"
+    },
+    {
+      "team_name": "Melbourne Renegades",
+      "acronym": "REN",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/105@2x.png",
+      "gradient": "linear-gradient(135deg, #5A2D81, #5A2D81, gold)"
+    },
+    {
+      "team_name": "Melbourne Stars",
+      "acronym": "STA",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/108@2x.png",
+      "gradient": "linear-gradient(135deg, #0033A0, #0033A0, #E4002B)"
+    },
+    {
+      "team_name": "Perth Scorchers",
+      "acronym": "SCO",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/106@2x.png",
+      "gradient": "linear-gradient(135deg, #D35400, #D35400, yellow)"
+    },
+    {
+      "team_name": "Sydney Sixers",
+      "acronym": "SIX",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/109@2x.png",
+      "gradient": "linear-gradient(135deg, #254AA5, #254AA5, #E91E63)"
+    },
+    {
+      "team_name": "Sydney Thunder",
+      "acronym": "THU",
+      "logo": "https://static-files.cricket-australia.pulselive.com/flag/120/107@2x.png",
+      "gradient": "linear-gradient(135deg, red, red, gold)"
+    }
+  ]
+}

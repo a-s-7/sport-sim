@@ -8,13 +8,17 @@ wtcTP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/wtc_
 wtcSP = "/Users/ayushsaldhi/Desktop/Projects/sport-sim/backend/data/cricket/wtc_data/wtc-series.json"
 wtc = WTCInitializer.initializeWTC("ICC World Test Championship", 2023, 2025, wtcTP, wtcSP)
 
-@wtc_bp.route('/WTC/matches/<team_names>', methods=['GET'])
-def get_team_match_data(team_names):
-    return wtc.get_match_data_json(team_names)
+@wtc_bp.route('/WTC/matches/<team_names>/<venue_names>', methods=['GET'])
+def get_team_match_data(team_names, venue_names):
+    return wtc.get_match_data_json(team_names, venue_names)
 
 @wtc_bp.route('/WTC/points_table', methods=['GET'])
 def get_points_table():
     return wtc.get_points_table_json()
+
+@wtc_bp.route('/WTC/venues', methods=['GET'])
+def get_ipl_venues():
+    return wtc.get_venues_json()
 
 @wtc_bp.route('/WTC/teams', methods=['GET'])
 def get_ipl_teams():

@@ -5,6 +5,7 @@ import ControlBar from "../components/ControlBar";
 
 function WTCPage() {
     const [selectedTeams, setSelectedTeams] = useState([]);
+    const [selectedStadiums, setSelectedStadiums] = useState([]);
 
     const [matchesData, setMatchesData] = useState([]);
     const [pointsTableData, setPointsTableData] = useState([]);
@@ -25,14 +26,19 @@ function WTCPage() {
         await refreshPointsTable();
     }
 
-    const fetchMatchData = async () => {
-        let url = `http://127.0.0.1:5000/WTC/matches/All`;
+   const fetchMatchData = async () => {
+        let teamVal = "All";
+        let stadiumVal = "All";
 
-        if (selectedTeams.length > 0) {
-            console.log(selectedTeams);
-            let teamNames = selectedTeams.map(team => team.value).join("-");
-            url = `http://127.0.0.1:5000/WTC/matches/${teamNames}`;
+        if(selectedTeams.length > 0) {
+            teamVal = selectedTeams.map(team => team.value).join("-");
         }
+
+        if(selectedStadiums.length > 0) {
+            stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
+        }
+
+        let url = `http://127.0.0.1:5000/WTC/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -93,7 +99,7 @@ function WTCPage() {
     useEffect(() => {
         fetchMatchData();
         fetchPointsTableData()
-    }, [selectedTeams]);
+    }, [selectedTeams, selectedStadiums]);
 
 
     return (
@@ -101,7 +107,9 @@ function WTCPage() {
             <ControlBar refreshFunction={handleRefresh}
                         matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
                         teams={selectedTeams}
+                        stadiums={selectedStadiums}
                         sst={setSelectedTeams}
+                        setStadiums={setSelectedStadiums}
                         urlTag={"WTC"}
                         logoSrc={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}
                         name={"ICC World Test Championship"}

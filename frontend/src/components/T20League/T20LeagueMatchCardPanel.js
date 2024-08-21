@@ -3,7 +3,7 @@ import T20LeagueMatchCard from "./T20LeagueMatchCard";
 import T20LeagueMatchResultCard from "./T20LeagueMatchResultCard";
 
 
-function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag}) {
+function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag, cardNeutralGradient}) {
 
     const [league = "", teamData = {}, matchData = []] = matches;
 
@@ -31,6 +31,7 @@ function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag}) {
                     awayTeamRuns={match.awayTeamRuns}
                     awayTeamWickets={match.awayTeamWickets}
                     awayTeamOvers={match.awayTeamOvers}
+                    neutralGradient={cardNeutralGradient}
                 /> : <T20LeagueMatchResultCard
                  homeGradient={teamData[match.homeTeam].gradient}
                     awayGradient={teamData[match.awayTeam].gradient}
@@ -51,6 +52,7 @@ function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag}) {
                     awayTeamRuns={match.awayTeamRuns}
                     awayTeamWickets={match.awayTeamWickets}
                     awayTeamOvers={match.awayTeamOvers}
+                    neutralGradient={cardNeutralGradient}
                 />
                 }
 

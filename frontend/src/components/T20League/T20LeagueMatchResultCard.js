@@ -1,23 +1,10 @@
-import React, {useRef, useState} from "react";
+import React from "react";
 
 function T20LeagueMatchResultCard({
                                       homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
                                       leagueName, matchNum, venue, date, time, matchResult, homeTeamRuns, homeTeamOvers,
-                                      awayTeamRuns, awayTeamOvers, awayTeamWickets, homeTeamWickets
+                                      awayTeamRuns, awayTeamOvers, awayTeamWickets, homeTeamWickets, neutralGradient
                                   }) {
-
-    const neutralGradient = 'linear-gradient(135deg, #1B2A7D, #1B2A7D, orange)';
-
-    const [selected, setSelected] = useState(matchResult);
-
-    const [awayRuns, setAwayRuns] = useState(awayTeamRuns);
-    const [awayWickets, setAwayWickets] = useState(awayTeamWickets);
-    const [awayOvers, setAwayOvers] = useState(awayTeamOvers);
-
-    const [homeRuns, setHomeRuns] = useState(homeTeamRuns);
-    const [homeWickets, setHomeWickets] = useState(homeTeamWickets);
-    const [homeOvers, setHomeOvers] = useState(homeTeamOvers);
-
 
    const getStyle = (section, num) => {
         let background = 'transparent';
@@ -46,16 +33,16 @@ function T20LeagueMatchResultCard({
                                        type={"number"}
                                        min="0"
                                        step="1"
-                                       value={homeRuns}
-                                       style={{color: selected === "Home-win" ? "white" : "black"}}/>
+                                       value={homeTeamRuns}
+                                       style={{color: matchResult === "Home-win" ? "white" : "black"}}/>
                                 <h2>/</h2>
                                 <input className="wicketInput"
                                        type={"number"}
                                        min="0"
                                        max="10"
                                        step="1"
-                                       value={homeWickets}
-                                       style={{color: selected === "Home-win" ? "white" : "black"}}/>
+                                       value={homeTeamWickets}
+                                       style={{color: matchResult === "Home-win" ? "white" : "black"}}/>
                             </div>
                             <div className="homeOvers">
                                 <input className="oversInput"
@@ -63,8 +50,8 @@ function T20LeagueMatchResultCard({
                                        min="0.0"
                                        max="20.0"
                                        step="0.1"
-                                       value={homeOvers}
-                                       style={{color: selected === "Home-win" ? "white" : "black"}}/>
+                                       value={homeTeamOvers}
+                                       style={{color: matchResult === "Home-win" ? "white" : "black"}}/>
                             </div>
                         </div>
                         <div className="t20homeName">
@@ -97,16 +84,16 @@ function T20LeagueMatchResultCard({
                                        type={"number"}
                                        min="0"
                                        step="1"
-                                       value={awayRuns}
-                                       style={{color: selected === "Away-win" ? "white" : "black"}}/>
+                                       value={awayTeamRuns}
+                                       style={{color: matchResult === "Away-win" ? "white" : "black"}}/>
                                 <h2>/</h2>
                                 <input className="wicketInput"
                                        type={"number"}
                                        min="0"
                                        max="10"
                                        step="1"
-                                       value={awayWickets}
-                                       style={{color: selected === "Away-win" ? "white" : "black"}}/>
+                                       value={awayTeamWickets}
+                                       style={{color: matchResult === "Away-win" ? "white" : "black"}}/>
                             </div>
                             <div className="awayOvers">
                                 <input className="oversInput"
@@ -114,8 +101,8 @@ function T20LeagueMatchResultCard({
                                        min="0.0"
                                        max="20.0"
                                        step="0.1"
-                                       value={awayOvers}
-                                       style={{color: selected === "Away-win" ? "white" : "black"}}/>
+                                       value={awayTeamOvers}
+                                       style={{color: matchResult === "Away-win" ? "white" : "black"}}/>
                             </div>
                         </div>
 

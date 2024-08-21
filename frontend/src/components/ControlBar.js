@@ -3,7 +3,8 @@ import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
-function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadiums, urlTag, logoSrc, name, color}) {
+function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadiums,
+                        urlTag, logoSrc, name, color, matchesFiltered}) {
     const [teamOptions, setTeamOptions] = useState([]);
     const [stadiumOptions, setStadiumOptions] = useState([]);
 
@@ -47,14 +48,11 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
 
 
     const resetIncompleteMatches = async () => {
-        let teamAcs = "All";
-
-        if (teams.length > 0) {
-            teamAcs = teams.map(team => team.value).join("-");
-        }
+        let matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+        console.log(matchNums)
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/${urlTag}/clear/${teamAcs}`,
+            const response = await fetch(`http://127.0.0.1:5000/${urlTag}/clear/${matchNums}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -73,14 +71,11 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
     };
 
     const randomlySimIncompleteMatches = async () => {
-        let teamAcs = "All";
-
-        if (teams.length > 0) {
-            teamAcs = teams.map(team => team.value).join("-");
-        }
+        let matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+        console.log(matchNums)
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/${urlTag}/sim/${teamAcs}`,
+            const response = await fetch(`http://127.0.0.1:5000/${urlTag}/sim/${matchNums}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -101,7 +96,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
     useEffect(() => {
         fetchTeamOptions();
         fetchVenueOptions();
-    }, []);
+    }, [urlTag]);
 
 
     return (

@@ -20,10 +20,9 @@ function T20LeagueMatchCard({
                                 awayTeamOvers,
                                 awayTeamWickets,
                                 homeTeamWickets,
-                                urlLeagueTag
+                                urlLeagueTag,
+                                neutralGradient
                             }) {
-
-    const neutralGradient = 'linear-gradient(135deg, #1B2A7D, #1B2A7D, orange)';
 
     const [selected, setSelected] = useState(matchResult)
     const [hoveredSection, setHoveredSection] = useState(null);

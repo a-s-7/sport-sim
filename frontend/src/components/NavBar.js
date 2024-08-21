@@ -25,6 +25,13 @@ function NavBar() {
                          }}>
                     IPL
                 </NavLink>
+                <NavLink to="/bbl"
+                          style={{
+                             background: path === "/bbl" ? "black" : "white",
+                             color: path === "/bbl" ? "white" : "black"
+                         }}>
+                    BBL
+                </NavLink>
             </div>
             <div className="userArea">
                 USER

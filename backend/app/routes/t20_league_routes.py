@@ -53,23 +53,23 @@ def update_league_match(league_name, match_num, result):
     return jsonify({"message": f"{league_name} match updated successfully"})
 
 
-@t20_league_bp.route('/<league_name>/clear/<team_names>', methods=['PATCH'])
-def clear_league_results(league_name, team_names):
+@t20_league_bp.route('/<league_name>/clear/<match_nums>', methods=['PATCH'])
+def clear_league_results(league_name, match_nums):
     league = leagues[index_dict[league_name]]
 
     try:
-        league.clear_incomplete_matches(team_names)
+        league.clear_incomplete_matches(match_nums)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
     return jsonify({"message": f"{league_name} matches cleared successfully"})
 
-@t20_league_bp.route('/<league_name>/sim/<team_names>', methods=['PATCH'])
-def sim_league_matches(league_name, team_names):
+@t20_league_bp.route('/<league_name>/sim/<match_nums>', methods=['PATCH'])
+def sim_league_matches(league_name, match_nums):
     league = leagues[index_dict[league_name]]
 
     try:
-        league.simulate_matches(team_names)
+        league.simulate_matches(match_nums)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 

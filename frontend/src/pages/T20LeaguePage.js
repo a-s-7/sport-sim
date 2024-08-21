@@ -3,7 +3,7 @@ import T20LeagueMatchCardPanel from "../components/T20League/T20LeagueMatchCardP
 import T20LeaguePointsTable from "../components/T20League/T20LeaguePointsTable";
 import ControlBar from "../components/ControlBar";
 
-function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor}) {
+function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTableColor}) {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [selectedStadiums, setSelectedStadiums] = useState([]);
 
@@ -98,9 +98,21 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor}) {
     }
 
     useEffect(() => {
-        fetchMatchData();
-        fetchPointsTableData()
+        handleRefresh();
     }, [selectedTeams, selectedStadiums]);
+
+    const resetState = async () => {
+        await setSelectedTeams([]);
+        await setSelectedStadiums([]);
+        await setMatchesData([]);
+        await setPointsTableData([]);
+    }
+
+    useEffect(() => {
+        resetState();
+        handleRefresh();
+    }, [leagueUrlTag]);
+
 
     return (
         <div className="T20LeaguePage">
@@ -115,18 +127,21 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor}) {
                 logoSrc={leagueLogoSrc}
                 name={leagueName}
                 color={leagueColor}
+                matchesFiltered={matchesData[2]}
             />
 
-            <div className="matchArea">
+            <div className="matchArea" >
                 <div className="matchCardContainer">
                     <T20LeagueMatchCardPanel key={matchAreaKey}
                                              onMatchUpdate={refreshPointsTable}
                                              matches={matchesData}
-                                             urlLeagueTag={leagueUrlTag}/>
+                                             urlLeagueTag={leagueUrlTag}
+                                             cardNeutralGradient={leagueColor}/>
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
-                        <T20LeaguePointsTable pointsTableData={pointsTableData}/>
+                        <T20LeaguePointsTable pointsTableData={pointsTableData}
+                                                headerColor={pointsTableColor}/>
                     </div>
                 </div>
             </div>

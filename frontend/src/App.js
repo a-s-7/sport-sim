@@ -12,10 +12,19 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/wtc" element={<WTCPage/>}/>
-                <Route path="/ipl" element={<T20LeaguePage leagueUrlTag={"IPL"}
-                                                           leagueName={"IPL"}
+                <Route path="/ipl" element={<T20LeaguePage leagueName={"IPL"}
+                                                           leagueUrlTag={"IPL"}
                                                            leagueColor={"linear-gradient(135deg, darkblue, darkblue, orange)"}
-                                                           leagueLogoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}/>}
+                                                           leagueLogoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}
+                                                           pointsTableColor={"darkblue"}/>}
+
+                />
+                <Route path="/bbl" element={<T20LeaguePage leagueName={"BBL"}
+                                                           leagueUrlTag={"BBL"}
+                                                           leagueColor={"linear-gradient(135deg, black, black, #F9C20C)"}
+                                                           leagueLogoSrc={"https://upload.wikimedia.org/wikipedia/en/c/c0/Big_Bash_League_%28logo%29.png"}
+                                                           pointsTableColor={"black"}/>}
+
                 />
             </Routes>
         </div>

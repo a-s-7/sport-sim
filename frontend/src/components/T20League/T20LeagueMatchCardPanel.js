@@ -3,7 +3,7 @@ import T20LeagueMatchCard from "./T20LeagueMatchCard";
 import T20LeagueMatchResultCard from "./T20LeagueMatchResultCard";
 
 
-function T20LeagueMatchCardPanel({onMatchUpdate, matches}) {
+function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag}) {
 
     const [league = "", teamData = {}, matchData = []] = matches;
 
@@ -24,7 +24,7 @@ function T20LeagueMatchCardPanel({onMatchUpdate, matches}) {
                     time={match.startTime}
                     matchResult={match.result}
                     onMatchUpdate={onMatchUpdate}
-
+                    urlLeagueTag={urlLeagueTag}
                     homeTeamRuns={match.homeTeamRuns}
                     homeTeamWickets={match.homeTeamWickets}
                     homeTeamOvers={match.homeTeamOvers}

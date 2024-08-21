@@ -55,7 +55,6 @@ function T20LeagueMatchResultCard({
                                        max="10"
                                        step="1"
                                        value={homeWickets}
-                                       onClick={(e) => e.stopPropagation()}
                                        style={{color: selected === "Home-win" ? "white" : "black"}}/>
                             </div>
                             <div className="homeOvers">
@@ -65,7 +64,6 @@ function T20LeagueMatchResultCard({
                                        max="20.0"
                                        step="0.1"
                                        value={homeOvers}
-                                       onClick={(e) => e.stopPropagation()}
                                        style={{color: selected === "Home-win" ? "white" : "black"}}/>
                             </div>
                         </div>

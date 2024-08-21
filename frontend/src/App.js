@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import WTCPage from "./pages/WTCPage";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
-import IPLPage from "./pages/IPLPage";
+import T20LeaguePage from "./pages/T20LeaguePage";
 
 function App() {
     return (
@@ -12,7 +12,11 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/wtc" element={<WTCPage/>}/>
-                <Route path="/ipl" element={<IPLPage/>}/>
+                <Route path="/ipl" element={<T20LeaguePage leagueUrlTag={"BBL"}
+                                                           leagueName={"BBL"}
+                                                           leagueColor={"linear-gradient(135deg, darkblue, darkblue, orange)"}
+                                                           leagueLogoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}/>}
+                />
             </Routes>
         </div>
     );

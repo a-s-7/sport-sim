@@ -3,7 +3,7 @@ import T20LeagueMatchCardPanel from "../components/T20League/T20LeagueMatchCardP
 import T20LeaguePointsTable from "../components/T20League/T20LeaguePointsTable";
 import ControlBar from "../components/ControlBar";
 
-function IPLPage() {
+function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor}) {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [selectedStadiums, setSelectedStadiums] = useState([]);
 
@@ -39,7 +39,7 @@ function IPLPage() {
             stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
         }
 
-        let url = `http://127.0.0.1:5000/IPL/matches/${teamVal}/${stadiumVal}`;
+        let url = `http://127.0.0.1:5000/${leagueUrlTag}/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -54,7 +54,7 @@ function IPLPage() {
     };
 
     const fetchPointsTableData = async () => {
-        let url = `http://127.0.0.1:5000/IPL/points_table`;
+        let url = `http://127.0.0.1:5000/${leagueUrlTag}/points_table`;
 
         try {
             const response = await fetch(url);
@@ -103,7 +103,7 @@ function IPLPage() {
     }, [selectedTeams, selectedStadiums]);
 
     return (
-        <div className="IPLPage">
+        <div className="T20LeaguePage">
             <ControlBar
                 refreshFunction={handleRefresh}
                 matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
@@ -111,17 +111,18 @@ function IPLPage() {
                 stadiums={selectedStadiums}
                 sst={setSelectedTeams}
                 setStadiums={setSelectedStadiums}
-                urlTag={"IPL"}
-                logoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}
-                name={"IPL"}
-                color={"linear-gradient(135deg, darkblue, darkblue, orange)"}
+                urlTag={leagueUrlTag}
+                logoSrc={leagueLogoSrc}
+                name={leagueName}
+                color={leagueColor}
             />
 
             <div className="matchArea">
                 <div className="matchCardContainer">
                     <T20LeagueMatchCardPanel key={matchAreaKey}
                                              onMatchUpdate={refreshPointsTable}
-                                             matches={matchesData}/>
+                                             matches={matchesData}
+                                             urlLeagueTag={leagueUrlTag}/>
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
@@ -133,4 +134,4 @@ function IPLPage() {
     );
 }
 
-export default IPLPage;
+export default T20LeaguePage;

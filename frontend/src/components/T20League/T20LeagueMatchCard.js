@@ -1,9 +1,26 @@
 import React, {useRef, useState} from "react";
 
 function T20LeagueMatchCard({
-                                homeGradient, awayGradient, homeTeamName, homeTeamLogo, awayTeamName, awayTeamLogo,
-                                leagueName, matchNum, venue, date, time, matchResult, onMatchUpdate,
-                                homeTeamRuns, homeTeamOvers, awayTeamRuns, awayTeamOvers, awayTeamWickets, homeTeamWickets
+                                homeGradient,
+                                awayGradient,
+                                homeTeamName,
+                                homeTeamLogo,
+                                awayTeamName,
+                                awayTeamLogo,
+                                leagueName,
+                                matchNum,
+                                venue,
+                                date,
+                                time,
+                                matchResult,
+                                onMatchUpdate,
+                                homeTeamRuns,
+                                homeTeamOvers,
+                                awayTeamRuns,
+                                awayTeamOvers,
+                                awayTeamWickets,
+                                homeTeamWickets,
+                                urlLeagueTag
                             }) {
 
     const neutralGradient = 'linear-gradient(135deg, #1B2A7D, #1B2A7D, orange)';
@@ -49,7 +66,7 @@ function T20LeagueMatchCard({
         setSelected(result);
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/IPL/match/${matchNum}/${result}`,
+            const response = await fetch(`http://127.0.0.1:5000/${urlLeagueTag}/match/${matchNum}/${result}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -134,8 +151,9 @@ function T20LeagueMatchCard({
 
         if (!isNaN(homeWicketsValue) && !isNaN(awayWicketsValue) && !isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
             try {
-                const baseUrl = 'http://127.0.0.1:5000/IPL/nrr/';
-                const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
+                const baseUrl = `http://127.0.0.1:5000/${urlLeagueTag}/nrr/`;
+                const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/
+                                    ${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
 
                 const response = await fetch(url,
                     {

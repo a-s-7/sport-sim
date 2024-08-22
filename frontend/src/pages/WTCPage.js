@@ -99,6 +99,7 @@ function WTCPage() {
     useEffect(() => {
         fetchMatchData();
         fetchPointsTableData()
+        // eslint-disable-next-line
     }, [selectedTeams, selectedStadiums]);
 
 

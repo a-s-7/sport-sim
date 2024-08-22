@@ -99,6 +99,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
 
     useEffect(() => {
         handleRefresh();
+        // eslint-disable-next-line
     }, [selectedTeams, selectedStadiums]);
 
     const resetState = async () => {
@@ -111,6 +112,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
     useEffect(() => {
         resetState();
         handleRefresh();
+        // eslint-disable-next-line
     }, [leagueUrlTag]);
 
 

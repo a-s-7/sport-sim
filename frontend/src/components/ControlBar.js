@@ -96,6 +96,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
     useEffect(() => {
         fetchTeamOptions();
         fetchVenueOptions();
+        // eslint-disable-next-line
     }, [urlTag]);
 
 

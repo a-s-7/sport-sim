@@ -1,5 +1,6 @@
-from T20LeagueInitializer import T20LeagueInitializer
-from backend.models.cricket.MatchResult import MatchResult
+from .T20LeagueInitializer import T20LeagueInitializer
+from ..MatchResult import MatchResult
+
 import random
 
 class T20LeagueSimulator:

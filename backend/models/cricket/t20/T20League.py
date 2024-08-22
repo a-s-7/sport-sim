@@ -1,6 +1,7 @@
-from backend.models.cricket.MatchResult import MatchResult
-from backend.models.cricket.t20.T20Team import T20Team
-from backend.models.cricket.t20.T20Match import T20Match
+from ..MatchResult import MatchResult
+from .T20Match import T20Match
+from .T20Team import T20Team
+
 
 class T20League():
     def __init__(self, name):

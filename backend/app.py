@@ -1,8 +1,8 @@
 import os
 from flask import Flask, send_from_directory, jsonify
 
-from backend.models.cricket.t20.T20LeagueInitializer import T20LeagueInitializer
-from backend.models.cricket.test.WTCInitializer import WTCInitializer
+from models.cricket.t20.T20LeagueInitializer import T20LeagueInitializer
+from models.cricket.test.WTCInitializer import WTCInitializer
 
 app = Flask(__name__, static_folder='../frontend/build')
 

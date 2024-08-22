@@ -85,4 +85,3 @@ def nrr_league_match(league_name, match_num, home_runs, home_wickets, home_overs
         return jsonify({"error": str(e)}), 400
 
     return jsonify({"message": f"{league_name} matches simulated successfully"})
-

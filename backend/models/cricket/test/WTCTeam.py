@@ -1,4 +1,4 @@
-from backend.models.cricket.CricketTeam import CricketTeam
+from ..CricketTeam import CricketTeam
 
 
 class WTCTeam(CricketTeam):

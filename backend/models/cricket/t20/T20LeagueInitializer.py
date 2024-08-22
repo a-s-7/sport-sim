@@ -1,7 +1,7 @@
 import json
-from T20Match import T20Match
-from T20Team import T20Team
-from T20League import T20League
+from .T20Match import T20Match
+from .T20Team import T20Team
+from .T20League import T20League
 
 class T20LeagueInitializer:
 

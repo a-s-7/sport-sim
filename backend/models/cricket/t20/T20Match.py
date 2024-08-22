@@ -2,7 +2,7 @@ import random
 from datetime import datetime, timedelta
 
 from ..CricketFormat import CricketFormat
-from T20Team import T20Team
+from .T20Team import T20Team
 from ..CricketInningsScore import CricketInningsScore
 from ..MatchResult import MatchResult
 

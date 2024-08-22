@@ -1,10 +1,10 @@
 import random
 from datetime import datetime, timedelta
 
-from backend.models.cricket.CricketFormat import CricketFormat
-from backend.models.cricket.t20.T20Team import T20Team
-from backend.models.cricket.CricketInningsScore import CricketInningsScore
-from backend.models.cricket.MatchResult import MatchResult
+from ..CricketFormat import CricketFormat
+from T20Team import T20Team
+from ..CricketInningsScore import CricketInningsScore
+from ..MatchResult import MatchResult
 
 class T20Match():
     # matchNumber is the UNIQUE identifier for the match

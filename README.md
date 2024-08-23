@@ -1,3 +1,3 @@
-# SportSim
+# SPORT SIM 
 
-### Welcome to SportSim
+### Welcome to SPORT SIM

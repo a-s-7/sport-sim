@@ -39,7 +39,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
             stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
         }
 
-        let url = `http://127.0.0.1:5000/${leagueUrlTag}/matches/${teamVal}/${stadiumVal}`;
+        let url = `/${leagueUrlTag}/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -54,7 +54,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
     };
 
     const fetchPointsTableData = async () => {
-        let url = `http://127.0.0.1:5000/${leagueUrlTag}/points_table`;
+        let url = `/${leagueUrlTag}/points_table`;
 
         try {
             const response = await fetch(url);

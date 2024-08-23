@@ -65,7 +65,7 @@ function T20LeagueMatchCard({
         setSelected(result);
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/${urlLeagueTag}/match/${matchNum}/${result}`,
+            const response = await fetch(`/${urlLeagueTag}/match/${matchNum}/${result}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -150,7 +150,7 @@ function T20LeagueMatchCard({
 
         if (!isNaN(homeWicketsValue) && !isNaN(awayWicketsValue) && !isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
             try {
-                const baseUrl = `http://127.0.0.1:5000/${urlLeagueTag}/nrr/`;
+                const baseUrl = `/${urlLeagueTag}/nrr/`;
                 const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/
                                     ${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
 

@@ -9,7 +9,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
     const [stadiumOptions, setStadiumOptions] = useState([]);
 
     const fetchTeamOptions = async () => {
-        let url = `http://127.0.0.1:5000/${urlTag}/teams`;
+        let url = `/${urlTag}/teams`;
 
         try {
             const response = await fetch(url);
@@ -24,7 +24,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
     };
 
      const fetchVenueOptions = async () => {
-        let url = `http://127.0.0.1:5000/${urlTag}/venues`;
+        let url = `/${urlTag}/venues`;
 
         try {
             const response = await fetch(url);
@@ -52,7 +52,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
         console.log(matchNums)
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/${urlTag}/clear/${matchNums}`,
+            const response = await fetch(`/${urlTag}/clear/${matchNums}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -75,7 +75,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
         console.log(matchNums)
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/${urlTag}/sim/${matchNums}`,
+            const response = await fetch(`/${urlTag}/sim/${matchNums}`,
                 {
                     method: 'PATCH',
                     headers: {

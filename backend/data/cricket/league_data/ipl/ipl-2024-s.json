@@ -5,14 +5,14 @@
     "Location": "MA Chidambaram Stadium, Chennai",
     "HomeTeam": "Chennai Super Kings",
     "AwayTeam": "Royal Challengers Bengaluru",
-    "result": "Home-win",
-    "status": "complete",
-    "homeTeamRuns": 200,
-    "homeTeamWickets": 7,
-    "homeTeamOvers": "20",
-    "awayTeamRuns": 190,
-    "awayTeamWickets": 9,
-    "awayTeamOvers": "20"
+    "result": "None",
+    "status": "incomplete",
+    "homeTeamRuns": 0,
+    "homeTeamWickets": 0,
+    "homeTeamOvers": "0",
+    "awayTeamRuns": 0,
+    "awayTeamWickets": 0,
+    "awayTeamOvers": 0
   },
   {
     "MatchNumber": 2,

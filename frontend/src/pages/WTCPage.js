@@ -67,12 +67,10 @@ function WTCPage() {
                 result.forEach(team => {
                     team["diff"] = diffs.get(team.name);
                 });
-                console.log("IF:", result);
             } else {
                 result.forEach(team => {
                     team["diff"] = 0;
                 });
-                console.log("ELSE:", result);
             }
 
             setPointsTableData(result);
@@ -115,6 +113,7 @@ function WTCPage() {
                         logoSrc={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}
                         name={"ICC World Test Championship"}
                         color={"black"}
+                        matchesFiltered={matchesData[2]}
             />
 
             <div className="matchArea">

@@ -85,31 +85,32 @@ class WTC:
 
         return sorted_teams
 
-    def simulate_matches(self, team_acs: str):
-        teams = team_acs.split("-")
+    def clear_incomplete_matches(self, match_nums: str):
+        sm_refs = match_nums.split("-")
 
-        if len(teams) == 1 and teams[0] == "All":
-            for match in self.matchList:
-                if match.matchStatus == "incomplete":
-                    match.simulate_match()
-        else:
-            for match in self.matchList:
-                if match.check_if_team_present(teams) and match.matchStatus == "incomplete":
-                    match.simulate_match()
+        for ref in sm_refs:
+            seriesNum = int(ref.split(".")[0])
+            matchNum = int(ref.split(".")[1])
 
-        return
+            series = self.series[seriesNum - 1]
+            match = series.matches[matchNum - 1]
 
-    def clear_incomplete_matches(self, team_acs: str):
-        teams = team_acs.split("-")
+            if match.matchStatus == "incomplete":
+                match.clear_match()
 
-        if len(teams) == 1 and teams[0] == "All":
-            for match in self.matchList:
-                if match.matchStatus == "incomplete":
-                    match.clear_match()
-        else:
-            for match in self.matchList:
-                if match.check_if_team_present(teams) and match.matchStatus == "incomplete":
-                    match.clear_match()
+    def simulate_matches(self, match_nums: str):
+        sm_refs = match_nums.split("-")
+
+        for ref in sm_refs:
+            seriesNum = int(ref.split(".")[0])
+            matchNum = int(ref.split(".")[1])
+
+            series = self.series[seriesNum - 1]
+            match = series.matches[matchNum - 1]
+
+            if match.matchStatus == "incomplete":
+                match.simulate_match()
+
 
     def get_match_data_json(self, team_acronyms: str, stadium_names: str):
         ### TEAM DATA

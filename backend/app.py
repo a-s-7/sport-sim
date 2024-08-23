@@ -98,8 +98,6 @@ def nrr_league_match(league_name, match_num, home_runs, home_wickets, home_overs
     return jsonify({"message": f"{league_name} matches simulated successfully"})
 
 
-
-
 @app.route('/WTC/matches/<team_names>/<venue_names>', methods=['GET'])
 def get_team_match_data(team_names, venue_names):
     return wtc.get_match_data_json(team_names, venue_names)

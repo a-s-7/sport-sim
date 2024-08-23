@@ -3,8 +3,10 @@ import Select from "react-select";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
-function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadiums,
-                        urlTag, logoSrc, name, color, matchesFiltered}) {
+function ControlBar({
+                        refreshFunction, matchCount, teams, stadiums, sst, setStadiums,
+                        urlTag, logoSrc, name, color, matchesFiltered
+                    }) {
     const [teamOptions, setTeamOptions] = useState([]);
     const [stadiumOptions, setStadiumOptions] = useState([]);
 
@@ -23,7 +25,7 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
         }
     };
 
-     const fetchVenueOptions = async () => {
+    const fetchVenueOptions = async () => {
         let url = `/${urlTag}/venues`;
 
         try {
@@ -48,8 +50,13 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
 
 
     const resetIncompleteMatches = async () => {
-        let matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
-        console.log(matchNums)
+        let matchNums = "";
+
+        if (urlTag === "WTC") {
+            matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
+        } else {
+            matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+        }
 
         try {
             const response = await fetch(`/${urlTag}/clear/${matchNums}`,
@@ -71,10 +78,16 @@ function ControlBar({refreshFunction, matchCount, teams, stadiums, sst, setStadi
     };
 
     const randomlySimIncompleteMatches = async () => {
-        let matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
-        console.log(matchNums)
+       let matchNums = "";
+
+        if (urlTag === "WTC") {
+            matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
+        } else {
+            matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+        }
 
         try {
+
             const response = await fetch(`/${urlTag}/sim/${matchNums}`,
                 {
                     method: 'PATCH',

@@ -1,4 +1,5 @@
 from ..CricketTeam import CricketTeam
+from ..MatchResult import MatchResult
 
 
 class WTCTeam(CricketTeam):
@@ -34,15 +35,18 @@ class WTCTeam(CricketTeam):
     def get_previous_5_matches(self):
         results = []
 
-        for i in range(self.played, self.played - 5, -1):
-            if i <= 0:
+        for i in range(self.numMatches, 0, -1):
+            # {'match': match, 'role': role}
+
+            if len(results) == 5:
                 break
 
-            # {'match': match, 'role': role}
             m = self.matchList[i - 1]
             match = m["match"]
-            status = match.check_team_winner(m['role'])
-            results.append(status)
+
+            if match.matchResult != MatchResult.NONE:
+                status = match.check_team_winner(m['role'])
+                results.append(status)
 
         if len(results) < 5:
             for i in range(5 - len(results)):

@@ -1,5 +1,7 @@
 from ..CricketTeam import CricketTeam
 from ..CricketInningsScore import CricketInningsScore
+from ..MatchResult import MatchResult
+
 
 class T20Team(CricketTeam):
     def __init__(self, name, acronym):
@@ -31,15 +33,18 @@ class T20Team(CricketTeam):
     def get_previous_5_matches(self):
         results = []
 
-        for i in range(self.played, self.played - 5, -1):
-            if i <= 0:
+        for i in range(len(self.matchList), 0, -1):
+            # {'match': match, 'role': role}
+
+            if len(results) == 5:
                 break
 
-            # {'match': match, 'role': role}
             m = self.matchList[i - 1]
-            match =  m["match"]
-            status = match.check_team_winner(m['role'])
-            results.append(status)
+            match = m["match"]
+
+            if match.matchResult != MatchResult.NONE:
+                status = match.check_team_winner(m['role'])
+                results.append(status)
 
         if len(results) < 5:
             for i in range(5 - len(results)):

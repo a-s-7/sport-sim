@@ -35,7 +35,7 @@ function WTCMatchCard({
         setSelected(result);
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/WTC/match/${seriesId}/${testNum.charAt(0)}/${result}`,
+            const response = await fetch(`/WTC/match/${seriesId}/${testNum.charAt(0)}/${result}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -61,7 +61,7 @@ function WTCMatchCard({
         }
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
+            const response = await fetch(`/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
                 {
                     method: 'PATCH',
                     headers: {

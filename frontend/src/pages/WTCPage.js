@@ -38,7 +38,7 @@ function WTCPage() {
             stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
         }
 
-        let url = `http://127.0.0.1:5000/WTC/matches/${teamVal}/${stadiumVal}`;
+        let url = `/WTC/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -53,7 +53,7 @@ function WTCPage() {
     };
 
     const fetchPointsTableData = async () => {
-        let url = `http://127.0.0.1:5000/WTC/points_table`;
+        let url = `/WTC/points_table`;
 
         try {
             const response = await fetch(url);

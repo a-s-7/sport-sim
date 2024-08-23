@@ -5,7 +5,11 @@ import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import T20LeaguePage from "./pages/T20LeaguePage";
 
+// const DEV_ON = false;
+// export const BASE_URL = DEV_ON === true ? "http://127.0.0.1:5000" : "";
+
 function App() {
+
     return (
         <div className="App">
             <NavBar></NavBar>

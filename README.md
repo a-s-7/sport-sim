@@ -15,11 +15,17 @@ Finding matches by teams and venues is made a lot simpler by a dual multi-select
 Fans of other T20 franchise cricket leagues, such as the IPL and BBL, can enjoy the same set of features, with the additional capability of controlling the match scorecard. For each match, users can set the score to control the Net Run Rate and simultaneously view all changes in a more detailed points table.
 
 ## Project Structure
-
-
-
-
-
-
-
-
+```
+< PROJECT ROOT >
+   |
+   |-- backend/                    # Implements app logic
+   |      |---- data/              # Team and match data
+   |      |---- models/            # Python OOP classes
+   |      |---- routes/            # API routes 
+   |      |---- wsgi.py            # WSGI gateway
+   |      |---- app.py             # Application entry 
+   |      |---- requirements.txt   # Dependency list
+   |
+   |-- frontend/                   # Implements user interface
+   |      |---- public/            # Static content
+   |      |---- src/               # UI components, styling, routing

@@ -3,7 +3,7 @@ from .T20Match import T20Match
 from .T20Team import T20Team
 
 
-class T20League():
+class T20League:
     def __init__(self, name):
         self.name = name
         self.teamDict = {}
@@ -138,20 +138,17 @@ class T20League():
         return [self.name, team_data, match_data]
 
 
-    def clearAllMatchResults(self):
+    def clear_all_match_results(self):
         for match in self.matchList:
             match.undoMatchResult()
 
-    def checkIfAllMatchesComplete(self):
+    def check_if_all_matches_complete(self):
         for match in self.matchList:
             if match.matchResult == None:
                 return False
         return True
 
-    def getNumberOfTeams(self):
-        return len(self.teamDict)
-
-    def getNumberOfMatches(self):
+    def get_number_of_matches(self):
         return len(self.matchList)
 
     def add_team(self, team: T20Team):
@@ -173,7 +170,7 @@ class T20League():
         except KeyError:
             raise KeyError("Team does not exist in the league")
 
-    def get_Team(self, teamName: str):
+    def get_team(self, teamName: str):
         return self.teamDict[teamName]
 
     def add_match(self, match: T20Match):
@@ -196,12 +193,12 @@ class T20League():
 
     ################ Print Methods ################
 
-    def printTeamsList(self):
+    def print_teams_list(self):
         print("Teams:")
         for index, team in enumerate(self.teamDict.values(), start=1):
             print(f"{index}. {team.name} - {team.acronym}")
 
-    def printTeamMatchInformation(self):
+    def print_team_match_information(self):
         for team in self.teamDict.values():
             print(f"Team: {team.name}")
             print("{:<5}{:<20}{:<10}{:<30}{:<45}{:<10}".format("", "Match Number", "Role", "Opponent", "Venue", "Date"))

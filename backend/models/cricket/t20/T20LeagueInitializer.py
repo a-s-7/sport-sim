@@ -30,7 +30,6 @@ class T20LeagueInitializer:
 
             league.add_team(t20Team)
 
-
     @staticmethod
     def populateMatches(league: T20League, matchPath: str):
         with open(matchPath, mode='r') as file:
@@ -39,8 +38,8 @@ class T20LeagueInitializer:
             for m in data:
                 mNum = m["MatchNumber"]
 
-                hTeam = league.get_Team(m["HomeTeam"])
-                aTeam = league.get_Team(m["AwayTeam"])
+                hTeam = league.get_team(m["HomeTeam"])
+                aTeam = league.get_team(m["AwayTeam"])
 
                 match = T20Match(mNum, hTeam, aTeam)
 

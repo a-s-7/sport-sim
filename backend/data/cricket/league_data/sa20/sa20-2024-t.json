@@ -1,0 +1,40 @@
+{
+    "teams": [
+        {
+            "team_name": "MI Cape Town",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Paarl Royals",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Pretoria Capitals",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Joburg Super Kings",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Sunrisers Eastern Cape",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Durban Super Giants",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        }
+    ]
+}

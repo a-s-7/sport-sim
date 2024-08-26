@@ -1,0 +1,40 @@
+{
+    "teams": [
+        {
+            "team_name": "Abu Dhabi Knight Riders",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Desert Vipers",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Dubai Capitals",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Gulf Giants",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "MI Emirates",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        },
+        {
+            "team_name": "Sharjah Warriors",
+            "acronym": "",
+            "logo": "",
+            "gradient": ""
+        }
+    ]
+}

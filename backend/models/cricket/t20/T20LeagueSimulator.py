@@ -24,8 +24,8 @@ class T20LeagueSimulator:
             elif status == 'SIM':
                 print("***********************************SIMULATION MODE ACTIVE***********************************")
 
-                if self.league.checkIfAllMatchesComplete():
-                    self.league.clearAllMatchResults()
+                if self.league.check_if_all_matches_complete():
+                    self.league.clear_all_match_results()
 
                 currentIndex = 1
                 simComplete = False
@@ -39,7 +39,7 @@ class T20LeagueSimulator:
 
                         while not mStat:
                             matchNum = input("---Enter match number to simulate up to (and including): ")
-                            if (int(matchNum) > self.league.getNumberOfMatches() or int(matchNum) < currentIndex):
+                            if (int(matchNum) > self.league.get_number_of_matches() or int(matchNum) < currentIndex):
                                 print("Invalid match number")
                             else:
                                 mStat = True
@@ -83,7 +83,7 @@ class T20LeagueSimulator:
                             elif pTable == 'SWITCH':
                                 break;
 
-                    if (self.league.checkIfAllMatchesComplete()):
+                    if (self.league.check_if_all_matches_complete()):
                         simComplete = True
 
                 print("\nSIMULATION COMPLETE")

@@ -1,5 +1,6 @@
 import json
 import random
+from datetime import datetime, timedelta
 
 
 class ScheduleGenerator:
@@ -19,9 +20,12 @@ class ScheduleGenerator:
 
     @staticmethod
     def generate_cricket_json_schedule(matches):
+        start_date = datetime.strptime("2024-12-15 08:15:00Z", "%Y-%m-%d %H:%M:%SZ")
+        interval = timedelta(days=1)
+
         for index, match in enumerate(matches):
-            match["MatchNumber"] = index + 1;
-            match["DateUtc"] = ""
+            match["MatchNumber"] = index + 1
+            match["DateUtc"] = (start_date + (interval * index)).strftime("%Y-%m-%d %H:%M:%SZ")
             match["Location"] = ""
             match["result"] = "None"
             match["status"] = "incomplete"
@@ -74,7 +78,10 @@ class ScheduleGenerator:
 
 ilt20teams = ["Abu Dhabi Knight Riders", "Desert Vipers", "Dubai Capitals", "Gulf Giants", "MI Emirates",
               "Sharjah Warriors"]
-sa20_teams = ["MI Cape Town", "Paarl Royals", "Pretoria Capitals", "Joburg Super Kings", "Sunrisers Eastern Cape", "Durban's Super Giants"]
+sa20_teams = ["MI Cape Town", "Paarl Royals", "Pretoria Capitals", "Joburg Super Kings", "Sunrisers Eastern Cape", "Durban Super Giants"]
+
+ScheduleGenerator.generate_round_robin_schedule_file(ilt20teams, "ilt20-2024-s", 2)
+ScheduleGenerator.generate_team_data_file(ilt20teams, "ilt20-2024-t")
 
 ScheduleGenerator.generate_round_robin_schedule_file(sa20_teams, "sa20-2024-s", 2)
 ScheduleGenerator.generate_team_data_file(sa20_teams, "sa20-2024-t")

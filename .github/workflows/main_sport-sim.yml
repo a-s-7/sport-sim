@@ -22,16 +22,16 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Change directory to backend
-        run: cd backend
-
       - name: Create and start virtual environment
         run: |
+          cd backend
           python -m venv venv
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: | 
+          cd backend
+          pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 

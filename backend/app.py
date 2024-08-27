@@ -1,8 +1,8 @@
 import os
 from flask import Flask, send_from_directory
 
-from wtc_routes import wtc_bp
-from t20_league_routes import t20_league_bp
+from backend.routes.wtc_routes import wtc_bp
+from backend.routes.t20_league_routes import t20_league_bp
 
 app = Flask(__name__, static_folder='../frontend/build')
 

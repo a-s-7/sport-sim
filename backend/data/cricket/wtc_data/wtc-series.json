@@ -295,8 +295,8 @@
           "startDate": "2024-08-29",
           "endDate": "2024-09-02",
           "startTime": "03:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Home-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -305,8 +305,8 @@
           "startDate": "2024-09-06",
           "endDate": "2024-09-10",
           "startTime": "03:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         }
@@ -597,8 +597,8 @@
           "startDate": "2024-08-29",
           "endDate": "2024-09-03",
           "startTime": "22:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         }

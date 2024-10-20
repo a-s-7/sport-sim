@@ -451,8 +451,8 @@
           "startDate": "2024-10-15",
           "endDate": "2024-10-20",
           "startTime": "21:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         },

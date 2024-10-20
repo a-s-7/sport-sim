@@ -616,8 +616,8 @@
           "startDate": "2024-10-06",
           "endDate": "2024-10-11",
           "startTime": "22:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -626,8 +626,8 @@
           "startDate": "2024-10-14",
           "endDate": "2024-10-19",
           "startTime": "22:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Home-win",
           "homeDed": 0,
           "awayDed": 0
         },

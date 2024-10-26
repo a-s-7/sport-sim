@@ -168,8 +168,8 @@
           "startDate": "2024-10-20",
           "endDate": "2024-10-25",
           "startTime": "19:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -461,8 +461,8 @@
           "startDate": "2024-10-23",
           "endDate": "2024-10-28",
           "startTime": "21:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -636,8 +636,8 @@
           "startDate": "2024-10-23",
           "endDate": "2024-10-28",
           "startTime": "22:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Home-win",
           "homeDed": 0,
           "awayDed": 0
         }

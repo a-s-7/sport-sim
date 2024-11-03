@@ -178,8 +178,8 @@
           "startDate": "2024-10-31",
           "endDate": "2024-11-04",
           "startTime": "19:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         }
@@ -471,8 +471,8 @@
           "startDate": "2024-10-31",
           "endDate": "2024-11-05",
           "startTime": "21:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         }

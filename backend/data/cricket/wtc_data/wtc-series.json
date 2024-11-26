@@ -12,8 +12,8 @@
           "startDate": "2024-11-21",
           "endDate": "2024-11-26",
           "startTime": "18:20:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         },

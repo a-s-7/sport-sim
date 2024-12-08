@@ -519,18 +519,18 @@
           "startDate": "2024-11-27",
           "endDate": "2024-12-01",
           "startTime": "14:00:00",
-          "status": "incomplete",
-          "result": "None",
-          "homeDed": 0,
-          "awayDed": 0
+          "status": "complete",
+          "result": "Away-win",
+          "homeDed": 3,
+          "awayDed": 3
         },
         {
           "venue": "Basin Reserve, Wellingtonh",
           "startDate": "2024-12-05",
           "endDate": "2024-12-09",
           "startTime": "14:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -742,8 +742,8 @@
           "startDate": "2024-11-26",
           "endDate": "2024-12-01",
           "startTime": "23:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Home-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -858,8 +858,8 @@
           "startDate": "2024-11-22",
           "endDate": "2024-11-26",
           "startTime": "07:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Home-win",
           "homeDed": 0,
           "awayDed": 0
         },
@@ -868,8 +868,8 @@
           "startDate": "2024-11-30",
           "endDate": "2024-12-04",
           "startTime": "07:00:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Away-win",
           "homeDed": 0,
           "awayDed": 0
         }

@@ -752,8 +752,8 @@
           "startDate": "2024-12-05",
           "endDate": "2024-12-09",
           "startTime": "00:30:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Home-win",
           "homeDed": 0,
           "awayDed": 0
         }

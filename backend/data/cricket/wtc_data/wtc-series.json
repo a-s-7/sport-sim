@@ -32,8 +32,8 @@
           "startDate": "2024-12-13",
           "endDate": "2024-12-17",
           "startTime": "16:20:00",
-          "status": "incomplete",
-          "result": "None",
+          "status": "complete",
+          "result": "Draw",
           "homeDed": 0,
           "awayDed": 0
         },

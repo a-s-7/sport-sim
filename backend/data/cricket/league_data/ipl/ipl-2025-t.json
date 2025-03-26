@@ -1,0 +1,64 @@
+{
+  "teams": [
+    {
+      "team_name": "Chennai Super Kings",
+      "acronym": "CSK",
+      "logo": "https://documents.iplt20.com/ipl/CSK/logos/Logooutline/CSKoutline.png",
+      "gradient": "linear-gradient(135deg, #FFC300, #FFC300, #003C71)"
+    },
+    {
+      "team_name": "Mumbai Indians",
+      "acronym": "MI",
+      "logo": "https://documents.iplt20.com/ipl/MI/Logos/Logooutline/MIoutline.png",
+      "gradient": "linear-gradient(135deg, #0033A0, #0033A0, #ffd700)"
+    },
+    {
+      "team_name": "Royal Challengers Bengaluru",
+      "acronym": "RCB",
+      "logo": "https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png",
+      "gradient": "linear-gradient(135deg, #D50000, #D50000, black)"
+    },
+    {
+      "team_name": "Kolkata Knight Riders",
+      "acronym": "KKR",
+      "logo": "https://documents.iplt20.com/ipl/KKR/Logos/Logooutline/KKRoutline.png",
+      "gradient": "linear-gradient(135deg, #5A2D81, #5A2D81, gold)"
+    },
+    {
+      "team_name": "Delhi Capitals",
+      "acronym": "DC",
+      "logo": "https://documents.iplt20.com/ipl/DC/Logos/LogoOutline/DCoutline.png",
+      "gradient": "linear-gradient(135deg, #0033A0, #0033A0, #E4002B)"
+    },
+    {
+      "team_name": "Sunrisers Hyderabad",
+      "acronym": "SRH",
+      "logo": "https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png",
+      "gradient": "linear-gradient(135deg, #D35400, #D35400, yellow)"
+    },
+    {
+      "team_name": "Rajasthan Royals",
+      "acronym": "RR",
+      "logo": "https://documents.iplt20.com/ipl/RR/Logos/Logooutline/RRoutline.png",
+      "gradient": "linear-gradient(135deg, #254AA5, #254AA5, #E91E63)"
+    },
+    {
+      "team_name": "Punjab Kings",
+      "acronym": "PBKS",
+      "logo": "https://documents.iplt20.com/ipl/PBKS/Logos/Logooutline/PBKSoutline.png",
+      "gradient": "linear-gradient(135deg, red, red, gold)"
+    },
+    {
+      "team_name": "Lucknow Super Giants",
+      "acronym": "LSG",
+      "logo": "https://documents.iplt20.com/ipl/LSG/Logos/Logooutline/LSGoutline.png",
+      "gradient": "linear-gradient(135deg, #0CAFFF, #0CAFFF, #EF0107)"
+    },
+    {
+      "team_name": "Gujarat Titans",
+      "acronym": "GT",
+      "logo": "https://documents.iplt20.com/ipl/GT/Logos/Logooutline/GToutline.png",
+      "gradient": "linear-gradient(135deg, #041E42, #041E42, #FFCC00)"
+    }
+  ]
+}

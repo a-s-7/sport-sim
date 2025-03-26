@@ -2,8 +2,8 @@ from flask import Blueprint, jsonify
 
 from models.cricket.t20.T20LeagueInitializer import T20LeagueInitializer
 
-iplTP = "./data/cricket/league_data/ipl/ipl-2024-t.json"
-iplSP = "./data/cricket/league_data/ipl/ipl-2024-s.json"
+iplTP = "./data/cricket/league_data/ipl/ipl-2025-t.json"
+iplSP = "./data/cricket/league_data/ipl/ipl-2025-s.json"
 bblTP = "./data/cricket/league_data/bbl/bbl-2024-t.json"
 bblSP = "./data/cricket/league_data/bbl/bbl-2024-s.json"
 sa20TP = "./data/cricket/league_data/sa20/sa20-2024-t.json"

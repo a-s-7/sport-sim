@@ -1,6 +1,5 @@
 import './App.css';
 import NavBar from "./components/NavBar";
-import WTCPage from "./pages/WTCPage";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import T20LeaguePage from "./pages/T20LeaguePage";
@@ -52,8 +51,6 @@ function App() {
                     }>
                     </Route>))
                 }
-
-                {/*<Route path="/wtc" element={<WTCPage/>}/>*/}
             </Routes>
         </div>
     );

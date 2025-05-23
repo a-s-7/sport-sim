@@ -1,12 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { Grid, EffectCoverflow, Pagination } from 'swiper/modules';
+import {EffectCoverflow } from 'swiper/modules';
 
-
-// import iplImage from './ipl.jpg';
 
 import 'swiper/css';
-// import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/grid';

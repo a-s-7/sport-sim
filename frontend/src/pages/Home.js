@@ -1,5 +1,4 @@
 import React from "react";
-import HomeCarousel from "../components/HomeCarousel";
 
 function Home() {
     return (
@@ -12,8 +11,6 @@ function Home() {
                     {/*<h1>PREDICT match results. MANIPULATE scores -- VISUALIZE standings for franchise leagues and events </h1>*/}
                  </div>
             </div>
-
-            {/*<HomeCarousel />*/}
         </div>
     );
 }

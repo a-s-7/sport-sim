@@ -189,7 +189,7 @@ def get_league_points_table(leagueID):
 
 @t20_league_bp.route('/<leagueID>/teams', methods=['GET'])
 def get_league_teams(leagueID):
-    teams = teams_collection.find({"leagueID": leagueID})
+    teams = teams_collection.find({"leagueID": leagueID}).sort("name")
 
     result = []
 

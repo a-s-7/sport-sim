@@ -3,7 +3,7 @@ import { Navigation } from 'swiper/modules';
 import { Grid, EffectCoverflow, Pagination } from 'swiper/modules';
 
 
-import iplImage from './ipl.jpg';
+// import iplImage from './ipl.jpg';
 
 import 'swiper/css';
 // import 'swiper/css/effect-coverflow';

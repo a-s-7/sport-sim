@@ -7,6 +7,9 @@ function ControlBar({
                         refreshFunction, matchCount, teams, stadiums, sst, setStadiums,
                         urlTag, logoSrc, name, color, matchesFiltered
                     }) {
+
+    console.log("filtered")
+    console.log(matchesFiltered)
     const [teamOptions, setTeamOptions] = useState([]);
     const [stadiumOptions, setStadiumOptions] = useState([]);
 
@@ -53,9 +56,9 @@ function ControlBar({
         let matchNums = "";
 
         if (urlTag === "WTC") {
-            matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
+            matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.MatchNumber.charAt(0)}`).join("-");
         } else {
-            matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+            matchNums = matchesFiltered.map(match => match.MatchNumber).join("-")
         }
 
         try {
@@ -83,7 +86,7 @@ function ControlBar({
         if (urlTag === "WTC") {
             matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
         } else {
-            matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+            matchNums = matchesFiltered.map(match => match.MatchNumber).join("-")
         }
 
         try {

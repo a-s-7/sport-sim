@@ -52,8 +52,11 @@ class T20Match():
         }
 
     def set_team_nrrs(self):
-        self.homeTeam.addMatchNRRDetails(self.homeTeamScore, self.awayTeamScore)
-        self.awayTeam.addMatchNRRDetails(self.awayTeamScore, self.homeTeamScore)
+        if self.homeTeamScore != None:
+            self.homeTeam.addMatchNRRDetails(self.homeTeamScore, self.awayTeamScore)
+
+        if self.awayTeamScore != None:
+            self.awayTeam.addMatchNRRDetails(self.awayTeamScore, self.homeTeamScore)
 
     def check_team_winner(self, team: str):
         if self.matchResult == MatchResult.HOME_WIN:
@@ -84,16 +87,24 @@ class T20Match():
         over = 0
         balls = 0
 
+        print(team, runs, wickets, overs)
+
         if '.' not in overs:
             over = overs
             balls = 0
         else:
             over, balls = overs.split(".")
 
-        if(team == "Home"):
-            self.homeTeamScore = CricketInningsScore(runs, wickets, int(over), int(balls), CricketFormat.T20)
+        if over != '' and balls != '':
+            if team == "Home":
+                self.homeTeamScore = None
+            else:
+                self.awayTeamScore = None
         else:
-            self.awayTeamScore = CricketInningsScore(runs, wickets, int(over), int(balls), CricketFormat.T20)
+            if (team == "Home"):
+                self.homeTeamScore = CricketInningsScore(runs, wickets, int(over), int(balls), CricketFormat.T20)
+            else:
+                self.awayTeamScore = CricketInningsScore(runs, wickets, int(over), int(balls), CricketFormat.T20)
 
     def simulate_match(self):
         rand_decimal = random.uniform(0, 1)
@@ -126,6 +137,10 @@ class T20Match():
     def get_start_time(self):
         return (self.date - timedelta(hours=7)).strftime("%-I:%M %p")
 
+    def setMatchDateTime(self, date: str):
+        self.date = datetime.strptime(date, "%Y-%m-%d %H:%M:%S%z")
+
+
     def check_if_team_present(self, teamNames: []):
         if self.homeTeam.acronym in teamNames or self.awayTeam.acronym in teamNames:
             return True
@@ -144,9 +159,6 @@ class T20Match():
 
     def setMatchVenue(self, venue: str):
         self.venue = venue
-
-    def setMatchDateTime(self, date: str):
-        self.date = datetime.strptime(date, "%Y-%m-%d %H:%M:%S%z")
 
     def setMatchType(self, matchType: str):
         self.type = matchType

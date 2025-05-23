@@ -148,11 +148,15 @@ function T20LeagueMatchCard({
         const homeWicketsValue = parseFloat(homeWicketsRef.current.value);
         const awayWicketsValue = parseFloat(awayWicketsRef.current.value);
 
+        console.log("AWAY RUNS")
+        console.log(awayRunsValue)
+
+
         if (!isNaN(homeWicketsValue) && !isNaN(awayWicketsValue) && !isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
             try {
                 const baseUrl = `/${urlLeagueTag}/nrr/`;
-                const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/
-                                    ${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
+                const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
+                  
 
                 const response = await fetch(url,
                     {
@@ -173,6 +177,26 @@ function T20LeagueMatchCard({
         }
     }
 
+    const resetMatchData = async () => {
+        try {
+            const response = await fetch(`/${urlLeagueTag}/clear/${matchNum}`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+            if (response.ok) {
+                //
+            } else {
+                alert("Error: Response not ok")
+            }
+        } catch (error) {
+            alert(error)
+        }
+    };
+
     const resetMatch = async (result) => {
         setHomeRuns('');
         setHomeWickets('');
@@ -182,9 +206,9 @@ function T20LeagueMatchCard({
         setAwayWickets('');
         setAwayOvers('');
 
+        await resetMatchData();
         await handleClick(result);
     }
-
 
     return (
         <div className="matchCardBody">
@@ -207,7 +231,7 @@ function T20LeagueMatchCard({
                                            await handleRunChange(event.target.value, 'home')
                                            handleNRRChange()
                                        }}
-                                       value={homeRuns}
+                                       value={homeRuns ? homeRuns: ''}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
 
@@ -220,7 +244,7 @@ function T20LeagueMatchCard({
                                        ref={homeWicketsRef}
                                        onChange={(event) =>
                                            handleWicketChange(event.target.value, 'home')}
-                                       value={homeWickets}
+                                       value={homeWickets ? homeWickets: ''}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
 
@@ -236,7 +260,7 @@ function T20LeagueMatchCard({
                                            await handleOverChange(event.target.value, 'home')
                                            handleNRRChange()
                                        }}
-                                       value={homeOvers}
+                                       value={homeOvers ? homeOvers: ''}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Home-win" || selected !== "Home-win" ? "black" : "white"}}/>
 
@@ -287,7 +311,7 @@ function T20LeagueMatchCard({
                                            await handleRunChange(event.target.value, 'away')
                                            handleNRRChange()
                                        }}
-                                       value={awayRuns}
+                                       value={awayRuns ? awayRuns: ''}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
                                 <h2>/</h2>
@@ -299,7 +323,7 @@ function T20LeagueMatchCard({
                                        ref={awayWicketsRef}
                                        onChange={(event) =>
                                            handleWicketChange(event.target.value, 'away')}
-                                       value={awayWickets}
+                                       value={awayWickets ? awayWickets: ''}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
                             </div>
@@ -314,7 +338,7 @@ function T20LeagueMatchCard({
                                            await handleOverChange(event.target.value, 'away');
                                            handleNRRChange();
                                        }}
-                                       value={awayOvers}
+                                       value={awayOvers ? awayOvers: ''}
                                        onClick={(e) => e.stopPropagation()}
                                        style={{color: hoveredSection === "Away-win" || selected !== "Away-win" ? "black" : "white"}}/>
                             </div>

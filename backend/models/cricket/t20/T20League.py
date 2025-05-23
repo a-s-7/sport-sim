@@ -160,7 +160,7 @@ class T20League:
         if any(tName == team.name for tName in self.teamDict.keys()):
             raise ValueError("Team already exists in the league")
 
-        self.teamDict[team.name] = team
+        self.teamDict[team.acronym] = team
 
     def remove_team(self, teamName: str):
         # Ensure team exists in the league

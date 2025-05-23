@@ -8,33 +8,21 @@ function NavBar() {
     return (
         <div className="navContainer">
             <div className="logoArea">
-                <NavLink to="/">SPORT SIM</NavLink>
+                <NavLink to="/">CRIC SIM</NavLink>
             </div>
             <div className="appModeArea">
-                <NavLink to="/wtc"
+                <NavLink to="/leagues"
                          style={{
-                             background: path === "/wtc" ? "black" : "white",
-                             color: path === "/wtc" ? "white" : "black"
+                            borderBottom: path === "/leagues" ? "1px solid black" : "none"
                          }}>
-                    ICC WTC
+                    LEAGUES
                 </NavLink>
-                <NavLink to="/ipl"
-                          style={{
-                             background: path === "/ipl" ? "black" : "white",
-                             color: path === "/ipl" ? "white" : "black"
+                <NavLink to="/icc_events"
+                         style={{
+                            borderBottom: path === "/icc_events" ? "1px solid black" : "none"
                          }}>
-                    IPL
+                    ICC EVENTS
                 </NavLink>
-                <NavLink to="/bbl"
-                          style={{
-                             background: path === "/bbl" ? "black" : "white",
-                             color: path === "/bbl" ? "white" : "black"
-                         }}>
-                    BBL
-                </NavLink>
-            </div>
-            <div className="userArea">
-                USER
             </div>
         </div>
     );

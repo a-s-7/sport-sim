@@ -1,21 +1,19 @@
 import React from "react";
+import HomeCarousel from "../components/HomeCarousel";
 
 function Home() {
     return (
         <div className="HomePage">
-            <div className="homeWelcomeMessage">
-                WELCOME TO SPORT SIM
+            <div className="welcomeMessageContainer">
+                 <div className="taglineContainer">
+                    <h1>PREDICT. SET. VISUALIZE.</h1>
+                 </div>
+                <div className="descriptionContainer">
+                    {/*<h1>PREDICT match results. MANIPULATE scores -- VISUALIZE standings for franchise leagues and events </h1>*/}
+                 </div>
             </div>
-            {/*<p>*/}
-            {/*    SPORT SIM is a models simulation application that allows users to simulate matches between teams in a*/}
-            {/*    variety of models.*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*    SPORT SIM currently supports cricket.*/}
-            {/*</p>*/}
-            {/*<p>*/}
-            {/*    SPORT SIM is a project developed by Ayush Saldhi.*/}
-            {/*</p>*/}
+
+            {/*<HomeCarousel />*/}
         </div>
     );
 }

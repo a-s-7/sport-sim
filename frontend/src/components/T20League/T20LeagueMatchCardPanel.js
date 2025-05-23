@@ -11,15 +11,15 @@ function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag, cardNeut
         matchData.map(match => (
             <div key={`${match.matchNumber}`}>
                 {match.status === "incomplete" ? <T20LeagueMatchCard
-                    homeGradient={teamData[match.homeTeam].gradient}
-                    awayGradient={teamData[match.awayTeam].gradient}
-                    homeTeamName={match.homeTeam}
-                    homeTeamLogo={teamData[match.homeTeam].logo}
-                    awayTeamName={match.awayTeam}
-                    awayTeamLogo={teamData[match.awayTeam].logo}
+                    homeGradient={teamData[match.HomeTeam].gradient}
+                    awayGradient={teamData[match.AwayTeam].gradient}
+                    homeTeamName={match.HomeTeam}
+                    homeTeamLogo={teamData[match.HomeTeam].logo}
+                    awayTeamName={match.AwayTeam}
+                    awayTeamLogo={teamData[match.AwayTeam].logo}
                     leagueName={league}
-                    matchNum={match.matchNumber}
-                    venue={match.location}
+                    matchNum={match.MatchNumber}
+                    venue={match.Location}
                     date={match.date}
                     time={match.startTime}
                     matchResult={match.result}

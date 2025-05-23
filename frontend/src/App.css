@@ -19,8 +19,62 @@ html, body, #root {
     display: flex;
     flex-direction: column;
     height: 92%;
-    background: linear-gradient(135deg, blue 10%, black 50%, darkblue 50%, white 100%);
 }
+
+.welcomeMessageContainer {
+    display: flex;
+    flex-direction: column;
+    /*background-color: red;*/
+    align-items: center;
+    padding: 10px;
+}
+
+.taglineContainer {
+    font-size: 3.5vh;
+    text-align: center;
+    /*background-color: orange;*/
+}
+
+.descriptionContainer {
+    font-size: 1vh;
+    text-align: center;
+    /*background-color: orange;*/
+}
+
+
+
+.mySwiper {
+    background-color: blue;
+    /*margin-left: 50px;*/
+    width: 50%;
+    height: 30%;
+    padding: 10px;
+}
+
+.swiper-slide {
+    border-radius: 20px;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, red 10%, black 50%, white 100%);
+    height: 70%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .T20LeaguePage {
     background-color: whitesmoke;
@@ -47,17 +101,6 @@ html, body, #root {
     background-color: white;
     width: 100%;
     height: 92%;
-}
-
-.navContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 8%;
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-color: white;
 }
 
 .matchArea {
@@ -584,46 +627,68 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 
-.logoArea a {
-    width: 20%;
-    height: 100%;
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    font-size: 3vw;
-    color: black;
-    padding-left: 10px;
-    font-family: "Reem Kufi Fun", sans-serif;
-    text-decoration: none;
+    height: 8%;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: whitesmoke;
+    position: relative;
 }
 
 .appModeArea {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    width: 60%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /*background-color: blue;*/
+    height: 100%;
+    padding: 10px;
+    gap: 10px;
 }
 
 .appModeArea a {
+    display: flex;
+    align-items: center;
+    color: black;
+    /*background-color: red;*/
     font-family: "Reem Kufi Fun", sans-serif;
-    text-align: center;
-    width: 20%;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 24px;
     text-decoration: none;
-    font-size: 1vw;
-    border: 1px solid black;
+    padding: 10px;
+    font-size: 1.75vh;
 }
 
 .appModeArea a:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: grey;
 }
 
-.userArea {
+.logoArea {
+    padding: 10px;
+    /*background-color: gold;*/
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    width: 20%;
-    font-size: 1vw;
-    color: white
+    height: 100%;
+}
+
+.logoArea a {
+    /*background-color: paleturquoise;*/
+    font-size: 3vw;
+    color: black;
+    font-family: "Reem Kufi Fun", sans-serif;
+    text-decoration: none;
+}
+
+
+.leagueLandingPage {
+    background-color: red;
+    display: flex;
+    height: 92%;
+    flex-direction: column;
 }

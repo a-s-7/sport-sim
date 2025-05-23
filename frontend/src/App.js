@@ -4,32 +4,56 @@ import WTCPage from "./pages/WTCPage";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import T20LeaguePage from "./pages/T20LeaguePage";
+import LeagueLandingPage from "./pages/LeagueLandingPage";
+import IccEventsLandingPage from "./pages/IccEventsLandingPage";
+import React, {useEffect, useState} from "react";
 
 // const DEV_ON = false;
 // export const BASE_URL = DEV_ON === true ? "http://127.0.0.1:5000" : "";
 
 function App() {
+    const [leagues, setLeagues] = useState([]);
+
+    const fetchLeagues = async () => {
+        let url = `/league_info`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Response was not ok");
+            }
+            const result = await response.json();
+            setLeagues(result);
+            console.log(result);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchLeagues();
+    }, []);
 
     return (
         <div className="App">
             <NavBar></NavBar>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/wtc" element={<WTCPage/>}/>
-                <Route path="/ipl" element={<T20LeaguePage leagueName={"IPL"}
-                                                           leagueUrlTag={"IPL"}
-                                                           leagueColor={"linear-gradient(135deg, darkblue, darkblue, orange)"}
-                                                           leagueLogoSrc={"https://www.iplt20.com/assets/images/ipl-logo-new-old.png"}
-                                                           pointsTableColor={"darkblue"}/>}
+                <Route path="/leagues" element={<LeagueLandingPage/>}/>
+                <Route path="/icc_events" element={<IccEventsLandingPage/>}/>
 
-                />
-                <Route path="/bbl" element={<T20LeaguePage leagueName={"BBL"}
-                                                           leagueUrlTag={"BBL"}
-                                                           leagueColor={"linear-gradient(135deg, black, black, #F9C20C)"}
-                                                           leagueLogoSrc={"https://upload.wikimedia.org/wikipedia/en/c/c0/Big_Bash_League_%28logo%29.png"}
-                                                           pointsTableColor={"black"}/>}
+                {leagues.map(league => (
+                    <Route path={"/" + league["id"]} key={league["id"]} element={
+                         <T20LeaguePage leagueUrlTag={league["id"]}
+                                        leagueName = {league["name"]}
+                                        leagueLogoSrc = {league["logo"]}
+                                        leagueColor = {league["controlBarColor"]}
+                                        pointsTableColor = {league["pointsTableColor"]}/>
+                    }>
+                    </Route>))
+                }
 
-                />
+                {/*<Route path="/wtc" element={<WTCPage/>}/>*/}
             </Routes>
         </div>
     );

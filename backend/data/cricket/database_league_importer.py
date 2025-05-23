@@ -4,7 +4,7 @@ from pymongo import MongoClient
 
 # NOTES:
 # abb must match league folder name in league_data and the file format ("abb-year-t.json", "abb-year-s.json")
-league_abb = "mlc"
+league_abb = "ilt20"
 league_year = "2025"
 
 if os.getenv("RENDER_STATUS") != "TRUE":

@@ -20,9 +20,9 @@ leagues_collection = db['leagues']
 teams_collection = db['teams']
 matches_collection = db['matches']
 
-t20_league_bp = Blueprint('t20_league_bp', __name__)
+franchise_leagues_bp = Blueprint('franchise_leagues_bp', __name__)
 
-@t20_league_bp.route('/league_info', methods=['GET'])
+@franchise_leagues_bp.route('/league_info', methods=['GET'])
 def get_league_info():
     league_info = []
 
@@ -36,7 +36,7 @@ def get_league_info():
 
     return league_info
 
-@t20_league_bp.route('/<leagueID>/matches/<team_acronyms>/<stadium_names>', methods=['GET'])
+@franchise_leagues_bp.route('/<leagueID>/matches/<team_acronyms>/<stadium_names>', methods=['GET'])
 def get_league_match_data(leagueID, team_acronyms, stadium_names):
 
     team_data = {}
@@ -83,7 +83,7 @@ def get_league_match_data(leagueID, team_acronyms, stadium_names):
 
     return result
 
-@t20_league_bp.route('/<leagueID>/points_table', methods=['GET'])
+@franchise_leagues_bp.route('/<leagueID>/points_table', methods=['GET'])
 def get_league_points_table(leagueID):
     teams = list(teams_collection.find({"leagueID": leagueID}, {"_id": 0, "name": 0, "gradient": 0, "leagueID": 0, "year": 0}))
 
@@ -187,7 +187,7 @@ def get_league_points_table(leagueID):
                               reverse=True)
     return points_table
 
-@t20_league_bp.route('/<leagueID>/teams', methods=['GET'])
+@franchise_leagues_bp.route('/<leagueID>/teams', methods=['GET'])
 def get_league_teams(leagueID):
     teams = teams_collection.find({"leagueID": leagueID}).sort("name")
 
@@ -201,7 +201,7 @@ def get_league_teams(leagueID):
 
     return result
 
-@t20_league_bp.route('/<leagueID>/venues', methods=['GET'])
+@franchise_leagues_bp.route('/<leagueID>/venues', methods=['GET'])
 def get_league_venues(leagueID):
     locations = matches_collection.distinct("Location", {"leagueID": leagueID})
 
@@ -215,7 +215,7 @@ def get_league_venues(leagueID):
 
     return result
 
-@t20_league_bp.route('/<leagueID>/match/<match_num>/<result>', methods=['PATCH'])
+@franchise_leagues_bp.route('/<leagueID>/match/<match_num>/<result>', methods=['PATCH'])
 def update_league_match(leagueID, match_num, result):
 
     try:
@@ -232,7 +232,7 @@ def update_league_match(leagueID, match_num, result):
 
     return jsonify({"message": f"{leagueID} match #{match_num} updated successfully"})
 
-@t20_league_bp.route('/<leagueID>/clear/<match_nums>', methods=['PATCH'])
+@franchise_leagues_bp.route('/<leagueID>/clear/<match_nums>', methods=['PATCH'])
 def clear_league_results(leagueID, match_nums):
     try:
         match_num_strings = match_nums.split("-")
@@ -257,7 +257,7 @@ def clear_league_results(leagueID, match_nums):
     return jsonify({"message": f"{result.matched_count} matched - {result.modified_count} modified:"
                                f" {leagueID} matches cleared successfully"})
 
-@t20_league_bp.route('/<leagueID>/sim/<match_nums>', methods=['PATCH'])
+@franchise_leagues_bp.route('/<leagueID>/sim/<match_nums>', methods=['PATCH'])
 def sim_league_matches(leagueID, match_nums):
     start_time = time.time()
 
@@ -285,14 +285,14 @@ def sim_league_matches(leagueID, match_nums):
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
-    end_time = time.time()  # ⏱️ End timer
+    end_time = time.time()
     elapsed = end_time - start_time
     print(f"Simulating took {elapsed:.4f} seconds")
 
     return jsonify({"message": f"{num_matched} matched - {num_modified} modified:"
                                f" {leagueID} matches simulated successfully"})
 
-@t20_league_bp.route('/<leagueID>/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
+@franchise_leagues_bp.route('/<leagueID>/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
 def nrr_league_match(leagueID, match_num, home_runs, home_wickets, home_overs, away_runs, away_wickets, away_overs):
     try:
         result = matches_collection.update_one(

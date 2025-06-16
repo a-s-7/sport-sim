@@ -2,12 +2,12 @@ import os
 from flask import Flask, send_from_directory
 
 from routes.wtc_routes import wtc_bp
-from routes.t20_league_routes import t20_league_bp
+from routes.franchise_league_routes import franchise_leagues_bp
 
 app = Flask(__name__, static_folder='../frontend/build')
 
 app.register_blueprint(wtc_bp)
-app.register_blueprint(t20_league_bp)
+app.register_blueprint(franchise_leagues_bp)
 
 @app.route('/')
 @app.route('/<path:path>')

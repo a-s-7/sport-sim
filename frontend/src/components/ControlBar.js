@@ -119,8 +119,7 @@ function ControlBar({
     return (
         <div className="controlBarHeader" style={{background: color}}>
             <div className="controlBarLogoContainer">
-                <img
-                    src={logoSrc} alt={`${name} Logo`}></img>
+                <img src={logoSrc} alt={`${name} Logo`}></img>
             </div>
             <div className="controlBarMatchCountContainer">
                 {matchCount + " MATCHES"}

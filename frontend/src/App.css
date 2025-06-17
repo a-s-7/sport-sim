@@ -120,13 +120,14 @@ html, body, #root {
 .controlBarLogoContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     width: 15%;
 }
 
 .controlBarLogoContainer img {
-    width: 100%;
-    height: 90%;
+    margin-left: 10px;
+    width: 90%;
+    height: 80%;
     object-fit: contain;
 }
 
@@ -570,7 +571,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .homeLogo, .awayLogo {
-    width: 40%;
+    width: 36%;
 }
 
 

@@ -4,7 +4,6 @@ import random
 
 from flask import Blueprint, jsonify
 from pymongo import MongoClient, UpdateOne
-import time
 
 if os.getenv("RENDER_STATUS") != "TRUE":
     from dotenv import load_dotenv
@@ -264,8 +263,6 @@ def clear_league_results(leagueID, match_nums):
 
 @franchise_leagues_bp.route('/<leagueID>/sim/<match_nums>', methods=['PATCH'])
 def sim_league_matches(leagueID, match_nums):
-    start_time = time.time()
-
     try:
         results = ["Home-win", "Away-win", "No-result"]
         probabilities = [0.475, 0.475, 0.05]
@@ -289,10 +286,6 @@ def sim_league_matches(leagueID, match_nums):
 
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
-
-    end_time = time.time()
-    elapsed = end_time - start_time
-    print(f"Simulating took {elapsed:.4f} seconds")
 
     return jsonify({"message": f"{num_matched} matched - {num_modified} modified:"
                                f" {leagueID} matches simulated successfully"})

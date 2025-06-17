@@ -127,15 +127,16 @@ function ControlBar({
                 <div className="teamFilterBar">
                     <Select
                         isMulti
-                        borderRadius="10px"
                         menuPosition="fixed"
                         options={teamOptions}
                         styles={{
                             control: (baseStyles, state) => ({
                                 ...baseStyles,
                                 border: 0,
-                                boxShadow: 'none'
+                                boxShadow: 'none',
+                                borderRadius: '10px'
                             }),
+
                         }}
                         value={teams}
                         onChange={handleTeamChange}
@@ -153,7 +154,8 @@ function ControlBar({
                             control: (baseStyles, state) => ({
                                 ...baseStyles,
                                 border: 0,
-                                boxShadow: 'none'
+                                boxShadow: 'none',
+                                borderRadius: '10px'
                             }),
                         }}
                         value={stadiums}

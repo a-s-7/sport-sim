@@ -39,6 +39,9 @@ def get_league_info():
 @franchise_leagues_bp.route('/<leagueID>/matches/<team_acronyms>/<stadium_names>', methods=['GET'])
 def get_league_match_data(leagueID, team_acronyms, stadium_names):
 
+    league = leagues_collection.find_one({"_id": leagueID})
+    leagueName = league["leagueName"]
+
     team_data = {}
     teams = teams_collection.find({"leagueID": leagueID})
 
@@ -79,7 +82,7 @@ def get_league_match_data(leagueID, team_acronyms, stadium_names):
 
         match["startTime"] = (date - timedelta(hours=7)).strftime("%-I:%M %p")
 
-    result = [leagueID, team_data, match_data]
+    result = [leagueID, leagueName, team_data, match_data]
 
     return result
 
@@ -108,6 +111,8 @@ def get_league_points_table(leagueID):
     matches = list(matches_collection.find({"leagueID": leagueID}, {"_id": 0,
                                                                     "leagueID": 0,
                                                                     "year": 0}).sort({"MatchNumber": 1}))
+
+    overBalls = 5 if leagueID == "THU" else 6
 
     for match in matches:
         if match["result"] != "None":
@@ -160,13 +165,13 @@ def get_league_points_table(leagueID):
 
                 for teamOver in teamOvers:
                     if '.' not in teamOver:
-                        teamBalls.append(int(teamOver) * 6)
+                        teamBalls.append(int(teamOver) * overBalls)
                     else:
                         over, balls = teamOver.split(".")
                         over = int(over)
                         balls = int(balls)
 
-                        teamBalls.append(over * 6 + balls)
+                        teamBalls.append(over * overBalls + balls)
 
                 homeTeamData["ballsFaced"] += teamBalls[1]
                 homeTeamData["oppositionBallsFaced"] += teamBalls[0]
@@ -176,8 +181,8 @@ def get_league_points_table(leagueID):
 
     for team_key, team_data in team_dict.items():
         if team_data["runsScored"] != 0:
-            f = (team_data["runsScored"] / (team_data["ballsFaced"] / 6))
-            a = (team_data["oppositionRunsScored"] / (team_data["oppositionBallsFaced"] / 6))
+            f = (team_data["runsScored"] / (team_data["ballsFaced"] / overBalls))
+            a = (team_data["oppositionRunsScored"] / (team_data["oppositionBallsFaced"] / overBalls))
 
             team_data["nrr"] = f - a
         else:

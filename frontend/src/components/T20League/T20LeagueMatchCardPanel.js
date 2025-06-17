@@ -5,11 +5,11 @@ import T20LeagueMatchResultCard from "./T20LeagueMatchResultCard";
 
 function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag, cardNeutralGradient}) {
 
-    const [league = "", teamData = {}, matchData = []] = matches;
+    const [league = "", leagueName = "", teamData = {}, matchData = []] = matches;
 
     return (
         matchData.map(match => (
-            <div key={`${match.matchNumber}`}>
+            <div key={`${match.MatchNumber}`}>
                 {match.status === "incomplete" ? <T20LeagueMatchCard
                     homeGradient={teamData[match.HomeTeam].gradient}
                     awayGradient={teamData[match.AwayTeam].gradient}
@@ -18,6 +18,7 @@ function T20LeagueMatchCardPanel({onMatchUpdate, matches, urlLeagueTag, cardNeut
                     awayTeamName={match.AwayTeam}
                     awayTeamLogo={teamData[match.AwayTeam].logo}
                     leagueName={league}
+                    leagueID={leagueName}
                     matchNum={match.MatchNumber}
                     venue={match.Location}
                     date={match.date}

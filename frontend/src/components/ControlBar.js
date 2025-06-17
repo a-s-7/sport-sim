@@ -8,8 +8,6 @@ function ControlBar({
                         urlTag, logoSrc, name, color, matchesFiltered
                     }) {
 
-    console.log("filtered")
-    console.log(matchesFiltered)
     const [teamOptions, setTeamOptions] = useState([]);
     const [stadiumOptions, setStadiumOptions] = useState([]);
 
@@ -58,6 +56,7 @@ function ControlBar({
         if (urlTag === "WTC") {
             matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.MatchNumber.charAt(0)}`).join("-");
         } else {
+            console.log(matchesFiltered)
             matchNums = matchesFiltered.map(match => match.MatchNumber).join("-")
         }
 

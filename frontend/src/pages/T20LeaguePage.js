@@ -7,6 +7,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [selectedStadiums, setSelectedStadiums] = useState([]);
 
+    const MATCH_DATA_INDEX = 3;
 
     const [matchesData, setMatchesData] = useState([]);
     const [pointsTableData, setPointsTableData] = useState([]);
@@ -120,7 +121,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
         <div className="T20LeaguePage">
             <ControlBar
                 refreshFunction={handleRefresh}
-                matchCount={Array.isArray(matchesData[2]) ? matchesData[2].length : 0}
+                matchCount={Array.isArray(matchesData[MATCH_DATA_INDEX]) ? matchesData[MATCH_DATA_INDEX].length : 0}
                 teams={selectedTeams}
                 stadiums={selectedStadiums}
                 sst={setSelectedTeams}
@@ -129,7 +130,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
                 logoSrc={leagueLogoSrc}
                 name={leagueName}
                 color={leagueColor}
-                matchesFiltered={matchesData[2]}
+                matchesFiltered={matchesData[MATCH_DATA_INDEX]}
             />
 
             <div className="matchArea" >
@@ -142,8 +143,9 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
-                        <T20LeaguePointsTable pointsTableData={pointsTableData}
-                                                headerColor={pointsTableColor}/>
+                        <T20LeaguePointsTable leagueID={leagueUrlTag}
+                                              pointsTableData={pointsTableData}
+                                              headerColor={pointsTableColor}/>
                     </div>
                 </div>
             </div>

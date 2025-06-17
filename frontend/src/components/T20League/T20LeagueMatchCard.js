@@ -8,6 +8,7 @@ function T20LeagueMatchCard({
                                 awayTeamName,
                                 awayTeamLogo,
                                 leagueName,
+                                leagueID,
                                 matchNum,
                                 venue,
                                 date,
@@ -85,8 +86,6 @@ function T20LeagueMatchCard({
 
 
     const handleOverChange = async (val, area) => {
-        // alert("OVERS:" + val)
-
         let value = parseFloat(val);
 
         if (value > 20) {
@@ -97,8 +96,13 @@ function T20LeagueMatchCard({
 
         const [intPart, decPart] = value.toString().split('.').map(Number);
 
+        let overBallLimit = 5;
 
-        if (decPart > 5) {
+        if(leagueName === "THU"){
+            overBallLimit = 4;
+        }
+
+        if (decPart > overBallLimit) {
             value = intPart + 1.0;
         }
 
@@ -147,10 +151,6 @@ function T20LeagueMatchCard({
         const awayOversValue = parseFloat(awayOversRef.current.value);
         const homeWicketsValue = parseFloat(homeWicketsRef.current.value);
         const awayWicketsValue = parseFloat(awayWicketsRef.current.value);
-
-        console.log("AWAY RUNS")
-        console.log(awayRunsValue)
-
 
         if (!isNaN(homeWicketsValue) && !isNaN(awayWicketsValue) && !isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
             try {
@@ -355,7 +355,7 @@ function T20LeagueMatchCard({
                              background: hoveredSection === "None" ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
                              color: 'black'
                          }}>
-                        {`${leagueName} · Match ${matchNum} · ${venue}`}
+                        {`${leagueID} · Match ${matchNum} · ${venue}`}
                     </div>
 
                 </div>

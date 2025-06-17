@@ -310,6 +310,11 @@ html, body, #root {
     margin-right: 10px;
 }
 
+.T20Table tbody tr td:last-child img,
+.WTCTable tbody tr td:last-child img {
+    margin-right: 0;
+}
+
 .WTCTable tbody, .T20Table tbody {
     font-family: "Nunito Sans", sans-serif;
 }
@@ -383,8 +388,9 @@ html, body, #root {
 }
 
 .lastFiveImage {
-    width: 40%;
-    height: 40%;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 .infoBody {

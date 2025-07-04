@@ -21,28 +21,29 @@ matches_collection = db['matches']
 
 franchise_leagues_bp = Blueprint('franchise_leagues_bp', __name__)
 
-@franchise_leagues_bp.route('/league_info', methods=['GET'])
+@franchise_leagues_bp.route('/leagues/info', methods=['GET'])
 def get_league_info():
     league_info = []
 
     for league in leagues_collection.find():
-        league_info.append({"id": league["_id"],
-                            "name": league["leagueName"],
-                            "year": league["year"],
-                            "controlBarColor": league["leagueControlBarColor"],
-                            "logo": league["leagueLogo"],
+        league_info.append({"acronym": league["acronym"],
+                            "name": league["name"],
+                            "edition": league["edition"],
+                            "gradient": league["gradient"],
+                            "logo": league["logo"],
                             "pointsTableColor": league["pointsTableColor"]})
 
     return league_info
 
-@franchise_leagues_bp.route('/<leagueID>/matches/<team_acronyms>/<stadium_names>', methods=['GET'])
-def get_league_match_data(leagueID, team_acronyms, stadium_names):
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/matches/<team_acronyms>/<stadium_names>', methods=['GET'])
+def get_league_match_data(leagueAcronym, leagueEdition, team_acronyms, stadium_names):
+    leagueEdition = int(leagueEdition)
 
-    league = leagues_collection.find_one({"_id": leagueID})
-    leagueName = league["leagueName"]
+    league = leagues_collection.find_one({"acronym": leagueAcronym, "edition": leagueEdition})
+    leagueName = league["name"]
 
     team_data = {}
-    teams = teams_collection.find({"leagueID": leagueID})
+    teams = teams_collection.find({"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition})
 
     for team in teams:
         team_data[team["acronym"]] = {"gradient": team["gradient"], "logo": team["logo"]}
@@ -56,9 +57,9 @@ def get_league_match_data(leagueID, team_acronyms, stadium_names):
     stadium_all = len(stadiums) == 1 and stadiums[0] == "All"
 
     if team_all and stadium_all:
-        match_data = list(matches_collection.find({"leagueID": leagueID}, {"_id": 0}).sort("MatchNumber"))
+        match_data = list(matches_collection.find({"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition}, {"_id": 0}).sort("MatchNumber"))
     else:
-        query = {"leagueID": leagueID}
+        query = {"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition}
 
         or_conditions = []
 
@@ -81,13 +82,16 @@ def get_league_match_data(leagueID, team_acronyms, stadium_names):
 
         match["startTime"] = (date - timedelta(hours=7)).strftime("%-I:%M %p")
 
-    result = [leagueID, leagueName, team_data, match_data]
+    result = [leagueAcronym, leagueName, team_data, match_data]
 
     return result
 
-@franchise_leagues_bp.route('/<leagueID>/points_table', methods=['GET'])
-def get_league_points_table(leagueID):
-    teams = list(teams_collection.find({"leagueID": leagueID}, {"_id": 0, "name": 0, "gradient": 0, "leagueID": 0, "year": 0}))
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/points_table', methods=['GET'])
+def get_league_points_table(leagueAcronym, leagueEdition):
+    leagueEdition = int(leagueEdition)
+
+    teams = list(teams_collection.find({"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition},
+                                       {"_id": 0, "name": 0, "gradient": 0, "leagueID": 0, "year": 0}))
 
     for team in teams:
         team["points"] = 0
@@ -107,11 +111,10 @@ def get_league_points_table(leagueID):
     for team in teams:
         team_dict[team["acronym"]] = team
 
-    matches = list(matches_collection.find({"leagueID": leagueID}, {"_id": 0,
-                                                                    "leagueID": 0,
-                                                                    "year": 0}).sort({"MatchNumber": 1}))
+    matches = list(matches_collection.find({"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition},
+                                           {"_id": 0, "leagueAcronym": 0, "leagueEdition": 0}).sort({"MatchNumber": 1}))
 
-    overBalls = 5 if leagueID == "THU" else 6
+    overBalls = 5 if leagueAcronym == "THU" else 6
 
     for match in matches:
         if match["result"] != "None":
@@ -191,9 +194,11 @@ def get_league_points_table(leagueID):
                               reverse=True)
     return points_table
 
-@franchise_leagues_bp.route('/<leagueID>/teams', methods=['GET'])
-def get_league_teams(leagueID):
-    teams = teams_collection.find({"leagueID": leagueID}).sort("name")
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/teams', methods=['GET'])
+def get_league_teams(leagueAcronym, leagueEdition):
+    leagueEdition = int(leagueEdition)
+
+    teams = teams_collection.find({"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition}).sort("name")
 
     result = []
 
@@ -205,9 +210,12 @@ def get_league_teams(leagueID):
 
     return result
 
-@franchise_leagues_bp.route('/<leagueID>/venues', methods=['GET'])
-def get_league_venues(leagueID):
-    locations = matches_collection.distinct("Location", {"leagueID": leagueID})
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/venues', methods=['GET'])
+def get_league_venues(leagueAcronym, leagueEdition):
+    leagueEdition = int(leagueEdition)
+
+    locations = matches_collection.distinct("Location",
+                                            {"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition})
 
     result = []
 
@@ -219,12 +227,14 @@ def get_league_venues(leagueID):
 
     return result
 
-@franchise_leagues_bp.route('/<leagueID>/match/<match_num>/<result>', methods=['PATCH'])
-def update_league_match(leagueID, match_num, result):
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/match/<match_num>/<result>', methods=['PATCH'])
+def update_league_match(leagueAcronym, leagueEdition, match_num, result):
+    leagueEdition = int(leagueEdition)
+
 
     try:
         result = matches_collection.update_one(
-            {"leagueID": leagueID, "MatchNumber": int(match_num)},
+            {"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition, "MatchNumber": int(match_num)},
             {"$set": {"result": result}},
         )
 
@@ -234,16 +244,18 @@ def update_league_match(leagueID, match_num, result):
     except ValueError as e:
         return jsonify(str(e)), 404
 
-    return jsonify({"message": f"{leagueID} match #{match_num} updated successfully"})
+    return jsonify({"message": f"{leagueAcronym} - {leagueEdition} match #{match_num} updated successfully"})
 
-@franchise_leagues_bp.route('/<leagueID>/clear/<match_nums>', methods=['PATCH'])
-def clear_league_results(leagueID, match_nums):
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/clear/<match_nums>', methods=['PATCH'])
+def clear_league_matches(leagueAcronym, leagueEdition, match_nums):
+    leagueEdition = int(leagueEdition)
+
     try:
         match_num_strings = match_nums.split("-")
         match_numbers = list(map(int, match_num_strings))
 
         result = matches_collection.update_many(
-            {"leagueID": leagueID,
+            {"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition,
              "MatchNumber": {"$in": match_numbers},
              "status": "incomplete"},
             {"$set": {
@@ -259,10 +271,12 @@ def clear_league_results(leagueID, match_nums):
         return jsonify({"error": str(e)}), 400
 
     return jsonify({"message": f"{result.matched_count} matched - {result.modified_count} modified:"
-                               f" {leagueID} matches cleared successfully"})
+                               f" {leagueAcronym} - {leagueEdition} matches cleared successfully"})
 
-@franchise_leagues_bp.route('/<leagueID>/sim/<match_nums>', methods=['PATCH'])
-def sim_league_matches(leagueID, match_nums):
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/sim/<match_nums>', methods=['PATCH'])
+def simulate_league_matches(leagueAcronym, leagueEdition, match_nums):
+    leagueEdition = int(leagueEdition)
+
     try:
         results = ["Home-win", "Away-win", "No-result"]
         probabilities = [0.475, 0.475, 0.05]
@@ -276,7 +290,7 @@ def sim_league_matches(leagueID, match_nums):
             random_result = random.choices(results, weights=probabilities, k=1)[0]
 
             updates.append(UpdateOne(
-                {"leagueID": leagueID, "MatchNumber": match_num},
+                {"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition, "MatchNumber": match_num},
                 {"$set": {"result": random_result}}
             ))
 
@@ -288,13 +302,15 @@ def sim_league_matches(leagueID, match_nums):
         return jsonify({"error": str(e)}), 400
 
     return jsonify({"message": f"{num_matched} matched - {num_modified} modified:"
-                               f" {leagueID} matches simulated successfully"})
+                               f" {leagueAcronym} - {leagueEdition} matches simulated successfully"})
 
-@franchise_leagues_bp.route('/<leagueID>/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
-def nrr_league_match(leagueID, match_num, home_runs, home_wickets, home_overs, away_runs, away_wickets, away_overs):
+@franchise_leagues_bp.route('/leagues/<leagueAcronym>/<leagueEdition>/nrr/<match_num>/<home_runs>/<home_wickets>/<home_overs>/<away_runs>/<away_wickets>/<away_overs>', methods=['PATCH'])
+def nrr_league_match(leagueAcronym, leagueEdition, match_num, home_runs, home_wickets, home_overs, away_runs, away_wickets, away_overs):
+    leagueEdition = int(leagueEdition)
+
     try:
         result = matches_collection.update_one(
-            {"leagueID": leagueID, "MatchNumber": int(match_num)},
+            {"leagueAcronym": leagueAcronym, "leagueEdition": leagueEdition, "MatchNumber": int(match_num)},
             {"$set":
                         {"homeTeamRuns": int(home_runs),
                          "awayTeamRuns": int(away_runs),
@@ -311,4 +327,4 @@ def nrr_league_match(leagueID, match_num, home_runs, home_wickets, home_overs, a
     except ValueError as e:
         return jsonify(str(e)), 404
 
-    return jsonify({"message": f"{leagueID} match #{match_num} updated successfully"})
+    return jsonify({"message": f"{leagueAcronym} - {leagueEdition} match #{match_num} updated successfully"})

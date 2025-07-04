@@ -21,8 +21,9 @@ function T20LeagueMatchCard({
                                 awayTeamOvers,
                                 awayTeamWickets,
                                 homeTeamWickets,
-                                urlLeagueTag,
-                                neutralGradient
+                                leagueUrlTag,
+                                neutralGradient,
+                                leagueEdition
                             }) {
 
     const [selected, setSelected] = useState(matchResult)
@@ -66,7 +67,7 @@ function T20LeagueMatchCard({
         setSelected(result);
 
         try {
-            const response = await fetch(`/${urlLeagueTag}/match/${matchNum}/${result}`,
+            const response = await fetch(`/leagues/${leagueUrlTag}/${leagueEdition}/match/${matchNum}/${result}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -154,7 +155,7 @@ function T20LeagueMatchCard({
 
         if (!isNaN(homeWicketsValue) && !isNaN(awayWicketsValue) && !isNaN(homeRunsValue) && !isNaN(awayRunsValue) && !isNaN(homeOversValue) && homeOversValue !== 0 && !isNaN(awayOversValue) && awayOversValue !== 0) {
             try {
-                const baseUrl = `/${urlLeagueTag}/nrr/`;
+                const baseUrl = `/leagues/${leagueUrlTag}/${leagueEdition}/nrr/`;
                 const url = `${baseUrl}${matchNum}/${homeRunsValue}/${homeWicketsValue}/${homeOversValue}/${awayRunsValue}/${awayWicketsValue}/${awayOversValue}`;
                   
 
@@ -179,7 +180,7 @@ function T20LeagueMatchCard({
 
     const resetMatchData = async () => {
         try {
-            const response = await fetch(`/${urlLeagueTag}/clear/${matchNum}`,
+            const response = await fetch(`/leagues/${leagueUrlTag}/${leagueEdition}/clear/${matchNum}`,
                 {
                     method: 'PATCH',
                     headers: {

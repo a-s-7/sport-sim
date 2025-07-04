@@ -2,7 +2,7 @@ import React from "react";
 import WTCMatchCard from "./WTCMatchCard";
 import WTCMatchResultCard from "./WTCMatchResultCard";
 
-function WTCMatchCardPanel({onMatchUpdate, matches}) {
+function WTCMatchCardPanel({onMatchUpdate, matches, cycle, urlTag}) {
     const [teamData = {}, seriesData = {}, matchData = []] = matches;
 
     return (
@@ -26,6 +26,8 @@ function WTCMatchCardPanel({onMatchUpdate, matches}) {
                         onMatchUpdate={onMatchUpdate}
                         homeDeduction={match.homeDed}
                         awayDeduction={match.awayDed}
+                        cycle={cycle}
+                        urlTag={urlTag}
                     />
                 ) : (
                     <WTCMatchResultCard

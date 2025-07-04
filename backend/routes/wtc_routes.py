@@ -22,26 +22,30 @@ matches_collection = db['matches']
 
 wtc_bp = Blueprint('wtc_bp', __name__)
 
-@wtc_bp.route('/WTC/info', methods=['GET'])
+@wtc_bp.route('/wtc/info', methods=['GET'])
 def get_wtc_info():
-    edition = editions_collection.find_one()
+    editions = editions_collection.find()
 
-    wtc_info = {"id": edition["_id"],
-                "name": edition["leagueName"],
-                "year": edition["year"],
-                "controlBarColor": edition["leagueControlBarColor"],
-                "logo": edition["leagueLogo"],
-                "pointsTableColor": edition["pointsTableColor"]}
+    wtc_info = []
+
+    for edition in editions:
+        wtc_info.append({"acronym": edition["acronym"],
+                    "name": edition["name"],
+                    "edition": edition["edition"],
+                    "gradient": edition["gradient"],
+                    "logo": edition["logo"],
+                    "pointsTableColor": edition["pointsTableColor"]})
 
     return wtc_info
 
-@wtc_bp.route('/WTC/matches/<team_names>/<venue_names>', methods=['GET'])
-def get_wtc_team_series_match_data(team_names, venue_names):
+@wtc_bp.route('/wtc/<edition>/matches/<team_names>/<venue_names>', methods=['GET'])
+def get_wtc_team_series_match_data(edition, team_names, venue_names):
+    edition = int(edition)
 
     # (1) GET TEAM DATA
     teamsData = {}
 
-    teams = teams_collection.find({"year": 2025})
+    teams = teams_collection.find({"edition": edition})
 
     for team in teams:
         teamsData[team["name"]] = {"gradient": team["gradient"], "flag": team["flag"]}
@@ -49,7 +53,7 @@ def get_wtc_team_series_match_data(team_names, venue_names):
     # (2) GET SERIES DATA
     seriesData = {}
 
-    series = series_collection.find()
+    series = series_collection.find({"edition": edition})
 
     for s in series:
         seriesData[s["seriesId"]] = s["seriesName"]
@@ -64,9 +68,9 @@ def get_wtc_team_series_match_data(team_names, venue_names):
     stadium_all = len(venues) == 1 and venues[0] == "All"
 
     if team_all and stadium_all:
-        matchData = list(matches_collection.find({},{"_id": 0}).sort("startDate"))
+        matchData = list(matches_collection.find({"edition": edition},{"_id": 0}).sort("startDate"))
     else:
-        query = {}
+        query = {"edition": edition}
 
         or_conditions = []
 
@@ -105,10 +109,11 @@ def get_wtc_team_series_match_data(team_names, venue_names):
 
     return [teamsData, seriesData, matchData]
 
-@wtc_bp.route('/WTC/points_table', methods=['GET'])
-def get_wtc_points_table():
-    # return wtc.get_points_table_json()
-    teams = list(teams_collection.find({}, {"_id": 0, "acronym": 0, "gradient": 0, "editionID": 0, "year": 0}))
+@wtc_bp.route('/wtc/<edition>/points_table', methods=['GET'])
+def get_wtc_points_table(edition):
+    edition = int(edition)
+
+    teams = list(teams_collection.find({"edition": edition}, {"_id": 0, "acronym": 0, "gradient": 0, "editionID": 0, "year": 0}))
 
     for team in teams:
         team["points"] = 0
@@ -126,8 +131,9 @@ def get_wtc_points_table():
         team_dict[team["name"]] = team
 
 
-    matches = list(matches_collection.find({"result": {"$ne": "None"}}, {"_id": 0, "location": 0, "year": 0, "startDate": 0,
-                                                    "endDate": 0, "startTime":0, "seriesID": 0, "matchNumber":0}).sort({"startDate": 1}))
+    matches = list(matches_collection.find({"edition": edition, "result": {"$ne": "None"}},
+                                           {"_id": 0, "location": 0, "year": 0, "startDate": 0, "endDate": 0,
+                                            "startTime":0, "seriesID": 0, "matchNumber":0}).sort({"startDate": 1}))
 
     for match in matches:
         awayTeamData = team_dict[match["awayTeam"]]
@@ -180,23 +186,11 @@ def get_wtc_points_table():
 
     return points_table
 
-@wtc_bp.route('/WTC/venues', methods=['GET'])
-def get_wtc_locations():
-    locations = matches_collection.distinct("location")
+@wtc_bp.route('/wtc/<edition>/teams', methods=['GET'])
+def get_wtc_teams(edition):
+    edition = int(edition)
 
-    result = []
-
-    for location in locations:
-        result.append({
-            "label": location,
-            "value": location,
-        })
-
-    return result
-
-@wtc_bp.route('/WTC/teams', methods=['GET'])
-def get_wtc_teams():
-    teams = teams_collection.find().sort("name")
+    teams = teams_collection.find({"edition": edition}).sort("name")
 
     result = []
 
@@ -208,11 +202,29 @@ def get_wtc_teams():
 
     return result
 
-@wtc_bp.route('/WTC/match/<series_id>/<match_num>/<result>', methods=['PATCH'])
-def update_wtc_match(series_id, match_num, result):
+@wtc_bp.route('/wtc/<edition>/venues', methods=['GET'])
+def get_wtc_locations(edition):
+    edition = int(edition)
+
+    locations = matches_collection.distinct("location", {"edition": edition})
+
+    result = []
+
+    for location in locations:
+        result.append({
+            "label": location,
+            "value": location,
+        })
+
+    return result
+
+@wtc_bp.route('/wtc/<edition>/match/<series_id>/<match_num>/<result>', methods=['PATCH'])
+def update_wtc_match(edition, series_id, match_num, result):
+    edition = int(edition)
+
     try:
         result = matches_collection.update_one(
-            {"seriesID": int(series_id), "matchNumber": int(match_num)},
+            {"edition": edition, "seriesID": int(series_id), "matchNumber": int(match_num)},
             {"$set": {"result": result}},
         )
 
@@ -224,58 +236,12 @@ def update_wtc_match(series_id, match_num, result):
 
     return jsonify({"message": f"WTC match #{match_num} updated successfully"})
 
-@wtc_bp.route('/WTC/deduction/<series_id>/<match_num>/<team>/<deduction>', methods=['PATCH'])
-def update_wtc_match_deduction(series_id, match_num, team, deduction):
+@wtc_bp.route('/wtc/<edition>/clear/<series_match_pairs>', methods=['PATCH'])
+def clear_wtc_matches(edition, series_match_pairs):
+    edition = int(edition)
+
     try:
-        field = "homeDed" if team == "home-team" else "awayDed"
-
-        result = matches_collection.update_one(
-            {"seriesID": int(series_id), "matchNumber": int(match_num)},
-            {"$set": {field: int(deduction)}}
-        )
-
-        if result.matched_count == 0:
-            raise ValueError("No match was modified")
-
-    except ValueError as e:
-        return jsonify(str(e)), 404
-
-    return jsonify({"message": f"WTC series {series_id} - match #{match_num} deduction updated successfully"})
-
-@wtc_bp.route('/WTC/sim/<match_nums>', methods=['PATCH'])
-def simulate_wtc_matches(match_nums):
-    try:
-        sm = match_nums.split("-")
-
-        results = ["Home-win", "Away-win", "Draw"]
-        probabilities = [0.475, 0.475, 0.05]
-
-        updates = []
-
-        for ref in sm:
-            s, m = ref.split(".")
-
-            random_result = random.choices(results, weights=probabilities, k=1)[0]
-
-            updates.append(UpdateOne(
-                {"seriesID": int(s), "matchNumber": int(m), "status": "incomplete"},
-                {"$set": {"result": random_result}}
-            ))
-
-
-        result = matches_collection.bulk_write(updates)
-        num_modified = result.modified_count
-        num_matched = result.matched_count
-
-    except ValueError as e:
-        return jsonify({"error": str(e)}), 400
-
-    return jsonify({"message": f"{num_matched} matched - {num_modified} simulated"})
-
-@wtc_bp.route('/WTC/clear/<match_nums>', methods=['PATCH'])
-def clear_wtc_matches(match_nums):
-    try:
-        sm = match_nums.split("-")
+        sm = series_match_pairs.split("-")
 
         updates = []
 
@@ -283,7 +249,7 @@ def clear_wtc_matches(match_nums):
             s, m = ref.split(".")
 
             updates.append(UpdateOne(
-                {"seriesID": int(s), "matchNumber": int(m), "status": "incomplete"},
+                {"edition": edition, "seriesID": int(s), "matchNumber": int(m), "status": "incomplete"},
                 {"$set": {"result": "None",
                                 "homeDed": 0,
                                  "awayDed": 0,}}
@@ -297,3 +263,55 @@ def clear_wtc_matches(match_nums):
         return jsonify({"error": str(e)}), 400
 
     return jsonify({"message": f"{num_matched} matched - {num_modified} cleared"})
+
+@wtc_bp.route('/wtc/<edition>/sim/<series_match_pairs>', methods=['PATCH'])
+def simulate_wtc_matches(edition, series_match_pairs):
+    edition = int(edition)
+
+    try:
+        sm = series_match_pairs.split("-")
+
+        results = ["Home-win", "Away-win", "Draw"]
+        probabilities = [0.475, 0.475, 0.05]
+
+        updates = []
+
+        for ref in sm:
+            s, m = ref.split(".")
+
+            random_result = random.choices(results, weights=probabilities, k=1)[0]
+
+            updates.append(UpdateOne(
+                {"edition": edition, "seriesID": int(s), "matchNumber": int(m), "status": "incomplete"},
+                {"$set": {"result": random_result}}
+            ))
+
+
+        result = matches_collection.bulk_write(updates)
+        num_modified = result.modified_count
+        num_matched = result.matched_count
+
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    return jsonify({"message": f"{num_matched} matched - {num_modified} simulated"})
+
+@wtc_bp.route('/wtc/<edition>/deduction/<series_id>/<match_num>/<team>/<deduction>', methods=['PATCH'])
+def update_wtc_match_deduction(edition, series_id, match_num, team, deduction):
+    edition = int(edition)
+
+    try:
+        field = "homeDed" if team == "home-team" else "awayDed"
+
+        result = matches_collection.update_one(
+            {"edition": edition, "seriesID": int(series_id), "matchNumber": int(match_num)},
+            {"$set": {field: int(deduction)}}
+        )
+
+        if result.matched_count == 0:
+            raise ValueError("No match was modified")
+
+    except ValueError as e:
+        return jsonify(str(e)), 404
+
+    return jsonify({"message": f"WTC {edition} series {series_id} - match #{match_num} deduction updated successfully"})

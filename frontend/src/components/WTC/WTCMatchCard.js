@@ -3,7 +3,7 @@ import React, {useState} from "react";
 function WTCMatchCard({
                           homeGradient, awayGradient, homeTeamName, homeTeamFlag, awayTeamName, awayTeamFlag,
                           seriesName, testNum, venue, dateRange, time, seriesId, onMatchUpdate, matchResult,
-                          homeDeduction, awayDeduction
+                          homeDeduction, awayDeduction, cycle, urlTag
                       }) {
     const neutralGradient = 'linear-gradient(135deg, black, black, silver)';
 
@@ -35,7 +35,7 @@ function WTCMatchCard({
         setSelected(result);
 
         try {
-            const response = await fetch(`/WTC/match/${seriesId}/${testNum.charAt(0)}/${result}`,
+            const response = await fetch(`/${urlTag}/${cycle}/match/${seriesId}/${testNum.charAt(0)}/${result}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -61,7 +61,7 @@ function WTCMatchCard({
         }
 
         try {
-            const response = await fetch(`/WTC/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
+            const response = await fetch(`/${urlTag}/${cycle}/deduction/${seriesId}/${testNum.charAt(0)}/${teamName}/${val}`,
                 {
                     method: 'PATCH',
                     headers: {

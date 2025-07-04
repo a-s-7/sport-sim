@@ -44,8 +44,7 @@ teams_collection = db['teams']
 teams = json_info["teams"]
 
 for team in teams:
-     team["editionID"] = json_info["_id"]
-     team["year"] = json_info["year"]
+     team["edition"] = json_info["edition"]
 
 result = teams_collection.insert_many(teams)
 
@@ -68,6 +67,10 @@ for seriesObj in series_data:
         if key != "matches":
             newSeries[key] = seriesObj[key]
 
+    newSeries["edition"] = json_info["edition"]
+
+    series.append(newSeries)
+
     ms = seriesObj["matches"]
 
     for index, m in enumerate(ms):
@@ -79,15 +82,14 @@ for seriesObj in series_data:
         m["matchNumber"] = index + 1
         m["homeTeam"] = newSeries["homeTeam"]
         m["awayTeam"] = newSeries["awayTeam"]
+        m["edition"] = json_info["edition"]
         matches.append(m)
 
-    series.append(newSeries)
 
 resSeries = series_collection.insert_many(series)
 resMatches = matches_collection.insert_many(matches)
 
 print(f"# Series Inserted: {len(resSeries.inserted_ids)}")
 print(f"# Matches Inserted: {len(resMatches.inserted_ids)}")
-
 
 client.close()

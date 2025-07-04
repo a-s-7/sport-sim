@@ -4,8 +4,8 @@ from pymongo import MongoClient
 
 # NOTES:
 # abb must match league folder name in league_data and the file format ("abb-year-t.json", "abb-year-s.json")
-league_abb = "thu"
-league_year = "2025"
+league_abb = "bbl"
+league_year = "2024"
 
 if os.getenv("RENDER_STATUS") != "TRUE":
     from dotenv import load_dotenv
@@ -45,8 +45,8 @@ teams_collection = db['teams']
 teams = json_info["teams"]
 
 for team in teams:
-     team["leagueID"] = json_info["_id"]
-     team["year"] = json_info["year"]
+     team["leagueAcronym"] = json_info["acronym"]
+     team["leagueEdition"] = json_info["edition"]
 
 result = teams_collection.insert_many(teams)
 
@@ -59,8 +59,8 @@ matches_collection = db['matches']
 matches = json_info["matches"]
 
 for match in matches:
-    match["leagueID"] = json_info["_id"]
-    match["year"] = json_info["year"]
+    match["leagueAcronym"] = json_info["acronym"]
+    match["leagueEdition"] = json_info["edition"]
 
 result = matches_collection.insert_many(matches)
 

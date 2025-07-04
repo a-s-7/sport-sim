@@ -1,9 +1,9 @@
 {
-  "_id": "WTC",
-  "leagueName": "World Test Championship",
-  "year": 2025,
-  "leagueControlBarColor": "linear-gradient(135deg, black, black, black)",
-  "leagueLogo": "https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg",
+  "acronym": "wtc",
+  "name": "ICC World Test Championship",
+  "edition": 2025,
+  "gradient": "linear-gradient(135deg, black, black, black)",
+  "logo": "https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg",
   "pointsTableColor": "black",
   "teams": [
     {

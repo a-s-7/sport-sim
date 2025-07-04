@@ -5,14 +5,16 @@ import {faArrowRotateLeft, faShuffle} from "@fortawesome/free-solid-svg-icons";
 
 function ControlBar({
                         refreshFunction, matchCount, teams, stadiums, sst, setStadiums,
-                        urlTag, logoSrc, name, color, matchesFiltered
+                        urlTag, edition, logo, name, color, matchesFiltered
                     }) {
 
     const [teamOptions, setTeamOptions] = useState([]);
     const [stadiumOptions, setStadiumOptions] = useState([]);
 
     const fetchTeamOptions = async () => {
-        let url = `/${urlTag}/teams`;
+
+        let url = urlTag === "wtc" ? `/${urlTag}/${edition}/teams` : `/leagues/${urlTag}/${edition}/teams`;
+        console.log(url);
 
         try {
             const response = await fetch(url);
@@ -27,7 +29,13 @@ function ControlBar({
     };
 
     const fetchVenueOptions = async () => {
-        let url = `/${urlTag}/venues`;
+        let url = urlTag === "wtc" ? `/${urlTag}/${edition}/venues` : `/leagues/${urlTag}/${edition}/venues`;
+        console.log(url);
+
+        console.log("edition");
+
+        console.log(edition);
+
 
         try {
             const response = await fetch(url);
@@ -53,15 +61,16 @@ function ControlBar({
     const resetIncompleteMatches = async () => {
         let matchNums = "";
 
-        if (urlTag === "WTC") {
+        if (urlTag === "wtc") {
             matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
         } else {
-            console.log(matchesFiltered)
-            matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
+            matchNums = matchesFiltered.map(match => match.MatchNumber).join("-")
         }
 
         try {
-            const response = await fetch(`/${urlTag}/clear/${matchNums}`,
+            let url = urlTag === "wtc" ? `/${urlTag}/${edition}` : `/leagues/${urlTag}/${edition}`;
+
+            const response = await fetch(`${url}/clear/${matchNums}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -82,7 +91,7 @@ function ControlBar({
     const randomlySimIncompleteMatches = async () => {
        let matchNums = "";
 
-        if (urlTag === "WTC") {
+        if (urlTag === "wtc") {
             matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
         } else {
             matchNums = matchesFiltered.map(match => match.MatchNumber).join("-")
@@ -90,7 +99,9 @@ function ControlBar({
 
         try {
 
-            const response = await fetch(`/${urlTag}/sim/${matchNums}`,
+            let url = urlTag === "wtc" ? `/${urlTag}/${edition}` : `/leagues/${urlTag}/${edition}`;
+
+            const response = await fetch(`${url}/sim/${matchNums}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -118,7 +129,7 @@ function ControlBar({
     return (
         <div className="controlBarHeader" style={{background: color}}>
             <div className="controlBarLogoContainer">
-                <img src={logoSrc} alt={`${name} Logo`}></img>
+                <img src={logo} alt={`${name} Logo`}></img>
             </div>
             <div className="controlBarMatchCountContainer">
                 {matchCount + " MATCHES"}

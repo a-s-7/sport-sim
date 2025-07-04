@@ -3,7 +3,7 @@ import T20LeagueMatchCardPanel from "../components/T20League/T20LeagueMatchCardP
 import T20LeaguePointsTable from "../components/T20League/T20LeaguePointsTable";
 import ControlBar from "../components/ControlBar";
 
-function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTableColor}) {
+function T20LeaguePage({leagueEdition, leagueUrlTag, leagueName, leagueLogo, leagueGradient, leaguePointsTableColor}) {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [selectedStadiums, setSelectedStadiums] = useState([]);
 
@@ -40,7 +40,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
             stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
         }
 
-        let url = `/${leagueUrlTag}/matches/${teamVal}/${stadiumVal}`;
+        let url = `/leagues/${leagueUrlTag}/${leagueEdition}/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -55,7 +55,7 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
     };
 
     const fetchPointsTableData = async () => {
-        let url = `/${leagueUrlTag}/points_table`;
+        let url = `/leagues/${leagueUrlTag}/${leagueEdition}/points_table`;
 
         try {
             const response = await fetch(url);
@@ -69,15 +69,11 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
                 result.forEach(team => {
                     team["diff"] = diffs.get(team.acronym);
                 });
-
-                // console.log("IF:", result);
             } else {
                 result.forEach(team => {
                     team["diff"] = 0;
                 });
-                // console.log("ELSE: ", result);
             }
-
             setPointsTableData(result);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -127,9 +123,10 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
                 sst={setSelectedTeams}
                 setStadiums={setSelectedStadiums}
                 urlTag={leagueUrlTag}
-                logoSrc={leagueLogoSrc}
+                logo={leagueLogo}
                 name={leagueName}
-                color={leagueColor}
+                color={leagueGradient}
+                edition={leagueEdition}
                 matchesFiltered={matchesData[MATCH_DATA_INDEX]}
             />
 
@@ -138,14 +135,15 @@ function T20LeaguePage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, po
                     <T20LeagueMatchCardPanel key={matchAreaKey}
                                              onMatchUpdate={refreshPointsTable}
                                              matches={matchesData}
-                                             urlLeagueTag={leagueUrlTag}
-                                             cardNeutralGradient={leagueColor}/>
+                                             leagueUrlTag={leagueUrlTag}
+                                             leagueEdition={leagueEdition}
+                                             cardNeutralGradient={leagueGradient}/>
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
                         <T20LeaguePointsTable leagueID={leagueUrlTag}
                                               pointsTableData={pointsTableData}
-                                              headerColor={pointsTableColor}/>
+                                              headerColor={leaguePointsTableColor}/>
                     </div>
                 </div>
             </div>

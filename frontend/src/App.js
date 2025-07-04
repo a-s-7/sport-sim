@@ -13,10 +13,10 @@ import WTCPage from "./pages/WTCPage";
 
 function App() {
     const [leagues, setLeagues] = useState([]);
-    const [wtc, setWtc] = useState([]);
+    const [wtcs, setWtcs] = useState([]);
 
     const fetchLeagues = async () => {
-        let url = `/league_info`;
+        let url = `/leagues/info`;
 
         try {
             const response = await fetch(url);
@@ -25,14 +25,13 @@ function App() {
             }
             const result = await response.json();
             setLeagues(result);
-            console.log(result);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
 
-     const fetchWtc = async () => {
-        let url = '/WTC/info';
+     const fetchWtcs = async () => {
+        let url = '/wtc/info';
 
         try {
             const response = await fetch(url);
@@ -40,8 +39,7 @@ function App() {
                 throw new Error("Response was not ok");
             }
             const result = await response.json();
-            setWtc(result);
-            console.log(result);
+            setWtcs(result);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -49,7 +47,7 @@ function App() {
 
     useEffect(() => {
         fetchLeagues();
-        fetchWtc();
+        fetchWtcs();
     }, []);
 
     return (
@@ -61,26 +59,30 @@ function App() {
                 <Route path="/icc_events" element={<IccEventsLandingPage/>}/>
 
                 {leagues.map(league => (
-                    <Route path={"/" + league["id"]} key={league["id"]} element={
-                         <T20LeaguePage leagueUrlTag={league["id"]}
-                                        leagueName = {league["name"]}
-                                        leagueLogoSrc = {league["logo"]}
-                                        leagueColor = {league["controlBarColor"]}
-                                        pointsTableColor = {league["pointsTableColor"]}/>
+                    <Route path={"/" + league["acronym"] + "/" + league["edition"]}
+                           key={league["acronym"] + "-" + league["edition"]}
+                           element={<T20LeaguePage leagueEdition={league["edition"]}
+                                                    leagueUrlTag={league["acronym"]}
+                                                    leagueName = {league["name"]}
+                                                    leagueLogo = {league["logo"]}
+                                                    leagueGradient = {league["gradient"]}
+                                                    leaguePointsTableColor = {league["pointsTableColor"]}/>
                     }>
                     </Route>))
                 }
-                {
-                    <Route path={"/" + wtc["id"]} key={wtc["id"]} element={
-                        <WTCPage leagueUrlTag={wtc["id"]}
-                                 leagueName = {wtc["name"]}
-                                 leagueLogoSrc = {wtc["logo"]}
-                                 leagueColor = {wtc["controlBarColor"]}
-                                 pointsTableColor = {wtc["pointsTableColor"]}/>}>
+
+                {wtcs.map(wtc => (
+                    <Route path={"/" + wtc["acronym"] + "/" + wtc["edition"]}
+                           key={wtc["cycle"]}
+                           element={<WTCPage wtcUrlTag={wtc["acronym"]}
+                                             wtcEdition={wtc["edition"]}
+                                             wtcLogo={wtc["logo"]}
+                                             wtcPointsTableColor={wtc["pointsTableColor"]}
+                                             wtcName={wtc["name"]}
+                                             wtcControlBarColor={wtc["gradient"]}/>
+                    }>
                     </Route>
-                }
-
-
+                ))}
             </Routes>
         </div>
     );

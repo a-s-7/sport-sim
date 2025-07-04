@@ -3,7 +3,7 @@ import WTCMatchCardPanel from "../components/WTC/WTCMatchCardPanel";
 import WTCPointsTable from "../components/WTC/WTCPointsTable";
 import ControlBar from "../components/ControlBar";
 
-function WTCPage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTableColor}) {
+function WTCPage({wtcUrlTag, wtcName, wtcEdition, wtcControlBarColor, wtcLogo, wtcPointsTableColor}) {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [selectedStadiums, setSelectedStadiums] = useState([]);
 
@@ -38,10 +38,9 @@ function WTCPage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTa
             stadiumVal = selectedStadiums.map(stadium => stadium.label).join("#");
         }
 
-        console.log(stadiumVal)
+        let url = `/${wtcUrlTag}/${wtcEdition}/matches/${teamVal}/${stadiumVal}`;
 
-        let url = `/${leagueUrlTag}/matches/${teamVal}/${stadiumVal}`;
-
+        console.log("EDITION");
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -55,7 +54,7 @@ function WTCPage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTa
     };
 
     const fetchPointsTableData = async () => {
-        let url = `/${leagueUrlTag}/points_table`;
+        let url = `/${wtcUrlTag}/${wtcEdition}/points_table`;
 
         try {
             const response = await fetch(url);
@@ -110,10 +109,11 @@ function WTCPage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTa
                         stadiums={selectedStadiums}
                         sst={setSelectedTeams}
                         setStadiums={setSelectedStadiums}
-                        urlTag={leagueUrlTag}
-                        logoSrc={leagueLogoSrc}
-                        name={leagueName}
-                        color={leagueColor}
+                        urlTag={wtcUrlTag}
+                        edition={wtcEdition}
+                        logo={wtcLogo}
+                        name={wtcName}
+                        color={wtcControlBarColor}
                         matchesFiltered={matchesData[2]}
             />
 
@@ -121,12 +121,14 @@ function WTCPage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTa
                 <div className="matchCardContainer">
                     <WTCMatchCardPanel key={matchAreaKey}
                                        onMatchUpdate={refreshPointsTable}
-                                       matches={matchesData}/>
+                                       matches={matchesData}
+                                       cycle={wtcEdition}
+                                        urlTag={wtcUrlTag}/>
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
                         <WTCPointsTable pointsTableData={pointsTableData}
-                                        headerColor={pointsTableColor}/>
+                                        headerColor={wtcPointsTableColor}/>
                     </div>
                 </div>
             </div>

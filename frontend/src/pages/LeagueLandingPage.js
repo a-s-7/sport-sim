@@ -5,7 +5,7 @@ function LeagueLandingPage() {
     const [leagues, setLeagues] = useState([]);
 
     const fetchLeagues = async () => {
-        let url = '/league_info';
+        let url = '/leagues/info';
 
         try {
             const response = await fetch(url);
@@ -27,8 +27,9 @@ function LeagueLandingPage() {
     return (
         <div className="leagueLandingPage">
             {leagues.map(league => (
-                <NavLink key={league["id"]} to={"/" + league["id"]}>
-                    {league["name"]}
+                <NavLink to={"/" + league["acronym"] + "/" + league["edition"]}
+                         key={league["acronym"] + "-" + league["edition"]}>
+                    {league["name"] + " - " + league["edition"]}
                 </NavLink>
             ))}
         </div>

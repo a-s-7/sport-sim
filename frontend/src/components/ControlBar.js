@@ -54,10 +54,10 @@ function ControlBar({
         let matchNums = "";
 
         if (urlTag === "WTC") {
-            matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.MatchNumber.charAt(0)}`).join("-");
+            matchNums = matchesFiltered.map(match => `${match.seriesID}.${match.matchNumber.charAt(0)}`).join("-");
         } else {
             console.log(matchesFiltered)
-            matchNums = matchesFiltered.map(match => match.MatchNumber).join("-")
+            matchNums = matchesFiltered.map(match => match.matchNumber).join("-")
         }
 
         try {

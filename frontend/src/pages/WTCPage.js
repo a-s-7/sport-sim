@@ -3,7 +3,7 @@ import WTCMatchCardPanel from "../components/WTC/WTCMatchCardPanel";
 import WTCPointsTable from "../components/WTC/WTCPointsTable";
 import ControlBar from "../components/ControlBar";
 
-function WTCPage() {
+function WTCPage({leagueUrlTag, leagueName, leagueLogoSrc, leagueColor, pointsTableColor}) {
     const [selectedTeams, setSelectedTeams] = useState([]);
     const [selectedStadiums, setSelectedStadiums] = useState([]);
 
@@ -31,14 +31,16 @@ function WTCPage() {
         let stadiumVal = "All";
 
         if(selectedTeams.length > 0) {
-            teamVal = selectedTeams.map(team => team.value).join("-");
+            teamVal = selectedTeams.map(team => team.label).join("-");
         }
 
         if(selectedStadiums.length > 0) {
-            stadiumVal = selectedStadiums.map(stadium => stadium.value).join(",");
+            stadiumVal = selectedStadiums.map(stadium => stadium.label).join("#");
         }
 
-        let url = `/WTC/matches/${teamVal}/${stadiumVal}`;
+        console.log(stadiumVal)
+
+        let url = `/${leagueUrlTag}/matches/${teamVal}/${stadiumVal}`;
 
         try {
             const response = await fetch(url);
@@ -53,7 +55,7 @@ function WTCPage() {
     };
 
     const fetchPointsTableData = async () => {
-        let url = `/WTC/points_table`;
+        let url = `/${leagueUrlTag}/points_table`;
 
         try {
             const response = await fetch(url);
@@ -87,7 +89,6 @@ function WTCPage() {
         })
 
         newData.forEach((team, index) => {
-            console.log(index);
             diffMap.set(team.name, diffMap.get(team.name) - index)
         })
 
@@ -109,10 +110,10 @@ function WTCPage() {
                         stadiums={selectedStadiums}
                         sst={setSelectedTeams}
                         setStadiums={setSelectedStadiums}
-                        urlTag={"WTC"}
-                        logoSrc={"https://images.icc-cricket.com/image/private/t_q-best/v1723568183/prd/assets/tournaments/worldtestchampionship/2023-2025/Logo_Light_dvrowv.svg"}
-                        name={"ICC World Test Championship"}
-                        color={"black"}
+                        urlTag={leagueUrlTag}
+                        logoSrc={leagueLogoSrc}
+                        name={leagueName}
+                        color={leagueColor}
                         matchesFiltered={matchesData[2]}
             />
 
@@ -124,7 +125,8 @@ function WTCPage() {
                 </div>
                 <div className="tableContainer">
                     <div className="tableWrapper">
-                        <WTCPointsTable pointsTableData={pointsTableData}/>
+                        <WTCPointsTable pointsTableData={pointsTableData}
+                                        headerColor={pointsTableColor}/>
                     </div>
                 </div>
             </div>

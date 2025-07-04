@@ -22,6 +22,19 @@ matches_collection = db['matches']
 
 wtc_bp = Blueprint('wtc_bp', __name__)
 
+@wtc_bp.route('/WTC/info', methods=['GET'])
+def get_wtc_info():
+    edition = editions_collection.find_one()
+
+    wtc_info = {"id": edition["_id"],
+                "name": edition["leagueName"],
+                "year": edition["year"],
+                "controlBarColor": edition["leagueControlBarColor"],
+                "logo": edition["leagueLogo"],
+                "pointsTableColor": edition["pointsTableColor"]}
+
+    return wtc_info
+
 @wtc_bp.route('/WTC/matches/<team_names>/<venue_names>', methods=['GET'])
 def get_wtc_team_series_match_data(team_names, venue_names):
 
@@ -45,7 +58,7 @@ def get_wtc_team_series_match_data(team_names, venue_names):
     matchData = []
 
     teams = team_names.split("-")
-    venues = venue_names.split(",")
+    venues = venue_names.split("#")
 
     team_all = len(teams) == 1 and teams[0] == "All"
     stadium_all = len(venues) == 1 and venues[0] == "All"
@@ -62,7 +75,7 @@ def get_wtc_team_series_match_data(team_names, venue_names):
             or_conditions.append({"awayTeam": {"$in": teams}})
 
         if not stadium_all:
-            or_conditions.append({"venue": {"$in": venues}})
+            or_conditions.append({"location": {"$in": venues}})
 
         query["$or"] = or_conditions
 
@@ -165,7 +178,7 @@ def get_wtc_points_table():
                           key=lambda t: (t["pointsPercentage"], t["played"]),
                           reverse=True)
 
-    return [points_table]
+    return points_table
 
 @wtc_bp.route('/WTC/venues', methods=['GET'])
 def get_wtc_locations():
@@ -221,7 +234,7 @@ def update_wtc_match_deduction(series_id, match_num, team, deduction):
             {"$set": {field: int(deduction)}}
         )
 
-        if result.modified_count == 0:
+        if result.matched_count == 0:
             raise ValueError("No match was modified")
 
     except ValueError as e:

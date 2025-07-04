@@ -68,9 +68,6 @@ function T20LeaguePointsTable({leagueID, pointsTableData, headerColor}) {
                     <td>{team.noResult}</td>
                     <td>{team.nrr.toFixed(3)}</td>
                     <td>{team.points}</td>
-
-                    {console.log(team.ballsFaced)}
-
                     <td>{team.runsScored + "/" + (Math.floor(team.ballsFaced / overBalls) + "." + (team.ballsFaced % overBalls))}</td>
                     <td>{team.oppositionRunsScored + "/" + (Math.floor(team.oppositionBallsFaced / overBalls) + "." + (team.oppositionBallsFaced % overBalls))}</td>
                     <td>

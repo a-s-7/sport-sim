@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {NavLink, Route} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 function IccEventsLandingPage() {
     const [wtcs, setWtcs] = useState([]);

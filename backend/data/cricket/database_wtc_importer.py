@@ -13,7 +13,7 @@ if os.getenv("RENDER_STATUS") != "TRUE":
 connection_string = os.getenv('MONGODB_URI')
 
 client = MongoClient(connection_string)
-db = client['world_test_championship']
+db = client['test']
 
 data = "wtc" + "-" + year + '.json'
 file_path = os.path.join(os.getcwd(), "wtc_data", data)
@@ -21,19 +21,19 @@ file_path = os.path.join(os.getcwd(), "wtc_data", data)
 with open(file_path, 'r') as file:
     json_info = json.load(file)
 
-########### ADD EDITION (EDITION COLLECTION) ###########
+########### ADD TOURNAMENT (TOURNAMENT COLLECTION) ###########
 
-editions_collection = db['editions']
+tournaments_collection = db['tournaments']
 
 fields_omitted = ["teams", "series"]
 
-edition_collection = {}
+tournament_collection = {}
 
 for key in json_info:
     if key not in fields_omitted:
-        edition_collection[key] = json_info[key]
+        tournament_collection[key] = json_info[key]
 
-result = editions_collection.insert_one(edition_collection)
+result = tournaments_collection.insert_one(tournament_collection)
 
 print(f"ID: {result.inserted_id}")
 

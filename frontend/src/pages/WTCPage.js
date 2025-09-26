@@ -130,6 +130,10 @@ function WTCPage({wtcUrlTag, wtcName, wtcEdition, wtcControlBarColor, wtcLogo, w
                         <WTCPointsTable pointsTableData={pointsTableData}
                                         headerColor={wtcPointsTableColor}/>
                     </div>
+                    {/* <div className="tableWrapper">*/}
+                    {/*    <WTCPointsTable pointsTableData={pointsTableData}*/}
+                    {/*                    headerColor={wtcPointsTableColor}/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>

@@ -24,7 +24,6 @@ html, body, #root {
 .welcomeMessageContainer {
     display: flex;
     flex-direction: column;
-    /*background-color: red;*/
     align-items: center;
     padding: 10px;
 }
@@ -32,13 +31,11 @@ html, body, #root {
 .taglineContainer {
     font-size: 3.5vh;
     text-align: center;
-    /*background-color: orange;*/
 }
 
 .descriptionContainer {
     font-size: 1vh;
     text-align: center;
-    /*background-color: orange;*/
 }
 
 
@@ -62,22 +59,7 @@ html, body, #root {
     height: 70%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .T20LeaguePage {
-    background-color: whitesmoke;
     height: 92%;
 }
 
@@ -108,8 +90,8 @@ html, body, #root {
     height: 92%;
     display: flex;
     flex-direction: row;
+    background-color: white;
 }
-
 
 
 .controlBarHeader {
@@ -192,7 +174,6 @@ html, body, #root {
     flex-direction: column;
     width: 55%;
     height: 100%;
-    background-color: whitesmoke;
     gap: 20px;
     padding: 10px;
     overflow: scroll;
@@ -201,9 +182,11 @@ html, body, #root {
 .tableContainer {
     height: 100%;
     width: 45%;
-    background-color: whitesmoke;
     padding: 10px;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .WTCTable, .T20Table {
@@ -242,7 +225,7 @@ html, body, #root {
 }
 
 .WTCTable thead th, .T20Table thead th {
-    padding: 10px;
+    padding: 9px;
 }
 
 .WTCTable thead th:nth-child(3), .T20Table thead th:nth-child(3) {
@@ -277,42 +260,34 @@ html, body, #root {
 }
 
 .WTCTable tbody tr:nth-child(1),
-.WTCTable tbody tr:nth-child(2),
-.T20Table tbody tr:nth-child(1),
-.T20Table tbody tr:nth-child(2),
-.T20Table tbody tr:nth-child(3),
-.T20Table tbody tr:nth-child(4) {
+.WTCTable tbody tr:nth-child(2) {
     background-color: whitesmoke;
 }
 
 .WTCTable tbody tr:nth-child(1):hover,
-.WTCTable tbody tr:nth-child(2):hover,
-.T20Table tbody tr:nth-child(1):hover,
-.T20Table tbody tr:nth-child(2):hover,
-.T20Table tbody tr:nth-child(3):hover,
-.T20Table tbody tr:nth-child(4):hover {
+.WTCTable tbody tr:nth-child(2):hover {
     background-color: white;
 }
 
 .WTCTable tbody td:nth-child(3) img {
-    width: 40px;
+    width: 4vh;
     margin-left: 10px;
     margin-right: 10px;
     border: 0.75px solid #dadada;
+    border-radius: 3px;
 }
 
 .T20Table tbody td:nth-child(3) img {
     margin-left: 10px;
 }
 
-.T20Table tbody img, .WTCTable tbody img {
-    width: 50px;
-    margin-right: 10px;
+.T20Table tbody img {
+    width: 5vh;
+    margin-right: 5px;
 }
 
-.T20Table tbody tr td:last-child img,
-.WTCTable tbody tr td:last-child img {
-    margin-right: 0;
+.WTCTable tbody img {
+    width: 3vh;
 }
 
 .WTCTable tbody, .T20Table tbody {
@@ -623,7 +598,6 @@ input[type="number"]::-webkit-inner-spin-button {
     font-weight: bold;
 }
 
-
 .time {
     width: 100%;
     height: 30%;
@@ -632,8 +606,6 @@ input[type="number"]::-webkit-inner-spin-button {
     justify-content: center;
     font-size: 0.75vw;
 }
-
-
 
 .navContainer {
     display: flex;
@@ -654,7 +626,6 @@ input[type="number"]::-webkit-inner-spin-button {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    /*background-color: blue;*/
     height: 100%;
     padding: 10px;
     gap: 10px;
@@ -664,7 +635,6 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     color: black;
-    /*background-color: red;*/
     font-family: "Reem Kufi Fun", sans-serif;
     text-decoration: none;
     padding: 10px;
@@ -677,7 +647,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .logoArea {
     padding: 10px;
-    /*background-color: gold;*/
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -685,16 +654,13 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .logoArea a {
-    /*background-color: paleturquoise;*/
     font-size: 3vw;
     color: black;
     font-family: "Reem Kufi Fun", sans-serif;
     text-decoration: none;
 }
 
-
 .leagueLandingPage {
-    background-color: red;
     display: flex;
     height: 92%;
     flex-direction: column;

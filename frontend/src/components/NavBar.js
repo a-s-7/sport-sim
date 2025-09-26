@@ -17,11 +17,11 @@ function NavBar() {
                          }}>
                     LEAGUES
                 </NavLink>
-                <NavLink to="/icc_events"
+                <NavLink to="/events"
                          style={{
                             borderBottom: path === "/icc_events" ? "1px solid black" : "none"
                          }}>
-                    ICC EVENTS
+                    EVENTS
                 </NavLink>
             </div>
         </div>

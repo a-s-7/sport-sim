@@ -13,9 +13,9 @@ connection_string = os.getenv('MONGODB_URI')
 
 # Connect with MongoDB
 client = MongoClient(connection_string)
-db = client['world_test_championship']
+db = client['test']
 
-editions_collection = db['editions']
+tournaments_collection = db['tournaments']
 teams_collection = db['teams']
 series_collection = db['series']
 matches_collection = db['matches']
@@ -24,7 +24,7 @@ wtc_bp = Blueprint('wtc_bp', __name__)
 
 @wtc_bp.route('/wtc/info', methods=['GET'])
 def get_wtc_info():
-    editions = editions_collection.find()
+    editions = tournaments_collection.find()
 
     wtc_info = []
 

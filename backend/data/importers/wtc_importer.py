@@ -16,7 +16,8 @@ client = MongoClient(connection_string)
 db = client['test']
 
 data = "wtc" + "-" + year + '.json'
-file_path = os.path.join(os.getcwd(), "wtc_data", data)
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+file_path = os.path.join(base_dir, "sources", "events", "world-test-championship", data)
 
 with open(file_path, 'r') as file:
     json_info = json.load(file)

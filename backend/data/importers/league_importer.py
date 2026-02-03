@@ -4,8 +4,8 @@ from pymongo import MongoClient
 
 # NOTES:
 # abb must match league folder name in league_data and the file format ("abb-year-t.json", "abb-year-s.json")
-league_abb = "cwc"
-league_year = "2023"
+league_abb = "ipl"
+league_year = "2025"
 
 if os.getenv("RENDER_STATUS") != "TRUE":
     from dotenv import load_dotenv
@@ -17,7 +17,8 @@ client = MongoClient(connection_string)
 db = client['franchise_leagues']
 
 data = league_abb + "-" + league_year + '.json'
-file_path = os.path.join(os.getcwd(), "league_data", data)
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+file_path = os.path.join(base_dir, "sources", "leagues", data)
 
 with open(file_path, 'r') as file:
     json_info = json.load(file)

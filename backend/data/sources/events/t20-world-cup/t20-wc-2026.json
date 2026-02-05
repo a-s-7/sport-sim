@@ -1,8 +1,15 @@
 {
-    "name": "ICC Men's T20 World Cup",
-    "format": "T20",
-    "edition": 2026,
-    "gradient": "linear-gradient(135deg, darkblue, darkblue, orange)",
-    "logo": "https://images.icc-cricket.com/image/private/t_q-best/v1761065042/prd/assets/tournaments/mens-t20-world-cup-2026/alternate-small-m-t20wc-2026-logo.svg",
-    "pointsTableColor": "darkblue"
+    "tournament": {
+        "_id": null,
+        "format": "T20",
+        "name": "ICC Men's T20 World Cup",
+        "edition": 2026,
+        "status": "upcoming",
+        "startDate": "2026-02-06",
+        "endDate": "2026-03-08",
+        "currentStageId": null,
+        "gradient": "linear-gradient(135deg, darkblue, darkblue, orange)",
+        "logo": "https://images.icc-cricket.com/image/private/t_q-best/v1761065042/prd/assets/tournaments/mens-t20-world-cup-2026/alternate-small-m-t20wc-2026-logo.svg",
+        "pointsTableColor": "darkblue"
+    }
 }

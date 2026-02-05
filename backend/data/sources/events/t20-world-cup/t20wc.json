@@ -1,0 +1,192 @@
+{
+    "tournament": {
+        "_id": null,
+        "format": "T20",
+        "name": "ICC Men's T20 World Cup",
+        "edition": 2026,
+        "status": "upcoming",
+        "startDate": "2026-02-06",
+        "endDate": "2026-03-08",
+        "currentStageId": null,
+        "gradient": "linear-gradient(135deg, darkblue, darkblue, orange)",
+        "logo": "https://images.icc-cricket.com/image/private/t_q-best/v1761065042/prd/assets/tournaments/mens-t20-world-cup-2026/alternate-small-m-t20wc-2026-logo.svg",
+        "pointsTableColor": "darkblue"
+    },
+    "stages": [
+        {
+            "_id": null,
+            "tournamentId": null,
+            "type": "group",
+            "stageOrder": 1,
+            "name": "Group Stage",
+            "status": "upcoming",
+            "config": {
+                "numGroups": 4,
+                "teamsPerGroup": 5,
+                "matchesPerTeam": 4,
+                "qualifiersPerGroup": 2
+            }
+        },
+        {
+            "_id": null,
+            "tournamentId": null,
+            "type": "group",
+            "stageOrder": 2,
+            "name": "Super 8",
+            "status": "upcoming",
+            "config": {
+                "numGroups": 2,
+                "teamsPerGroup": 4,
+                "matchesPerTeam": 3,
+                "qualifiersPerGroup": 2
+            }
+        },
+        {
+            "_id": null,
+            "tournamentId": null,
+            "type": "knockout",
+            "stageOrder": 3,
+            "name": "Semi-final",
+            "status": "upcoming",
+            "config": {
+                "numTeams": 4,
+                "numMatches": 2
+            }
+        },
+        {
+            "_id": null,
+            "tournamentId": null,
+            "type": "knockout",
+            "stageOrder": 4,
+            "name": "Final",
+            "status": "upcoming",
+            "config": {
+                "numTeams": 2,
+                "numMatches": 1
+            }
+        }
+    ],
+    "teams": [
+  {
+    "acronym": "AFG",
+    "name": "Afghanistan",
+    "logo": "https://countryflagsapi.com/png/af",
+    "gradient": "linear-gradient(135deg, #000000, #CE1126, #009900)"
+  },
+  {
+    "acronym": "AUS",
+    "name": "Australia",
+    "logo": "https://countryflagsapi.com/png/au",
+    "gradient": "linear-gradient(135deg, #00205B, #FCD116)"
+  },
+  {
+    "acronym": "BAN",
+    "name": "Bangladesh",
+    "logo": "https://countryflagsapi.com/png/bd",
+    "gradient": "linear-gradient(135deg, #006A4E, #F42A41)"
+  },
+  {
+    "acronym": "ENG",
+    "name": "England",
+    "logo": "https://countryflagsapi.com/png/gb-eng",
+    "gradient": "linear-gradient(135deg, #FFFFFF, #C8102E)"
+  },
+  {
+    "acronym": "IND",
+    "name": "India",
+    "logo": "https://assets-icc.sportz.io/static-assets/buildv3-prd/images/teams/4.png",
+    "gradient": "linear-gradient(135deg, #0048BA, #FF9933)"
+  },
+  {
+    "acronym": "SA",
+    "name": "South Africa",
+    "logo": "https://countryflagsapi.com/png/za",
+    "gradient": "linear-gradient(135deg, #006847, #FFB81C)"
+  },
+  {
+    "acronym": "USA",
+    "name": "United States",
+    "logo": "https://countryflagsapi.com/png/us",
+    "gradient": "linear-gradient(135deg, #3C3B6E, #B22234)"
+  },
+  {
+    "acronym": "WI",
+    "name": "West Indies",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flag_of_the_West_Indies_Cricket_Board.svg/1200px-Flag_of_the_West_Indies_Cricket_Board.svg.png",
+    "gradient": "linear-gradient(135deg, #68213F, #F77F00)"
+  },
+  {
+    "acronym": "IRE",
+    "name": "Ireland",
+    "logo": "https://countryflagsapi.com/png/ie",
+    "gradient": "linear-gradient(135deg, #169B62, #FF883E)"
+  },
+  {
+    "acronym": "NZ",
+    "name": "New Zealand",
+    "logo": "https://countryflagsapi.com/png/nz",
+    "gradient": "linear-gradient(135deg, #000000, #FFFFFF)"
+  },
+  {
+    "acronym": "PAK",
+    "name": "Pakistan",
+    "logo": "https://countryflagsapi.com/png/pk",
+    "gradient": "linear-gradient(135deg, #01411C, #FFFFFF)"
+  },
+  {
+    "acronym": "CAN",
+    "name": "Canada",
+    "logo": "https://countryflagsapi.com/png/ca",
+    "gradient": "linear-gradient(135deg, #FF0000, #FFFFFF)"
+  },
+  {
+    "acronym": "ITA",
+    "name": "Italy",
+    "logo": "https://countryflagsapi.com/png/it",
+    "gradient": "linear-gradient(135deg, #008C45, #F4F5F0, #CD212A)"
+  },
+  {
+    "acronym": "NED",
+    "name": "Netherlands",
+    "logo": "https://countryflagsapi.com/png/nl",
+    "gradient": "linear-gradient(135deg, #21468B, #EF7C1C)"
+  },
+  {
+    "acronym": "NAM",
+    "name": "Namibia",
+    "logo": "https://countryflagsapi.com/png/na",
+    "gradient": "linear-gradient(135deg, #003580, #EF3340)"
+  },
+  {
+    "acronym": "ZIM",
+    "name": "Zimbabwe",
+    "logo": "https://countryflagsapi.com/png/zw",
+    "gradient": "linear-gradient(135deg, #006600, #FFCC00, #FF0000)"
+  },
+  {
+    "acronym": "NEP",
+    "name": "Nepal",
+    "logo": "https://countryflagsapi.com/png/np",
+    "gradient": "linear-gradient(135deg, #DC143C, #003893)"
+  },
+  {
+    "acronym": "OMN",
+    "name": "Oman",
+    "logo": "https://countryflagsapi.com/png/om",
+    "gradient": "linear-gradient(135deg, #CE1126, #FFFFFF, #007A3D)"
+  },
+  {
+    "acronym": "SL",
+    "name": "Sri Lanka",
+    "logo": "https://countryflagsapi.com/png/lk",
+    "gradient": "linear-gradient(135deg, #0B3D91, #FFCC00)"
+  },
+  {
+    "acronym": "UAE",
+    "name": "United Arab Emirates",
+    "logo": "https://countryflagsapi.com/png/ae",
+    "gradient": "linear-gradient(135deg, #00732F, #FFFFFF, #CE1126)"
+  }
+],  
+    "matches": []
+}

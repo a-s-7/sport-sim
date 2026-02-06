@@ -114,24 +114,25 @@ except BulkWriteError as e:
 matches = json_info["matches"]
 
 matches_collection = db['matches']
+
 matches_collection.create_index(
-    [("stageId", 1), ("teamId", 1)],
+    [("tournamentId", 1), ("matchNumber", 1)],
     unique=True
 )
 
-for match in matches:
-    match["stageId"] = DB_STAGE_ORDER_TO_ID[match["stageOrder"]]
-    del match["stageOrder"]
+# for match in matches:
+#     match["stageId"] = DB_STAGE_ORDER_TO_ID[match["stageOrder"]]
+#     del match["stageOrder"]
 
-try:
-    result = matches_collection.insert_many(matches, ordered=True)
-    print("Matches inserted with IDs:", result.inserted_ids, "\n")
-except BulkWriteError as e:
-    write_errors = e.details.get('writeErrors', [])
+# try:
+#     result = matches_collection.insert_many(matches, ordered=True)
+#     print("Matches inserted with IDs:", result.inserted_ids, "\n")
+# except BulkWriteError as e:
+#     write_errors = e.details.get('writeErrors', [])
     
-    first_error_index = write_errors[0]['index']
+#     first_error_index = write_errors[0]['index']
 
-    print(f"Error: Stopped inserting matches at match index {first_error_index}")
+#     print(f"Error: Stopped inserting matches at match index {first_error_index}")
 
 
 

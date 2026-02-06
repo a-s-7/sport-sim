@@ -1,0 +1,44 @@
+{
+    "venues": [
+        {
+            "stadium": "Narendra Modi Stadium",
+            "city": "Ahmedabad",
+            "country": "India"
+        },
+        {
+            "stadium": "MA Chidambaram Stadium",
+            "city": "Chennai",
+            "country": "India"
+        },
+        {
+            "stadium": "Arun Jaitley Stadium",
+            "city": "New Delhi",
+            "country": "India"
+        },
+        {
+            "stadium": "Wankhede Stadium",
+            "city": "Mumbai",
+            "country": "India"
+        },
+        {
+            "stadium": "Eden Gardens",
+            "city": "Kolkata",
+            "country": "India"
+        },
+        {
+            "stadium": "R. Premadasa Stadium",
+            "city": "Colombo",
+            "country": "Sri Lanka"
+        },
+        {
+            "stadium": "Sinhalese Sports Club Cricket Ground",
+            "city": "Colombo",
+            "country": "Sri Lanka"
+        },
+        {
+            "stadium": "Pallekele International Cricket Stadium",
+            "city": "Kandy",
+            "country": "Sri Lanka"
+        }
+    ]
+}

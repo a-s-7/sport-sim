@@ -3,8 +3,6 @@ import os
 from pymongo import MongoClient
 from pymongo.errors import BulkWriteError
 
-########### ADD ICC TEAMS (TEAMS COLLECTION) ###########
-
 if os.getenv("RENDER_STATUS") != "TRUE":
     from dotenv import load_dotenv
     load_dotenv()
@@ -17,26 +15,27 @@ if not connection_string:
 client = MongoClient(connection_string)
 db = client['events']
 
-teams_collection = db['teams']
+venues_collection = db['venues']
+venues_collection.create_index("stadium", unique=True)
 
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-file_path = os.path.join(base_dir, "sources", "events", "icc-teams.json")
+file_path = os.path.join(base_dir, "sources", "events", "venues.json")
 
 with open(file_path, 'r') as file:
     json_info = json.load(file)
 
 try:
-    result = teams_collection.insert_many(json_info["teams"], ordered=False)
-    print("Inserted IDs:", result.inserted_ids)
+    result = venues_collection.insert_many(json_info["venues"], ordered=False)
+    print("Inserted venues IDs:", result.inserted_ids)
 except BulkWriteError as e:
     write_errors = e.details.get('writeErrors', [])
 
-    failed_acronyms = []
+    failed_stadiums = []
 
     for err in write_errors:
-        team = json_info["teams"][err['index']]
-        failed_acronyms.append(team['acronym'])
+        venue = json_info["venues"][err['index']]
+        failed_stadiums.append(venue['stadium'])
 
-    inserted_count = len(json_info["teams"]) - len(failed_acronyms)
-    print(f"Inserted {inserted_count} teams")
-    print("Skipped duplicates:", failed_acronyms)
+    inserted_count = len(json_info["venues"]) - len(failed_stadiums)
+    print(f"Inserted {inserted_count} venues")
+    print("Skipped duplicates:", failed_stadiums)

@@ -1,122 +1,122 @@
 {
     "teams": [
         {
+            "_id": "AFG",
             "name": "Afghanistan",
-            "acronym": "AFG",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/afg.png",
             "gradient": "linear-gradient(135deg, green, forestgreen, gold)"
         },
         {
+            "_id": "AUS",
             "name": "Australia",
-            "acronym": "AUS",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/aus.png",
             "gradient": "linear-gradient(135deg, green, forestgreen, gold)"
         },
         {
+            "_id": "CAN",
             "name": "Canada",
-            "acronym": "CAN",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/can.png",
             "gradient": "linear-gradient(135deg, #FF0000, #FFFFFF, #FF0000)"
         },
         {
+            "_id": "ENG",
             "name": "England",
-            "acronym": "ENG",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/eng.png",
             "gradient": "linear-gradient(135deg, red, red, white)"
         },
         {
+            "_id": "IND",
             "name": "India",
-            "acronym": "IND",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/ind.png",
             "gradient": "linear-gradient(135deg, blue, darkorange)"
         },
         {
+            "_id": "IRE",
             "name": "Ireland",
-            "acronym": "IRE",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/ire.png",
             "gradient": "linear-gradient(135deg, green, white, green)"
         },
         {
+            "_id": "ITA",
             "name": "Italy",
-            "acronym": "ITA",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/ita.png",
             "gradient": "linear-gradient(135deg, green, white, green)"
         },
         {
+            "_id": "NAM",
             "name": "Namibia",
-            "acronym": "NAM",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/nam.png",
             "gradient": "linear-gradient(135deg, green, red, green)"
         },
         {
+            "_id": "NEP",
             "name": "Nepal",
-            "acronym": "NEP",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/nep.png",
             "gradient": "linear-gradient(135deg, red, white, red)"
         },
         {
+            "_id": "NED",
             "name": "Netherlands",
-            "acronym": "NED",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/ned.png",
             "gradient": "linear-gradient(135deg, red, white, red)"
         },
         {
+            "_id": "NZ",
             "name": "New Zealand",
-            "acronym": "NZ",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/nz.png",
             "gradient": "linear-gradient(135deg, black, teal)"
         },
         {
+            "_id": "OMA",
             "name": "Oman",
-            "acronym": "OMA",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/oma.png",
             "gradient": "linear-gradient(135deg, white, green, white)"
         },
         {
+            "_id": "PAK",
             "name": "Pakistan",
-            "acronym": "PAK",
             "flag": "https://assets-icc.sportz.io/static-assets/buildv3-stg/images/teams/6.png?v=7",
             "gradient": "linear-gradient(135deg, darkgreen, darkgreen, lawngreen)"
         },
         {
+            "_id": "SCO",
             "name": "Scotland",
-            "acronym": "SCO",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/sco.png",
             "gradient": "linear-gradient(135deg, blue, white, blue)"
         },
         {
+            "_id": "SA",
             "name": "South Africa",
-            "acronym": "SA",
             "flag": "https://assets-icc.sportz.io/static-assets/buildv3-stg/images/teams/7.png?v=7",
             "gradient": "linear-gradient(135deg, darkgreen, gold)"
         },
         {
+            "_id": "SL",
             "name": "Sri Lanka",
-            "acronym": "SL",
             "flag": "https://assets-icc.sportz.io/static-assets/buildv3-stg/images/teams/8.png?v=7",
             "gradient": "linear-gradient(135deg, darkblue, rgb(255, 180, 0))"
         },
         {
+            "_id": "USA",
             "name": "United States",
-            "acronym": "USA",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/usa.png",
             "gradient": "linear-gradient(135deg, blue, white, red)"
         },
         {
+            "_id": "UAE",
             "name": "United Arab Emirates",
-            "acronym": "UAE",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/uae.png",
             "gradient": "linear-gradient(135deg, red, white, green)"
         },
         {
+            "_id": "WI",
             "name": "West Indies",
-            "acronym": "WI",
             "flag": "https://assets-icc.sportz.io/static-assets/buildv3-stg/images/teams/9.png?v=7",
             "gradient": "linear-gradient(135deg, maroon, rgb(255, 235, 0))"
         },
         {
+            "_id": "ZIM",
             "name": "Zimbabwe",
-            "acronym": "ZIM",
             "flag": "https://images.icc-cricket.com/image/upload/t_q-good/prd/assets/flags/zim.png",
             "gradient": "linear-gradient(135deg, green, white, green)"
         }

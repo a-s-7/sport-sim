@@ -5,38 +5,42 @@ from pymongo.errors import BulkWriteError
 
 ########### ADD ICC TEAMS (TEAMS COLLECTION) ###########
 
-if os.getenv("RENDER_STATUS") != "TRUE":
-    from dotenv import load_dotenv
-    load_dotenv()
+def main():
+    if os.getenv("RENDER_STATUS") != "TRUE":
+        from dotenv import load_dotenv
+        load_dotenv()
 
-connection_string = os.getenv('MONGODB_URI')
+    connection_string = os.getenv('MONGODB_URI')
 
-if not connection_string:
-    raise ValueError("MONGODB_URI not found in environment variables")
+    if not connection_string:
+        raise ValueError("MONGODB_URI not found in environment variables")
 
-client = MongoClient(connection_string)
-db = client['events']
+    client = MongoClient(connection_string)
+    db = client['events']
 
-teams_collection = db['teams']
+    teams_collection = db['teams']
 
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-file_path = os.path.join(base_dir, "sources", "events", "icc-teams.json")
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file_path = os.path.join(base_dir, "sources", "events", "icc-teams.json")
 
-with open(file_path, 'r') as file:
-    json_info = json.load(file)
+    with open(file_path, 'r') as file:
+        json_info = json.load(file)
 
-try:
-    result = teams_collection.insert_many(json_info["teams"], ordered=False)
-    print("Inserted IDs:", result.inserted_ids)
-except BulkWriteError as e:
-    write_errors = e.details.get('writeErrors', [])
+    try:
+        result = teams_collection.insert_many(json_info["teams"], ordered=False)
+        print("Inserted IDs:", result.inserted_ids)
+    except BulkWriteError as e:
+        write_errors = e.details.get('writeErrors', [])
 
-    failed_acronyms = []
+        failed_acronyms = []
 
-    for err in write_errors:
-        team = json_info["teams"][err['index']]
-        failed_acronyms.append(team['acronym'])
+        for err in write_errors:
+            team = json_info["teams"][err['index']]
+            failed_acronyms.append(team['acronym'])
 
-    inserted_count = len(json_info["teams"]) - len(failed_acronyms)
-    print(f"Inserted {inserted_count} teams")
-    print("Skipped duplicates:", failed_acronyms)
+        inserted_count = len(json_info["teams"]) - len(failed_acronyms)
+        print(f"Inserted {inserted_count} teams")
+        print("Skipped duplicates:", failed_acronyms)
+
+if __name__ == "__main__":
+    main()

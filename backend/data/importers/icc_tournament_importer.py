@@ -2,7 +2,7 @@ import json
 import os
 from pymongo import MongoClient
 from pymongo.errors import BulkWriteError, DuplicateKeyError
-from datetime import datetime
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from bson import ObjectId
 
@@ -99,9 +99,21 @@ for s_team in stage_teams:
     s_team["stageId"] = DB_STAGE_ORDER_TO_ID[s_team["stageOrder"]]
     del s_team["stageOrder"]
 
+
+DB_NAME_OR_SEED_TO_ID = {}
+
 try:
     result = stage_teams_collection.insert_many(stage_teams, ordered=True)
     print("Stage teams inserted with IDs:", result.inserted_ids, "\n")
+
+    for i, s_team in enumerate(stage_teams):
+        if "confirmed" in s_team and not s_team["confirmed"]:
+            DB_NAME_OR_SEED_TO_ID[s_team["seed"]] = result.inserted_ids[i]
+        else:
+            DB_NAME_OR_SEED_TO_ID[s_team["teamId"]] = result.inserted_ids[i]
+    
+    print("Team ID/Seed mapped to Stage Team IDs:", DB_NAME_OR_SEED_TO_ID, "\n")
+            
 except BulkWriteError as e:
     write_errors = e.details.get('writeErrors', [])
     
@@ -109,9 +121,18 @@ except BulkWriteError as e:
 
     print(f"Error: Stopped inserting stage teams at stage team index {first_error_index}")
 
-################################################################ (MATCHES COLLECTION) 
+################################################################ (MATCHES COLLECTION)
 
-matches = json_info["matches"]
+DB_STADIUM_NAME_TO_ID = {}
+
+venues_collection = db['venues']
+venues = venues_collection.find({
+    "stadium": {
+        "$in": json_info["stadiums"]
+    }
+})
+venue_dict = {v["stadium"]: v["_id"] for v in venues}
+print("Stadiums mapped to VenueIDs:", venue_dict, "\n")
 
 matches_collection = db['matches']
 
@@ -120,19 +141,37 @@ matches_collection.create_index(
     unique=True
 )
 
-# for match in matches:
-#     match["stageId"] = DB_STAGE_ORDER_TO_ID[match["stageOrder"]]
-#     del match["stageOrder"]
+matches = json_info["matches"]
 
-# try:
-#     result = matches_collection.insert_many(matches, ordered=True)
-#     print("Matches inserted with IDs:", result.inserted_ids, "\n")
-# except BulkWriteError as e:
-#     write_errors = e.details.get('writeErrors', [])
+for match in matches:
+
+    match["stageId"] = DB_STAGE_ORDER_TO_ID[match["stageOrder"]]
+    del match["stageOrder"]    
+
+    dt = datetime.fromisoformat(match["date"])
+    dt_pst = dt.replace(tzinfo=zone)
+    match["date"] = dt_pst.astimezone(timezone.utc)
+
+    match["venueId"] = venue_dict[match["venue"]]
+    del match["venue"]
+
+    match["homeStageTeamId"] = DB_NAME_OR_SEED_TO_ID[match["homeStageTeamId"]]
+    match["awayStageTeamId"] = DB_NAME_OR_SEED_TO_ID[match["awayStageTeamId"]]
     
-#     first_error_index = write_errors[0]['index']
 
-#     print(f"Error: Stopped inserting matches at match index {first_error_index}")
+try:
+    result = matches_collection.insert_many(matches, ordered=True)
+
+    print(f"\n{len(result.inserted_ids)} matches inserted with IDs:\n")
+    for i, id in enumerate(result.inserted_ids):
+        print(f"Match {i + 1} inserted with ID: {id}")
+
+except BulkWriteError as e:
+    write_errors = e.details.get('writeErrors', [])
+    
+    first_error_index = write_errors[0]['index']
+
+    print(f"Error: Stopped inserting matches at match {first_error_index + 1}")
 
 
 
